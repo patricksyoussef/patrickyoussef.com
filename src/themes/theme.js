@@ -1,7 +1,7 @@
 export default {
   fonts: {
     main: "IBM Plex Sans, sans-serif",
-    code: "Inconsolata, monospace"
+    code: "Inconsolata, monospace",
   },
   colors: {
     main1: "hsl(205, 70%, 60%)",

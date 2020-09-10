@@ -40,11 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `ibm plex sans`,
-          `open sans`,
-          `inconsolata`
-        ],
+        fonts: [`ibm plex sans`, `open sans`, `inconsolata`],
         display: "swap",
       },
     },
