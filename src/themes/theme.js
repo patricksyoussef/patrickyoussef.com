@@ -1,6 +1,7 @@
 export default {
   fonts: {
     main: "IBM Plex Sans",
+    sub: "Open Sans",
     code: "Inconsolata",
   },
   colors: {
