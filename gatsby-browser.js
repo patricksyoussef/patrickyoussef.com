@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  ol,ul {
+    padding-left: 20px;
+  }
+
   body, html {
     font-family: ${props => props.theme.fonts.main};
     height: 100%;

@@ -4,7 +4,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMdx(
+      blogs: allMdx(
         filter: {
           frontmatter: {
             published: { eq: true }
@@ -18,10 +18,24 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      projects: allMdx(
+        filter: {
+          frontmatter: {
+            published: { eq: true }
+            templateKey: { eq: "project" }
+          }
+        }
+      ) {
+        nodes {
+          frontmatter {
+            slug
+          }
+        }
+      }
     }
   `)
 
-  const posts = result.data.allMdx.nodes
+  const posts = result.data.blogs.nodes
   posts.forEach(post => {
     createPage({
       path: post.frontmatter.slug,
@@ -34,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Blog Pagination
   const postPerPage = 1
-  const numPages = Math.ceil(result.data.allMdx.nodes.length / postPerPage)
+  const numPages = Math.ceil(result.data.blogs.nodes.length / postPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
