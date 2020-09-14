@@ -9,14 +9,18 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
-  ol,ul {
-    padding-left: 20px;
-  }
-
   body, html {
     font-family: ${props => props.theme.fonts.main};
     height: 100%;
     background-color: ${props => props.theme.colors.light1};
+  }
+
+  ol,ul {
+    padding-left: 20px;
+  }
+
+  code {
+    font-family: ${props => props.theme.fonts.code};
   }
 `
 
