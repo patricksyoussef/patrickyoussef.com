@@ -16,7 +16,7 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogBySlug($slug: String!) {
+  query ProjectBySlug($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       body
       frontmatter {

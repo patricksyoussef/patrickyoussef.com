@@ -19,14 +19,14 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogListing($skip: Int!, $limit: Int!) {
+  query ProjectListing($skip: Int!, $limit: Int!) {
     allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       skip: $skip
       limit: $limit
       filter: {
         frontmatter: {
-          templateKey: { eq: "blog-post" }
+          templateKey: { eq: "project-post" }
           published: { eq: true }
         }
       }

@@ -13,6 +13,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${props => props.theme.fonts.main};
     height: 100%;
     background-color: ${props => props.theme.colors.light1};
+    line-height: 1.6;
+    font-weight: 400;
   }
 
   ol,ul {
@@ -21,6 +23,11 @@ const GlobalStyles = createGlobalStyle`
 
   code {
     font-family: ${props => props.theme.fonts.code};
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `
 

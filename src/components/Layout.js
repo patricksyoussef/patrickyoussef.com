@@ -5,12 +5,13 @@ import styled from "styled-components"
 const Container = styled.div`
   max-width: 1024px;
   margin: 0 auto;
+  padding: 30px;
 `
 
 export const Layout = ({ children }) => {
   return (
     <Container>
-      <Header siteTitle="Patrick Youssef" />
+      <Header />
       {children}
     </Container>
   )
