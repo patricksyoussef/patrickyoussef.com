@@ -41,6 +41,8 @@ exports.createPages = async ({ graphql, actions }) => {
   // Split result to use in for loop
   const tmp = _.toPairs(result.data)
 
+  const PostsPerPage = 2
+
   // Resolve templates
   blog_post = path.resolve("./src/templates/blog-post.js")
   blog_list = path.resolve("./src/templates/blog-list.js")
@@ -57,12 +59,16 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
-    _.chunk(arr.nodes, 2).forEach((posts, i) => {
+    const NumPages = Math.ceil(arr.nodes.length / PostsPerPage)
+    _.chunk(arr.nodes, PostsPerPage).forEach((posts, i) => {
       createPage({
         path: i === 0 ? `/blog/` : `/blog/page${i + 1}/`,
         component: key === "blogs" ? blog_list : "",
         context: {
-          slugs: posts.map(post => post.frontmatter.slug),
+          skip: i * PostsPerPage,
+          limit: PostsPerPage,
+          num_pages: NumPages,
+          current_page: i + 1,
         },
       })
     })

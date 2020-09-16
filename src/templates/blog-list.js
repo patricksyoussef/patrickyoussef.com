@@ -1,16 +1,42 @@
+import { graphql } from "gatsby"
 import React from "react"
-import styled from "styled-components"
+import { Layout } from "../components/Layout"
 
-const StyledH1 = styled.h1`
-  color: ${props => props.theme.colors.dark1};
-`
-
-export default function Home() {
+export default ({ data }) => {
   return (
-    <div>
-      <StyledH1>BLOG LANDING</StyledH1>
-      <p>My name is Patrick</p>
-      <p>slug</p>
-    </div>
+    <Layout>
+      <div>
+        {data.allMdx.nodes.map(({ frontmatter, fields }) => (
+          <div>
+            <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.date}</p>
+            <p>{fields.readingTime.text}</p>
+          </div>
+        ))}
+      </div>
+    </Layout>
   )
 }
+
+export const query = graphql`
+  query PostListing($skip: Int!, $limit: Int!) {
+    allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          date(formatString: "YYYY MMMM Do")
+        }
+        fields {
+          readingTime {
+            text
+          }
+        }
+      }
+    }
+  }
+`
