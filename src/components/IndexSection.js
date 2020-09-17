@@ -34,7 +34,7 @@ const LinkText = styled.h3`
   transition: ${props => props.theme.anims.link};
 
   &:hover {
-    color: ${props => props.theme.colors.blue};
+    color: ${props => props.theme.colors.dark1};
   }
 `
 
