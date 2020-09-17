@@ -8,7 +8,6 @@ const Container = styled.div`
   margin: 0rem 0;
 `
 const Header = styled.div`
-  margin-top: 2rem;
   margin-bottom: 2rem;
 `
 const Title = styled.div`

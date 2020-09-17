@@ -9,16 +9,16 @@ export default ({ data }) => {
     <Layout>
       <Hero />
       <IndexSection
-        data={data.blog}
-        title={"Posts"}
-        linktext={"All posts"}
-        path={"/blog/"}
-      ></IndexSection>
-      <IndexSection
         data={data.projects}
         title={"Projects"}
         linktext={"All projects"}
         path={"/projects/"}
+      ></IndexSection>
+      <IndexSection
+        data={data.blog}
+        title={"Posts"}
+        linktext={"All posts"}
+        path={"/blog/"}
       ></IndexSection>
     </Layout>
   )

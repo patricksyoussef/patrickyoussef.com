@@ -66,7 +66,8 @@ exports.createPages = async ({ graphql, actions }) => {
   // Resolve templates
   blog_post = path.resolve("./src/templates/blog-post.js")
   blog_list = path.resolve("./src/templates/blog-list.js")
-  project_post = path.resolve("./src/templates/project-post.js")
+  // Currently blog pages and project pages are identical
+  // project_post = path.resolve("./src/templates/project-post.js")
   project_list = path.resolve("./src/templates/project-list.js")
 
   tmp.forEach(([key, arr]) => {
@@ -74,7 +75,8 @@ exports.createPages = async ({ graphql, actions }) => {
     arr.nodes.forEach(post => {
       createPage({
         path: post.fields.path,
-        component: key === "blog" ? blog_post : project_post,
+        // component: key === "blog" ? blog_post : project_post,
+        component: blog_post,
         context: {
           slug: post.fields.path,
         },

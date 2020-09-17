@@ -14,6 +14,29 @@ const Content = styled.div`
   margin-top: 1rem;
   margin-bottom: 2rem;
 `
+const Post = styled.div`
+  margin: 0.4rem 0;
+  transition: ${props => props.theme.anims.button};
+  padding: 0.3rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-radius: 0.4rem;
+
+  &:hover {
+    border-color: gray;
+    box-shadow: ${props => props.theme.shadows.s1};
+  }
+`
+
+const LinkText = styled.h3`
+  color: gray;
+  transition: ${props => props.theme.anims.link};
+
+  &:hover {
+    color: ${props => props.theme.colors.blue};
+  }
+`
 
 export const IndexSection = ({ data, title, path, linktext }) => (
   <Container>
@@ -22,20 +45,20 @@ export const IndexSection = ({ data, title, path, linktext }) => (
         <TopContent>
           <h1>{title}</h1>
           <Link to={path}>
-            <h3>{linktext}</h3>
+            <LinkText>{linktext}</LinkText>
           </Link>
         </TopContent>
       </Underline>
     </TopBar>
     <Content>
       {data.nodes.map(({ frontmatter, fields }) => (
-        <div>
-          <Link to={fields.path}>
+        <Link to={fields.path}>
+          <Post>
             <h2>{frontmatter.title}</h2>
-          </Link>
-          <p>{frontmatter.date}</p>
-          <p>{fields.readingTime.text}</p>
-        </div>
+            <p>{frontmatter.date}</p>
+            <p>{fields.readingTime.text}</p>
+          </Post>
+        </Link>
       ))}
     </Content>
   </Container>

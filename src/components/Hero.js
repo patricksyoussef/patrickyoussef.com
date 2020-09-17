@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
-  margin: 6rem 0;
+  margin: 4rem 0;
 `
 const Content = styled.div``
 const Header = styled.div`
@@ -24,10 +24,17 @@ const ContactButton = styled.div`
   margin-top: 2rem;
   box-shadow: ${props => props.theme.shadows.s1};
 
-  transition: 0.3s ease-in-out;
+  transition: ${props => props.theme.anims.button};
+
+  div {
+    transition: ${props => props.theme.anims.button};
+  }
 
   &:hover {
-    background-color: rgb(0, 0, 255, 0.7);
+    background-color: ${props => props.theme.colors.blue};
+  }
+  &:hover div {
+    color: white;
   }
 `
 const Contact = styled.div`
