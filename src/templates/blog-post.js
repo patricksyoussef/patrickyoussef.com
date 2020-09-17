@@ -16,8 +16,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogBySlug($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
+  query BlogByPath($path: String!) {
+    mdx(fields: { path: { eq: $path } }) {
       body
       frontmatter {
         title
@@ -27,6 +27,7 @@ export const query = graphql`
         readingTime {
           text
         }
+        path
       }
     }
   }

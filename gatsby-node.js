@@ -6,11 +6,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
-    console.log(value)
+    const abs_path = `/${value.split("/", 2)[1]}/${node.frontmatter.slug}/`
     createNodeField({
-      name: `slug`,
+      name: `path`,
       node,
-      value,
+      value: abs_path,
     })
   }
 }
@@ -32,6 +32,9 @@ exports.createPages = async ({ graphql, actions }) => {
           frontmatter {
             slug
           }
+          fields {
+            path
+          }
         }
       }
       projects: allMdx(
@@ -46,6 +49,9 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           frontmatter {
             slug
+          }
+          fields {
+            path
           }
         }
       }
@@ -67,10 +73,10 @@ exports.createPages = async ({ graphql, actions }) => {
     // Creates Single pages
     arr.nodes.forEach(post => {
       createPage({
-        path: post.frontmatter.slug,
+        path: post.fields.path,
         component: key === "blog" ? blog_post : project_post,
         context: {
-          slug: post.frontmatter.slug,
+          slug: post.fields.path,
         },
       })
     })

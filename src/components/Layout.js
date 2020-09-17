@@ -1,5 +1,6 @@
 import React from "react"
 import { Header } from "./Header"
+import { Footer } from "./Footer"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -13,6 +14,7 @@ export const Layout = ({ children }) => {
     <Container>
       <Header />
       {children}
+      <Footer />
     </Container>
   )
 }
