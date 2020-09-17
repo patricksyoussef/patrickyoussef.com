@@ -15,8 +15,9 @@ const Title = styled.div`
   font-size: 2.5rem;
   font-weight: 700;
 `
-const SubTitle = styled.span`
+const SubTitle = styled.div`
   display: flex;
+  flex-direction: column;
   font-size: 1.5rem;
 `
 const Spacer = styled.p`
@@ -32,7 +33,6 @@ export default ({ data }) => {
           <Title>{frontmatter.title}</Title>
           <SubTitle>
             <p>{frontmatter.date}</p>
-            <Spacer>|</Spacer>
             <p>{fields.readingTime.text}</p>
           </SubTitle>
         </Header>

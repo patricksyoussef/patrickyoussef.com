@@ -17,6 +17,19 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
   }
 
+  .carbon {
+    height: 0px;
+  }
+
+  html {
+    --deckgo-highlight-code-font-family: ${props => props.theme.fonts.code};
+    --deckgo-highlight-code-carbon-box-shadow: ${props =>
+      props.theme.shadows.s1};
+    --deckgo-highlight-code-carbon-toolbar-display: none;
+    --deckgo-highlight-code-carbon-header-padding: 0;
+    --deckgo-highlight-code-margin: 16px 0;
+  }
+
   ol,ul {
     padding-left: 20px;
   }

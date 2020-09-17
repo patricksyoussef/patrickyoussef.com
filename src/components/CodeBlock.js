@@ -38,14 +38,11 @@ export const CodeBlock = ({ children, className }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
           {tokens.map((line, i) => (
-            <Line key={i} {...getLineProps({ line, key: i })}>
-              <LineNo>{i + 1}</LineNo>
-              <LineContent>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </LineContent>
-            </Line>
+            <div {...getLineProps({ line, key: i })}>
+              {line.map((token, key) => (
+                <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
           ))}
         </Pre>
       )}
