@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `data`,
-        path: `${__dirname}/src/data`,
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
     {
@@ -47,7 +47,7 @@ module.exports = {
             resolve: `gatsby-remark-highlight-code`,
             options: {
               terminal: "carbon",
-              theme: "a11y-dark",
+              theme: "seti",
               lineNumbers: false,
             },
           },

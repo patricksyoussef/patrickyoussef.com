@@ -76,7 +76,6 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: post.fields.path,
         component: key === "blog" ? blog_post : project_post,
-        component: blog_post,
         context: {
           slug: post.fields.path,
         },
