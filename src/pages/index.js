@@ -1,18 +1,25 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import styled from "styled-components"
+import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
-import { Underline } from "../components/Underline"
 import { Hero } from "../components/Hero"
 import { IndexSection } from "../components/IndexSection"
-import { Footer } from "../components/Footer"
 
 export default ({ data }) => {
   return (
     <Layout>
       <Hero />
-      <IndexSection data={data.blog} title={"Posts"}></IndexSection>
-      <IndexSection data={data.projects} title={"Projects"}></IndexSection>
+      <IndexSection
+        data={data.blog}
+        title={"Posts"}
+        linktext={"All posts"}
+        path={"/blog/"}
+      ></IndexSection>
+      <IndexSection
+        data={data.projects}
+        title={"Projects"}
+        linktext={"All projects"}
+        path={"/projects/"}
+      ></IndexSection>
     </Layout>
   )
 }

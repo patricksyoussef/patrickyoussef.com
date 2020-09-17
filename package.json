@@ -16,6 +16,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
+    "@theme-ui/prism": "^0.3.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.54",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -28,6 +29,7 @@
     "gatsby-source-filesystem": "^2.3.29",
     "gatsby-transformer-sharp": "^2.5.14",
     "lodash": "^4.17.20",
+    "prism-react-renderer": "^1.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.2.0"

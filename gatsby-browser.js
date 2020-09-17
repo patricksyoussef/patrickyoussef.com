@@ -29,6 +29,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+
+  img {
+    box-shadow: ${props => props.theme.shadows.s1};
+  }
 `
 
 export const wrapRootElement = ({ element }) => (

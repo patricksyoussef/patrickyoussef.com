@@ -2,15 +2,42 @@ import { graphql } from "gatsby"
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "../components/Layout"
+import styled from "styled-components"
+
+const Container = styled.div`
+  margin: 0rem 0;
+`
+const Header = styled.div`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+`
+const Title = styled.div`
+  font-size: 2.5rem;
+  font-weight: 700;
+`
+const SubTitle = styled.span`
+  display: flex;
+  font-size: 1.5rem;
+`
+const Spacer = styled.p`
+  margin: 0 0.5rem;
+`
 
 export default ({ data }) => {
   const { frontmatter, fields, body } = data.mdx
   return (
     <Layout>
-      <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
-      <p>{fields.readingTime.text}</p>
-      <MDXRenderer>{body}</MDXRenderer>
+      <Container>
+        <Header>
+          <Title>{frontmatter.title}</Title>
+          <SubTitle>
+            <p>{frontmatter.date}</p>
+            <Spacer>|</Spacer>
+            <p>{fields.readingTime.text}</p>
+          </SubTitle>
+        </Header>
+        <MDXRenderer>{body}</MDXRenderer>
+      </Container>
     </Layout>
   )
 }
@@ -21,7 +48,7 @@ export const query = graphql`
       body
       frontmatter {
         title
-        date(formatString: "YYYY MMMM Do")
+        date(formatString: "MMMM Do, YYYY")
       }
       fields {
         readingTime {

@@ -1,13 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Container = styled.div`
+  display: flex;
   margin: 6rem 0;
 `
-const Content = styled.div`
-  margin: 6rem 0;
-`
+const Content = styled.div``
 const Header = styled.div`
   font-family: ${props => props.theme.fonts.code};
   font-size: 2.5rem;
@@ -24,6 +22,7 @@ const ContactButton = styled.div`
   border-radius: 5px;
   padding: 0.7rem 1rem;
   margin-top: 2rem;
+  box-shadow: ${props => props.theme.shadows.s1};
 
   transition: 0.3s ease-in-out;
 
