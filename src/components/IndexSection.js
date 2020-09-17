@@ -16,8 +16,8 @@ const Content = styled.div`
 `
 const Post = styled.div`
   margin: 0.4rem 0;
-  transition: ${props => props.theme.anims.button};
-  padding: 0.3rem;
+  transition: ${props => props.theme.anims.link};
+  padding: 0.6rem;
   border-style: solid;
   border-width: 1px;
   border-color: transparent;
