@@ -26,7 +26,9 @@ export default ({ data }) => {
   return (
     <Layout>
       <Helmet>
-        <title>{frontmatter.title}</title>
+        <title>
+          {frontmatter.title} | {data.site.siteMetadata.title}
+        </title>
       </Helmet>
       <Container>
         <Header>
@@ -55,6 +57,11 @@ export const query = graphql`
           text
         }
         path
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

@@ -1,19 +1,18 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
 import { Layout } from "../components/Layout"
+import { Helmet } from "react-helmet"
+import { ListCard } from "../components/ListCard"
 
 export default ({ data }) => {
   return (
     <Layout>
+      <Helmet>
+        <title>Projects | {data.site.siteMetadata.title}</title>
+      </Helmet>
       <div>
         {data.projects.nodes.map(({ frontmatter, fields }) => (
-          <div>
-            <Link to={fields.path}>
-              <h2>{frontmatter.title}</h2>
-            </Link>
-            <p>{frontmatter.date}</p>
-            <p>{fields.readingTime.text}</p>
-          </div>
+          <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
         ))}
       </div>
     </Layout>
@@ -45,6 +44,11 @@ export const query = graphql`
           }
           path
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

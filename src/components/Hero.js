@@ -31,7 +31,7 @@ const ContactButton = styled.div`
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.blue};
+    background-color: ${props => props.theme.colors.blue_button};
   }
   &:hover div {
     color: white;

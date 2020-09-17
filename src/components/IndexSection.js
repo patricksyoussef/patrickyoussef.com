@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { Underline } from "./Underline"
 import styled from "styled-components"
+import { ListCard } from "./ListCard"
 
 const Container = styled.div``
 const TopBar = styled.div``
@@ -52,13 +53,7 @@ export const IndexSection = ({ data, title, path, linktext }) => (
     </TopBar>
     <Content>
       {data.nodes.map(({ frontmatter, fields }) => (
-        <Link to={fields.path}>
-          <Post>
-            <h2>{frontmatter.title}</h2>
-            <p>{frontmatter.date}</p>
-            <p>{fields.readingTime.text}</p>
-          </Post>
-        </Link>
+        <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
       ))}
     </Content>
   </Container>
