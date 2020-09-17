@@ -4,7 +4,7 @@ import { Underline } from "./Underline"
 import styled from "styled-components"
 
 const Container = styled.div`
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
 `
 const ColorText = styled.span`
   color: ${props => props.theme.colors.blue};

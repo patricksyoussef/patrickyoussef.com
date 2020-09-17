@@ -23,6 +23,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-lodash": "^3.3.10",
     "gatsby-plugin-mdx": "^1.2.39",
+    "gatsby-plugin-react-helmet": "^3.3.11",
     "gatsby-plugin-sharp": "^2.6.35",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-remark-highlight-code": "^2.1.0",
@@ -35,6 +36,7 @@
     "prism-react-renderer": "^1.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

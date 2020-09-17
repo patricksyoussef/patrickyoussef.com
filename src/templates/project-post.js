@@ -3,12 +3,13 @@ import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "../components/Layout"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 
 const Container = styled.div`
   margin: 0rem 0;
 `
 const Header = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 const Title = styled.div`
   font-size: 2.5rem;
@@ -19,14 +20,14 @@ const SubTitle = styled.div`
   flex-direction: column;
   font-size: 1.5rem;
 `
-const Spacer = styled.p`
-  margin: 0 0.5rem;
-`
 
 export default ({ data }) => {
   const { frontmatter, fields, body } = data.mdx
   return (
     <Layout>
+      <Helmet>
+        <title>{frontmatter.title}</title>
+      </Helmet>
       <Container>
         <Header>
           <Title>{frontmatter.title}</Title>

@@ -5,6 +5,7 @@ import { Layout } from "../components/Layout"
 export default ({ data }) => {
   return (
     <Layout>
+      <h1>Blog Posts</h1>
       <div>
         {data.blog.nodes.map(({ frontmatter, fields }) => (
           <div>

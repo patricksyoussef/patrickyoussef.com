@@ -1,5 +1,11 @@
 module.exports = {
+  siteMetadata: {
+    title: `Patrick Youssef`,
+    siteUrl: `https://www.patrickyoussef.com`,
+    description: `A landing page for all things Patrick`,
+  },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-remark-reading-time`,
     {

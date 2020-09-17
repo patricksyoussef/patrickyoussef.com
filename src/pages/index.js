@@ -3,10 +3,14 @@ import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
 import { Hero } from "../components/Hero"
 import { IndexSection } from "../components/IndexSection"
+import { Helmet } from "react-helmet"
 
 export default ({ data }) => {
   return (
     <Layout>
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+      </Helmet>
       <Hero />
       <IndexSection
         data={data.projects}
@@ -16,7 +20,7 @@ export default ({ data }) => {
       ></IndexSection>
       <IndexSection
         data={data.blog}
-        title={"Posts"}
+        title={"Recent Posts"}
         linktext={"All posts"}
         path={"/blog/"}
       ></IndexSection>
@@ -26,6 +30,11 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     blog: allMdx(
       limit: 4
       skip: 0

@@ -30,12 +30,12 @@ const GlobalStyles = createGlobalStyle`
     --deckgo-highlight-code-margin: 16px 0;
   }
 
-  ol,ul {
-    padding-left: 20px;
+  deckgo-highlight-code {
+    margin: 0.6rem 0;
   }
 
-  code {
-    font-family: ${props => props.theme.fonts.code};
+  ol,ul {
+    padding-left: 20px;
   }
 
   a {
