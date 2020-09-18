@@ -34,10 +34,6 @@ const GlobalStyles = createGlobalStyle`
     margin: 0.6rem 0;
   }
 
-  ol,ul {
-    padding-left: 20px;
-  }
-
   a {
     text-decoration: none;
     color: inherit;

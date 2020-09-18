@@ -15,20 +15,6 @@ const Content = styled.div`
   margin-top: 1rem;
   margin-bottom: 2rem;
 `
-const Post = styled.div`
-  margin: 0.4rem 0;
-  transition: ${props => props.theme.anims.link};
-  padding: 0.6rem;
-  border-style: solid;
-  border-width: 1px;
-  border-color: transparent;
-  border-radius: 0.4rem;
-
-  &:hover {
-    border-color: gray;
-    box-shadow: ${props => props.theme.shadows.s1};
-  }
-`
 
 const LinkText = styled.h3`
   color: gray;

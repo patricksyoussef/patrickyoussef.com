@@ -9,7 +9,7 @@ export default {
     dark1: "hsl(225, 2%, 10%)",
     light1: "hsl(0,0%,97%)",
     blue: "#185fb8",
-    blue_button: "rgba(24, 95, 184, 0.8);",
+    blue_button: "rgba(24, 95, 184, 0.9);",
   },
   breakpoints: {
     mobile: "only screen and (max-width: 50rem)",

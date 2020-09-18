@@ -16,6 +16,15 @@ const Post = styled.div`
     border-color: gray;
     box-shadow: ${props => props.theme.shadows.s1};
   }
+
+  &:hover p {
+    color: black;
+  }
+
+  p {
+    transition: ${props => props.theme.anims.link};
+    color: gray;
+  }
 `
 export const ListCard = ({ frontmatter, fields }) => {
   return (

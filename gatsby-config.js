@@ -1,3 +1,5 @@
+const _ = require("lodash")
+
 module.exports = {
   siteMetadata: {
     title: `Patrick Youssef`,
@@ -39,7 +41,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1024,
+              maxWidth: 600,
               linkImagesToOriginal: true,
             },
           },
@@ -48,7 +50,7 @@ module.exports = {
             options: {
               terminal: "carbon",
               theme: "seti",
-              lineNumbers: false,
+              lineNumbers: true,
             },
           },
         ],
