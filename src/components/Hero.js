@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
-  margin: 4rem 0;
+  margin: 4rem 2rem;
 `
 const Content = styled.div``
 const Header = styled.div`

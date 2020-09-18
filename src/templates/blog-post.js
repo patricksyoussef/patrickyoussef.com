@@ -4,7 +4,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "../components/Layout"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
-import { Underline } from "../components/Underline"
 
 const Container = styled.div`
   margin: 0rem 2rem;
