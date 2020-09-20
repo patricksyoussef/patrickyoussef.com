@@ -64,6 +64,15 @@ const Content = styled.div`
     font-size: 1rem;
   }
 
+  a {
+    color: ${props => props.theme.colors.text_link};
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   blockquote {
     background-color: rgba(220, 221, 230, 0.4);
     padding: 0.5rem 0.5rem 0.5rem 1.2rem;

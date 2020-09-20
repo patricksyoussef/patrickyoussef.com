@@ -5,18 +5,29 @@ import styled from "styled-components"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
 deckDeckGoHighlightElement()
 
+const FullView = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+`
 const Container = styled.div`
-  max-width: 1024px;
+  max-width: ${props => props.theme.widths.max};
   margin: 0 auto;
   padding: 1rem;
+`
+const ColorStrip = styled.div`
+  height: 0.5rem;
+  background-color: ${props => props.theme.colors.blue};
 `
 
 export const Layout = ({ children }) => {
   return (
-    <Container>
-      <Header />
-      {children}
-      <Footer />
-    </Container>
+    <FullView>
+      <ColorStrip />
+      <Container>
+        <Header />
+        {children}
+        <Footer />
+      </Container>
+    </FullView>
   )
 }

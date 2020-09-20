@@ -10,8 +10,12 @@ export default {
     light1: "hsl(0,0%,96%)",
     blue: "#185fb8",
     blue_button: "rgba(24, 95, 184, 0.9);",
+    res_button: "rgba(24, 95, 184, 0.1);",
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",
+    text_light: "hsl(0,0%,90%)",
+    text_link: "rgba(24, 95, 184, 0.8);",
+    und: "hsl(4, 0%, 30%)",
   },
   breakpoints: {
     mobile: "only screen and (max-width: 50rem)",
@@ -32,5 +36,8 @@ export default {
   },
   shadows: {
     s1: "5px 5px 5px 0px rgba(0, 0, 0, 0.2)",
+  },
+  widths: {
+    max: "1024px",
   },
 }
