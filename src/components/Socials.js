@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
@@ -33,12 +32,20 @@ export const Socials = () => (
       </a>
     </SocialItem>
     <SocialItem>
-      <a href="https://www.linkedin.com/in/patricksyoussef/" target="_blank">
+      <a
+        href="https://www.linkedin.com/in/patricksyoussef/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <FontAwesomeIcon icon={["fab", "linkedin"]} className="SocialItem" />
       </a>
     </SocialItem>
     <SocialItem>
-      <a href="https://github.com/patricksyoussef" target="_blank">
+      <a
+        href="https://github.com/patricksyoussef"
+        target="_blank"
+        rel="noreferrer"
+      >
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
       </a>
     </SocialItem>

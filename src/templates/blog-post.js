@@ -24,7 +24,7 @@ const Header = styled.div`
   margin-bottom: 1rem;
 `
 const Title = styled.div`
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 700;
   font-family: ${props => props.theme.fonts.main};
 `

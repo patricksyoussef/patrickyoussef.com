@@ -50,7 +50,7 @@ module.exports = {
             options: {
               terminal: "carbon",
               theme: "seti",
-              lineNumbers: true,
+              lineNumbers: false,
             },
           },
         ],

@@ -9,7 +9,7 @@ export default {
     dark1: "hsl(225, 2%, 10%)",
     light1: "hsl(0,0%,96%)",
     blue: "#185fb8",
-    blue_button: "rgba(24, 95, 184, 0.9);",
+    blue_button: "rgba(24, 95, 184, 0.6);",
     res_button: "rgba(24, 95, 184, 0.1);",
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",

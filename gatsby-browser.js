@@ -13,6 +13,13 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
   }
 
+  @media (max-width: 800px) {
+    html { font-size: 15px; }
+  }
+  @media (max-width: 400px) {
+    html { font-size: 14px; }
+  }
+
   /* Font Overrides to rem*/
   body {
     h1 {
@@ -56,7 +63,7 @@ const GlobalStyles = createGlobalStyle`
     --deckgo-highlight-code-carbon-toolbar-display: none;
     --deckgo-highlight-code-carbon-header-padding: 0;
     --deckgo-highlight-code-margin: 16px 0;
-
+    
     margin: 0.6rem 0;
 
     .carbon {
