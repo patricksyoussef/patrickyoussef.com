@@ -12,7 +12,7 @@ export default ({ data }) => {
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
       <Underline>
-        <h1>Blog Posts</h1>
+        <h1>All Posts</h1>
       </Underline>
       <div>
         {data.blog.nodes.map(({ frontmatter, fields }) => (

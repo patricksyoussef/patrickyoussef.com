@@ -5,6 +5,10 @@ import styled from "styled-components"
 
 const Container = styled.div`
   margin-bottom: 0rem;
+
+  h1 {
+    margin: 0.2rem 0;
+  }
 `
 const ColorText = styled.span`
   color: ${props => props.theme.colors.blue};
@@ -19,12 +23,16 @@ const NavItems = styled.span`
   justify-content: space-between;
 `
 const NavItem = styled.div`
-  color: gray;
+  h1,
+  h2,
+  h3 {
+    color: ${props => props.theme.colors.text_gray};
+  }
   padding-left: 0.7rem;
   transition: ${props => props.theme.anims.link};
 
   &:hover {
-    color: ${props => props.theme.colors.dark1};
+    color: ${props => props.theme.colors.text_dark};
   }
 `
 

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Socials } from "./Socials"
 
 const Container = styled.div`
   display: flex;
@@ -16,10 +17,7 @@ const Content = styled.div`
 export const Footer = () => (
   <Container>
     <Content>
-      A work by{" "}
-      <a href="https://github.com/patricksyoussef">
-        <b>Patrick Youssef</b>
-      </a>
+      <Socials />
     </Content>
   </Container>
 )

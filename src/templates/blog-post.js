@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet"
 
 const Container = styled.div`
   margin: 0rem 2rem;
+  margin-bottom: 2rem;
 
   .gatsby-resp-image-wrapper {
     margin: 1rem 0;
@@ -23,15 +24,18 @@ const Header = styled.div`
   margin-bottom: 1rem;
 `
 const Title = styled.div`
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 700;
+  font-family: ${props => props.theme.fonts.main};
 `
 const SubTitle = styled.span`
   display: flex;
   font-size: 1.5rem;
-  color: gray;
+  font-family: ${props => props.theme.fonts.sub};
 
-  p {
+  p,
+  div {
+    color: ${props => props.theme.colors.text_gray};
     width: fit-content;
   }
 `
@@ -40,26 +44,33 @@ const Spacer = styled.div`
 `
 const Content = styled.div`
   padding: 0 0rem;
-  font-size: 18px;
+
+  p,
+  li {
+    font-size: 1rem;
+    font-family: ${props => props.theme.fonts.sub};
+  }
 
   p {
     margin-bottom: 0.75rem;
+    font-family: ${props => props.theme.fonts.sub};
   }
 
   blockquote p {
     margin: 0;
   }
 
+  deckgo-highlight-code {
+    font-size: 1rem;
+  }
+
   blockquote {
-    background-color: rgba(220, 221, 230, 0.3);
+    background-color: rgba(220, 221, 230, 0.4);
     padding: 0.5rem 0.5rem 0.5rem 1.2rem;
-
     border-left-style: solid;
-    border-left-width: 3px;
+    border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};
-
     font-style: italic;
-
     margin-bottom: 0.75rem;
   }
 `

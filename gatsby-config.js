@@ -66,5 +66,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
+    `gatsby-plugin-fontawesome-css`,
   ],
 }

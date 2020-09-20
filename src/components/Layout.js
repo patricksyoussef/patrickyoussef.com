@@ -1,5 +1,6 @@
 import React from "react"
 import { Header } from "./Header"
+import { Footer } from "./Footer"
 import styled from "styled-components"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
 deckDeckGoHighlightElement()
@@ -7,7 +8,7 @@ deckDeckGoHighlightElement()
 const Container = styled.div`
   max-width: 1024px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 1rem;
 `
 
 export const Layout = ({ children }) => {
@@ -15,6 +16,7 @@ export const Layout = ({ children }) => {
     <Container>
       <Header />
       {children}
+      <Footer />
     </Container>
   )
 }

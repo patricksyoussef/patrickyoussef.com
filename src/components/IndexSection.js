@@ -17,11 +17,11 @@ const Content = styled.div`
 `
 
 const LinkText = styled.h3`
-  color: gray;
+  color: ${props => props.theme.colors.text_gray};
   transition: ${props => props.theme.anims.link};
 
   &:hover {
-    color: ${props => props.theme.colors.dark1};
+    color: ${props => props.theme.colors.text_dark};
   }
 `
 

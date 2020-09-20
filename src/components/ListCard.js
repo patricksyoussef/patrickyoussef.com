@@ -13,7 +13,7 @@ const Post = styled.div`
   border-radius: 0.4rem;
 
   &:hover {
-    border-color: gray;
+    border-color: ${props => props.theme.colors.text_gray};
     box-shadow: ${props => props.theme.shadows.s1};
   }
 
@@ -23,7 +23,7 @@ const Post = styled.div`
 
   p {
     transition: ${props => props.theme.anims.link};
-    color: gray;
+    color: ${props => props.theme.colors.text_gray};
   }
 `
 export const ListCard = ({ frontmatter, fields }) => {
