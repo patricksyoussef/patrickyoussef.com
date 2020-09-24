@@ -12,7 +12,51 @@ excerpt: Here is some random tid-bits of what might be in a blog!
 
 I'm baby actually schlitz brooklyn literally +1 ethical vinyl pickled. Kogi sustainable butcher, YOLO four loko tote bag mumblecore vaporware cardigan lo-fi viral yr activated charcoal hoodie. Letterpress umami tattooed tofu. Mumblecore farm-to-table sartorial vegan single-origin coffee asymmetrical hashtag polaroid man bun church-key blog pabst.
 
+```python
+from matplotlib import pyplot as plt
+import numpy as np
+```
+
+And some interlude here about what else I need to be doing here!
+
+```python
+# Pod Properties
+podm = 100 # mass in kg
+
+# Motor Properties
+motW =  25000 * 0.104719755 # RPM to rad/s
+motT = 12 # Newton * Meter
+tau = lambda w: motT - (motT / motW) * w
+
+# Drivetrain Properties
+driveN = 2
+driveR = 2.0 * 0.0127 # Radius in meters
+```
+
 Marfa trust fund mumblecore, iPhone VHS street art authentic. Lumbersexual tumeric kale chips, lo-fi locavore wayfarers DIY. Organic viral affogato air plant tattooed narwhal fingerstache. Beard letterpress shoreditch microdosing, organic yr heirloom neutra. 90's slow-carb adaptogen trust fund aesthetic. Dreamcatcher locavore hashtag enamel pin franzen.
+
+```python
+# Extra Functions
+def v2w(v, r):
+    return v / r
+
+def accel(podm, podv, r, n):
+    w = v2w(podv, r)
+    t = n * tau(w)
+    return (t / r) / podm
+```
+
+We also need to specify the startup simulation settings!
+
+```python
+# Simulation Settings
+dt = 0.01
+endTime = 15
+n = int(endTime / dt)
+poda = np.zeros([n+1])
+podv = np.zeros([n+1])
+podx = np.zeros([n+1])
+```
 
 Hella portland four loko vice neutra yr selfies pickled gochujang prism cray thundercats. Pinterest VHS jean shorts 3 wolf moon, organic enamel pin chillwave drinking vinegar hexagon truffaut. Mixtape wolf raclette disrupt man braid four loko food truck. Celiac pabst tilde semiotics retro normcore.
 
@@ -26,38 +70,6 @@ Hella portland four loko vice neutra yr selfies pickled gochujang prism cray thu
 This stuff is pretty cool!
 
 ```python
-from matplotlib import pyplot as plt
-import numpy as np
-
-# Pod Properties
-podm = 100 # mass in kg
-
-# Motor Properties
-motW =  25000 * 0.104719755 # RPM to rad/s
-motT = 12 # Newton * Meter
-tau = lambda w: motT - (motT / motW) * w
-
-# Drivetrain Properties
-driveN = 2
-driveR = 2.0 * 0.0127 # Radius in meters
-
-# Extra Functions
-def v2w(v, r):
-    return v / r
-
-def accel(podm, podv, r, n):
-    w = v2w(podv, r)
-    t = n * tau(w)
-    return (t / r) / podm
-
-# Simulation Settings
-dt = 0.01
-endTime = 15
-n = int(endTime / dt)
-poda = np.zeros([n+1])
-podv = np.zeros([n+1])
-podx = np.zeros([n+1])
-
 # Huan's method integrator for acceleration
 for i in range(0, n):
     aEst = accel(podm, podv[i], driveR, driveN)

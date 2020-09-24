@@ -63,8 +63,11 @@ const GlobalStyles = createGlobalStyle`
     --deckgo-highlight-code-carbon-toolbar-display: none;
     --deckgo-highlight-code-carbon-header-padding: 0;
     --deckgo-highlight-code-margin: 16px 0;
-    
-    margin: 0.6rem 0;
+
+    --deckgo-highlight-code-carbon-background: #1b2129;
+    --deckgo-highlight-code-token-comment: #5d7580;
+
+    margin: 1.2rem 0;
 
     .carbon {
       height: 0px;

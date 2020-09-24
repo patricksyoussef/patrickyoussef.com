@@ -6,8 +6,9 @@ import styled from "styled-components"
 import { Helmet } from "react-helmet"
 
 const Container = styled.div`
-  margin: 0 ${props => props.theme.spacings.wall};
+  margin: 0 auto;
   margin-bottom: 2rem;
+  max-width: 750px;
 
   .gatsby-resp-image-wrapper {
     margin: 1rem 0;
@@ -17,11 +18,11 @@ const Container = styled.div`
 
   ol,
   ul {
-    padding-left: 20px;
+    padding-left: 2.2rem;
   }
 `
 const Header = styled.div`
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
 `
 const Title = styled.div`
   font-size: 2.5rem;
@@ -52,11 +53,12 @@ const Content = styled.div`
   }
 
   p {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     font-family: ${props => props.theme.fonts.sub};
   }
 
   blockquote p {
+    font-size: 1.5rem;
     margin: 0;
   }
 

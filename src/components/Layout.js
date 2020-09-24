@@ -6,7 +6,7 @@ import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/
 deckDeckGoHighlightElement()
 
 const FullView = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 `
 const Container = styled.div`

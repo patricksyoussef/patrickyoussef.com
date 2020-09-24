@@ -35,17 +35,25 @@ export const Socials = () => (
       </a>
     </SocialItem>
     <SocialItem>
-      <a href="https://www.linkedin.com/in/patricksyoussef/">
+      <a
+        href="https://www.linkedin.com/in/patricksyoussef/"
+        target="_blank"
+        rel="noreferrer"
+      >
         <FontAwesomeIcon icon={["fab", "linkedin"]} className="SocialItem" />
       </a>
     </SocialItem>
     <SocialItem>
-      <a href="https://github.com/patricksyoussef">
+      <a
+        href="https://github.com/patricksyoussef"
+        target="_blank"
+        rel="noreferrer"
+      >
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
       </a>
     </SocialItem>
     <SocialItem>
-      <a href="https://www.buymeacoffee.com/">
+      <a href="https://www.buymeacoffee.com/" target="_blank" rel="noreferrer">
         <FontAwesomeIcon icon={["fas", "coffee"]} className="SocialItem" />
       </a>
     </SocialItem>
