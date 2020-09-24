@@ -2,9 +2,9 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faCoffee } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
-library.add(fab, faEnvelope)
+library.add(fab, faEnvelope, faCoffee)
 
 const Container = styled.div`
   margin-bottom: 0rem;
@@ -50,6 +50,11 @@ export const Socials = () => (
         rel="noreferrer"
       >
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
+      </a>
+    </SocialItem>
+    <SocialItem>
+      <a href="https://www.buymeacoffee.com/">
+        <FontAwesomeIcon icon={["fas", "coffee"]} className="SocialItem" />
       </a>
     </SocialItem>
   </Container>
