@@ -53,6 +53,19 @@ module.exports = {
               lineNumbers: false,
             },
           },
+          {
+            resolve: `gatsby-remark-relative-links`,
+            options: {
+              domainRegex: /http[s]*:\/\/[www.]*yoursite\.com[/]?/,
+            },
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_self",
+              rel: "nofollow",
+            },
+          },
         ],
       },
     },
@@ -68,5 +81,6 @@ module.exports = {
     },
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-favicon`,
+    `gatsby-plugin-catch-links`,
   ],
 }

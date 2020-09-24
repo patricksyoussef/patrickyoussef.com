@@ -11,7 +11,7 @@ const Content = styled.div`
 
 export default function Home({ data }) {
   const { site, about } = data
-  const { body, frontmatter } = about.nodes[0]
+  const { body } = about.nodes[0]
   return (
     <Layout>
       <Helmet>
