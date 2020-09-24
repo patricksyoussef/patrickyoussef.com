@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { Helmet } from "react-helmet"
 
 const Container = styled.div`
-  margin: 0rem 2rem;
+  margin: 0 ${props => props.theme.spacings.wall};
   margin-bottom: 2rem;
 
   .gatsby-resp-image-wrapper {
@@ -47,7 +47,7 @@ const Content = styled.div`
 
   p,
   li {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-family: ${props => props.theme.fonts.sub};
   }
 
@@ -61,7 +61,7 @@ const Content = styled.div`
   }
 
   deckgo-highlight-code {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   a {

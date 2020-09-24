@@ -9,7 +9,7 @@ export default {
     dark1: "hsl(225, 2%, 10%)",
     light1: "hsl(0,0%,96%)",
     blue: "#185fb8",
-    blue_button: "rgba(24, 95, 184, 0.6);",
+    blue_button: "rgba(24, 95, 184, 0.8);",
     res_button: "rgba(24, 95, 184, 0.1);",
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",
@@ -22,6 +22,7 @@ export default {
     tablet: "only screen and (max-width: 65rem)",
   },
   spacings: {
+    wall: "1rem",
     xxs: "0.25rem",
     xs: "0.5rem",
     s: "1rem",

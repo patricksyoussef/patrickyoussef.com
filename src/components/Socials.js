@@ -11,15 +11,18 @@ const Container = styled.div`
   display: flex;
 `
 const SocialItem = styled.div`
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
 
   .SocialItem {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: ${props => props.theme.colors.text_gray};
     transition: ${props => props.theme.anims.link};
+    position: relative;
+    top: 0;
 
     &:hover {
       color: ${props => props.theme.colors.text_dark};
+      top: -0.2rem;
     }
   }
 `

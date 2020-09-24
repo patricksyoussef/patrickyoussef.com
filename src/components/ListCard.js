@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const Container = styled.div``
 const Post = styled.div`
-  margin: 0.4rem 2rem;
+  margin: 0.4rem ${props => props.theme.spacings.wall};
   transition: ${props => props.theme.anims.link};
   padding: 0.6rem;
   border-style: solid;

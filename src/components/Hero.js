@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
   display: flex;
-  margin: 4rem 2rem;
+  margin: 4rem ${props => props.theme.spacings.wall};
 `
 const Content = styled.div``
 const Header = styled.div`
