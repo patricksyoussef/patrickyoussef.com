@@ -52,10 +52,5 @@ export const Socials = () => (
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
       </a>
     </SocialItem>
-    <SocialItem>
-      <a href="https://www.buymeacoffee.com/" target="_blank" rel="noreferrer">
-        <FontAwesomeIcon icon={["fas", "coffee"]} className="SocialItem" />
-      </a>
-    </SocialItem>
   </Container>
 )
