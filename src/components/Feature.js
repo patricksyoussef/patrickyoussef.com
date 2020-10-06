@@ -20,11 +20,13 @@ const TopFeature = styled.div`
   }
 `
 const FeatureImageContainer = styled.div`
+  margin: -0.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  opacity: 0.17;
+  opacity: 0.2;
+  filter: blur(2px);
 
   FeatureImage {
     background-color: black;
