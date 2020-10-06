@@ -60,7 +60,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Split result to use in for loop
   const tmp = _.toPairs(result.data) // [['blogs', arr], ['project', arr]]
-
   const PostsPerPage = 10
 
   // Resolve templates
@@ -76,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
         path: post.fields.path,
         component: key === "blog" ? blog_post : blog_post,
         context: {
-          slug: post.fields.path,
+          path: post.fields.path,
         },
       })
     })

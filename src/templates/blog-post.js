@@ -4,6 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "../components/Layout"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
+import { Feature } from "../components/Feature"
 
 const Container = styled.div`
   margin: 0 auto;
@@ -21,28 +22,7 @@ const Container = styled.div`
     padding-left: 2.2rem;
   }
 `
-const Header = styled.div`
-  margin: 1.5rem 0;
-`
-const Title = styled.div`
-  font-size: 2.5rem;
-  font-weight: 700;
-  font-family: ${props => props.theme.fonts.main};
-`
-const SubTitle = styled.span`
-  display: flex;
-  font-size: 1.5rem;
-  font-family: ${props => props.theme.fonts.sub};
 
-  p,
-  div {
-    color: ${props => props.theme.colors.text_gray};
-    width: fit-content;
-  }
-`
-const Spacer = styled.div`
-  margin: 0 0.5rem;
-`
 const Content = styled.div`
   padding: 0 0rem;
 
@@ -54,7 +34,6 @@ const Content = styled.div`
 
   p {
     margin-bottom: 1rem;
-    font-family: ${props => props.theme.fonts.sub};
   }
 
   blockquote p {
@@ -88,6 +67,7 @@ const Content = styled.div`
 
 export default ({ data }) => {
   const { frontmatter, fields, body } = data.mdx
+
   return (
     <Layout>
       <Helmet>
@@ -96,14 +76,7 @@ export default ({ data }) => {
         </title>
       </Helmet>
       <Container>
-        <Header>
-          <Title>{frontmatter.title}</Title>
-          <SubTitle>
-            <p>{frontmatter.date}</p>
-            <Spacer>|</Spacer>
-            <p>{fields.readingTime.text}</p>
-          </SubTitle>
-        </Header>
+        <Feature frontmatter={frontmatter} fields={fields}></Feature>
         <Content>
           <MDXRenderer>{body}</MDXRenderer>
         </Content>
@@ -119,6 +92,13 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM Do, YYYY")
+        featureImage {
+          childImageSharp {
+            fluid(fit: COVER, cropFocus: CENTER) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       fields {
         readingTime {

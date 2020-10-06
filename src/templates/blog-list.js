@@ -4,12 +4,6 @@ import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
 import { Underline } from "../components/Underline"
 import { ListCard } from "../components/ListCard"
-import styled from "styled-components"
-
-const Container = styled.div`
-  display: flex;
-  margin: 4rem ${props => props.theme.spacings.wall};
-`
 
 export default ({ data }) => {
   return (

@@ -37,6 +37,7 @@ export default {
   },
   shadows: {
     s1: "5px 5px 5px 0px rgba(0, 0, 0, 0.2)",
+    s2: "0px 5px 5px 5px rgba(0, 0, 0, 0.2)",
   },
   widths: {
     max: "1024px",
