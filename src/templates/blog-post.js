@@ -41,7 +41,7 @@ const Content = styled.div`
     margin: 0;
   }
 
-  deckgo-highlight-code {
+  .prism-code {
     font-size: 1.1rem;
   }
 
