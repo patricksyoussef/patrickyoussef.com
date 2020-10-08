@@ -2,8 +2,13 @@ import React from "react"
 import { Header } from "./Header"
 import { Footer } from "./Footer"
 import styled from "styled-components"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
-deckDeckGoHighlightElement()
+import { MDXProvider } from "@mdx-js/react"
+import CodeBlock from "./CodeBlock"
+
+const components = {
+  pre: props => <div {...props} />,
+  code: CodeBlock,
+}
 
 const FullView = styled.div`
   width: 100%;
@@ -21,13 +26,15 @@ const ColorStrip = styled.div`
 
 export const Layout = ({ children }) => {
   return (
-    <FullView>
-      <ColorStrip />
-      <Container>
-        <Header />
-        {children}
-        <Footer />
-      </Container>
-    </FullView>
+    <MDXProvider components={components}>
+      <FullView>
+        <ColorStrip />
+        <Container>
+          <Header />
+          {children}
+          <Footer />
+        </Container>
+      </FullView>
+    </MDXProvider>
   )
 }

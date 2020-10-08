@@ -2,6 +2,7 @@ import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import theme from "./src/styles/theme"
 import "./src/styles/sanitize.css"
+require("./src/styles/code.css")
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -54,24 +55,6 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     background-color: ${props => props.theme.colors.light1};
     font-weight: 400;
-  }
-
-  deckgo-highlight-code {
-    --deckgo-highlight-code-font-family: ${props => props.theme.fonts.code};
-    --deckgo-highlight-code-carbon-box-shadow: ${props =>
-      props.theme.shadows.s1};
-    --deckgo-highlight-code-carbon-toolbar-display: none;
-    --deckgo-highlight-code-carbon-header-padding: 0;
-    --deckgo-highlight-code-margin: 16px 0;
-
-    --deckgo-highlight-code-carbon-background: #1b2129;
-    --deckgo-highlight-code-token-comment: #5d7580;
-
-    margin: 1.2rem 0;
-
-    .carbon {
-      height: 0px;
-    }
   }
 
   img {

@@ -37,7 +37,7 @@ const Content = styled.div`
   }
 
   blockquote p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 0;
   }
 
@@ -86,8 +86,8 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogByPath($path: String!) {
-    mdx(fields: { path: { eq: $path } }) {
+  query BlogByPath($post_id: String!) {
+    mdx(fields: { path: { eq: $post_id } }) {
       body
       frontmatter {
         title

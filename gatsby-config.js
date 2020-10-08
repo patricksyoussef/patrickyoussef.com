@@ -46,14 +46,6 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-highlight-code`,
-            options: {
-              terminal: "carbon",
-              theme: "seti",
-              lineNumbers: false,
-            },
-          },
-          {
             resolve: `gatsby-remark-relative-links`,
             options: {
               domainRegex: /http[s]*:\/\/[www.]*yoursite\.com[/]?/,
