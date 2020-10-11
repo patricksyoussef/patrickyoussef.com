@@ -41,7 +41,7 @@ const Content = styled.div`
     margin: 0;
   }
 
-  .prism-code {
+  .prism-code span {
     font-size: 1.1rem;
   }
 

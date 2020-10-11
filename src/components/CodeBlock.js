@@ -22,10 +22,11 @@ export default ({ children, className }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         tokens.pop()
         const nametag = language.toUpperCase()
+        console.log(language)
         return (
           <div>
-            <Toolbar>nametag</Toolbar>
             <pre className={className} style={{ ...style }}>
+              <div>{nametag}</div>
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index })
                 return (
