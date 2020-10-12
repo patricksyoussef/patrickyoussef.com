@@ -42,7 +42,6 @@ const Content = styled.div`
   }
 
   .prism-code {
-    margin-bottom: 1rem;
     span {
       font-size: 1.1rem;
       font-family: ${props => props.theme.fonts.code};

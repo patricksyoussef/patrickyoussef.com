@@ -2,7 +2,19 @@
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import styled from "styled-components"
+require("../styles/code.css")
 
+const Block = styled.div`
+  padding: 1rem;
+  overflow: hidden;
+  background: #1d1f21;
+  border-radius: 8px;
+
+  pre {
+    overflow: auto;
+  }
+  margin-bottom: 1rem;
+`
 const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -50,20 +62,20 @@ export default ({ children, className }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         tokens.pop()
         return (
-          <div>
+          <Block>
+            <Toolbar>
+              <div>{language}</div>
+              <CopyButton
+                onClick={() => {
+                  copyToClipboard(children)
+                  setIsCopied(true)
+                  setTimeout(() => setIsCopied(false), 2000)
+                }}
+              >
+                {isCopied ? "Copied" : "Copy"}
+              </CopyButton>
+            </Toolbar>
             <pre className={className} style={{ ...style }}>
-              <Toolbar>
-                <div>{language}</div>
-                <CopyButton
-                  onClick={() => {
-                    copyToClipboard(children)
-                    setIsCopied(true)
-                    setTimeout(() => setIsCopied(false), 2000)
-                  }}
-                >
-                  {isCopied ? "Copied" : "Copy"}
-                </CopyButton>
-              </Toolbar>
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index })
                 return (
@@ -75,7 +87,7 @@ export default ({ children, className }) => {
                 )
               })}
             </pre>
-          </div>
+          </Block>
         )
       }}
     </Highlight>
