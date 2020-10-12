@@ -2,18 +2,24 @@
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import styled from "styled-components"
+const _ = require("lodash")
 require("../styles/code.css")
 
 const Block = styled.div`
   padding: 1rem;
-  overflow: hidden;
-  background: #1d1f21;
+  padding-bottom: 0.3rem;
+  background: ${props => props.theme.colors.code_background};
   border-radius: 8px;
 
   pre {
     overflow: auto;
+    padding-bottom: 0.7rem;
   }
   margin-bottom: 1rem;
+
+  .line-darken {
+    opacity: 0.6;
+  }
 `
 const Toolbar = styled.div`
   display: flex;
@@ -34,6 +40,7 @@ const CopyButton = styled.button`
   border-width: 0px;
   border-radius: 8px;
 `
+
 // Thanks to @d__raptis !
 const copyToClipboard = str => {
   const el = document.createElement("textarea")
@@ -49,7 +56,27 @@ const copyToClipboard = str => {
 
 export default ({ children, className }) => {
   // Pull the className
-  const language = className.replace(/language-/, "") || ""
+  const reg = className.match(/language-([a-z]*)(.*)/)
+  const language = reg[1]
+
+  let result = []
+  try {
+    result = reg[2].match(/{(.*)}/)[1].split(",")
+  } catch (err) {}
+
+  let highlights = []
+  result.forEach((item, i) => {
+    if (item.includes("-")) {
+      let tmp = item.split("-")
+      tmp = _.range(parseInt(tmp[0]), parseInt(tmp[1]) + 1)
+      tmp.forEach((item, i) => {
+        highlights.push(item)
+      })
+    } else {
+      highlights.push(parseInt(item))
+    }
+  })
+
   const [isCopied, setIsCopied] = React.useState(false)
 
   return (
@@ -78,11 +105,19 @@ export default ({ children, className }) => {
             <pre className={className} style={{ ...style }}>
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index })
+                let highlighted = ""
+                if (highlights.length != 0) {
+                  highlighted = !highlights.includes(index + 1)
+                    ? "line-darken"
+                    : ""
+                }
                 return (
-                  <div key={index} {...lineProps}>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
+                  <div className={highlighted}>
+                    <div key={index} {...lineProps}>
+                      {line.map((token, key) => (
+                        <span key={key} {...getTokenProps({ token, key })} />
+                      ))}
+                    </div>
                   </div>
                 )
               })}
