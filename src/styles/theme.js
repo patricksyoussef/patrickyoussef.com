@@ -11,7 +11,7 @@ export default {
     blue: "#185fb8",
     blue_button: "rgba(24, 95, 184, 0.8);",
     code_background: "#1d1f21",
-    code_highlight: "rgba(24, 95, 184, 0.3)",
+    code_highlight: "rgba(24, 95, 184, 0.25)",
     res_button: "rgb(136, 136, 136);",
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",

@@ -18,7 +18,11 @@ const Block = styled.div`
   margin-bottom: 1rem;
 
   .line-darken {
-    opacity: 0.6;
+    opacity: 0.5;
+  }
+
+  .line-highlight {
+    border-left: solid ${props => props.theme.colors.blue} 2px;
   }
 `
 const Toolbar = styled.div`
@@ -106,10 +110,10 @@ export default ({ children, className }) => {
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index })
                 let highlighted = ""
-                if (highlights.length != 0) {
+                if (highlights.length !== 0) {
                   highlighted = !highlights.includes(index + 1)
                     ? "line-darken"
-                    : ""
+                    : "line-highlight"
                 }
                 return (
                   <div className={highlighted}>
