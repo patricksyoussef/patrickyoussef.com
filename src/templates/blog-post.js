@@ -41,8 +41,12 @@ const Content = styled.div`
     margin: 0;
   }
 
-  .prism-code span {
-    font-size: 1.1rem;
+  .prism-code {
+    margin-bottom: 1rem;
+    span {
+      font-size: 1.1rem;
+      font-family: ${props => props.theme.fonts.code};
+    }
   }
 
   a {
@@ -61,7 +65,7 @@ const Content = styled.div`
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};
     font-style: italic;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 `
 
