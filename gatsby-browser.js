@@ -2,6 +2,7 @@ import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import theme from "./src/styles/theme"
 import "./src/styles/sanitize.css"
+require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
   * {

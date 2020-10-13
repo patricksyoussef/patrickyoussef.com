@@ -58,6 +58,10 @@ module.exports = {
               rel: "nofollow",
             },
           },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {},
+          },
         ],
       },
     },

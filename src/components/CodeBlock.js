@@ -22,7 +22,8 @@ const Block = styled.div`
   }
 
   .line-highlight {
-    border-left: solid ${props => props.theme.colors.blue} 2px;
+    border-left: solid ${props => props.theme.colors.blue} 0.2rem;
+    padding-left: 0.6rem;
   }
 `
 const Toolbar = styled.div`
@@ -43,6 +44,10 @@ const CopyButton = styled.button`
   border-style: solid;
   border-width: 0px;
   border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 // Thanks to @d__raptis !
