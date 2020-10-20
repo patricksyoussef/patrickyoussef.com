@@ -58,6 +58,7 @@ export const query = graphql`
           }
           path
         }
+        excerpt(pruneLength: 100)
       }
     }
     projects: allMdx(
@@ -83,6 +84,7 @@ export const query = graphql`
           }
           path
         }
+        excerpt(pruneLength: 100)
       }
     }
   }

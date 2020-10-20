@@ -5,7 +5,6 @@ title: How to enable CUDA acceleration in TensorFlow
 slug: first-post
 date: 2020-07-10
 featureImage: images/TF.jpg
-excerpt: Here is some random tid-bits of what might be in a blog!
 ---
 
 # This is an h1 heading
@@ -54,7 +53,7 @@ def accel(podm, podv, r, n):
 
 We also need to specify the startup simulation settings!
 
-```python
+```python{4,5,6}
 # Simulation Settings
 dt = 0.01
 endTime = 15
@@ -75,7 +74,7 @@ Hella portland four loko vice neutra yr selfies pickled gochujang prism cray thu
 
 This stuff is pretty cool!
 
-```python{2-7,9}
+```python{2-7}
 # Huan's method integrator for acceleration
 for i in range(0, n):
     aEst = accel(podm, podv[i], driveR, driveN)

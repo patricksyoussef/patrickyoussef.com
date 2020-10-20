@@ -12,7 +12,7 @@ export default {
     blue_button: "rgba(24, 95, 184, 0.8);",
     code_background: "#1d1f21",
     code_highlight: "rgba(24, 95, 184, 0.25)",
-    res_button: "rgb(136, 136, 136);",
+    res_button: "rgba(136, 136, 136, 0.3)",
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",
     text_light: "hsl(0,0%,90%)",
