@@ -48,6 +48,10 @@ const Content = styled.div`
     }
   }
 
+  code {
+    font-weight: 600;
+  }
+
   a {
     color: ${props => props.theme.colors.text_link};
     font-weight: 600;
