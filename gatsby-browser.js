@@ -56,6 +56,12 @@ const GlobalStyles = createGlobalStyle`
   img {
     box-shadow: ${props => props.theme.shadows.s1};
   }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
 `
 
 export const wrapRootElement = ({ element }) => (

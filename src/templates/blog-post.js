@@ -73,6 +73,7 @@ const Content = styled.div`
 `
 
 export default ({ data }) => {
+  console.log(data)
   const { frontmatter, fields, body } = data.mdx
 
   return (

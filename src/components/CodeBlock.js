@@ -86,6 +86,7 @@ export default ({ children, className }) => {
     }
   })
 
+  console.log(highlights)
   const [isCopied, setIsCopied] = React.useState(false)
 
   return (

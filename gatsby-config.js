@@ -72,7 +72,6 @@ module.exports = {
         display: "swap",
       },
     },
-    `gatsby-plugin-preload-fonts`,
     {
       resolve: `gatsby-plugin-lodash`,
     },
