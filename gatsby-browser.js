@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    color: inherit;
   }
 
   html {
@@ -46,8 +47,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    text-decoration: none;
-    color: inherit;
   }
 
   body, html {

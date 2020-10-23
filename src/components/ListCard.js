@@ -26,17 +26,21 @@ const Post = styled.div`
     color: ${props => props.theme.colors.text_gray};
   }
 `
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+
 export const ListCard = ({ frontmatter, fields, excerpt }) => {
   return (
     <Container>
-      <Link to={fields.path}>
+      <StyledLink to={fields.path}>
         <Post>
           <h2>{frontmatter.title}</h2>
           <p>
             {frontmatter.date} | {fields.readingTime.text}
           </p>
         </Post>
-      </Link>
+      </StyledLink>
     </Container>
   )
 }
