@@ -5,11 +5,6 @@ import "./src/styles/sanitize.css"
 require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    color: inherit;
-  }
 
   html {
     font-size: 16px;
@@ -47,6 +42,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
+    text-decoration: none;
+    color: inherit;
   }
 
   body, html {
