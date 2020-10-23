@@ -8,6 +8,7 @@ import { Feature } from "../components/Feature"
 
 const Container = styled.div`
   margin: 0 auto;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   max-width: 750px;
 

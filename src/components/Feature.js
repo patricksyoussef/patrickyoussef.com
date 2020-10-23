@@ -2,25 +2,25 @@ import React from "react"
 import styled from "styled-components"
 import { FeatureImage } from "../components/FeatureImage"
 
-const TopFeature = styled.div`
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
+const Container = styled.div`
   height: min-content;
-  box-shadow: ${props => props.theme.shadows.s1};
+
+  overflow: hidden;
   border-radius: 15px;
   border-color: ${props => props.theme.colors.text_gray};
-  border-width: 1px;
   border-style: solid;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  box-shadow: ${props => props.theme.shadows.s1};
 
   > div {
     grid-row-start: 1;
     grid-column-start: 1;
   }
 `
+
 const FeatureImageContainer = styled.div`
-  margin: -0.25rem;
+  margin: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +66,7 @@ const Spacer = styled.div`
 
 export const Feature = ({ frontmatter, fields }) => {
   return (
-    <TopFeature>
+    <Container>
       <FeatureImageContainer>
         <FeatureImage frontmatter={frontmatter}></FeatureImage>
       </FeatureImageContainer>
@@ -80,6 +80,6 @@ export const Feature = ({ frontmatter, fields }) => {
           </SubTitle>
         </div>
       </Header>
-    </TopFeature>
+    </Container>
   )
 }
