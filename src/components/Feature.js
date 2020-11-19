@@ -7,6 +7,7 @@ const Container = styled.div`
 
   overflow: hidden;
   border-radius: 15px;
+  border-width: 1px;
   border-color: ${props => props.theme.colors.text_gray};
   border-style: solid;
   display: grid;

@@ -33,7 +33,8 @@ const Content = styled.div`
     font-family: ${props => props.theme.fonts.sub};
   }
 
-  p {
+  p,
+  ol {
     margin-bottom: 1rem;
   }
 
@@ -50,15 +51,31 @@ const Content = styled.div`
   }
 
   code {
-    font-weight: 600;
+    border-radius: 3px;
+    background-color: #e0e0e0;
+    padding: 0.1rem;
   }
 
   a {
     color: ${props => props.theme.colors.text_link};
     font-weight: 600;
+    position: relative;
 
-    &:hover {
-      text-decoration: underline;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: ${props => props.theme.colors.text_link};
+      visibility: hidden;
+      transition: ${props => props.theme.anims.link};
+    }
+
+    &:hover:before {
+      visibility: visible;
+      width: 100%;
     }
   }
 
@@ -74,7 +91,6 @@ const Content = styled.div`
 `
 
 export default ({ data }) => {
-  console.log(data)
   const { frontmatter, fields, body } = data.mdx
 
   return (
