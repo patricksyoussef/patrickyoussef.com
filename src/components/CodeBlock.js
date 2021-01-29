@@ -1,21 +1,29 @@
 // src/components/CodeBlock.jsx
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
+import { CodeBlockFlag } from "../components/CodeBlockFlag"
 import styled from "styled-components"
 const _ = require("lodash")
 require("../styles/code.css")
 
-const Block = styled.div`
-  padding: 1rem;
-  padding-bottom: 0.3rem;
-  background: ${props => props.theme.colors.code_background};
+const CodeBlock = styled.div`
+  border-style: solid;
   border-radius: 8px;
+  border-width: 1px;
+  margin-bottom: 1rem;
+  background: ${props => props.theme.colors.code_background};
+
+  overflow: hidden;
+`
+
+const Block = styled.div`
+  padding: 0.8rem;
+  padding-bottom: 0.1rem;
 
   pre {
     overflow: auto;
     padding-bottom: 0.7rem;
   }
-  margin-bottom: 1rem;
 
   .line-darken {
     opacity: 0.5;
@@ -24,6 +32,10 @@ const Block = styled.div`
   .line-highlight {
     border-left: solid ${props => props.theme.colors.blue} 0.2rem;
     padding-left: 0.6rem;
+  }
+
+  .token-line {
+    min-height: 1.65rem;
   }
 `
 const Toolbar = styled.div`
@@ -63,6 +75,8 @@ const copyToClipboard = str => {
   document.body.removeChild(el)
 }
 
+const Output = styled.div``
+
 export default ({ children, className }) => {
   // Pull the className
   const reg = className.match(/language-([a-z]*)(.*)/)
@@ -89,51 +103,55 @@ export default ({ children, className }) => {
   const [isCopied, setIsCopied] = React.useState(false)
 
   return (
-    <Highlight
-      {...defaultProps}
-      code={children}
-      language={language}
-      theme={undefined}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        tokens.pop()
-        return (
-          <Block>
-            <Toolbar>
-              <div>{language}</div>
-              <CopyButton
-                onClick={() => {
-                  copyToClipboard(children)
-                  setIsCopied(true)
-                  setTimeout(() => setIsCopied(false), 2000)
-                }}
-              >
-                {isCopied ? "Copied" : "Copy"}
-              </CopyButton>
-            </Toolbar>
-            <pre className={className} style={{ ...style }}>
-              {tokens.map((line, index) => {
-                const lineProps = getLineProps({ line, key: index })
-                let highlighted = ""
-                if (highlights.length !== 0) {
-                  highlighted = !highlights.includes(index + 1)
-                    ? "line-darken"
-                    : "line-highlight"
-                }
-                return (
-                  <div className={highlighted}>
-                    <div key={index} {...lineProps}>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
+    <div>
+      <CodeBlock>
+      <Highlight
+        {...defaultProps}
+        code={children}
+        language={language}
+        theme={undefined}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => {
+          tokens.pop()
+          return (
+            <Block>
+              <Toolbar>
+                <CodeBlockFlag lang={language.toLowerCase()}></CodeBlockFlag>
+                <CopyButton
+                  onClick={() => {
+                    copyToClipboard(children)
+                    setIsCopied(true)
+                    setTimeout(() => setIsCopied(false), 2000)
+                  }}
+                >
+                  {isCopied ? "Copied" : "Copy"}
+                </CopyButton>
+              </Toolbar>
+              <pre className={className} style={{ ...style }}>
+                {tokens.map((line, index) => {
+                  const lineProps = getLineProps({ line, key: index })
+                  let highlighted = ""
+                  if (highlights.length !== 0) {
+                    highlighted = !highlights.includes(index + 1)
+                      ? "line-darken"
+                      : "line-highlight"
+                  }
+                  return (
+                    <div className={highlighted}>
+                      <div key={index} {...lineProps}>
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
-            </pre>
-          </Block>
-        )
-      }}
-    </Highlight>
+                  )
+                })}
+              </pre>
+            </Block>
+          )
+        }}
+      </Highlight>
+    </CodeBlock>
+    </div>
   )
 }
