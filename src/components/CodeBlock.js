@@ -17,12 +17,11 @@ const CodeBlock = styled.div`
 `
 
 const Block = styled.div`
-  padding: 0.8rem;
-  padding-bottom: 0.1rem;
+  padding: 0.6rem;
 
   pre {
     overflow: auto;
-    padding-bottom: 0.7rem;
+    padding-bottom: 0rem;
   }
 
   .line-darken {
@@ -42,7 +41,7 @@ const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.4rem;
   font-family: ${props => props.theme.fonts.sub};
   div,
   button {
@@ -74,8 +73,6 @@ const copyToClipboard = str => {
   document.execCommand("copy")
   document.body.removeChild(el)
 }
-
-const Output = styled.div``
 
 export default ({ children, className }) => {
   // Pull the className

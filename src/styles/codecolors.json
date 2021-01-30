@@ -10,5 +10,9 @@
   "go": {
     "name": "Go",
     "color": "#00ADD8"
+  },
+  "cpp": {
+    "name": "C++",
+    "color": "#f34b7d"
   }
 }
