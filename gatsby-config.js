@@ -66,11 +66,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [`IBM Plex Sans`, `Open Sans`, `Inconsolata`],
-        display: "swap",
-      },
+        fonts: {
+          google: [
+            {
+              family: "IBM Plex Sans"
+            },
+            {
+              family: "Open Sans"
+            },
+            {
+              family: "Inconsolata"
+            }
+          ]
+        }
+      }
     },
     {
       resolve: `gatsby-plugin-lodash`,
