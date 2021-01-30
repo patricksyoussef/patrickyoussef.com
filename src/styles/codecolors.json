@@ -1,14 +1,14 @@
 {
-    "python": {
-        "name": "Python",
-        "color": "#3572A5"
-    },
-    "css": {
-        "name": "CSS",
-        "color": "#563d7c"
-    },
-    "go": {
-        "name": "Go",
-        "color": "#00ADD8"
-    }
+  "python": {
+    "name": "Python",
+    "color": "#3572A5"
+  },
+  "css": {
+    "name": "CSS",
+    "color": "#563d7c"
+  },
+  "go": {
+    "name": "Go",
+    "color": "#00ADD8"
+  }
 }
