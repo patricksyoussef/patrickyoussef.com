@@ -22,6 +22,12 @@ const Container = styled.div`
   ul {
     padding-left: 2.2rem;
   }
+
+  h1 {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: ${props => props.theme.colors.text_gray};
+  }
 `
 
 const Content = styled.div`
