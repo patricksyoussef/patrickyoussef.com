@@ -17,6 +17,10 @@ const TopContent = styled.span`
 const Content = styled.div`
   margin-top: 1rem;
   margin-bottom: 2rem;
+
+  * {
+    margin: 0;
+  }
 `
 
 const LinkText = styled.h3`

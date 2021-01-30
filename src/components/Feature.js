@@ -56,6 +56,10 @@ const SubTitle = styled.span`
   font-size: 1.5rem;
   font-family: ${props => props.theme.fonts.sub};
 
+  * {
+    margin: 0;
+  }
+
   p,
   div {
     width: fit-content;

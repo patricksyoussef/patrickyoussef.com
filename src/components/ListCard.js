@@ -2,7 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-const Container = styled.div``
+const Container = styled.div`
+  padding: 0.2rem 1rem;
+`
 const Post = styled.div`
   margin: 0.4rem ${props => props.theme.spacings.wall};
   transition: ${props => props.theme.anims.link};
@@ -25,6 +27,10 @@ const Post = styled.div`
     transition: ${props => props.theme.anims.link};
     color: ${props => props.theme.colors.text_gray};
   }
+
+  h2 {
+    margin-bottom: 0.4rem;
+  }
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -37,7 +43,7 @@ export const ListCard = ({ frontmatter, fields, excerpt }) => {
         <Post>
           <h2>{frontmatter.title}</h2>
           <p>
-            {frontmatter.date} | {fields.readingTime.text}
+            {frontmatter.date} - {fields.readingTime.text}
           </p>
         </Post>
       </StyledLink>

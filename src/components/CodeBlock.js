@@ -17,11 +17,15 @@ const CodeBlock = styled.div`
 `
 
 const Block = styled.div`
-  padding: 0.6rem;
+  padding: 0.75rem;
 
   pre {
     overflow: auto;
     padding-bottom: 0rem;
+  }
+
+  .prism-code {
+    margin: 0;
   }
 
   .line-darken {
