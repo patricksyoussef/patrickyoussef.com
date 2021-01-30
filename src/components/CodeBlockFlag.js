@@ -3,10 +3,6 @@ import styled from "styled-components"
 
 let json = require('../styles/codecolors.json')
 
-const key = 'python'
-const name = json[key]['name']
-const color = json[key]['color']
-
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
