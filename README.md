@@ -1,7 +1,7 @@
 # Personal Website V1
 
 <p align="center">
-  <a href="http://patrickyoussef.com" alt="Link to my website!" target="_blank">
+  <a href="https://patrickyoussef.com" alt="Link to my website!" target="_blank">
     <img src="src/favicon.png" width="12%"/>
   </a>
 </p>
@@ -16,7 +16,11 @@
 
 ## Motivation For Site
 
+My motivations for the site are as follows:
 
+- I enjoy teaching and sharing information so I recently decided I wanted to increase the audience I could reach.
+- As I progress through my career I find that I am building a mix of materials that represent me, a website serves to host all of these materials in a cohesive nature.
+- It's pretty cool having your own website, right?
 
 ## Site Framework
 
