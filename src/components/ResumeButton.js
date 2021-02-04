@@ -4,8 +4,9 @@ import styled from "styled-components"
 const Button = styled.div`
   display: inline-block;
   border-style: solid;
-  border-width: 0.1rem;
+  border-width: 2px;
   border-radius: 5px;
+  border-color: ${props => props.theme.colors.blue};
   padding: 0.25rem 0.5rem;
   margin-left: 0.75rem;
 
@@ -17,15 +18,14 @@ const Button = styled.div`
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.blue_button};
+    background-color: ${props => props.theme.colors.res_button};
   }
   &:hover div {
-    color: white;
   }
 `
 
 const Text = styled.div`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   font-family: ${props => props.theme.fonts.code};
 

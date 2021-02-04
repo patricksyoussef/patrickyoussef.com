@@ -51,12 +51,12 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     background-color: ${props => props.theme.colors.light1};
     font-weight: 400;
+    text-decoration: none;
   }
 
   img {
     box-shadow: ${props => props.theme.shadows.s1};
   }
-
 `
 
 export const wrapRootElement = ({ element }) => (

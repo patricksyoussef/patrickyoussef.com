@@ -12,6 +12,11 @@ const Container = styled.div`
 `
 
 export default ({ data }) => {
+  console.log(data.allMdx.nodes)
+  console.log(data.allMdx.nodes.frontmatter)
+
+  
+
   return (
     <Layout>
       <Helmet>

@@ -3,10 +3,13 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Container = styled.div`
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0rem;
+  margin: 0rem ${props => props.theme.spacings.wall};
+  * {
+    margin: 0;
+  }
 `
 const Post = styled.div`
-  margin: 0.4rem ${props => props.theme.spacings.wall};
   transition: ${props => props.theme.anims.link};
   padding: 0.6rem;
   border-style: solid;

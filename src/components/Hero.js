@@ -46,7 +46,7 @@ const Buttons = styled.div`
   max-width: 310px;
 
   .space {
-    padding-left: 1.1rem;
+    padding-left: 0.8rem;
   }
 `
 
