@@ -66,7 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
   blog_post = path.resolve("./src/templates/blog-post.js")
   blog_list = path.resolve("./src/templates/blog-list.js")
   // Currently blog pages and project pages are identical
-  project_list = path.resolve("./src/templates/project-list.js")
+  // project_list = path.resolve("./src/templates/project-list.js")
 
   tmp.forEach(([key, arr]) => {
     // Creates Single pages
@@ -84,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
     _.chunk(arr.nodes, PostsPerPage).forEach((posts, i) => {
       createPage({
         path: i === 0 ? `/${key}/` : `/${key}/page${i + 1}/`,
-        component: key === "blog" ? blog_list : project_list,
+        component: key === "blog" ? blog_list : blog_list,
         context: {
           skip: i * PostsPerPage,
           limit: PostsPerPage,

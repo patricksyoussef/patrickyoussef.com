@@ -13,12 +13,6 @@ export default ({ data }) => {
       </Helmet>
       <Hero />
       <IndexSection
-        data={data.projects}
-        title={"Projects"}
-        linktext={"All projects"}
-        path={"/projects/"}
-      ></IndexSection>
-      <IndexSection
         data={data.blog}
         title={"Recent Posts"}
         linktext={"All posts"}
@@ -43,31 +37,6 @@ export const query = graphql`
         frontmatter: {
           published: { eq: true }
           templateKey: { eq: "blog-post" }
-        }
-      }
-    ) {
-      nodes {
-        frontmatter {
-          slug
-          date(formatString: "MMMM Do, YYYY")
-          title
-        }
-        fields {
-          readingTime {
-            text
-          }
-          path
-        }
-      }
-    }
-    projects: allMdx(
-      limit: 4
-      skip: 0
-      sort: { fields: frontmatter___date, order: DESC }
-      filter: {
-        frontmatter: {
-          published: { eq: true }
-          templateKey: { eq: "project-post" }
         }
       }
     ) {

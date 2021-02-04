@@ -41,6 +41,11 @@ const Contact = styled.div`
   font-family: ${props => props.theme.fonts.code};
   font-size: 1.5rem;
 `
+const Buttons = styled.div`
+  display: flex;
+  width: 32%;
+  justify-content: space-between;
+`
 
 export const Hero = () => (
   <Container>
@@ -50,11 +55,18 @@ export const Hero = () => (
         I'm Patrick Youssef, an avid roboticist and master's candidate at the
         University of California, San Diego.
       </Sub>
-      <a href="mailto:patricksyoussef@gmail.com">
-        <ContactButton>
-          <Contact>Get In Touch</Contact>
-        </ContactButton>
-      </a>
+      <Buttons>
+        <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
+          <ContactButton>
+            <Contact>Get In Touch</Contact>
+          </ContactButton>
+        </a>
+        <a href="about">
+          <ContactButton>
+            <Contact>About Me</Contact>
+          </ContactButton>
+        </a>
+      </Buttons>
     </Content>
   </Container>
 )

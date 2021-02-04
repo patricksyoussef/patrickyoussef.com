@@ -25,21 +25,6 @@ const NavItems = styled.span`
   justify-content: space-between;
   align-items: center;
 `
-const NavItem = styled.div`
-  font-family: ${props => props.theme.fonts.code};
-  h1,
-  h2,
-  h3 {
-    transition: ${props => props.theme.anims.link};
-    color: ${props => props.theme.colors.text_gray};
-    margin: 0;
-  }
-  padding-left: 0.7rem;
-
-  &:hover h3 {
-    color: ${props => props.theme.colors.text_dark};
-  }
-`
 
 export const Header = () => (
   <Container>
@@ -51,11 +36,6 @@ export const Header = () => (
           </h1>
         </Link>
         <NavItems>
-          <NavItem>
-            <Link to="/about">
-              <h3>About</h3>
-            </Link>
-          </NavItem>
           <ResumeButton />
         </NavItems>
       </NavBar>
