@@ -17,7 +17,7 @@ const CodeBlock = styled.div`
 `
 
 const Block = styled.div`
-  padding: 0.75rem;
+  padding: 0rem;
 
   pre {
     overflow: auto;
@@ -26,6 +26,8 @@ const Block = styled.div`
 
   .prism-code {
     margin: 0;
+    padding: 0.5rem;
+    padding-top: 0rem;
   }
 
   .line-darken {
@@ -45,7 +47,7 @@ const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.4rem;
+  padding: 0.5rem 0.5rem;
   font-family: ${props => props.theme.fonts.sub};
   div,
   button {

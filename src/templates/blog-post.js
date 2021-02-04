@@ -10,12 +10,13 @@ const Container = styled.div`
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  max-width: 750px;
+  max-width: 800px;
 
   .gatsby-resp-image-wrapper {
     margin: 1rem 0;
     border-radius: 0.5rem;
     overflow: hidden;
+    max-width: 600px !important;
   }
 
   ol,
@@ -28,6 +29,10 @@ const Container = styled.div`
     border-bottom-width: 1px;
     border-bottom-color: ${props => props.theme.colors.text_gray};
   }
+
+  h2 {
+    font-style: bold;
+  }
 `
 
 const Content = styled.div`
@@ -35,7 +40,7 @@ const Content = styled.div`
 
   p,
   li {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-family: ${props => props.theme.fonts.sub};
   }
 
@@ -51,8 +56,12 @@ const Content = styled.div`
 
   .prism-code {
     span {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: ${props => props.theme.fonts.code};
+    }
+
+    .token-line {
+      min-height: 1rem;
     }
   }
 
@@ -87,7 +96,7 @@ const Content = styled.div`
 
   blockquote {
     background-color: rgba(220, 221, 230, 0.4);
-    padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     border-left-style: solid;
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};

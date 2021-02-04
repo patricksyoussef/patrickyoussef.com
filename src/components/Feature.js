@@ -40,14 +40,14 @@ const FeatureImageContainer = styled.div`
 `
 const Header = styled.div`
   min-height: 9rem;
-  margin: 2rem 2.5rem;
+  margin: 1.5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
 `
 const Title = styled.div`
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: ${props => props.theme.fonts.main};
 `

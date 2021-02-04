@@ -7,26 +7,26 @@ require(`katex/dist/katex.min.css`)
 const GlobalStyles = createGlobalStyle`
 
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   @media (max-width: 800px) {
-    html { font-size: 15px; }
+    html { font-size: 14px; }
   }
   @media (max-width: 400px) {
-    html { font-size: 14px; }
+    html { font-size: 13px; }
   }
 
   /* Font Overrides to rem*/
   body {
     h1 {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
     h2 {
       font-size: 1.5rem;
     }
     h3 {
-      font-size: 1.17rem;
+      font-size: 1.25rem;
     }
     h4 {
       font-size: 1rem;
