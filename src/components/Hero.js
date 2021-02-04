@@ -20,7 +20,7 @@ const ContactButton = styled.div`
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 0.7rem;
   margin-top: 2rem;
   box-shadow: ${props => props.theme.shadows.s1};
 
@@ -43,8 +43,11 @@ const Contact = styled.div`
 `
 const Buttons = styled.div`
   display: flex;
-  width: 32%;
-  justify-content: space-between;
+  max-width: 310px;
+
+  .space {
+    padding-left: 1.1rem;
+  }
 `
 
 export const Hero = () => (
@@ -56,16 +59,20 @@ export const Hero = () => (
         University of California, San Diego.
       </Sub>
       <Buttons>
-        <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
-          <ContactButton>
-            <Contact>Get In Touch</Contact>
-          </ContactButton>
-        </a>
-        <a href="about">
-          <ContactButton>
-            <Contact>About Me</Contact>
-          </ContactButton>
-        </a>
+        <div>
+          <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
+            <ContactButton>
+              <Contact>Get In Touch</Contact>
+            </ContactButton>
+          </a>
+        </div>
+        <div class="space">
+          <a href="about">
+            <ContactButton>
+              <Contact>About</Contact>
+            </ContactButton>
+          </a>
+        </div>
       </Buttons>
     </Content>
   </Container>

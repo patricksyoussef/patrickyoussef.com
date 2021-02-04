@@ -6,16 +6,21 @@ import { Helmet } from "react-helmet"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const Content = styled.div`
-  margin: 3rem 3rem;
+  max-width: ${props => props.theme.widths.content};
+  margin: 0 auto;
 `
 
 export default function Home({ data }) {
   const { site, about } = data
-  const { body } = about.nodes[0]
+  const { frontmatter, body } = about.nodes[0]
+  console.log(data)
+  console.log(about.nodes)
   return (
     <Layout>
       <Helmet>
-        <title>About | {site.siteMetadata.title}</title>
+        <title>
+          {frontmatter.title} | {site.siteMetadata.title}
+        </title>
       </Helmet>
       <Content>
         <MDXRenderer>{body}</MDXRenderer>

@@ -4,6 +4,12 @@ import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
 import { Underline } from "../components/Underline"
 import { ListCard } from "../components/ListCard"
+import styled from "styled-components"
+
+const Container = styled.div`
+  max-width: ${props => props.theme.widths.content};
+  margin: 0 auto;
+`
 
 export default ({ data }) => {
   return (
@@ -11,14 +17,16 @@ export default ({ data }) => {
       <Helmet>
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
-      <Underline>
-        <h1>All Posts</h1>
-      </Underline>
-      <div>
-        {data.allMdx.nodes.map(({ frontmatter, fields }) => (
-          <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
-        ))}
-      </div>
+      <Container>
+        <Underline>
+          <h1>All Posts</h1>
+        </Underline>
+        <div>
+          {data.allMdx.nodes.map(({ frontmatter, fields }) => (
+            <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
+          ))}
+        </div>
+      </Container>
     </Layout>
   )
 }

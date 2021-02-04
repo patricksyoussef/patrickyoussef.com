@@ -10,7 +10,7 @@ const Container = styled.div`
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  max-width: 800px;
+  max-width: ${props => props.theme.widths.content};
 
   .gatsby-resp-image-wrapper {
     margin: 1rem 0;

@@ -43,5 +43,6 @@ export default {
   },
   widths: {
     max: "1024px",
+    content: "800px",
   },
 }
