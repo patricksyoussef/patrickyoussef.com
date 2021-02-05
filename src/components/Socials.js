@@ -32,7 +32,7 @@ const SocialItem = styled.div`
 export const Socials = () => (
   <Container>
     <SocialItem>
-      <a href="mailto:patricksyoussef@gmail.com">
+      <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
         <FontAwesomeIcon icon={["fas", "envelope"]} className="SocialItem" />
       </a>
     </SocialItem>
