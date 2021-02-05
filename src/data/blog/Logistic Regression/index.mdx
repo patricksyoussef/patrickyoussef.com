@@ -1,0 +1,233 @@
+---
+templateKey: blog-post
+published: true
+title: Introduction to Logistic Regression
+slug: logistic-regression-intro
+date: 2020-12-23
+featureImage: images/Example_Training.png
+---
+
+# Introduction
+
+This post will introduce you to the principles behind logistic regression as a binary classification method. Using Python and NumPy we will implement the core principles from scratch on a test dataset.
+
+# What is Logistic Regression?
+
+Logistic regression is a predictor borrowed from statistics used for binary classification. All this means is that we can use the algorithm to predict whether a given example belongs to a class or not. As an example, if we knew certain features about the weather (temperature, humidity, wind, etc.) we could try to predict if it's going to rain or not. To do so, we need many _labeled_ examples of data from other days. We'll get into this more moving forward.
+
+# Math Representation
+
+Before we can dive into the implementation, we first need to fully understand the required data and math for this problem.
+
+## Data Organization
+
+We represent a particular example as a vector of features and we store all these examples as one large matrix $X$ where $X_i$ is a particular example (a single day if we follow our prior metaphor). The labeled aspect means that we know whether or not that day had rain, we'll call this the ground-truth and save all labels for our examples in a vector $y_i$ where is 0 or 1 (didn't rain or rained).
+
+## Forward Propogation
+
+The forward propogation step is where we take an example and pass it through our model to yield a prediction. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with a function ($\sigma$) called the sigmoid function, $(1+\exp(-x))^{-1}$, we get the following:
+
+$$
+\hat{y_i} = \sigma (W^T X + b)
+$$
+
+**_Personally, I prefer to move the bias into the matrix multiplication by adding a 1 to the end of every example and increasing the size of the weights by 1. As all entries will have a 1 in the last column the dot product will just have the same equation as before! This way we do not need to compute gradients and create update rules just for b. Continue ahead to see what I mean._**
+
+Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the ouput between 0 and 1, perfect for a probability!
+
+![Plot of the sigmoid function](images/sigmoid.png)
+
+> How do we determine the values for $W$? Training!
+
+# Training
+
+Training is the process where we take many labeled examples and use them to determine values for $w$ that will yield us the best _overall_ accuracy. To be precise, we will describe some formulations for what are called the cost and loss of the model.
+
+## Cost and Loss Functions
+
+Let's start with the loss function. The loss is a measure of the error for a particular example's prediction. Following our prior notation the loss for one example is:
+
+$$
+\mathcal{L} = -y \log(\hat{y}) - (1-y) \log(1-\hat{y})
+$$
+
+Let's play this out and see why it makes sense. For a given example that we know had no rain ($y=0$), we can consider the error as the log of the difference between the prediction $\hat{y}$ and 0 as the left side term goes to 0 and we're just left with $\log(1-\hat{y})$. As a reminder, $\log(1)=0$ so any deviation from 1 would create an error. Going back to if $y=0$, a perfect prediction would be if $\hat{y}=0$ and we'd be left with $\log(1)=0$. Therefore, the cost function accomodates for the two differnet possible values of $y$ and takes the log of the difference for the respective cases.
+
+The cost function is easy, it's just the average of the loss functions so:
+
+$$
+Cost = \frac{1}{N}\sum_{i=1}^{N} \mathcal{L}_i
+$$
+
+Now that we have a formulation for a function to decrease let's just take the derivative and seit it equal to 0 to see what the values of $w$ should be. In practice, this is not possible so we need to approach this as a numerical optimization problem.
+
+## Gradient Descent
+
+Gradient descent is fairly simple, given the gradient of a function with respect to the variable to be optimized take a step in the negative direction of the gradient (positive for gradient ascent) and update your inputs with the step. Keep repeating this until you are happy with the convergence. In general, it looks something like this:
+
+$$
+\theta_{i+1} = \theta_i - \alpha \nabla f(\theta)
+$$
+
+Where $\alpha$ is a tuneable parameter called the learning rate, it dictates what fraction of the gradient we should step by. I will not go through the derivation, but for our problem we would like to use gradient descent where $f$ is the cost function and we take the gradient in terms of $W$. For our use case this is:
+
+$$
+W_{i+1} = W_i - \alpha \frac{1}{N} X^T(\sigma(W^T X^T)-y)^T
+$$
+
+Now we have everything to implement!
+
+# Implementation
+
+Let's go ahead and import our python modules first as follow:
+
+```python
+import numpy as np
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+```
+
+I will be using Python and NumPy for the implementation. The dataset used can be found [here](https://www.kaggle.com/uciml/pima-indians-diabetes-database). The database takes a few human health metrics as features and tries to predict if the patient is diabetic.
+
+## Model Class
+
+As we have many parameters, helper functions, and repeated operations I will be creating the model as a Python class. Let's go ahead and intitialize the class with all the methods we will be using.
+
+```python
+class LogisticRegression():
+    def __init__(self):
+
+    def sigmoid(self, z):
+
+    def prep_data(self, X):
+
+    def add_dimension(self, X):
+
+    def train(self, X_train, y_train, learning_rate, iterations):
+
+    def predict(self, X_test):
+```
+
+- sigmoid will be where we write the sigmoid function
+- prep_data is where we will normalize our data
+- add_dimension is a helper function for appending the 1
+- train is where we will run the gradient descent iterations to determine our weights
+- predict is where we will forward propogate on unseen (test) data
+
+Let's start with the `sigmoid` function, as mentioned before the function is $(1+\exp(-x))^{-1}$, using NumPy this is:
+
+```python
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
+```
+
+Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the dot product. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
+
+```python
+    def prep_data(self, X):
+        temp = X - np.min(X, axis=0)
+        X = temp / np.max(temp, axis=0)
+
+        return X
+
+    def add_dimension(self, X):
+        X_new = np.hstack((X, np.ones((X.shape[0], 1))))
+
+        return X_new
+```
+
+The training process is going to be more involved, the comments explain what is going on but feel free to reach out if you would like more explanation.
+
+```python
+    def train(self, X_train, y_train, learning_rate, iterations):
+
+        # Saving the learning rate and iteration count to the model instance
+        self.learning_rate = learning_rate
+        self.iterations = iterations
+
+        # Normalizing the data and appending a 1 for the bias
+        X_train = self.prep_data(X_train)
+        X_train = self.add_dimension(X_train)
+
+        # Getting dimensions of the input X and starting weights out at small
+        # random numbers
+        N,D = X_train.shape
+        self.weights = np.random.random((D,1)) * 0.001
+
+        # Train Iterations
+        for i in range(self.iterations):
+
+            # Compute the gradient
+            A = self.sigmoid(np.dot(self.weights.T, X_train.T))
+            grad = (1/N) * np.dot(X_train.T, (A - y_train).T)
+
+            # Update weights using gradient descent
+            self.weights = self.weights - self.learning_rate * grad
+```
+
+To close out the model class, let's implement `predict` that computes the forward propogation of $X$.
+
+```python
+    def predict(self, X_test):
+
+        # Prep new data just as training data was
+        X_test = self.prep_data(X_test)
+        X_test = self.add_dimension(X_test)
+
+        # Compute the forward propogation and round to get {0,1}
+        A = self.sigmoid(np.dot(self.weights.T, X_test.T))
+        y_est = np.round(A)
+
+        return y_est
+```
+
+## Data Import and Function Calls
+
+Assuming you have downloaded the aforementioned dataset, you should make sure you have it in the same folder as your Python file! The following code will import it and split the data into a test and train set. I have not mentioned this yet but this is a good place to talk about it.
+
+### Test/Train Split
+
+Quick digression, a test and train split is a process of splitting your data into two groups based on a fraction (typical is 70/30 for train/test). This is very important to do as testing a model on the data it was trained on is not a good metric of its performance. To put it briefly, a model can learn to fit a training set very well but won't generalize well to new data. This is very bad as all we really care about is how it generalizes. This is as much as you need to know for now, but I would highly recommend you read more [here](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data).
+
+```python
+# Import Data
+data = np.loadtxt(open("diabetes.csv", "rb"), delimiter=",", skiprows=1)
+
+# Split Data Into X and y
+X = np.delete(data, -1, axis=1)
+y = data[:,-1]
+
+# Test Train Split (30% test) using SkLearn
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+```
+
+## Running the Model
+
+We've made it! It's time to train our model and see how it does on the testing set! The following code will help you out:
+
+```python
+# Create an instance of our logistic regression class
+MyModel = LogisticRegression()
+# Train the model on the training set using a learning rate of 0.1
+# and 10000 iterations
+MyModel.train(X_train, y_train, 0.1, 5000)
+# Get predictions for y_test
+y_test_est = MyModel.predict(X_test)
+```
+
+Now all we have to is compute the accuracy and see how we did.
+
+```python
+# (Count of correct predictions) / (Total number of test samples)
+test_accuracy = np.sum(y_test == y_test_est) / y_test.size
+```
+
+This results in an accuracy of around 74%! Considering the low number of features in the dataset this is a great result.
+
+# Moving Forward
+
+As the intro suggests, this is just an introduction and there is much more that we can do with logistic regression. Just to list a few, here are the topics I am considering in extending the basics of logistic regression.
+
+1. Underfitting and overfitting in the model, how do we know when this is happening and how can we mitigate it.
+2. Multinomial logistic regression, let's extend the prediction space from in or not in a class to multiple classes.
+3. Tuning of parameters, what other metrics can we look at to better understand the best values for out hyperparameters.

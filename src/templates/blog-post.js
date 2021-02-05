@@ -12,11 +12,28 @@ const Container = styled.div`
   margin-bottom: 2rem;
   max-width: ${props => props.theme.widths.content};
 
+  .gatsby-resp-image-figure {
+    margin: 1rem auto;
+    max-width: 500px !important;
+  }
+
   .gatsby-resp-image-wrapper {
-    margin: 1rem 0;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    max-width: 600px !important;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+
+  figcaption {
+    display: flex;
+    justify-content: center;
+
+    font-weight: 600;
+    font-size: 1rem;
+    color: ${props => props.theme.colors.text_gray};
   }
 
   ol,

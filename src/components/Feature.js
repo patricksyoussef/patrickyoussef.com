@@ -46,15 +46,16 @@ const Header = styled.div`
   align-items: center;
   z-index: 10;
 `
-const Title = styled.div`
-  font-size: 2rem;
+const Title = styled.span`
+  font-size: 1.9rem;
   font-weight: 700;
   font-family: ${props => props.theme.fonts.main};
 `
 const SubTitle = styled.span`
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: ${props => props.theme.fonts.sub};
+  width: fit-content;
 
   * {
     margin: 0;
@@ -69,6 +70,12 @@ const Spacer = styled.div`
   margin: 0 0.5rem;
 `
 
+const Centering = styled.div`
+display: inline-block;
+  * {
+  }
+`
+
 export const Feature = ({ frontmatter, fields }) => {
   return (
     <Container>
@@ -76,14 +83,14 @@ export const Feature = ({ frontmatter, fields }) => {
         <FeatureImage frontmatter={frontmatter}></FeatureImage>
       </FeatureImageContainer>
       <Header>
-        <div>
+        <Centering>
           <Title>{frontmatter.title}</Title>
           <SubTitle>
             <p>{frontmatter.date}</p>
             <Spacer>|</Spacer>
             <p>{fields.readingTime.text}</p>
           </SubTitle>
-        </div>
+        </Centering>
       </Header>
     </Container>
   )

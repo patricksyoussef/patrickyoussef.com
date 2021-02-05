@@ -7,15 +7,10 @@ import { ListCard } from "../components/ListCard"
 import styled from "styled-components"
 
 const Container = styled.div`
-  max-width: ${props => props.theme.widths.content};
   margin: 0 auto;
 `
 
 export default ({ data }) => {
-  console.log(data.allMdx.nodes)
-  console.log(data.allMdx.nodes.frontmatter)
-
-  
 
   return (
     <Layout>
