@@ -23,9 +23,9 @@ Before we can dive into the implementation, we first need to fully understand th
 
 We represent a particular example as a vector of features and we store all these examples as one large matrix $X$ where $X_i$ is a particular example (a single day if we follow our prior metaphor). The labeled aspect means that we know whether or not that day had rain, we'll call this the ground-truth and save all labels for our examples in a vector $y_i$ where is 0 or 1 (didn't rain or rained).
 
-## Forward Propogation
+## Forward Propagation
 
-The forward propogation step is where we take an example and pass it through our model to yield a prediction. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with a function ($\sigma$) called the sigmoid function, $(1+\exp(-x))^{-1}$, we get the following:
+The forward propagation step is where we take an example and pass it through our model to yield a prediction. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with a function ($\sigma$) called the sigmoid function, $(1+\exp(-x))^{-1}$, we get the following:
 
 $$
 \hat{y_i} = \sigma (W^T X + b)
@@ -33,7 +33,7 @@ $$
 
 **_Personally, I prefer to move the bias into the matrix multiplication by adding a 1 to the end of every example and increasing the size of the weights by 1. As all entries will have a 1 in the last column the dot product will just have the same equation as before! This way we do not need to compute gradients and create update rules just for b. Continue ahead to see what I mean._**
 
-Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the ouput between 0 and 1, perfect for a probability!
+Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
 
 ![Plot of the sigmoid function](images/sigmoid.png)
 
@@ -51,7 +51,7 @@ $$
 \mathcal{L} = -y \log(\hat{y}) - (1-y) \log(1-\hat{y})
 $$
 
-Let's play this out and see why it makes sense. For a given example that we know had no rain ($y=0$), we can consider the error as the log of the difference between the prediction $\hat{y}$ and 0 as the left side term goes to 0 and we're just left with $\log(1-\hat{y})$. As a reminder, $\log(1)=0$ so any deviation from 1 would create an error. Going back to if $y=0$, a perfect prediction would be if $\hat{y}=0$ and we'd be left with $\log(1)=0$. Therefore, the cost function accomodates for the two differnet possible values of $y$ and takes the log of the difference for the respective cases.
+Let's play this out and see why it makes sense. For a given example that we know had no rain ($y=0$), we can consider the error as the log of the difference between the prediction $\hat{y}$ and 0 as the left side term goes to 0 and we're just left with $\log(1-\hat{y})$. As a reminder, $\log(1)=0$ so any deviation from 1 would create an error. Going back to if $y=0$, a perfect prediction would be if $\hat{y}=0$ and we'd be left with $\log(1)=0$. Therefore, the cost function accommodates for the two different possible values of $y$ and takes the log of the difference for the respective cases.
 
 The cost function is easy, it's just the average of the loss functions so:
 
@@ -59,7 +59,7 @@ $$
 Cost = \frac{1}{N}\sum_{i=1}^{N} \mathcal{L}_i
 $$
 
-Now that we have a formulation for a function to decrease let's just take the derivative and seit it equal to 0 to see what the values of $w$ should be. In practice, this is not possible so we need to approach this as a numerical optimization problem.
+Now that we have a formulation for a function to decrease let's just take the derivative and set it equal to 0 to see what the values of $w$ should be. In practice, this is not possible so we need to approach this as a numerical optimization problem.
 
 ## Gradient Descent
 
@@ -91,7 +91,7 @@ I will be using Python and NumPy for the implementation. The dataset used can be
 
 ## Model Class
 
-As we have many parameters, helper functions, and repeated operations I will be creating the model as a Python class. Let's go ahead and intitialize the class with all the methods we will be using.
+As we have many parameters, helper functions, and repeated operations I will be creating the model as a Python class. Let's go ahead and initialize the class with all the methods we will be using.
 
 ```python
 class LogisticRegression():
@@ -108,11 +108,11 @@ class LogisticRegression():
     def predict(self, X_test):
 ```
 
-- sigmoid will be where we write the sigmoid function
-- prep_data is where we will normalize our data
-- add_dimension is a helper function for appending the 1
-- train is where we will run the gradient descent iterations to determine our weights
-- predict is where we will forward propogate on unseen (test) data
+- `sigmoid` will be where we write the sigmoid function
+- `prep_data` is where we will normalize our data
+- `add_dimension` is a helper function for appending the 1
+- `train` is where we will run the gradient descent iterations to determine our weights
+- `predict` is where we will forward propagate on unseen (test) data
 
 Let's start with the `sigmoid` function, as mentioned before the function is $(1+\exp(-x))^{-1}$, using NumPy this is:
 
@@ -165,7 +165,7 @@ The training process is going to be more involved, the comments explain what is 
             self.weights = self.weights - self.learning_rate * grad
 ```
 
-To close out the model class, let's implement `predict` that computes the forward propogation of $X$.
+To close out the model class, let's implement `predict` that computes the forward propagation of $X$.
 
 ```python
     def predict(self, X_test):
@@ -174,7 +174,7 @@ To close out the model class, let's implement `predict` that computes the forwar
         X_test = self.prep_data(X_test)
         X_test = self.add_dimension(X_test)
 
-        # Compute the forward propogation and round to get {0,1}
+        # Compute the forward propagation and round to get {0,1}
         A = self.sigmoid(np.dot(self.weights.T, X_test.T))
         y_est = np.round(A)
 
@@ -230,4 +230,4 @@ As the intro suggests, this is just an introduction and there is much more that 
 
 1. Underfitting and overfitting in the model, how do we know when this is happening and how can we mitigate it.
 2. Multinomial logistic regression, let's extend the prediction space from in or not in a class to multiple classes.
-3. Tuning of parameters, what other metrics can we look at to better understand the best values for out hyperparameters.
+3. Tuning of parameters, what other metrics can we look at to better understand the best values for our hyperparameters.
