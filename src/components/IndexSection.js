@@ -1,3 +1,7 @@
+// Imports ListCard.js and iterated through the nodes that are passed into
+// here. This creates the list of blog posts on the home page and on the 
+// "All Posts" page.
+
 import { Link } from "gatsby"
 import React from "react"
 import { Underline } from "./Underline"

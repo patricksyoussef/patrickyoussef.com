@@ -1,3 +1,6 @@
+// Primary site landing, hosts a blurb about who I am and buttons to navigate 
+// to contact or about me.
+
 import React from "react"
 import styled from "styled-components"
 

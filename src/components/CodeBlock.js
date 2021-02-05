@@ -1,4 +1,6 @@
-// src/components/CodeBlock.jsx
+// Component that takes in a language tag and content from MDX
+// and applies the syntax highlighting, copy button, and language tag
+
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import { CodeBlockFlag } from "../components/CodeBlockFlag"
@@ -67,6 +69,7 @@ const CopyButton = styled.button`
   }
 `
 
+// Copy Button
 // Thanks to @d__raptis !
 const copyToClipboard = str => {
   const el = document.createElement("textarea")
@@ -80,6 +83,9 @@ const copyToClipboard = str => {
   document.body.removeChild(el)
 }
 
+
+// Regex to split the language from line focusing specifiers
+// Ex: lanugage-python{2,5-8} => {Language: Python Lines-To-Focus: [2,5,6,7,8]}
 export default ({ children, className }) => {
   // Pull the className
   const reg = className.match(/language-([a-z]*)(.*)/)
@@ -105,6 +111,10 @@ export default ({ children, className }) => {
 
   const [isCopied, setIsCopied] = React.useState(false)
 
+
+  // Going to comment this all soon, basically goes lines by line and item
+  // by item and applies colors. CodeBlockFlag is the colored rectangle with
+  // language name on the site.
   return (
     <div>
       <CodeBlock>

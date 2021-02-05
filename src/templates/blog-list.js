@@ -1,3 +1,6 @@
+// Page template for listing out all blog posts (or a limited amount, whatever
+// is passed).
+
 import { graphql } from "gatsby"
 import React from "react"
 import { Layout } from "../components/Layout"

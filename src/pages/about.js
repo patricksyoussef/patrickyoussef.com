@@ -1,3 +1,7 @@
+// The template for the about page, this could use more styling and content
+// but it works for now. All body is imported as an MDX with the query on the
+// bottom.
+
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"

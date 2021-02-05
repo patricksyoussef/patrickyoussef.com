@@ -1,3 +1,5 @@
+// Fancy little button that links to my resume, hosted in Hero.js
+
 import React from "react"
 import styled from "styled-components"
 

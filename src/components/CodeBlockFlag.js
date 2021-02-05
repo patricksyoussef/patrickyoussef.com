@@ -1,6 +1,11 @@
+// Takes in the language and spits out a colored box with a the correct
+// display name for the language
+// Ex: python => {name:"Python", color:"Blue"}
+
 import React from "react"
 import styled from "styled-components"
 
+// Import color mapping for CodeFlag
 let json = require('../styles/codecolors.json')
 
 function hexToRgb(hex) {

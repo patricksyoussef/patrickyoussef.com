@@ -1,3 +1,5 @@
+// Elements of my social icons and links, gets used in Footer.js
+
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"

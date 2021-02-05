@@ -1,3 +1,6 @@
+// All the styling for a listing card for a particular post, you'll find these
+// in lists on the homepage and on "All Posts"
+
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"

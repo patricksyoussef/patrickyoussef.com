@@ -1,3 +1,6 @@
+// This creates the title and feature box at the top of the blog posts
+// This is imported by blog-post.js
+
 import React from "react"
 import styled from "styled-components"
 import { FeatureImage } from "../components/FeatureImage"

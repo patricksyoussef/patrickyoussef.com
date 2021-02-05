@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 15px;
   }
 
+  // Media Queries
   @media (max-width: 800px) {
     html { font-size: 14px; }
   }
@@ -17,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
     html { font-size: 13px; }
   }
 
-  /* Font Overrides to rem*/
+  // Font overrides to rem, for simpler content scaling
   body {
     h1 {
       font-size: 1.75rem;

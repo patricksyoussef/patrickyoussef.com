@@ -1,3 +1,6 @@
+// Homepage, this mashes all the components together and where most of the 
+// graphql info is introduced into ReactJS
+
 import React from "react"
 import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"

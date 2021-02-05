@@ -1,3 +1,6 @@
+// Template for a blog post, mostly just styling and pulling graphql data
+// for a particular blog given the "context" info given in gatsby-node.js
+
 import { graphql } from "gatsby"
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"

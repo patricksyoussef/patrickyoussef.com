@@ -1,3 +1,6 @@
+// All good sites need a clever/funny 404 page, Vader took the cake
+// for mine
+
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"

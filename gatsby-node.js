@@ -2,6 +2,8 @@ const path = require(`path`)
 const _ = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+// The following goes through all MDX files found (blog posts, about page, etc.)
+// and creates a gatsby link using the slug denoted in each MDX's frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
@@ -15,6 +17,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+
+// Populates graphql with the result of my requests that are used later to
+// populate content on the blog posts
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
@@ -58,6 +63,10 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  // The following associates each of the blog MDX nodes with their respective
+  // template and splits into groups based on how many posts would be one each
+  // page of an "All Posts" category
+  
   // Split result to use in for loop
   const tmp = _.toPairs(result.data) // [['blogs', arr], ['project', arr]]
   const PostsPerPage = 10
@@ -68,6 +77,8 @@ exports.createPages = async ({ graphql, actions }) => {
   // Currently blog pages and project pages are identical
   // project_list = path.resolve("./src/templates/project-list.js")
 
+  // For each MDX apply the template and the context for the template
+  // to know how to retrieve data out of graphql
   tmp.forEach(([key, arr]) => {
     // Creates Single pages
     arr.nodes.forEach(post => {
@@ -80,6 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
+    // Create host pages for blog listings
     const NumPages = Math.ceil(arr.nodes.length / PostsPerPage)
     _.chunk(arr.nodes, PostsPerPage).forEach((posts, i) => {
       createPage({

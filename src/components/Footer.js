@@ -1,3 +1,5 @@
+// Just organizes my social buttons, most of the work is in socials.js
+
 import React from "react"
 import styled from "styled-components"
 import { Socials } from "./Socials"

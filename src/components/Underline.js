@@ -1,3 +1,5 @@
+// Simple underline style environment
+
 import React from "react"
 import styled from "styled-components"
 

@@ -1,3 +1,6 @@
+// Static elements of the site, holds the header and footer and a limited width
+// content box.
+
 import React from "react"
 import { Header } from "./Header"
 import { Footer } from "./Footer"

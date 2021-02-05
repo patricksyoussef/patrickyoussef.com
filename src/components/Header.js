@@ -1,3 +1,7 @@
+// Main header for sit and the fundamental part of layout, this is a permanent
+// fixture on the top of the site alongside the rest of layout. At this point
+// just my name and a resume button.
+
 import { Link } from "gatsby"
 import React from "react"
 import { Underline } from "./Underline"
