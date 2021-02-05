@@ -28,7 +28,7 @@ const Block = styled.div`
 
   .prism-code {
     margin: 0;
-    padding: 0.5rem;
+    padding: 0.7rem;
     padding-top: 0rem;
   }
 
@@ -49,7 +49,7 @@ const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0.5rem;
+  padding: 0.7rem 0.7rem;
   font-family: ${props => props.theme.fonts.sub};
   div,
   button {

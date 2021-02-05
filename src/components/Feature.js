@@ -16,6 +16,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   box-shadow: ${props => props.theme.shadows.s1};
+  margin-bottom: 1.75rem;
 
   > div {
     grid-row-start: 1;

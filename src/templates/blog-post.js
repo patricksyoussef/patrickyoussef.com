@@ -51,7 +51,7 @@ const Container = styled.div`
   }
 
   h2 {
-    font-style: bold;
+    font-weight: 800;
   }
 `
 
