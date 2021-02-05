@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Container = styled.div`
-  padding: 0.2rem 0rem;
+  padding: 0.5rem 0rem;
   margin: 0rem ${props => props.theme.spacings.wall};
   * {
     margin: 0;

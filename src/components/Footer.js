@@ -11,7 +11,7 @@ const Container = styled.div`
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: ${props => props.theme.colors.und};
-  margin-top: 2rem;
+  margin-top: 1rem;
 `
 const Content = styled.div`
   display: flex;

@@ -7,8 +7,8 @@ require(`katex/dist/katex.min.css`)
 const GlobalStyles = createGlobalStyle`
 
   html {
-    font-size: 15px;
-  }
+      font-size: 15px;
+    }
 
   // Media Queries
   @media (max-width: 800px) {
@@ -16,47 +16,6 @@ const GlobalStyles = createGlobalStyle`
   }
   @media (max-width: 400px) {
     html { font-size: 13px; }
-  }
-
-  // Font overrides to rem, for simpler content scaling
-  body {
-    h1 {
-      font-size: 1.75rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-    }
-    h3 {
-      font-size: 1.25rem;
-    }
-    h4 {
-      font-size: 1rem;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      margin-bottom: 0.3em;
-    }
-
-    h1, h2, h3, h4, h5, h6, p, li {
-      color: ${props => props.theme.colors.text_dark};
-    }
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  body, html {
-    font-family: ${props => props.theme.fonts.main};
-    height: 100%;
-    background-color: ${props => props.theme.colors.light1};
-    font-weight: 400;
-    text-decoration: none;
-  }
-
-  img {
-    box-shadow: ${props => props.theme.shadows.s1};
   }
 `
 

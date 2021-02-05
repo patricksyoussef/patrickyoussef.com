@@ -38,20 +38,20 @@ export const Socials = () => (
     </SocialItem>
     <SocialItem>
       <a
-        href="https://www.linkedin.com/in/patricksyoussef/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FontAwesomeIcon icon={["fab", "linkedin"]} className="SocialItem" />
-      </a>
-    </SocialItem>
-    <SocialItem>
-      <a
         href="https://github.com/patricksyoussef"
         target="_blank"
         rel="noreferrer"
       >
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
+      </a>
+    </SocialItem>
+    <SocialItem>
+      <a
+        href="https://www.linkedin.com/in/patricksyoussef/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FontAwesomeIcon icon={["fab", "linkedin"]} className="SocialItem" />
       </a>
     </SocialItem>
   </Container>

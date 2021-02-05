@@ -20,7 +20,7 @@ const TopContent = styled.span`
 `
 const Content = styled.div`
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 
 const LinkText = styled.h3`
