@@ -21,7 +21,7 @@ const Container = styled.div`
   }
 
   .gatsby-resp-image-wrapper {
-      border-radius: 0.5rem;
+      border-radius: 0.7rem;
       overflow: hidden;
       margin-bottom: 0.5rem;
   }
@@ -86,9 +86,11 @@ const Content = styled.div`
   }
 
   code {
-    border-radius: 3px;
+    border-radius: 2px;
     background-color: #e0e0e0;
-    padding: 0.1rem;
+    padding: 0.15rem;
+
+    color: ${props => props.theme.colors.text_dark};
   }
 
   a {

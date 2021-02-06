@@ -31,7 +31,11 @@ $$
 \hat{y_i} = \sigma (W^T X + b)
 $$
 
-**_Personally, I prefer to move the bias into the matrix multiplication by adding a 1 to the end of every example and increasing the size of the weights by 1. As all entries will have a 1 in the last column the dot product will just have the same equation as before! This way we do not need to compute gradients and create update rules just for b. Continue ahead to see what I mean._**
+_*Personally, I prefer to move the bias into the matrix multiplication. This is done by adding a column of 1's to the end of X, essentially adding a dummy feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. The benefit of this is we do not need to compute gradients and create update rules just for b.*_
+
+> $$
+> W^T X + b  = w_1 x_1 + ... + w_n x_n + b = w_1 x_1 + ... + w_n x_n + w_{n+1} [1,1,...,1] = W'X'
+> $$
 
 Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
 
@@ -59,7 +63,7 @@ $$
 Cost = \frac{1}{N}\sum_{i=1}^{N} \mathcal{L}_i
 $$
 
-Now that we have a formulation for a function to decrease let's just take the derivative and set it equal to 0 to see what the values of $w$ should be. In practice, this is not possible so we need to approach this as a numerical optimization problem.
+Now that we have a formulation for a function to decrease let's just take the derivative and set it equal to 0 to see what the values of $W$ should be. In practice, this is not possible so we need to approach this as a numerical optimization problem.
 
 ## Gradient Descent
 
