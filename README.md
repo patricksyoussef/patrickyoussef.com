@@ -49,6 +49,19 @@ After much research, the static site generator Gatsby seemed like a perfect fit.
 3. Programmatic
    - Gatsby is built on ReactJS which is by nature exactly what I wanted for this!
 
+## Next Steps
+
+I am actively working on the site but here are some of the major points I am working to tackle.
+
+- Write more posts
+  - I have a backlog of ideas and partially written posts that I need to get ready to be shared
+  - Topics on the table write now include but are not limited to:
+    - Neural Nets from Scratch
+    - Numerical Integrators
+    - Dimensionality Reduction
+- Create project summaries with some more visualizations
+  - These would be summaries that would point to GitHub repos
+
 ## Questions
 
 Feel free to reach out if you have any questions! I hope you liked the site!
