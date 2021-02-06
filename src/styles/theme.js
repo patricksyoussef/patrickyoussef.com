@@ -18,6 +18,7 @@ export default {
     text_light: "hsl(0,0%,90%)",
     text_link: "rgba(24, 95, 184, 0.8);",
     und: "hsl(4, 0%, 30%)",
+    bqbg: "rgba(220, 221, 230, 0.4)",
   },
   breakpoints: {
     mobile: "only screen and (max-width: 50rem)",

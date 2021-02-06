@@ -44,7 +44,7 @@ const FeatureImageContainer = styled.div`
 `
 const Header = styled.div`
   min-height: 9rem;
-  margin: 1.5rem 2rem;
+  margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ const Title = styled.span`
 `
 const SubTitle = styled.span`
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: ${props => props.theme.fonts.sub};
   width: fit-content;
 

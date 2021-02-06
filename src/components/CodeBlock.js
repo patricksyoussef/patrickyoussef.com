@@ -28,7 +28,7 @@ const Block = styled.div`
 
   .prism-code {
     margin: 0;
-    padding: 0.7rem;
+    padding: 0.9rem;
     padding-top: 0rem;
   }
 

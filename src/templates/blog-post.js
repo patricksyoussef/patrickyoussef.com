@@ -17,6 +17,7 @@ const Container = styled.div`
 
   .gatsby-resp-image-figure {
     margin: 1rem auto;
+    margin-bottom: 1.5rem;
     max-width: 500px !important;
   }
 
@@ -117,13 +118,14 @@ const Content = styled.div`
   }
 
   blockquote {
-    background-color: rgba(220, 221, 230, 0.4);
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    background-color: ${props => props.theme.colors.bqbg};
+    padding: 0.5rem 0.75rem;
     border-left-style: solid;
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};
     font-style: italic;
-    margin-bottom: 1rem;
+    margin: 0rem;
+    overflow-x: scroll;
   }
 `
 
