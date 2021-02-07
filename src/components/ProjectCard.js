@@ -7,7 +7,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
   padding: 0.5rem 0rem;
-  margin: 0rem;
+  margin: 0rem ${props => props.theme.spacings.wall};
   * {
     margin: 0;
   }
@@ -42,7 +42,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-export const ListCard = ({ frontmatter, fields, excerpt }) => {
+export const ProjectCard = ({ frontmatter, fields, excerpt }) => {
   return (
     <Container>
       <StyledLink to={fields.path}>

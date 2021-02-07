@@ -25,7 +25,7 @@ export default {
     tablet: "only screen and (max-width: 65rem)",
   },
   spacings: {
-    wall: "1rem",
+    wall: "2rem",
     xxs: "0.25rem",
     xs: "0.5rem",
     s: "1rem",

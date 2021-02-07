@@ -6,15 +6,23 @@ import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
 import { Hero } from "../components/Hero"
 import { IndexSection } from "../components/IndexSection"
+import { ProjectSection } from "../components/ProjectSection"
 import { Helmet } from "react-helmet"
 
 export default ({ data }) => {
+  console.log(data.project)
   return (
     <Layout>
       <Helmet>
         <title>{data.site.siteMetadata.title}</title>
       </Helmet>
       <Hero />
+      <ProjectSection
+        data={data.project}
+        title={"Projects"}
+        linktext={"All Projects"}
+        path={"/projects/"}
+      ></ProjectSection>
       <IndexSection
         data={data.blog}
         title={"Recent Posts"}
@@ -40,6 +48,31 @@ export const query = graphql`
         frontmatter: {
           published: { eq: true }
           templateKey: { eq: "blog-post" }
+        }
+      }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          date(formatString: "MMMM Do, YYYY")
+          title
+        }
+        fields {
+          readingTime {
+            text
+          }
+          path
+        }
+      }
+    }
+    project: allMdx(
+      limit: 4
+      skip: 0
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: {
+        frontmatter: {
+          published: { eq: true }
+          templateKey: { eq: "project" }
         }
       }
     ) {
