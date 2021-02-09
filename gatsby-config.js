@@ -50,7 +50,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-relative-links`,
             options: {
-              domainRegex: /http[s]*:\/\/[www.]*yoursite\.com[/]?/,
+              domainRegex: /http[s]*:\/\/[www.]*patrickyoussef\.com[/]?/,
             },
           },
           {

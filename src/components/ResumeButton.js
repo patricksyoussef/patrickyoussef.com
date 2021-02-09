@@ -37,7 +37,7 @@ const Text = styled.div`
 `
 
 export const ResumeButton = () => (
-  <a href="resume.pdf" target="_blank" rel="nofollow">
+  <a href="http://patrickyoussef.com/resume.pdf" target="_blank" rel="nofollow">
     <Button>
       <Text>
         <div>Resume</div>
