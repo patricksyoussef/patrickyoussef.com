@@ -28,10 +28,12 @@ We represent a particular example as a vector of features and we store all these
 The forward propagation step is where we take an example and pass it through our model to yield a prediction. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with a function ($\sigma$) called the sigmoid function, $(1+\exp(-x))^{-1}$, we get the following:
 
 $$
-\hat{y_i} = \sigma (W^T X + b)
+\hat{y_i} = \sigma (W^T X_i + b)
 $$
 
-_*Personally, I prefer to move the bias into the matrix multiplication. This is done by adding a column of 1's to the end of X, essentially adding a dummy feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. The benefit of this is we do not need to compute gradients and create update rules just for b.*_
+Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
+
+_*Personally, I prefer to move the bias into the matrix multiplication. This is done by adding a column of 1's to the end of X, adding a feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. This helps to simplify the training procedure as you only need to train for $W'$! Moving forward, I will refer to $W'$ as just $W$.*_
 
 > $$
 > W^T X + b  = w_1 x_1 + ... + w_n x_n + b
@@ -45,11 +47,9 @@ _*Personally, I prefer to move the bias into the matrix multiplication. This is 
 > = W'X'
 > $$
 
-Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
-
 ![Plot of the sigmoid function](images/sigmoid.jpg)
 
-> How do we determine the values for $W$? Training!
+> How do we determine $W$? Training!
 
 # Training
 
@@ -107,7 +107,6 @@ As we have many parameters, helper functions, and repeated operations I will be 
 
 ```python
 class LogisticRegression():
-    def __init__(self):
 
     def sigmoid(self, z):
 
@@ -121,10 +120,10 @@ class LogisticRegression():
 ```
 
 - `sigmoid` will be where we write the sigmoid function
-- `prep_data` is where we will normalize our data
-- `add_dimension` is a helper function for appending the 1
+- `prep_data` is where we will normalize our data to between 0 and 1
+- `add_dimension` is a helper function for adding the column of 1's to $X$
 - `train` is where we will run the gradient descent iterations to determine our weights
-- `predict` is where we will forward propagate on unseen (test) data
+- `predict` is where we will forward propagate on unseen (test) data to estimate the classes
 
 Let's start with the `sigmoid` function, as mentioned before the function is $(1+\exp(-x))^{-1}$, using NumPy this is:
 
@@ -133,7 +132,7 @@ Let's start with the `sigmoid` function, as mentioned before the function is $(1
         return 1 / (1 + np.exp(-z))
 ```
 
-Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the dot product. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
+Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the result of $W^T X_i$. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
 
 ```python
     def prep_data(self, X):
@@ -143,6 +142,8 @@ Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_d
         return X
 
     def add_dimension(self, X):
+        # Stacks a vector of ones with the same number of rows as X
+        # horizontally on then end of X
         X_new = np.hstack((X, np.ones((X.shape[0], 1))))
 
         return X_new
@@ -162,9 +163,12 @@ The training process is going to be more involved, the comments explain what is 
         X_train = self.add_dimension(X_train)
 
         # Getting dimensions of the input X and starting weights out at small
-        # random numbers
-        N,D = X_train.shape
-        self.weights = np.random.random((D,1)) * 0.001
+        # random numbers, this helps train faster.
+        N, D = X_train.shape
+        self.weights = np.random.random((D, 1)) * 0.001
+
+        # Training started
+        print("Training Started")
 
         # Train Iterations
         for i in range(self.iterations):
@@ -175,9 +179,13 @@ The training process is going to be more involved, the comments explain what is 
 
             # Update weights using gradient descent
             self.weights = self.weights - self.learning_rate * grad
+
+            # Print an updates every 1000 iterations
+            if (i+1) % 1000 == 0:
+                print("Training Iteration: {}".format(i+1))
 ```
 
-To close out the model class, let's implement `predict` that computes the forward propagation of $X$.
+To close out the model class, let's implement `predict` that computes the forward propagation of our test data.
 
 ```python
     def predict(self, X_test):
@@ -187,10 +195,13 @@ To close out the model class, let's implement `predict` that computes the forwar
         X_test = self.add_dimension(X_test)
 
         # Compute the forward propagation and round to get {0,1}
-        A = self.sigmoid(np.dot(self.weights.T, X_test.T))
-        y_est = np.round(A)
+        # If the probability if below 0.5, y_est = 0
+        # If the probability is above 0.5, y_est = 1
+        # Rounding works well to do this!
+        test_probabilities = self.sigmoid(np.dot(self.weights.T, X_test.T))
+        y_predict = np.round(test_probabilities)
 
-        return y_est
+        return y_predict
 ```
 
 ## Data Import and Function Calls
@@ -220,9 +231,11 @@ We've made it! It's time to train our model and see how it does on the testing s
 ```python
 # Create an instance of our logistic regression class
 MyModel = LogisticRegression()
+
 # Train the model on the training set using a learning rate of 0.1
-# and 10000 iterations
+# and 5000 iterations
 MyModel.train(X_train, y_train, 0.1, 5000)
+
 # Get predictions for y_test
 y_test_est = MyModel.predict(X_test)
 ```
@@ -232,6 +245,7 @@ Now all we have to is compute the accuracy and see how we did.
 ```python
 # (Count of correct predictions) / (Total number of test samples)
 test_accuracy = np.sum(y_test == y_test_est) / y_test.size
+print("Accuracy on test: {}".format(test_accuracy))
 ```
 
 This results in an accuracy of around 74%! Considering the low number of features in the dataset this is a great result.
