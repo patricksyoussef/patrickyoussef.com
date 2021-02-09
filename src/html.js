@@ -18,29 +18,29 @@ export default function HTML(props) {
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
         <div
-            key={`loader`}
-            id="___loader"
-            style={{
-              alignItems: "center",
-              backgroundColor: "#F5F5F5",
-              display: "flex",
-              justifyContent: "center",
-              position: "absolute",
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 10,
-              opacity: 1,
-              transition: "0.25s ease-in-out",
-            }}
+          key={`loader`}
+          id="___loader"
+          style={{
+            alignItems: "center",
+            backgroundColor: "#F5F5F5",
+            display: "flex",
+            justifyContent: "center",
+            position: "absolute",
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 10,
+            opacity: 1,
+            transition: "0.15s ease-in-out",
+          }}
         >
-        <img 
-        src={LoaderSVG} 
-        alt="Loading spinner" 
-        width="90" 
-        height="90"
-        />
+          <img
+            src={LoaderSVG}
+            alt="Loading spinner"
+            width="70"
+            height="70"
+          />
         </div>
         <div
           key={`body`}

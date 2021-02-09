@@ -21,11 +21,11 @@ const GlobalStyles = createGlobalStyle`
 export const onInitialClientRender = () => {
   setTimeout(function() {
       document.getElementById("___loader").style.opacity = "0"
-  }, 600)
+  }, 350)
 
   setTimeout(function() {
       document.getElementById("___loader").style.display = "none"
-  }, 900)
+  }, 500)
 }
 
 export const wrapRootElement = ({ element }) => (
