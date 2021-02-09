@@ -30,7 +30,7 @@ export default function HTML(props) {
               top: 0,
               right: 0,
               bottom: 0,
-              zIndex: 1,
+              zIndex: 10,
               opacity: 1,
               transition: "0.25s ease-in-out",
             }}
