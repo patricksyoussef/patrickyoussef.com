@@ -4,7 +4,6 @@
 
 import { Link } from "gatsby"
 import React from "react"
-import { Underline } from "./Underline"
 import { ResumeButton } from "./ResumeButton"
 import styled from "styled-components"
 
@@ -32,17 +31,15 @@ const NavItems = styled.span`
 
 export const Header = () => (
   <Container>
-    <Underline>
-      <NavBar>
-        <Link to="/">
-          <h1>
-            Patrick<ColorText>.</ColorText>
-          </h1>
-        </Link>
-        <NavItems>
-          <ResumeButton />
-        </NavItems>
-      </NavBar>
-    </Underline>
+    <NavBar>
+      <Link to="/">
+        <h1>
+          Patrick<ColorText>.</ColorText>
+        </h1>
+      </Link>
+      <NavItems>
+        <ResumeButton />
+      </NavItems>
+    </NavBar>
   </Container>
 )

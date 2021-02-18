@@ -5,9 +5,8 @@ import { graphql } from "gatsby"
 import React from "react"
 import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
-import { Underline } from "../components/Underline"
-import { ListCard } from "../components/ListCard"
 import styled from "styled-components"
+import { IndexSection } from "../components/IndexSection"
 
 const Container = styled.div`
     margin: 0 auto;
@@ -15,20 +14,20 @@ const Container = styled.div`
 
 export default ({ data, pageContext }) => {
 
+  let title = "All ".concat(pageContext.tag).concat(" Posts")
+
   return (
     <Layout>
       <Helmet>
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
       <Container>
-        <Underline>
-          <h1>All Posts With Tag: {pageContext.tag}</h1>
-        </Underline>
-        <div>
-          {data.allMdx.nodes.map(({ frontmatter, fields }) => (
-            <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
-          ))}
-        </div>
+        <IndexSection
+        data={data.allMdx}
+        title={title}
+        linktext={"All posts"}
+        path={"/blog/"}
+        ></IndexSection>
       </Container>
     </Layout>
   )

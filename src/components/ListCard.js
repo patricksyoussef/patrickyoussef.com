@@ -9,6 +9,7 @@ const Container = styled.div`
   * {
     margin: 0;
   }
+  margin-bottom: 0.5rem;
 `
 const Post = styled.div`
   transition: ${props => props.theme.anims.link};
@@ -21,6 +22,10 @@ const Post = styled.div`
   &:hover {
     border-color: ${props => props.theme.colors.text_gray};
     box-shadow: ${props => props.theme.shadows.s1};
+
+    * {
+      border-color: ${props => props.theme.colors.blue};
+    }
   }
 
   &:hover p {
@@ -40,18 +45,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const TagCards = styled.div`
-margin-top: 0.6rem;
-display:flex;
-flex-direction: row;
-`
-
-const TagCard = styled.p`
-padding: 0.3rem;
-margin-right: 0.6rem;
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
+const Excerpt = styled.p`
+margin-top: 0.35rem;
 `
 
 export const ListCard = ({ frontmatter, fields }) => {
@@ -63,11 +58,9 @@ export const ListCard = ({ frontmatter, fields }) => {
           <p>
             {frontmatter.date} · {fields.readingTime.text}
           </p>
-          <TagCards>
-            {frontmatter.tags.map((tag) => (
-              <TagCard>{tag}</TagCard>
-            ))}
-          </TagCards>
+          <Excerpt>
+            {frontmatter.excerpt}
+          </Excerpt>
         </Post>
       </StyledLink>
     </Container>

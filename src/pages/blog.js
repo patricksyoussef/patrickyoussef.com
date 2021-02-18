@@ -12,7 +12,6 @@ const _ = require("lodash")
 
 const Container = styled.div`
   margin: 0 auto;
-  margin-top: 1rem;
 `
 
 const ContentWidth = styled.div`
@@ -21,23 +20,35 @@ const ContentWidth = styled.div`
 `
 
 const TagCards = styled.div`
-margin-top: 0.6rem;
+padding: 0.5rem 1rem;
 display:flex;
-flex-direction: row;
-justify-content: center;
+flex-wrap: wrap;
+margin: 0rem 0rem;
+margin-bottom: 1rem;
+border-left: solid 0.3rem;
+border-left-color: ${props => props.theme.colors.blue};
+background-color: ${props => props.theme.colors.bqbg};
+border-radius: 0.3rem;
 `
 
-const TagCard = styled.p`
+const TagCard = styled.div`
 padding: 0.5rem;
-margin-right: 0.6rem;
 border-style: solid;
 border-width: 1px;
 border-radius: 5px;
+margin: 0.3rem 0;
+margin-right: 0.6rem;
+border-color: ${props => props.theme.colors.blue};
+transition: ${props => props.theme.anims.button};
+background-color: ${props => props.theme.colors.light1};
+&:hover {
+    background-color: ${props => props.theme.colors.res_button};
+  }
 `
 
 export default ({ data }) => {
 
-  console.log(data)
+  let tag_list = data.tags.group
 
   return (
     <Layout>
@@ -46,15 +57,18 @@ export default ({ data }) => {
       </Helmet>
       <Container>
         <Underline>
+          <h1>
+            All Posts
+          </h1>
+        </Underline>
+        <ContentWidth>
           <TagCards>
-            {data.tags.group.map(({ fieldValue }) => (
+            {tag_list.sort((a, b) => (b.totalCount - a.totalCount)).map(({ fieldValue }) => (
               <Link to={"tags/".concat(_.kebabCase(fieldValue))}>
                 <TagCard>{fieldValue}</TagCard>
               </Link>
             ))}
           </TagCards>
-        </Underline>
-        <ContentWidth>
           {data.blog.nodes.map(({ frontmatter, fields }) => (
             <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
           ))}
