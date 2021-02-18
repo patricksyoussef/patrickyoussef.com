@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { ResumeButton } from "./ResumeButton"
 import styled from "styled-components"
+import { Underline } from "./Underline"
 
 const Container = styled.div`
   margin-bottom: 0rem;
@@ -31,15 +32,17 @@ const NavItems = styled.span`
 
 export const Header = () => (
   <Container>
-    <NavBar>
-      <Link to="/">
-        <h1>
-          Patrick<ColorText>.</ColorText>
-        </h1>
-      </Link>
-      <NavItems>
-        <ResumeButton />
-      </NavItems>
-    </NavBar>
+    <Underline>
+      <NavBar>
+          <Link to="/">
+            <h1>
+              Patrick<ColorText>.</ColorText>
+            </h1>
+          </Link>
+        <NavItems>
+          <ResumeButton />
+        </NavItems>
+      </NavBar>
+    </Underline>
   </Container>
 )

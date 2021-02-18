@@ -45,9 +45,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Excerpt = styled.p`
-margin-top: 0.35rem;
-`
 
 export const ListCard = ({ frontmatter, fields }) => {
   return (
@@ -58,9 +55,6 @@ export const ListCard = ({ frontmatter, fields }) => {
           <p>
             {frontmatter.date} · {fields.readingTime.text}
           </p>
-          <Excerpt>
-            {frontmatter.excerpt}
-          </Excerpt>
         </Post>
       </StyledLink>
     </Container>
