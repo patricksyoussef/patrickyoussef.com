@@ -91,7 +91,7 @@ export const Feature = ({ frontmatter, fields }) => {
           <Title>{frontmatter.title}</Title>
           <SubTitle>
             <p>{frontmatter.date}</p>
-            <Spacer>|</Spacer>
+            <Spacer>·</Spacer>
             <p>{fields.readingTime.text}</p>
           </SubTitle>
         </Centering>

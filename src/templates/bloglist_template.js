@@ -13,7 +13,7 @@ const Container = styled.div`
   margin: 0 auto;
 `
 
-export default ({ data }) => {
+export default ({ data, pageContext }) => {
 
   return (
     <Layout>
@@ -52,6 +52,8 @@ export const query = graphql`
           slug
           title
           date(formatString: "YYYY MMMM Do")
+          excerpt
+          tags
         }
         fields {
           readingTime {

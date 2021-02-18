@@ -54,6 +54,8 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          excerpt
+          tags
         }
         fields {
           readingTime {

@@ -6,8 +6,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Container = styled.div`
-  padding: 0.5rem 0rem;
-  margin: 0rem ${props => props.theme.spacings.wall};
   * {
     margin: 0;
   }
@@ -35,22 +33,41 @@ const Post = styled.div`
   }
 
   h2 {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0rem;
   }
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-export const ListCard = ({ frontmatter, fields, excerpt }) => {
+const TagCards = styled.div`
+margin-top: 0.6rem;
+display:flex;
+flex-direction: row;
+`
+
+const TagCard = styled.p`
+padding: 0.3rem;
+margin-right: 0.6rem;
+border-style: solid;
+border-width: 1px;
+border-radius: 5px;
+`
+
+export const ListCard = ({ frontmatter, fields }) => {
   return (
     <Container>
       <StyledLink to={fields.path}>
         <Post>
           <h2>{frontmatter.title}</h2>
           <p>
-            {frontmatter.date} - {fields.readingTime.text}
+            {frontmatter.date} · {fields.readingTime.text}
           </p>
+          <TagCards>
+            {frontmatter.tags.map((tag) => (
+              <TagCard>{tag}</TagCard>
+            ))}
+          </TagCards>
         </Post>
       </StyledLink>
     </Container>
