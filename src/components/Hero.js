@@ -47,10 +47,6 @@ const Contact = styled.div`
 const Buttons = styled.div`
   display: flex;
   max-width: 310px;
-
-  .space {
-    padding-left: 0.8rem;
-  }
 `
 
 export const Hero = () => (
@@ -66,13 +62,6 @@ export const Hero = () => (
           <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
             <ContactButton>
               <Contact>Get In Touch</Contact>
-            </ContactButton>
-          </a>
-        </div>
-        <div class="space">
-          <a href="about">
-            <ContactButton>
-              <Contact>About</Contact>
             </ContactButton>
           </a>
         </div>

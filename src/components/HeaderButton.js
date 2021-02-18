@@ -36,11 +36,11 @@ const Text = styled.div`
   }
 `
 
-export const ResumeButton = () => (
-  <a href="http://patrickyoussef.com/resume.pdf" target="_blank" rel="noreferrer">
+export const HeaderButton = ({ href, target, text }) => (
+  <a href={href} target={target} rel="noreferrer">
     <Button>
       <Text>
-        <div>Resume</div>
+        <div>{text}</div>
       </Text>
     </Button>
   </a>
