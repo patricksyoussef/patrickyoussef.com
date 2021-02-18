@@ -5,19 +5,12 @@ import { graphql, Link } from "gatsby"
 import React from "react"
 import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
-import { Underline } from "../components/Underline"
-import { ListCard } from "../components/ListCard"
 import styled from "styled-components"
 import { IndexSection } from "../components/IndexSection"
 const _ = require("lodash")
 
 const Container = styled.div`
   margin: 0 auto;
-`
-
-const ContentWidth = styled.div`
-  padding: 0.5rem 0rem;
-  margin: 0rem ${props => props.theme.spacings.wall};
 `
 
 const TagCards = styled.div`
