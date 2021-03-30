@@ -8,6 +8,7 @@ import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import BackgroundImage from "gatsby-background-image"
 
 const Container = styled.div`
 display: flex;
@@ -15,17 +16,33 @@ justify-content: center;
 align-items: center;
 `
 
-const TextBox = styled.div`
-
-display: flex;
+const ContentBox = styled.div`
 
 border-style: solid;
 border-width: 1px;
 border-radius:15px;
-max-width: ${props => props.theme.widths.content};
-margin: 3rem auto;
 box-shadow: ${props => props.theme.shadows.s1};
 overflow: hidden;
+display: flex;
+max-width: ${props => props.theme.widths.content};
+margin: 1rem auto;
+`
+
+const Grid = styled.div`
+display: grid;
+grid-template-columns: 2fr 1fr;
+@media (max-width: 800px) {
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+`
+
+const Image = styled.div`
+* {
+  height: 100%;
+  @media (max-width: 800px) {
+    min-height: 300px;
+  }
+}
 `
 
 const Content = styled.div`
@@ -35,6 +52,7 @@ padding: 0 1rem;
 export default function Home({ data }) {
   const { site, about } = data
   const { frontmatter, body } = about.nodes[0]
+  let featureImg = frontmatter.featureImage.childImageSharp.fluid
   return (
     <Layout>
       <Container>
@@ -43,11 +61,16 @@ export default function Home({ data }) {
             {frontmatter.title} | {site.siteMetadata.title}
           </title>
         </Helmet>
-        <TextBox>
-          <Content>
-            <MDXRenderer>{body}</MDXRenderer>
-          </Content>
-        </TextBox>
+        <ContentBox>
+          <Grid>
+            <Content>
+              <MDXRenderer>{body}</MDXRenderer>
+            </Content>
+            <Image>
+              <BackgroundImage fluid={featureImg}></BackgroundImage>
+            </Image>
+          </Grid>
+        </ContentBox>
       </Container>
     </Layout>
   )
