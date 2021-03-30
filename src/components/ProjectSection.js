@@ -10,8 +10,8 @@ const Grid = styled.div`
     padding: 1rem 0;
     margin: 0rem ${props => props.theme.spacings.wall};
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 1.25rem;
 `
 
 const TopContent = styled.span`
@@ -36,6 +36,8 @@ const TestCard = styled.div`
 width: 100%;
 height: 220px;
 background-color: blue;
+
+border-radius: 7px;
 `
 
 export const ProjectSection = ( { data, title, path, linktext } ) => (
