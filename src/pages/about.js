@@ -38,9 +38,11 @@ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
 const Image = styled.div`
 * {
-  height: 100%;
+  @media (max-width: 6000px) {
+    height: 100%
+  }
   @media (max-width: 800px) {
-    min-height: 300px;
+    min-height: 360px;
   }
 }
 `
