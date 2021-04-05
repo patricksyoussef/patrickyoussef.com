@@ -23,6 +23,8 @@ const Content = styled.div`
 margin: 0rem ${props => props.theme.spacings.wall};
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 0.5rem 0rem;
+  margin: 0rem ${props => props.theme.spacings.wall};
 `
 
 const LinkText = styled.h3`
@@ -47,11 +49,10 @@ export const IndexSection = ({ data, title, path, linktext }) => (
       </Underline>
     </div>
     <Content>
-      {data.nodes.map(({ frontmatter, fields, excerpt }) => (
+      {data.nodes.map(({ frontmatter, fields }) => (
         <ListCard
           frontmatter={frontmatter}
           fields={fields}
-          excerpt={excerpt}
         ></ListCard>
       ))}
     </Content>

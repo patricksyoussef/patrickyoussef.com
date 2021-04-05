@@ -4,9 +4,9 @@
 
 import { Link } from "gatsby"
 import React from "react"
-import { Underline } from "./Underline"
-import { ResumeButton } from "./ResumeButton"
 import styled from "styled-components"
+import { Underline } from "./Underline"
+import {HeaderButton} from "./HeaderButton"
 
 const Container = styled.div`
   margin-bottom: 0rem;
@@ -40,7 +40,16 @@ export const Header = () => (
           </h1>
         </Link>
         <NavItems>
-          <ResumeButton />
+          <HeaderButton
+            href = {"/about/"}
+            target={""}
+            text="About"
+          ></HeaderButton>
+          <HeaderButton
+            href = {"/resume.pdf"}
+            target={"_blank"}
+            text="Resume"
+          ></HeaderButton>
         </NavItems>
       </NavBar>
     </Underline>

@@ -7,7 +7,7 @@ export default {
   colors: {
     main1: "hsl(205, 70%, 60%)",
     dark1: "hsl(225, 2%, 10%)",
-    light1: "hsl(0,0%,96%)",
+    light1: "hsl(0,0%,97%)",
     blue: "#185fb8",
     blue_button: "rgba(24, 95, 184, 0.8);",
     code_background: "#1d1f21",

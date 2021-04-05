@@ -4,18 +4,27 @@ const _ = require("lodash")
 module.exports = {
   siteMetadata: {
     title: `Patrick Youssef`,
+    description: `Patrick Youssef. Coding blog and my home on the web. Currently a master's candidate at the University of California, San Diego. `,
     siteUrl: `https://www.patrickyoussef.com`,
-    description: `A landing page for all things Patrick`,
+    keywords: ["gatsby", "blog", "robotics", "python"],
+    image: "./src/favicon.png",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-remark-reading-time`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+          policy: [{ userAgent: `*`, allow: `/` }],
       },
     },
     {
@@ -50,7 +59,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-relative-links`,
             options: {
-              domainRegex: /http[s]*:\/\/[www.]*yoursite\.com[/]?/,
+              domainRegex: /http[s]*:\/\/[www.]*patrickyoussef\.com[/]?/,
             },
           },
           {

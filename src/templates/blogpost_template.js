@@ -119,7 +119,7 @@ const Content = styled.div`
 
   blockquote {
     background-color: ${props => props.theme.colors.bqbg};
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.6rem;
     border-left-style: solid;
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};

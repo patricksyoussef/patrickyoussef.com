@@ -5,7 +5,6 @@ import "./src/styles/sanitize.css"
 require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
-
   html {
       font-size: 15px;
     }
@@ -18,6 +17,19 @@ const GlobalStyles = createGlobalStyle`
     html { font-size: 13px; }
   }
 `
+
+export const onInitialClientRender = () => {
+
+  const loadTimer = 450
+  const animTimer = loadTimer + 150
+  setTimeout(function() {
+      document.getElementById("___loader").style.opacity = "0"
+  }, loadTimer)
+
+  setTimeout(function() {
+      document.getElementById("___loader").style.display = "none"
+  }, animTimer)
+}
 
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>

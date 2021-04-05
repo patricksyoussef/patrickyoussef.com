@@ -48,7 +48,7 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1;
 `
 const Title = styled.span`
   font-size: 1.9rem;
@@ -91,7 +91,7 @@ export const Feature = ({ frontmatter, fields }) => {
           <Title>{frontmatter.title}</Title>
           <SubTitle>
             <p>{frontmatter.date}</p>
-            <Spacer>|</Spacer>
+            <Spacer>·</Spacer>
             <p>{fields.readingTime.text}</p>
           </SubTitle>
         </Centering>

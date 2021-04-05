@@ -14,7 +14,11 @@ export default ({ data }) => {
   return (
     <Layout>
       <Helmet>
+        <html lang="en" />
         <title>{data.site.siteMetadata.title}</title>
+        <description>{data.site.siteMetadata.description}</description>
+        <link rel="canonical" href={data.site.siteMetadata.siteUrl}/>
+        <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
       <Hero />
       <ProjectSection
@@ -38,6 +42,8 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
+        siteUrl
       }
     }
     blog: allMdx(
@@ -56,6 +62,8 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          excerpt
+          tags
         }
         fields {
           readingTime {

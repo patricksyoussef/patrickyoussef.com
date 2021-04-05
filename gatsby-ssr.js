@@ -5,7 +5,6 @@ import "./src/styles/sanitize.css"
 require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
-
   html {
       font-size: 15px;
     }

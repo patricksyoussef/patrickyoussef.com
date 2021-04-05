@@ -6,11 +6,10 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Container = styled.div`
-  padding: 0.5rem 0rem;
-  margin: 0rem;
   * {
     margin: 0;
   }
+  margin-bottom: 0.5rem;
 `
 const Post = styled.div`
   transition: ${props => props.theme.anims.link};
@@ -23,6 +22,10 @@ const Post = styled.div`
   &:hover {
     border-color: ${props => props.theme.colors.text_gray};
     box-shadow: ${props => props.theme.shadows.s1};
+
+    * {
+      border-color: ${props => props.theme.colors.blue};
+    }
   }
 
   &:hover p {
@@ -35,21 +38,22 @@ const Post = styled.div`
   }
 
   h2 {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0rem;
   }
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-export const ListCard = ({ frontmatter, fields, excerpt }) => {
+
+export const ListCard = ({ frontmatter, fields }) => {
   return (
     <Container>
       <StyledLink to={fields.path}>
         <Post>
           <h2>{frontmatter.title}</h2>
           <p>
-            {frontmatter.date} - {fields.readingTime.text}
+            {frontmatter.date} · {fields.readingTime.text}
           </p>
         </Post>
       </StyledLink>
