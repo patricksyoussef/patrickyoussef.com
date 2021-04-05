@@ -74,7 +74,7 @@ export const query = graphql`
       }
     }
     project: allMdx(
-      limit: 4
+      limit: 3
       skip: 0
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
@@ -89,6 +89,13 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          featureImage {
+            childImageSharp {
+              fluid(fit: COVER, cropFocus: CENTER) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         fields {
           readingTime {

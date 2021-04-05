@@ -17,15 +17,11 @@ const Post = styled.div`
   border-style: solid;
   border-width: 1px;
   border-color: transparent;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
 
   &:hover {
     border-color: ${props => props.theme.colors.text_gray};
     box-shadow: ${props => props.theme.shadows.s1};
-
-    * {
-      border-color: ${props => props.theme.colors.blue};
-    }
   }
 
   &:hover p {

@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import { Underline } from "./Underline"
 import styled from "styled-components"
+import { ProjectCard } from "./ProjectCard"
 
 const Container = styled.div`
 `
@@ -32,31 +33,24 @@ const LinkText = styled.h3`
   }
 `
 
-const TestCard = styled.div`
-width: 100%;
-height: 220px;
-background-color: blue;
-
-border-radius: 7px;
-`
-
 export const ProjectSection = ( { data, title, path, linktext } ) => (
     <Container>
-        <div>
-            <Underline>
-                <TopContent>
-                <h1>{title}</h1>
-                <Link to={path}>
-                    <LinkText>{linktext}</LinkText>
-                </Link>
-                </TopContent>
-            </Underline>
-        </div>
-        <Grid>
-            <TestCard></TestCard>
-            <TestCard></TestCard>
-            <TestCard></TestCard>
-        </Grid>
+      <Underline>
+          <TopContent>
+          <h1>{title}</h1>
+          <Link to={path}>
+              <LinkText>{linktext}</LinkText>
+          </Link>
+          </TopContent>
+      </Underline>
+      <Grid>
+        {data.nodes.map(({ frontmatter, fields }) => (
+          <ProjectCard
+            frontmatter={frontmatter}
+            fields={fields}
+          ></ProjectCard>
+        ))}
+      </Grid>
     </Container>
   )
   
