@@ -40,8 +40,7 @@ export const Socials = () => (
       <a
         href="https://github.com/patricksyoussef"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         <FontAwesomeIcon icon={["fab", "github"]} className="SocialItem" />
       </a>
     </SocialItem>
@@ -49,8 +48,7 @@ export const Socials = () => (
       <a
         href="https://www.linkedin.com/in/patricksyoussef/"
         target="_blank"
-        rel="noreferrer"
-      >
+        rel="noreferrer">
         <FontAwesomeIcon icon={["fab", "linkedin"]} className="SocialItem" />
       </a>
     </SocialItem>

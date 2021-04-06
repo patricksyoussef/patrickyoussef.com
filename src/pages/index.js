@@ -10,7 +10,7 @@ import { ProjectSection } from "../components/ProjectSection"
 import { Helmet } from "react-helmet"
 
 export default ({ data }) => {
-  console.log(data.project)
+  
   return (
     <Layout>
       <Helmet>
@@ -25,14 +25,12 @@ export default ({ data }) => {
         data={data.project}
         title={"Projects"}
         linktext={"All Projects"}
-        path={"/projects/"}
-      ></ProjectSection>
+        path={"/projects/"} />
       <IndexSection
         data={data.blog}
         title={"Recent Posts"}
         linktext={"All posts"}
-        path={"/blog/"}
-      ></IndexSection>
+        path={"/blog/"} />
     </Layout>
   )
 }
@@ -74,13 +72,12 @@ export const query = graphql`
       }
     }
     project: allMdx(
-      limit: 3
-      skip: 0
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {
           published: { eq: true }
           templateKey: { eq: "project" }
+          pinned: {eq: true}
         }
       }
     ) {

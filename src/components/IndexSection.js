@@ -52,8 +52,7 @@ export const IndexSection = ({ data, title, path, linktext }) => (
       {data.nodes.map(({ frontmatter, fields }) => (
         <ListCard
           frontmatter={frontmatter}
-          fields={fields}
-        ></ListCard>
+          fields={fields} />
       ))}
     </Content>
   </Container>

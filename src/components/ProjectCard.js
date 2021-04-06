@@ -9,9 +9,12 @@ import BackgroundImage from "gatsby-background-image"
 const StyledLink = styled(Link)`
   text-decoration: none;
 `
-
 const Card = styled.div`
-transition: ${props => props.theme.anims.project};
+
+* {
+  transition: ${props => props.theme.anims.project};
+}
+
 width: 100%;
 height: 220px;
 
@@ -19,6 +22,7 @@ border-style: solid;
 border-width: 1px;
 border-radius: 0.5rem;
 border-color: ${props => props.theme.colors.text_gray};
+box-shadow: ${props => props.theme.shadows.s1};
 
 overflow: hidden;
 
@@ -27,17 +31,19 @@ overflow: hidden;
 }
 
 &:hover .grid_img:after {
+  transition: ${props => props.theme.anims.project};
   background: rgba(255, 255, 255, 0.0);
 }
-`
 
+&:hover p {
+  color: black;
+}
+`
 const Grid = styled.div`
   display: grid;
   height: 100%;
-
   grid-template-rows: 2.5fr 1fr;
 `
-
 const GridImage = styled.div`
   margin: 0rem;
   display: flex;
@@ -57,23 +63,29 @@ const GridImage = styled.div`
   }
 
   &:after {
-    transition: ${props => props.theme.anims.project};
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(24, 95, 184, 0.4);
+    transition: ${props => props.theme.anims.project};
+    background: rgba(24, 95, 184, 0.2);
   }
 `
 
 const Text = styled.div`
 border-top-style: solid;
-border-width: 0px;
-border-color: ${props => props.theme.colors.und};
-padding: 0.7rem;
+border-width: 1px;
+border-color: ${props => props.theme.colors.blue};
+padding: 0.5rem 0.75rem;
+
 
 h2,h3,h4,p {
   margin: 0;
+}
+
+p {
+  
+  color: ${props => props.theme.colors.text_gray};
 }
 `
 

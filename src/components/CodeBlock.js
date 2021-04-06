@@ -14,10 +14,8 @@ const CodeBlock = styled.div`
   border-width: 1px;
   margin-bottom: 1rem;
   background: ${props => props.theme.colors.code_background};
-
   overflow: hidden;
 `
-
 const Block = styled.div`
   padding: 0rem;
 
@@ -28,7 +26,7 @@ const Block = styled.div`
 
   .prism-code {
     margin: 0;
-    padding: 0.9rem;
+    padding: 0.6rem 0.8rem;
     padding-top: 0rem;
   }
 
@@ -50,6 +48,7 @@ const Toolbar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 0.7rem;
+  padding-bottom: 0.4rem;
   font-family: ${props => props.theme.fonts.sub};
   div,
   button {
@@ -66,6 +65,10 @@ const CopyButton = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+
+  .copy-text {
+    font-size: 0.9rem;
   }
 `
 
@@ -135,9 +138,10 @@ export default ({ children, className }) => {
                     copyToClipboard(children)
                     setIsCopied(true)
                     setTimeout(() => setIsCopied(false), 2000)
-                  }}
-                >
-                  {isCopied ? "Copied" : "Copy"}
+                  }}>
+                    <div className="copy-text">
+                      {isCopied ? "Copied" : "Copy"}
+                    </div>
                 </CopyButton>
               </Toolbar>
               <pre className={className} style={{ ...style }}>

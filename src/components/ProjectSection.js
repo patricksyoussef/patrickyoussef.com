@@ -6,7 +6,6 @@ import { ProjectCard } from "./ProjectCard"
 
 const Container = styled.div`
 `
-
 const Grid = styled.div`
     padding: 1rem 0;
     margin: 0rem ${props => props.theme.spacings.wall};
@@ -14,7 +13,6 @@ const Grid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-gap: 1.25rem;
 `
-
 const TopContent = styled.span`
   * {
     margin: 0.2rem 0;
@@ -23,7 +21,6 @@ const TopContent = styled.span`
   justify-content: space-between;
   align-items: center;
 `
-
 const LinkText = styled.h3`
   color: ${props => props.theme.colors.text_gray};
   transition: ${props => props.theme.anims.link};
@@ -47,8 +44,7 @@ export const ProjectSection = ( { data, title, path, linktext } ) => (
         {data.nodes.map(({ frontmatter, fields }) => (
           <ProjectCard
             frontmatter={frontmatter}
-            fields={fields}
-          ></ProjectCard>
+            fields={fields} />
         ))}
       </Grid>
     </Container>
