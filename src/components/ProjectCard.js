@@ -75,7 +75,7 @@ const GridImage = styled.div`
 const Text = styled.div`
 border-top-style: solid;
 border-width: 1px;
-border-color: ${props => props.theme.colors.blue};
+border-color: ${props => props.theme.colors.text_gray};
 padding: 0.5rem 0.75rem;
 
 
