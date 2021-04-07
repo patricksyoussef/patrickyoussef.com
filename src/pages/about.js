@@ -11,44 +11,39 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import BackgroundImage from "gatsby-background-image"
 
 const Container = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
-
 const ContentBox = styled.div`
-
-border-style: solid;
-border-width: 1px;
-border-radius:15px;
-box-shadow: ${props => props.theme.shadows.s1};
-overflow: hidden;
-display: flex;
-max-width: ${props => props.theme.widths.content};
-margin: 1rem auto;
-`
-
-const Grid = styled.div`
-display: grid;
-grid-template-columns: 2fr 1fr;
-@media (max-width: 800px) {
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-`
-
-const Image = styled.div`
-* {
-  @media (max-width: 6000px) {
-    height: 100%
-  }
+  border-style: solid;
+  border-width: 1px;
+  border-radius:15px;
+  box-shadow: ${props => props.theme.shadows.s1};
+  overflow: hidden;
+  display: flex;
+  max-width: ${props => props.theme.widths.content};
+  margin: 1rem auto;
+  `
+  const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   @media (max-width: 800px) {
-    min-height: 360px;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 `
-
+const Image = styled.div`
+  * {
+    @media (max-width: 6000px) {
+      height: 100%
+    }
+    @media (max-width: 800px) {
+      min-height: 360px;
+    }
+}
+`
 const Content = styled.div`
-padding: 0 1rem;
+  padding: 0 1rem;
 `
 
 export default function Home({ data }) {
@@ -69,7 +64,7 @@ export default function Home({ data }) {
               <MDXRenderer>{body}</MDXRenderer>
             </Content>
             <Image>
-              <BackgroundImage fluid={featureImg}></BackgroundImage>
+              <BackgroundImage fluid={featureImg}/>
             </Image>
           </Grid>
         </ContentBox>

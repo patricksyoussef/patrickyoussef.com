@@ -29,8 +29,12 @@ function hexToRgb(hex) {
   }
 
 const TextBox = styled.div`
-  padding: 0.25rem;
+  padding: 0.15rem 0.25rem;
   border-radius: 0.25rem;
+
+  .lang-text {
+    font-size: 0.9rem;
+  }
 `
 
 export const CodeBlockFlag = ({ lang }) => {
@@ -38,5 +42,9 @@ export const CodeBlockFlag = ({ lang }) => {
     const ColRGB = hexToRgb(result['bg'])
     const backString = `rgba(${ColRGB.r}, ${ColRGB.g}, ${ColRGB.b}, 0.65)`
 
-    return <TextBox style={{backgroundColor: backString}}>{result['new_name']}</TextBox>
+    return <TextBox style={{backgroundColor: backString}}>
+        <div className="lang-text">
+          {result['new_name']}
+        </div>
+      </TextBox>
 }

@@ -9,36 +9,34 @@ const _ = require("lodash")
 const Container = styled.div`
   margin: 0 auto;
 `
-
 const TagCards = styled.div`
-padding: 0.5rem 1rem;
-display:flex;
-flex-wrap: wrap;
-margin: 0rem 0rem;
-margin-bottom: 1rem;
-border-left: solid 0.3rem;
-border-left-color: ${props => props.theme.colors.blue};
-background-color: ${props => props.theme.colors.bqbg};
-border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  display:flex;
+  flex-wrap: wrap;
+  margin: 0rem 0rem;
+  margin-bottom: 1rem;
+  border-left: solid 0.3rem;
+  border-left-color: ${props => props.theme.colors.blue};
+  background-color: ${props => props.theme.colors.bqbg};
+  border-radius: 0.3rem;
 `
-
 const TagCard = styled.div`
-padding: 0.5rem;
-border-style: solid;
-border-width: 1px;
-border-radius: 5px;
-margin: 0.3rem 0;
-margin-right: 0.6rem;
-border-color: ${props => props.theme.colors.blue};
-transition: ${props => props.theme.anims.button};
-background-color: ${props => props.theme.colors.light1};
-&:hover {
-    background-color: ${props => props.theme.colors.res_button};
-  }
+  padding: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 0.3rem 0;
+  margin-right: 0.6rem;
+  border-color: ${props => props.theme.colors.blue};
+  transition: ${props => props.theme.anims.button};
+  background-color: ${props => props.theme.colors.light1};
+  &:hover {
+      background-color: ${props => props.theme.colors.res_button};
+    }
 `
-
 const Filters = styled.div`
-margin: 2rem 0rem;`
+  margin: 2rem 0rem;
+`
 
 export default ({ data }) => {
 
@@ -67,8 +65,7 @@ export default ({ data }) => {
           data={data.blog}
           title={"All Posts"}
           linktext={""}
-          path={"/blog/"}
-      ></IndexSection>
+          path={"/blog/"}/>
       </Container>
     </Layout>
   )

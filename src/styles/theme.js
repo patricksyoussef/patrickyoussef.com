@@ -25,7 +25,7 @@ export default {
     tablet: "only screen and (max-width: 65rem)",
   },
   spacings: {
-    wall: "1rem",
+    wall: "2rem",
     xxs: "0.25rem",
     xs: "0.5rem",
     s: "1rem",
@@ -37,6 +37,7 @@ export default {
   anims: {
     button: "0.3s ease-in-out",
     link: "0.2s ease-in-out",
+    project: "0.2s ease-in-out",
   },
   shadows: {
     s1: "5px 5px 5px 0px rgba(0, 0, 0, 0.2)",

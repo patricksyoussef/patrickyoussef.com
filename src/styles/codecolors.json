@@ -14,5 +14,17 @@
   "cpp": {
     "name": "C++",
     "color": "#f34b7d"
+  },
+  "javascript": {
+    "name": "JS",
+    "color": "#f1e05a"
+  },
+  "markdown": {
+    "name": "Markdown",
+    "color": "#083fa1"
+  },
+  "graphql": {
+    "name": "GraphQL",
+    "color": "#e10098"
   }
 }

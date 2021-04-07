@@ -6,9 +6,11 @@ import { graphql } from "gatsby"
 import { Layout } from "../components/Layout"
 import { Hero } from "../components/Hero"
 import { IndexSection } from "../components/IndexSection"
+import { ProjectSection } from "../components/ProjectSection"
 import { Helmet } from "react-helmet"
 
 export default ({ data }) => {
+  
   return (
     <Layout>
       <Helmet>
@@ -19,12 +21,16 @@ export default ({ data }) => {
         <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
       <Hero />
+      <ProjectSection
+        data={data.project}
+        title={"Projects"}
+        linktext={"All Projects"}
+        path={"/projects/"} />
       <IndexSection
         data={data.blog}
         title={"Recent Posts"}
         linktext={"All posts"}
-        path={"/blog/"}
-      ></IndexSection>
+        path={"/blog/"} />
     </Layout>
   )
 }
@@ -56,6 +62,37 @@ export const query = graphql`
           title
           excerpt
           tags
+        }
+        fields {
+          readingTime {
+            text
+          }
+          path
+        }
+      }
+    }
+    project: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: {
+        frontmatter: {
+          published: { eq: true }
+          templateKey: { eq: "project" }
+          pinned: {eq: true}
+        }
+      }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          date(formatString: "MMMM Do, YYYY")
+          title
+          featureImage {
+            childImageSharp {
+              fluid(fit: COVER, cropFocus: CENTER) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         fields {
           readingTime {

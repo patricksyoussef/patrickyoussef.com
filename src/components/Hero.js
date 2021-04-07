@@ -54,7 +54,7 @@ export const Hero = () => (
     <Content>
       <Header>Hello,</Header>
       <Sub>
-        I'm Patrick Youssef, an avid roboticist and master's candidate at the
+        I'm Patrick Youssef, an avid roboticist and a master's candidate at the
         University of California, San Diego.
       </Sub>
       <Buttons>

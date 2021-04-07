@@ -25,7 +25,6 @@ const Button = styled.div`
   &:hover div {
   }
 `
-
 const Text = styled.div`
   font-size: 1rem;
   font-weight: 700;
@@ -39,9 +38,7 @@ const Text = styled.div`
 export const HeaderButton = ({ href, target, text }) => (
   <a href={href} target={target} rel="noreferrer">
     <Button>
-      <Text>
-        <div>{text}</div>
-      </Text>
+      <Text>{text}</Text>
     </Button>
   </a>
 )
