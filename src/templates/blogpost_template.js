@@ -27,7 +27,7 @@ const Container = styled.div`
       box-shadow: ${props => props.theme.shadows.s1};
 
       border: solid 1px;
-      border-radius: 0.5rem;
+      border-radius: 0.3rem;
       border-color: ${props => props.theme.colors.text_gray};
   }
 
