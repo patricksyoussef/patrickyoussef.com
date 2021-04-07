@@ -12,7 +12,7 @@ const Content = styled.div``
 const Header = styled.div`
   font-family: ${props => props.theme.fonts.code};
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
 `
 const Sub = styled.div`
   font-family: ${props => props.theme.fonts.main};
