@@ -210,33 +210,43 @@ X = data[0]
 y = data[1]
 
 # Test Train Split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30,
+                                                    random_state=1)
 ```
 
 ## Running the Model
 
 We've made it! It's time to train our model and see how it does on the testing set! The following code will help you out:
 
-```python
+```python{out=7}
 # Create an instance of our logistic regression class
 MyModel = LogisticRegression()
 
 # Train the model on the training set using a learning rate of 0.1
-# and 500 iterations
-MyModel.train(X_train, y_train, 0.1, 500)
+# and 300 iterations
+MyModel.train(X_train, y_train, 0.1, 300)
 
 # Prep test data and get predictions for y_test
 X_test = MyModel.prep_data(X_test)
 X_test = MyModel.add_dimension(X_test)
 y_test_est = MyModel.predict(X_test)
+
+Training Accuracy on Iteration 50: 0.8894
+Training Accuracy on Iteration 100: 0.9196
+Training Accuracy on Iteration 150: 0.9221
+Training Accuracy on Iteration 200: 0.9271
+Training Accuracy on Iteration 250: 0.9271
+Training Accuracy on Iteration 300: 0.9271
 ```
 
 Now all we have to is compute the accuracy and see how we did.
 
-```python
+```python{out=2}
 # (Count of correct predictions) / (Total number of test samples)
 test_accuracy = np.sum(y_test == y_test_est) / y_test.size
-print("Test Accuracy: {:0.3f}".format(test_accuracy))
+print("Test Accuracy: {:0.5f}".format(test_accuracy))
+
+Test Accuracy: 0.91228
 ```
 
 This results in an accuracy of around 74%! Considering the low number of features in the dataset this is a great result.
