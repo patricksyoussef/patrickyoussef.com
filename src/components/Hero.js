@@ -12,7 +12,7 @@ const Content = styled.div``
 const Header = styled.div`
   font-family: ${props => props.theme.fonts.code};
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 600;
 `
 const Sub = styled.div`
   font-family: ${props => props.theme.fonts.main};
@@ -47,10 +47,6 @@ const Contact = styled.div`
 const Buttons = styled.div`
   display: flex;
   max-width: 310px;
-
-  .space {
-    padding-left: 0.8rem;
-  }
 `
 
 export const Hero = () => (
@@ -58,7 +54,7 @@ export const Hero = () => (
     <Content>
       <Header>Hello,</Header>
       <Sub>
-        I'm Patrick Youssef, an avid roboticist and master's candidate at the
+        I'm Patrick Youssef, an avid roboticist and a master's candidate at the
         University of California, San Diego.
       </Sub>
       <Buttons>
@@ -66,13 +62,6 @@ export const Hero = () => (
           <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
             <ContactButton>
               <Contact>Get In Touch</Contact>
-            </ContactButton>
-          </a>
-        </div>
-        <div class="space">
-          <a href="about">
-            <ContactButton>
-              <Contact>About</Contact>
             </ContactButton>
           </a>
         </div>

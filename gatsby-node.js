@@ -22,6 +22,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 // populate content on the blog posts
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+  const tags = await graphql(`
+  query MyQuery {
+    tags: allMdx(filter: {frontmatter: {published: {eq: true}, templateKey: {eq: "blog-post"}}}) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }  
+`)
   const result = await graphql(`
     query {
       blog: allMdx(
@@ -36,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           frontmatter {
             slug
+            tags
           }
           fields {
             path
@@ -47,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: {
           frontmatter: {
             published: { eq: true }
-            templateKey: { eq: "project-post" }
+            templateKey: { eq: "project" }
           }
         }
       ) {
@@ -69,13 +80,28 @@ exports.createPages = async ({ graphql, actions }) => {
   
   // Split result to use in for loop
   const tmp = _.toPairs(result.data) // [['blogs', arr], ['project', arr]]
-  const PostsPerPage = 10
 
   // Resolve templates
-  blog_post = path.resolve("./src/templates/blog-post.js")
-  blog_list = path.resolve("./src/templates/blog-list.js")
+  blog_post = path.resolve("./src/templates/blogpost_template.js")
+  // blog_list = path.resolve("./src/templates/bloglist_template.js")
   // Currently blog pages and project pages are identical
   // project_list = path.resolve("./src/templates/project-list.js")
+
+  // Pages for Tags
+  tag_list = tags.data.tags.group
+  tag_list.sort((a, b) => (b.totalCount - a.totalCount))
+  
+  tagTemplate = path.resolve("./src/templates/taglist_template.js")
+  // Make tag pages
+  tag_list.forEach(tag => {
+    createPage({
+      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    })
+  })
 
   // For each MDX apply the template and the context for the template
   // to know how to retrieve data out of graphql
@@ -87,21 +113,6 @@ exports.createPages = async ({ graphql, actions }) => {
         component: key === "blog" ? blog_post : blog_post,
         context: {
           post_id: post.fields.path,
-        },
-      })
-    })
-
-    // Create host pages for blog listings
-    const NumPages = Math.ceil(arr.nodes.length / PostsPerPage)
-    _.chunk(arr.nodes, PostsPerPage).forEach((posts, i) => {
-      createPage({
-        path: i === 0 ? `/${key}/` : `/${key}/page${i + 1}/`,
-        component: key === "blog" ? blog_list : blog_list,
-        context: {
-          skip: i * PostsPerPage,
-          limit: PostsPerPage,
-          num_pages: NumPages,
-          current_page: i + 1,
         },
       })
     })

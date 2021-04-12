@@ -69,10 +69,10 @@ module.exports = {
               rel: "nofollow",
             },
           },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {},
-          },
+        ],
+        remarkPlugins: [
+          require('remark-math'),
+          require('remark-html-katex'),
         ],
       },
     },
@@ -97,7 +97,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-favicon`,
     `gatsby-plugin-catch-links`,
   ],

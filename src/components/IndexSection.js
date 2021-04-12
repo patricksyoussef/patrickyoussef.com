@@ -8,8 +8,9 @@ import { Underline } from "./Underline"
 import styled from "styled-components"
 import { ListCard } from "./ListCard"
 
-const Container = styled.div``
-const TopBar = styled.div``
+const Container = styled.div`
+`
+
 const TopContent = styled.span`
   * {
     margin: 0.2rem 0;
@@ -19,8 +20,11 @@ const TopContent = styled.span`
   align-items: center;
 `
 const Content = styled.div`
+margin: 0rem ${props => props.theme.spacings.wall};
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding: 0.5rem 0rem;
+  margin: 0rem ${props => props.theme.spacings.wall};
 `
 
 const LinkText = styled.h3`
@@ -34,7 +38,7 @@ const LinkText = styled.h3`
 
 export const IndexSection = ({ data, title, path, linktext }) => (
   <Container>
-    <TopBar>
+    <div>
       <Underline>
         <TopContent>
           <h1>{title}</h1>
@@ -43,14 +47,12 @@ export const IndexSection = ({ data, title, path, linktext }) => (
           </Link>
         </TopContent>
       </Underline>
-    </TopBar>
+    </div>
     <Content>
-      {data.nodes.map(({ frontmatter, fields, excerpt }) => (
+      {data.nodes.map(({ frontmatter, fields }) => (
         <ListCard
           frontmatter={frontmatter}
-          fields={fields}
-          excerpt={excerpt}
-        ></ListCard>
+          fields={fields} />
       ))}
     </Content>
   </Container>

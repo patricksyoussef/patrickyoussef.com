@@ -18,13 +18,17 @@ const Container = styled.div`
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
-    max-width: 500px !important;
+    max-width: 550px !important;
   }
 
   .gatsby-resp-image-wrapper {
-      border-radius: 0.7rem;
       overflow: hidden;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      box-shadow: ${props => props.theme.shadows.s1};
+
+      border: solid 1px;
+      border-radius: 0.3rem;
+      border-color: ${props => props.theme.colors.text_gray};
   }
 
   img {
@@ -42,7 +46,7 @@ const Container = styled.div`
 
   ol,
   ul {
-    padding-left: 2.2rem;
+    padding-left: 1.8rem;
   }
 
   h1 {
@@ -119,7 +123,7 @@ const Content = styled.div`
 
   blockquote {
     background-color: ${props => props.theme.colors.bqbg};
-    padding: 0.4rem 0.75rem;
+    padding: 0.5rem 1.6rem;
     border-left-style: solid;
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};

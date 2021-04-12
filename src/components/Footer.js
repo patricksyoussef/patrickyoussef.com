@@ -21,7 +21,7 @@ const Content = styled.div`
 export const Footer = () => (
   <Container>
     <Content>
-      <Socials />
+      <Socials/>
     </Content>
   </Container>
 )

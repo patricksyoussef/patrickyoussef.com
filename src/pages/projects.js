@@ -1,48 +1,37 @@
-// Page template for listing out all blog posts (or a limited amount, whatever
-// is passed).
-
-import { graphql } from "gatsby"
 import React from "react"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
-import { Underline } from "../components/Underline"
-import { ListCard } from "../components/ListCard"
-import styled from "styled-components"
+import { ProjectSection } from "../components/ProjectSection"
 
 const Container = styled.div`
-  margin: 0 auto;
 `
-
 export default ({ data }) => {
 
   return (
     <Layout>
       <Helmet>
-        <title>Blog | {data.site.siteMetadata.title}</title>
+        <title>Projects | {data.site.siteMetadata.title}</title>
       </Helmet>
       <Container>
-        <Underline>
-          <h1>All Posts</h1>
-        </Underline>
-        <div>
-          {data.allMdx.nodes.map(({ frontmatter, fields }) => (
-            <ListCard frontmatter={frontmatter} fields={fields}></ListCard>
-          ))}
-        </div>
+        <ProjectSection 
+            data={data.project}
+            title={"All Projects"}
+            linktext={""}
+            path={"/projects/"}/>
       </Container>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query BlogListing($skip: Int!, $limit: Int!) {
-    allMdx(
+  query AllProjects {
+    project: allMdx(
       sort: { fields: frontmatter___date, order: DESC }
-      skip: $skip
-      limit: $limit
       filter: {
         frontmatter: {
-          templateKey: { eq: "blog-post" }
+          templateKey: { eq: "project" }
           published: { eq: true }
         }
       }
@@ -52,6 +41,15 @@ export const query = graphql`
           slug
           title
           date(formatString: "YYYY MMMM Do")
+          excerpt
+          tags
+          featureImage {
+            childImageSharp {
+              fluid(fit: COVER, cropFocus: CENTER) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         fields {
           readingTime {

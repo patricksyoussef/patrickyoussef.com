@@ -73,25 +73,22 @@ const SubTitle = styled.span`
 const Spacer = styled.div`
   margin: 0 0.5rem;
 `
-
 const Centering = styled.div`
 display: inline-block;
-  * {
-  }
 `
 
 export const Feature = ({ frontmatter, fields }) => {
   return (
     <Container>
       <FeatureImageContainer>
-        <FeatureImage frontmatter={frontmatter}></FeatureImage>
+        <FeatureImage frontmatter={frontmatter} />
       </FeatureImageContainer>
       <Header>
         <Centering>
           <Title>{frontmatter.title}</Title>
           <SubTitle>
             <p>{frontmatter.date}</p>
-            <Spacer>|</Spacer>
+            <Spacer>·</Spacer>
             <p>{fields.readingTime.text}</p>
           </SubTitle>
         </Centering>

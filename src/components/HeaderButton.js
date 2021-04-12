@@ -25,7 +25,6 @@ const Button = styled.div`
   &:hover div {
   }
 `
-
 const Text = styled.div`
   font-size: 1rem;
   font-weight: 700;
@@ -36,12 +35,10 @@ const Text = styled.div`
   }
 `
 
-export const ResumeButton = () => (
-  <a href="http://patrickyoussef.com/resume.pdf" target="_blank" rel="noreferrer">
+export const HeaderButton = ({ href, target, text }) => (
+  <a href={href} target={target} rel="noreferrer">
     <Button>
-      <Text>
-        <div>Resume</div>
-      </Text>
+      <Text>{text}</Text>
     </Button>
   </a>
 )
