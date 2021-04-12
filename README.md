@@ -6,6 +6,8 @@
   </a>
 </p>
 
+![Site Image](./images/WebsiteSnip.jpg)
+
 ## Build Status
 
 <p align="center">
@@ -20,25 +22,12 @@ My motivations for the site are as follows:
 
 - I enjoy teaching and sharing information so I recently decided I wanted to increase the audience I could reach.
 - As I progress through my career I find that I am building a mix of materials that represent me, a website serves to host all of these materials in a cohesive nature.
-- It's pretty cool having your own website, right?
 
 ## Site Framework
 
 ### Requirements
 
-I decided on a few requirements:
-
-1. Fast Loading and Light
-   - My needs for my site were not crazy but I wanted the page to be light to load quickly for mobile devices.
-2. Low Post Overhead
-   - I knew that if it took a lot of work to write a new post I would never post so I wanted to build a framework that was a minimal barrier between ideas and deployment.
-3. Programmatic
-   - I am not a web developer by trade so traditional web development has been less than ideal.
-   - If possible, I wanted a framework that worked in similar ways that I am used to (iterating over lists, logical decisions, etc.) to help me accomplish my goals.
-
-### Gatsby Satisfied All My Needs
-
-After much research, the static site generator Gatsby seemed like a perfect fit. I'll go over my prior requirements and how Gatsby resolved them.
+After much research, the static site generator Gatsby seemed like a perfect fit. I'll go over my requirements and how Gatsby satisfied them.
 
 1. Fast Loading and Light
    - Gatsby by nature is a static site generator which means the served file are server generated and so little to no processing is needed on the client end.
