@@ -15,6 +15,25 @@ const CodeBlock = styled.div`
   margin-bottom: 1rem;
   background: ${props => props.theme.colors.code_background};
   overflow: hidden;
+
+  padding-bottom: 0rem;
+
+  .bar-separate {
+    border-top: solid ${props => props.theme.colors.output_line} 0.15rem;
+    padding-top: 0.3rem;
+    margin-top: 0.6rem; 
+  }
+
+  .no-separate {
+  }
+`
+const OutputBlock = styled.div`
+padding-bottom: 0.2rem;
+`
+const Output = styled.div`
+  * {
+    color: ${props => props.theme.colors.light1} !important;
+  }
 `
 const Block = styled.div`
   padding: 0rem;
@@ -26,7 +45,7 @@ const Block = styled.div`
 
   .prism-code {
     margin: 0;
-    padding: 0.6rem 0.8rem;
+    padding: 0.3rem 0.8rem;
     padding-top: 0rem;
   }
 
@@ -86,6 +105,25 @@ const copyToClipboard = str => {
   document.body.removeChild(el)
 }
 
+const arrayToString = (arr) => {
+  let str = '';
+
+  for (let i=0; i < arr.length; i++) {
+    console.log(i)
+
+    var num_tokens = arr[i].length;
+    console.log(num_tokens)
+    for (let j=0; j < num_tokens; j++) {
+      str += arr[i][j]['content']
+    }
+    if (num_tokens > 1) {
+      str += '\n'
+    }
+  }
+  console.log(str)
+  return str
+}
+
 
 // Regex to split the language from line focusing specifiers
 // Ex: lanugage-python{2,5-8} => {Language: Python Lines-To-Focus: [2,5,6,7,8]}
@@ -93,11 +131,20 @@ export default ({ children, className }) => {
   // Pull the className
   const reg = className.match(/language-([a-z]*)(.*)/)
   const language = reg[1]
+  const high = className.match(/high={([0-9-,]*)}/)
+  const out = className.match(/out=([0-9]*)/)
 
   let result = []
   try {
-    result = reg[2].match(/{(.*)}/)[1].split(",")
+    result = high[1].split(",")
   } catch (err) {}
+
+
+  try {
+    var output = out[1]
+  } catch (err) {
+    var output = 0
+  }
 
   let highlights = []
   result.forEach((item, i) => {
@@ -128,14 +175,28 @@ export default ({ children, className }) => {
         theme={undefined}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
+          
           tokens.pop()
+          if (output !== 0) {
+            var highlighted_lines = tokens.slice(0,-output)
+            var output_lines = tokens.slice(-output)
+            output_lines.shift()
+            var output_class = "bar-separate"
+            var copyText = arrayToString(highlighted_lines)
+          } else{
+            var highlighted_lines = tokens
+            var output_lines = []
+            var output_class = "no-separate"
+            var copyText = children
+          }
+
           return (
             <Block>
               <Toolbar>
                 <CodeBlockFlag lang={language.toLowerCase()}></CodeBlockFlag>
                 <CopyButton
                   onClick={() => {
-                    copyToClipboard(children)
+                    copyToClipboard(copyText)
                     setIsCopied(true)
                     setTimeout(() => setIsCopied(false), 2000)
                   }}>
@@ -144,8 +205,9 @@ export default ({ children, className }) => {
                     </div>
                 </CopyButton>
               </Toolbar>
+              
               <pre className={className} style={{ ...style }}>
-                {tokens.map((line, index) => {
+                {highlighted_lines.map((line, index) => {
                   const lineProps = getLineProps({ line, key: index })
                   let highlighted = ""
                   if (highlights.length !== 0) {
@@ -163,6 +225,22 @@ export default ({ children, className }) => {
                     </div>
                   )
                 })}
+              </pre>
+
+              <pre className={className} style={{ ...style }}>
+                <OutputBlock className={output_class}>
+                  {output_lines.map((line, index) => {
+                    return (
+                        <Output className="output">
+                          <div key={index}>
+                            {line.map((token, key) => (
+                              <span key={key} {...getTokenProps({ token, key })} />
+                            ))}
+                          </div>
+                        </Output>
+                    )
+                  })}
+                </OutputBlock>
               </pre>
             </Block>
           )
