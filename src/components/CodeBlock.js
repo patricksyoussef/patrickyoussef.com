@@ -140,10 +140,11 @@ export default ({ children, className }) => {
   } catch (err) {}
 
 
+  var output
   try {
-    var output = out[1]
+    output = out[1]
   } catch (err) {
-    var output = 0
+    output = 0
   }
 
   let highlights = []
@@ -177,17 +178,18 @@ export default ({ children, className }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           
           tokens.pop()
+          var highlighted_lines, output_lines, output_class, copyText
           if (output !== 0) {
-            var highlighted_lines = tokens.slice(0,-output)
-            var output_lines = tokens.slice(-output)
+            highlighted_lines = tokens.slice(0,-output)
+            output_lines = tokens.slice(-output)
             output_lines.shift()
-            var output_class = "bar-separate"
-            var copyText = arrayToString(highlighted_lines)
+            output_class = "bar-separate"
+            copyText = arrayToString(highlighted_lines)
           } else{
-            var highlighted_lines = tokens
-            var output_lines = []
-            var output_class = "no-separate"
-            var copyText = children
+            highlighted_lines = tokens
+            output_lines = []
+            output_class = "no-separate"
+            copyText = children
           }
 
           return (
