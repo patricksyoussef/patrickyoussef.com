@@ -6,15 +6,15 @@ require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
   html {
-      font-size: 15px;
+      font-size: 14.5px;
     }
 
   // Media Queries
   @media (max-width: 800px) {
-    html { font-size: 14px; }
+    html { font-size: 13px; }
   }
   @media (max-width: 400px) {
-    html { font-size: 13px; }
+    html { font-size: 12px; }
   }
 `
 

@@ -30,6 +30,9 @@ const CodeBlock = styled.div`
 const OutputBlock = styled.div`
 padding-bottom: 0.2rem;
 `
+const Code = styled.div`
+overflow-x: scroll;
+`
 const Output = styled.div`
   * {
     color: ${props => props.theme.colors.light1} !important;
@@ -39,7 +42,7 @@ const Block = styled.div`
   padding: 0rem;
 
   pre {
-    overflow: auto;
+    overflow: visible;
     padding-bottom: 0rem;
   }
 
@@ -208,42 +211,44 @@ export default ({ children, className }) => {
                 </CopyButton>
               </Toolbar>
               
-              <pre className={className} style={{ ...style }}>
-                {highlighted_lines.map((line, index) => {
-                  const lineProps = getLineProps({ line, key: index })
-                  let highlighted = ""
-                  if (highlights.length !== 0) {
-                    highlighted = !highlights.includes(index + 1)
-                      ? "line-darken"
-                      : "line-highlight"
-                  }
-                  return (
-                    <div className={highlighted}>
-                      <div key={index} {...lineProps}>
-                        {line.map((token, key) => (
-                          <span key={key} {...getTokenProps({ token, key })} />
-                        ))}
-                      </div>
-                    </div>
-                  )
-                })}
-              </pre>
-
-              <pre className={className} style={{ ...style }}>
-                <OutputBlock className={output_class}>
-                  {output_lines.map((line, index) => {
+              <Code>
+                <pre className={className} style={{ ...style }}>
+                  {highlighted_lines.map((line, index) => {
+                    const lineProps = getLineProps({ line, key: index })
+                    let highlighted = ""
+                    if (highlights.length !== 0) {
+                      highlighted = !highlights.includes(index + 1)
+                        ? "line-darken"
+                        : "line-highlight"
+                    }
                     return (
-                        <Output className="output">
-                          <div key={index}>
-                            {line.map((token, key) => (
-                              <span key={key} {...getTokenProps({ token, key })} />
-                            ))}
-                          </div>
-                        </Output>
+                      <div className={highlighted}>
+                        <div key={index} {...lineProps}>
+                          {line.map((token, key) => (
+                            <span key={key} {...getTokenProps({ token, key })} />
+                          ))}
+                        </div>
+                      </div>
                     )
                   })}
-                </OutputBlock>
-              </pre>
+                </pre>
+
+                <pre className={className} style={{ ...style }}>
+                  <OutputBlock className={output_class}>
+                    {output_lines.map((line, index) => {
+                      return (
+                          <Output className="output">
+                            <div key={index}>
+                              {line.map((token, key) => (
+                                <span key={key} {...getTokenProps({ token, key })} />
+                              ))}
+                            </div>
+                          </Output>
+                      )
+                    })}
+                  </OutputBlock>
+                </pre>
+              </Code>
             </Block>
           )
         }}

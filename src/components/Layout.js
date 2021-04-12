@@ -21,7 +21,7 @@ const FullView = styled.div`
 const Container = styled.div`
   max-width: ${props => props.theme.widths.max};
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
 
   a {
     text-decoration: none;
