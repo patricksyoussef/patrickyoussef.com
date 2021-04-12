@@ -155,7 +155,6 @@ The training process is going to be more involved, the comments explain what is 
 
 ```python
     def train(self, X_train, y_train, learning_rate, iterations):
-
         self.learning_rate = learning_rate
         self.iterations = iterations
 
@@ -186,7 +185,6 @@ To close out the model class, let's implement `predict` that computes the forwar
 
 ```python
     def predict(self, X_test):
-
         A = self.sigmoid(np.dot(self.weights.T, X_test.T))
         y_est = np.round(A)
 
@@ -244,12 +242,12 @@ Now all we have to is compute the accuracy and see how we did.
 ```python{out=2}
 # (Count of correct predictions) / (Total number of test samples)
 test_accuracy = np.sum(y_test == y_test_est) / y_test.size
-print("Test Accuracy: {:0.5f}".format(test_accuracy))
+print("Test Accuracy: {:0.3f}".format(test_accuracy))
 
-Test Accuracy: 0.91228
+Test Accuracy: 0.912
 ```
 
-This results in an accuracy of around 74%! Considering the low number of features in the dataset this is a great result.
+This results in an accuracy of around 91%! Considering the low number of features in the dataset this is a great result.
 
 # Moving Forward
 
