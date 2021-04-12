@@ -55,7 +55,7 @@ _*Personally, I prefer to move the bias into the matrix multiplication. This is 
 
 # Training
 
-Training is the process where we take many labeled examples and use them to determine values for $w$ that will yield us the best _overall_ accuracy. To be precise, we will describe some formulations for what are called the cost and loss of the model.
+Training is the process where we take many labeled examples and use them to determine values for $w$ that will yield us the best _overall_ performance. To be precise, we will describe some formulations for what are called the cost and loss of the model.
 
 ## Cost and Loss Functions
 
@@ -98,10 +98,10 @@ Let's go ahead and import our python modules first as follow:
 ```python
 import numpy as np
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
+from sklearn.datasets import load_breast_cancer
 ```
 
-I will be using Python and NumPy for the implementation. The dataset used can be found [here](https://www.kaggle.com/uciml/pima-indians-diabetes-database). The database takes a few human health metrics as features and tries to predict if the patient is diabetic.
+I will be using Python and NumPy for the implementation. The dataset used is imported in our prior code block with the rest of our libraries. The dataset takes a few human health metrics as features and tries to predict if the patient has breast cancer, you can read more [here](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html).
 
 ## Model Class
 
@@ -155,55 +155,40 @@ The training process is going to be more involved, the comments explain what is 
 
 ```python
     def train(self, X_train, y_train, learning_rate, iterations):
-
-        # Saving the learning rate and iteration count to the model instance
         self.learning_rate = learning_rate
         self.iterations = iterations
 
-        # Normalizing the data and appending a 1 for the bias
         X_train = self.prep_data(X_train)
         X_train = self.add_dimension(X_train)
 
-        # Getting dimensions of the input X and starting weights out at small
-        # random numbers, this helps train faster.
-        N, D = X_train.shape
-        self.weights = np.random.random((D, 1)) * 0.001
+        N,D = X_train.shape
+        self.weights = np.random.random((D,1)) * 0.001
 
-        # Training started
-        print("Training Started")
-
-        # Train Iterations
+        # Iterate to train
         for i in range(self.iterations):
 
             # Compute the gradient
             A = self.sigmoid(np.dot(self.weights.T, X_train.T))
             grad = (1/N) * np.dot(X_train.T, (A - y_train).T)
 
-            # Update weights using gradient descent
+            # Update Weights
             self.weights = self.weights - self.learning_rate * grad
 
-            # Print an updates every 1000 iterations
-            if (i+1) % 1000 == 0:
-                print("Training Iteration: {}".format(i+1))
+            # Get Training Accuracy Every 100 Iterations
+            if i % 100 == 0:
+                y_est = self.predict(X_train)
+                acc = np.sum(y_train == y_est) / y_train.size
+                print("Training Accuracy on Iteration {}: {:0.4f}".format(i, acc))
 ```
 
 To close out the model class, let's implement `predict` that computes the forward propagation of our test data.
 
 ```python
     def predict(self, X_test):
+        A = self.sigmoid(np.dot(self.weights.T, X_test.T))
+        y_est = np.round(A)
 
-        # Prep new data just as training data was
-        X_test = self.prep_data(X_test)
-        X_test = self.add_dimension(X_test)
-
-        # Compute the forward propagation and round to get {0,1}
-        # If the probability if below 0.5, y_est = 0
-        # If the probability is above 0.5, y_est = 1
-        # Rounding works well to do this!
-        test_probabilities = self.sigmoid(np.dot(self.weights.T, X_test.T))
-        y_predict = np.round(test_probabilities)
-
-        return y_predict
+        return y_est
 ```
 
 ## Data Import and Function Calls
@@ -215,42 +200,54 @@ Assuming you have downloaded the aforementioned dataset, you should make sure yo
 Quick digression, a test and train split is a process of splitting your data into two groups based on a fraction (typical is 70/30 for train/test). This is very important to do as testing a model on the data it was trained on is not a good metric of its performance. To put it briefly, a model can learn to fit a training set very well but won't generalize well to new data. This is very bad as all we really care about is how it generalizes. This is as much as you need to know for now, but I would highly recommend you read more [here](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data).
 
 ```python
-# Import Data
-data = np.loadtxt(open("diabetes.csv", "rb"), delimiter=",", skiprows=1)
+# Load in data
+data = load_breast_cancer(return_X_y=True)
 
-# Split Data Into X and y
-X = np.delete(data, -1, axis=1)
-y = data[:,-1]
+# Split into X and y
+X = data[0]
+y = data[1]
 
-# Test Train Split (30% test) using SkLearn
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+# Test Train Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30,
+                                                    random_state=1)
 ```
 
 ## Running the Model
 
 We've made it! It's time to train our model and see how it does on the testing set! The following code will help you out:
 
-```python
+```python{out=7}
 # Create an instance of our logistic regression class
 MyModel = LogisticRegression()
 
 # Train the model on the training set using a learning rate of 0.1
-# and 5000 iterations
-MyModel.train(X_train, y_train, 0.1, 5000)
+# and 300 iterations
+MyModel.train(X_train, y_train, 0.1, 300)
 
-# Get predictions for y_test
+# Prep test data and get predictions for y_test
+X_test = MyModel.prep_data(X_test)
+X_test = MyModel.add_dimension(X_test)
 y_test_est = MyModel.predict(X_test)
+
+Training Accuracy on Iteration 50: 0.8894
+Training Accuracy on Iteration 100: 0.9196
+Training Accuracy on Iteration 150: 0.9221
+Training Accuracy on Iteration 200: 0.9271
+Training Accuracy on Iteration 250: 0.9271
+Training Accuracy on Iteration 300: 0.9271
 ```
 
 Now all we have to is compute the accuracy and see how we did.
 
-```python
+```python{out=2}
 # (Count of correct predictions) / (Total number of test samples)
 test_accuracy = np.sum(y_test == y_test_est) / y_test.size
-print("Accuracy on test: {}".format(test_accuracy))
+print("Test Accuracy: {:0.3f}".format(test_accuracy))
+
+Test Accuracy: 0.912
 ```
 
-This results in an accuracy of around 74%! Considering the low number of features in the dataset this is a great result.
+This results in an accuracy of around 91%! Considering the low number of features in the dataset this is a great result.
 
 # Moving Forward
 
