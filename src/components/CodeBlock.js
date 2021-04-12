@@ -31,7 +31,7 @@ const OutputBlock = styled.div`
 padding-bottom: 0.2rem;
 `
 const Code = styled.div`
-overflow-x: scroll;
+overflow-x: auto;
 `
 const Output = styled.div`
   * {
