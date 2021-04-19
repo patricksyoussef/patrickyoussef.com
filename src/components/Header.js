@@ -12,8 +12,9 @@ const Container = styled.div`
   margin-bottom: 0rem;
   max-width: ${props => props.theme.widths.max};
 
-  h1 {
+  h1,h2 {
     margin: 0.2rem 0;
+    font-family: ${props => props.theme.fonts.main};
   }
 `
 const ColorText = styled.span`

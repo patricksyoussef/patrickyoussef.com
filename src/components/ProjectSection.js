@@ -5,7 +5,9 @@ import styled from "styled-components"
 import { ProjectCard } from "./ProjectCard"
 
 const Container = styled.div`
+  margin-bottom: 0.5rem;
 `
+
 const Grid = styled.div`
     padding: 1rem 0;
     margin: 0rem ${props => props.theme.spacings.wall};
@@ -13,17 +15,23 @@ const Grid = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-gap: 1.25rem;
 `
+
 const TopContent = styled.span`
   * {
     margin: 0.2rem 0;
   }
+
+  font-family: ${props => props.theme.fonts.main};
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
+
 const LinkText = styled.h3`
   color: ${props => props.theme.colors.text_gray};
   transition: ${props => props.theme.anims.link};
+  font-family: ${props => props.theme.fonts.sub};
 
   &:hover {
     color: ${props => props.theme.colors.text_dark};

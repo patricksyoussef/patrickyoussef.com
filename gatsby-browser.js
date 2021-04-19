@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const onInitialClientRender = () => {
 
-  const loadTimer = 450
+  const loadTimer = 500
   const animTimer = loadTimer + 150
   setTimeout(function() {
       document.getElementById("___loader").style.opacity = "0"

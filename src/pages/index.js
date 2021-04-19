@@ -72,6 +72,7 @@ export const query = graphql`
       }
     }
     project: allMdx(
+      limit: 3
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {

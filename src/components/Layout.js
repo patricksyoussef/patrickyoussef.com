@@ -18,6 +18,7 @@ const FullView = styled.div`
   min-height: 100vh;
   background-color: ${props => props.theme.colors.light1};
 `
+
 const Container = styled.div`
   max-width: ${props => props.theme.widths.max};
   margin: 0 auto;
@@ -28,14 +29,8 @@ const Container = styled.div`
     color: inherit;
   }
 
-  font-family: ${props => props.theme.fonts.main};
   height: 100%;
-  font-weight: 400;
   text-decoration: none;
-
-  img {
-    box-shadow: ${props => props.theme.shadows.s1};
-  }
 
   // Font overrides to rem, for simpler content scaling
   h1 {
@@ -55,6 +50,7 @@ const Container = styled.div`
     margin-bottom: 0.3em;
   }
 `
+
 const ColorStrip = styled.div`
   height: 0.5rem;
   background-color: ${props => props.theme.colors.blue};

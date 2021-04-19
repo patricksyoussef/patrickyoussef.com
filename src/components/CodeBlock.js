@@ -27,17 +27,21 @@ const CodeBlock = styled.div`
   .no-separate {
   }
 `
+
 const OutputBlock = styled.div`
 padding-bottom: 0.2rem;
 `
+
 const Code = styled.div`
 overflow-x: auto;
 `
+
 const Output = styled.div`
   * {
     color: ${props => props.theme.colors.light1} !important;
   }
 `
+
 const Block = styled.div`
   padding: 0rem;
 
@@ -65,6 +69,7 @@ const Block = styled.div`
     min-height: 1.65rem;
   }
 `
+
 const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -78,6 +83,7 @@ const Toolbar = styled.div`
     font-size: 0.9rem;
   }
 `
+
 const CopyButton = styled.button`
   background: transparent;
   padding: 0.2rem;
@@ -129,7 +135,7 @@ const arrayToString = (arr) => {
 
 
 // Regex to split the language from line focusing specifiers
-// Ex: lanugage-python{2,5-8} => {Language: Python Lines-To-Focus: [2,5,6,7,8]}
+// Ex: language-python{2,5-8} => {Language: Python Lines-To-Focus: [2,5,6,7,8]}
 export default ({ children, className }) => {
   // Pull the className
   const reg = className.match(/language-([a-z]*)(.*)/)

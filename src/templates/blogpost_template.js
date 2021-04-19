@@ -42,6 +42,7 @@ const Container = styled.div`
     font-weight: 600;
     font-size: 1rem;
     color: ${props => props.theme.colors.text_gray};
+    font-family: ${props => props.theme.fonts.code};
   }
 
   ol,
@@ -63,10 +64,19 @@ const Container = styled.div`
 const Content = styled.div`
   padding: 0 0rem;
 
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 600;
+    font-family: ${props => props.theme.fonts.main};
+    color: ${props => props.theme.colors.text_dark};
+  }
+
+
   p,
   li {
     font-size: 1.1rem;
+    font-weight: 300;
     font-family: ${props => props.theme.fonts.sub};
+    color: ${props => props.theme.colors.text_dark};
   }
 
   p,
@@ -74,6 +84,7 @@ const Content = styled.div`
     margin-bottom: 1rem;
   }
 
+  // Blockquote style
   blockquote p {
     font-size: 1.25rem;
     margin: 0;
@@ -90,6 +101,7 @@ const Content = styled.div`
     }
   }
 
+  // Inline Code Style
   code {
     border-radius: 2px;
     background-color: #e0e0e0;
@@ -98,9 +110,10 @@ const Content = styled.div`
     color: ${props => props.theme.colors.text_dark};
   }
 
+  // Link Style
   a {
     color: ${props => props.theme.colors.text_link};
-    font-weight: 600;
+    font-weight: 500;
     position: relative;
 
     &:before {
@@ -121,6 +134,7 @@ const Content = styled.div`
     }
   }
 
+  // Blockquote Style
   blockquote {
     background-color: ${props => props.theme.colors.bqbg};
     padding: 0.5rem 1.6rem;

@@ -15,6 +15,9 @@ const TopContent = styled.span`
   * {
     margin: 0.2rem 0;
   }
+
+  font-family: ${props => props.theme.fonts.main};
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,6 +33,7 @@ margin: 0rem ${props => props.theme.spacings.wall};
 const LinkText = styled.h3`
   color: ${props => props.theme.colors.text_gray};
   transition: ${props => props.theme.anims.link};
+  font-family: ${props => props.theme.fonts.sub};
 
   &:hover {
     color: ${props => props.theme.colors.text_dark};

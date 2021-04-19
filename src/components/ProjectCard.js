@@ -30,11 +30,6 @@ overflow: hidden;
   filter: blur(0px);
 }
 
-&:hover .grid_img:after {
-  transition: ${props => props.theme.anims.project};
-  background: rgba(255, 255, 255, 0.0);
-}
-
 &:hover p {
   color: black;
 }
@@ -60,15 +55,6 @@ const GridImage = styled.div`
   * {
     width: 100%;
     height: 100%;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: ${props => props.theme.anims.project};
-    background: rgba(24, 95, 184, 0.2);
   }
 `
 
