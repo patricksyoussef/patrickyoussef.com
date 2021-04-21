@@ -15,6 +15,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 const ContentBox = styled.div`
   border-style: solid;
   border-width: 1px;
@@ -44,6 +45,14 @@ const Image = styled.div`
 `
 const Content = styled.div`
   padding: 0 1rem;
+
+  h1 {
+    font-family: ${props => props.theme.fonts.main};
+  }
+
+  p {
+    font-family: ${props => props.theme.fonts.sub};
+  }
 `
 
 export default function Home({ data }) {

@@ -64,6 +64,13 @@ border-width: 1px;
 border-color: ${props => props.theme.colors.text_gray};
 padding: 0.5rem 0.75rem;
 
+h1,h2,h3,h4 {
+  font-family: ${props => props.theme.fonts.main};
+}
+
+p {
+  font-family: ${props => props.theme.fonts.sub};
+}
 
 h2,h3,h4,p {
   margin: 0;
@@ -86,10 +93,8 @@ export const ProjectCard = ({ frontmatter, fields }) => {
             <BackgroundImage fluid={featureImg}></BackgroundImage>
           </GridImage>
           <Text>
-            <div>
-              <h3>{frontmatter.title}</h3>
-              <p>{frontmatter.date}</p>
-            </div>
+            <h3>{frontmatter.title}</h3>
+            <p>{frontmatter.date}</p>
           </Text>
         </Grid>
       </StyledLink>

@@ -31,10 +31,12 @@ const Post = styled.div`
   p {
     transition: ${props => props.theme.anims.link};
     color: ${props => props.theme.colors.text_gray};
+    font-family: ${props => props.theme.fonts.sub};
   }
 
   h2 {
     margin-bottom: 0rem;
+    font-family: ${props => props.theme.fonts.main};
   }
 `
 const StyledLink = styled(Link)`

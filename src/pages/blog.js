@@ -33,9 +33,14 @@ const TagCard = styled.div`
   &:hover {
       background-color: ${props => props.theme.colors.res_button};
     }
+  font-family: ${props => props.theme.fonts.sub};
 `
 const Filters = styled.div`
   margin: 2rem 0rem;
+  
+  h1,h2 {
+    font-family: ${props => props.theme.fonts.main};
+  }
 `
 
 export default ({ data }) => {
