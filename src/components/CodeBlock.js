@@ -118,10 +118,8 @@ const arrayToString = (arr) => {
   let str = '';
 
   for (let i=0; i < arr.length; i++) {
-    console.log(i)
 
     var num_tokens = arr[i].length;
-    console.log(num_tokens)
     for (let j=0; j < num_tokens; j++) {
       str += arr[i][j]['content']
     }
@@ -129,7 +127,6 @@ const arrayToString = (arr) => {
       str += '\n'
     }
   }
-  console.log(str)
   return str
 }
 

@@ -4,82 +4,88 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import BackgroundImage from "gatsby-background-image"
+import Img from "gatsby-image"
 
 const StyledLink = styled(Link)`
   text-decoration: none;
 `
 const Card = styled.div`
+  * {
+    transition: ${props => props.theme.anims.project};
+  }
 
-* {
-  transition: ${props => props.theme.anims.project};
-}
+  width: 100%;
+  height: 220px;
 
-width: 100%;
-height: 220px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  border-color: ${props => props.theme.colors.text_gray};
+  box-shadow: ${props => props.theme.shadows.s1};
+  overflow: hidden;
 
-border-style: solid;
-border-width: 1px;
-border-radius: 0.5rem;
-border-color: ${props => props.theme.colors.text_gray};
-box-shadow: ${props => props.theme.shadows.s1};
+  &:hover .bg_img:after {
+    transition: ${props => props.theme.anims.project};
+    background: transparent;
+  }
 
-overflow: hidden;
-
-&:hover div {
-  filter: blur(0px);
-}
-
-&:hover p {
-  color: black;
-}
+  &:hover p {
+    color: black;
+  }
 `
+
 const Grid = styled.div`
   display: grid;
   height: 100%;
   grid-template-rows: 2.5fr 1fr;
 `
+
 const GridImage = styled.div`
   margin: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  opacity: 0.8;
-  filter: blur(1px);
-
-  FeatureImage {
-    background-color: black;
-  }
 
   * {
     width: 100%;
     height: 100%;
   }
+
+  .bg_img:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: ${props => props.theme.anims.project};
+    background: rgba(24, 95, 184, 0.15);
+  }
 `
 
 const Text = styled.div`
-border-top-style: solid;
-border-width: 1px;
-border-color: ${props => props.theme.colors.text_gray};
-padding: 0.5rem 0.75rem;
+  border-top-style: solid;
+  border-width: 1px;
+  border-color: ${props => props.theme.colors.text_gray};
+  padding: 0.5rem 0.75rem;
 
-h1,h2,h3,h4 {
-  font-family: ${props => props.theme.fonts.main};
-}
+  h1,h2,h3,h4 {
+    font-family: ${props => props.theme.fonts.main};
+  }
 
-p {
-  font-family: ${props => props.theme.fonts.sub};
-}
+  p {
+    font-family: ${props => props.theme.fonts.sub};
+  }
 
-h2,h3,h4,p {
-  margin: 0;
-}
+  h2,h3,h4,p {
+    margin: 0;
+  }
 
-p {
-  
-  color: ${props => props.theme.colors.text_gray};
-}
+  p {
+    color: ${props => props.theme.colors.text_gray};
+  }
 `
 
 
@@ -89,8 +95,8 @@ export const ProjectCard = ({ frontmatter, fields }) => {
     <Card>
       <StyledLink to={fields.path}>
         <Grid>
-          <GridImage className='grid_img'>
-            <BackgroundImage fluid={featureImg}></BackgroundImage>
+          <GridImage className={'grid_img'}>
+            <Img className={"bg_img"} fluid={featureImg} />
           </GridImage>
           <Text>
             <h3>{frontmatter.title}</h3>
