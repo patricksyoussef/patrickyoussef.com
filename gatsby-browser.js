@@ -11,10 +11,10 @@ const GlobalStyles = createGlobalStyle`
 
   // Media Queries
   @media (max-width: 800px) {
-    html { font-size: 13px; }
+    html { font-size: 14px; }
   }
   @media (max-width: 400px) {
-    html { font-size: 12px; }
+    html { font-size: 13px; }
   }
 `
 
