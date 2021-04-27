@@ -50,9 +50,7 @@ export const ListCard = ({ frontmatter, fields }) => {
       <StyledLink to={fields.path}>
         <Post>
           <h2>{frontmatter.title}</h2>
-          <p>
-            {frontmatter.date} · {fields.readingTime.text}
-          </p>
+          <p>{frontmatter.date} · {fields.readingTime.text}</p>
         </Post>
       </StyledLink>
     </Container>

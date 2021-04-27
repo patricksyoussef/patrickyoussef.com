@@ -146,16 +146,20 @@ const Content = styled.div`
 
   // Table Style
   table {
-    margin: 0 auto;
+    margin: auto;
 
     thead{
       font-family: ${props => props.theme.fonts.sub};
       border-bottom-style: solid;
-      border-bottom-width: 0.2rem;
+      border-bottom-width: 0.15rem;
       border-bottom-color: ${props => props.theme.colors.blue};
 
       th {
-        padding: 0 0.3rem;
+        padding: 0.2rem 0.3rem;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: ${props => props.theme.colors.text_gray};
       }
     }
 
@@ -164,20 +168,29 @@ const Content = styled.div`
 
       td {
         text-align: center;
-        padding: 0 0.5rem;
+        padding: 0.2rem 0.5rem;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: ${props => props.theme.colors.text_gray};
       }
 
       tr {
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: ${props => props.theme.colors.text_gray};
+        margin: 1rem 0 !important;
       }
     }
   }
 
   // Math Styles
   .mspace {
-    padding: 0.3rem 0;
+    padding: 0rem 0;
+  }
+
+  // Table of Contents Style
+  .table-of-contents {
+    * {
+      font-family: ${props => props.theme.fonts.sub};
+    }
   }
 `
 
