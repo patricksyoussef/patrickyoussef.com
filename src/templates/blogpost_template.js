@@ -74,7 +74,6 @@ const Content = styled.div`
   p,
   li {
     font-size: 1.1rem;
-    font-weight: 300;
     font-family: ${props => props.theme.fonts.sub};
     color: ${props => props.theme.colors.text_dark};
   }
@@ -143,6 +142,42 @@ const Content = styled.div`
     border-left-color: ${props => props.theme.colors.blue};
     font-style: italic;
     margin: 0rem;
+  }
+
+  // Table Style
+  table {
+    margin: 0 auto;
+
+    thead{
+      font-family: ${props => props.theme.fonts.sub};
+      border-bottom-style: solid;
+      border-bottom-width: 0.2rem;
+      border-bottom-color: ${props => props.theme.colors.blue};
+
+      th {
+        padding: 0 0.3rem;
+      }
+    }
+
+    tbody {
+      font-family: ${props => props.theme.fonts.code};
+
+      td {
+        text-align: center;
+        padding: 0 0.5rem;
+      }
+
+      tr {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: ${props => props.theme.colors.text_gray};
+      }
+    }
+  }
+
+  // Math Styles
+  .mspace {
+    padding: 0.3rem 0;
   }
 `
 
