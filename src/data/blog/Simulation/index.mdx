@@ -9,6 +9,12 @@ tags: ["Simulation", "Python"]
 excerpt: "The basics of numerical integration in the context solving ordinary differential equations in Python."
 ---
 
+## Table of Contents
+
+```toc
+
+```
+
 # What is a Numerical Integration?
 
 Numerical integration is the process of utilizing numerical methods to estimate the value of a definite integral and more generally numerical solutions to differential equations. In many cases an equation may have an explicit solution that can be solved for, in which case you should just use that, but for many other equations there may not be and numerical integration can help solve them.
@@ -58,7 +64,7 @@ $$
 
 Let's compare the values from the known solution to the results from Euler.
 
-| $t$ | $x(t)$              | Euler |
+| $t$ | $x(t) = e^{2t}$     | Euler |
 | --- | ------------------- | ----- |
 | $0$ | $1$                 | $1$   |
 | $1$ | $e^2 \approx 7.38$  | $3$   |
@@ -78,8 +84,14 @@ The Heun integrator extends on Euler by adding a second derivative estimate and 
 This looks like:
 
 $$
-k_1 = h \, \dot{x}(x_i)\\
-k_2 = h \, \dot{x}(x_i + k_1)\\
+k_1 = h \, \dot{x}(x_i)
+$$
+
+$$
+k_2 = h \, \dot{x}(x_i + k_1)
+$$
+
+$$
 x_{i+1} = x_i + 0.5 (k_1 + k_2)
 $$
 
@@ -88,8 +100,14 @@ Following the same function as prior let's manually compute two steps.
 ### First Step
 
 $$
-k_1 = h \, \dot{x}(x(0)) = 1 \times (2\times1) = 2\\
-k_2 = h \, \dot{x}(x(0) + k_1) =  1\times(2\times(1+2)) = 6 \\
+k_1 = h \, \dot{x}(x(0)) = 1 \times (2\times1) = 2
+$$
+
+$$
+k_2 = h \, \dot{x}(x(0) + k_1) =  1\times(2\times(1+2)) = 6
+$$
+
+$$
 x(h) = x(0) + 0.5 (k_1 + k_2) = 1 + 0.5(2+6) = 5
 $$
 
@@ -97,7 +115,7 @@ $$
 
 Let's go ahead and see how the Heun integrator stacks up against the Euler and true results.
 
-| $t$ | $x(t)$              | Euler | Heun |
+| $t$ | $x(t) = e^{2t}$     | Euler | Heun |
 | --- | ------------------- | ----- | ---- |
 | $0$ | $1$                 | $1$   | $1$  |
 | $1$ | $e^2 \approx 7.38$  | $3$   | $5$  |
@@ -117,10 +135,22 @@ The RK4 integrator extends on both Euler and Heun by computing 4 estimates of th
 This looks like:
 
 $$
-k_1 = h \, \dot{x}(x_i)\\
-k_2 = h \, \dot{x}(x_i + 0.5 \times k_1)\\
-k_3 = h \, \dot{x}(x_i + 0.5 \times k_2)\\
-k_4 = h \, \dot{x}(x_i + k_3)\\
+k_1 = h \, \dot{x}(x_i)
+$$
+
+$$
+k_2 = h \, \dot{x}(x_i + 0.5 \times k_1)
+$$
+
+$$
+k_3 = h \, \dot{x}(x_i + 0.5 \times k_2)
+$$
+
+$$
+k_4 = h \, \dot{x}(x_i + k_3)
+$$
+
+$$
 x_{i+1} = x_i + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k4)
 $$
 
@@ -129,28 +159,82 @@ Following the same function as prior let's manually compute two steps.
 ### First Step
 
 $$
-k_1 = h \, \dot{x}(x(0)) = 1 \times (2\times1) = 2\\
-k_2 = h \, \dot{x}(x(0) + 0.5 \times k_1) = 1 \times (2 \times (1+0.5 \times 2)) = 4\\
-k_3 = h \, \dot{x}(x(0) + 0.5 \times k_2) = 1 \times (2 \times (1+0.5 \times 4)) = 6\\
-k_4 = h \, \dot{x}(x(0) + k_3) = 1 \times (2 \times (1+6)) = 14\\
-x(h) = x(0) + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k4)\\
+k_1 = h \, \dot{x}(x(0)) = 1 \times (2\times1) = 2
+$$
+
+$$
+k_2 = h \, \dot{x}(x(0) + 0.5 \times k_1)
+$$
+
+$$
+= 1 \times (2 \times (1+0.5 \times 2)) = 4
+$$
+
+$$
+k_3 = h \, \dot{x}(x(0) + 0.5 \times k_2)
+$$
+
+$$
+= 1 \times (2 \times (1+0.5 \times 4)) = 6
+$$
+
+$$
+k_4 = h \, \dot{x}(x(0) + k_3)
+$$
+
+$$
+= 1 \times (2 \times (1+6)) = 14
+$$
+
+$$
+x(h) = x(0) + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k4)
+$$
+
+$$
 = \frac{1}{6} (2+2\times8+2\times4+6) = 7
 $$
 
 ### Second Step
 
 $$
-k_1 = h \, \dot{x}(x(h)) = 1 \times (2\times7) = 14\\
-k_2 = h \, \dot{x}(x(h) + 0.5 \times k_1) = 1 \times (2 \times (7+0.5 \times 14)) = 28\\
-k_3 = h \, \dot{x}(x(h) + 0.5 \times k_2) = 1 \times (2 \times (7+0.5 \times 28)) = 42\\
-k_4 = h \, \dot{x}(x(h) + k_3) = 1 \times (2 \times (7+42)) = 98\\
-x(2h) = x(h) + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k4)\\
+k_1 = h \, \dot{x}(x(h)) = 1 \times (2\times7) = 14
+$$
+
+$$
+k_2 = h \, \dot{x}(x(h) + 0.5 \times k_1)
+$$
+
+$$
+= 1 \times (2 \times (7+0.5 \times 14)) = 28
+$$
+
+$$
+k_3 = h \, \dot{x}(x(h) + 0.5 \times k_2)
+$$
+
+$$
+= 1 \times (2 \times (7+0.5 \times 28)) = 42
+$$
+
+$$
+k_4 = h \, \dot{x}(x(h) + k_3)
+$$
+
+$$
+= 1 \times (2 \times (7+42)) = 98
+$$
+
+$$
+x(2h) = x(h) + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k4)
+$$
+
+$$
 = \frac{1}{6} (14+2\times28+2\times42+98) = 49
 $$
 
 Let's go ahead and see how the RK4 integrator stacks up against the Euler, Heun, and true results.
 
-| $t$ | $x(t)$              | Euler | Heun | RK4  |
+| $t$ | $x(t) = e^{2t}$     | Euler | Heun | RK4  |
 | --- | ------------------- | ----- | ---- | ---- |
 | $0$ | $1$                 | $1$   | $1$  | $1$  |
 | $1$ | $e^2 \approx 7.38$  | $3$   | $5$  | $7$  |
@@ -242,7 +326,7 @@ Although reducing the time step helps the result is still pretty bad, but why is
 Consider the first arrow, at $t=0$ the value of $\dot{x}=0$ and so integrating that with Euler we get the following:
 
 $$
-x_{2} = x_{1} + \dot{x} \times \text{h} = 1 + 0 \times \text{h} = 1
+x \times {2} = x \times {1} + \dot{x} \times \text{h} = 1 + 0 \times \text{h} = 1
 $$
 
 So no matter what h is the very first step of this integration will never change the values of $x$. This is a problem because we can see that the mass does start moving and $\dot{x}$ no longer becomes zero right after $t=0$. This is where the multiple terms of the Heun and RK4 integrator can help a lot!
@@ -424,7 +508,7 @@ Below are the results for RK4 integration on this damped oscillator.
 
 RK4 does wonderful here, we can not appreciate much error when looking at the points of the steps. The error analysis shows very small absolute and percent errors. Although this is the case I would still like to point out something interesting about the percent error.
 
-## Error Advise
+## Error Advice
 
 It's easy to try to chase down the values for both percent and absolute error but I want to offer some advise on how to perceive errors and determine what is "real". Let's imagine we were tracking the position of a car in a grid using an integrator. Far from the origin (0,0) a small tracking error of 1 meter for example could be a very small error whereas the same tracking error near the origin could be huge!
 
@@ -433,7 +517,7 @@ It's easy to try to chase down the values for both percent and absolute error bu
 Let's say the true x position of the car is 400m from the origin with a tracking error of 1m, let's compute the errors. Obviously the absolute error is 1m so let's just compute the percent error.
 
 $$
-\text{\% Error} = \frac{\text{Absolute Error}}{\text{True Value}} \times 100 = \frac{1}{400} \times 100 = 0.25\%
+\text{\% Error} = \frac{\text{Error}}{\text{True Value}} \times 100 = \frac{1}{400} \times 100 = 0.25\%
 $$
 
 ### Origin Case
@@ -441,7 +525,7 @@ $$
 Let's consider the same tracking error but the x position is now 5m. The absolute error is the same in both cases but as we'll see the percent error is very different.
 
 $$
-\text{\% Error} = \frac{\text{Absolute Error}}{\text{True Value}} \times 100 = \frac{1}{5} \times 100 = 20\%
+\text{\% Error} = \frac{\text{Error}}{\text{True Value}} \times 100 = \frac{1}{5} \times 100 = 20\%
 $$
 
 ### Summary
