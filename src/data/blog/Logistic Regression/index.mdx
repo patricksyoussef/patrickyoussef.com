@@ -17,7 +17,7 @@ excerpt: "How to implement a logistic regression model with a neural network min
 
 # Introduction
 
-This post will introduce you to the principles behind logistic regression as a binary classification method. Using Python and NumPy we will implement the core principles from scratch on a test dataset.
+This post will introduce you to the principles behind logistic regression as a binary classification method. Using Python and NumPy we will implement the core principles from scratch on a test dataset. There are different ways to implement this particular algorithm but I will focus on an implementation with a neural network mindset as many of these ideas extend well into neural nets in later posts.
 
 # What is Logistic Regression?
 
@@ -29,19 +29,128 @@ Before we can dive into the implementation, we first need to fully understand th
 
 ## Data Organization
 
-We represent a particular example as a vector of features and we store all these examples as one large matrix $X$ where $X_i$ is a particular example (a single day if we follow our prior metaphor). The labeled aspect means that we know whether or not that day had rain, we'll call this the ground-truth and save all labels for our examples in a vector $y_i$ where is 0 or 1 (didn't rain or rained).
+We represent a particular example as a vector of features and we store all these examples as one large matrix $X$ where $X_i$ is a particular example (a single day if we follow our prior rain metaphor). The labeled aspect means that we know whether or not that day had rain, we'll call this the ground-truth and save all labels for our examples in a vector $y$ where we store a 0 for the days it didn't rain and a 1 when it does rain.
+
+As an example, let's imagine that we track 2 different aspects to describe each day such as average temperature and humidity. For a year, we would have 365 examples of temperature and humidity stored in our vector $X$ and the whether it rained or not in our vector $y$.
+
+$$
+X = [365 \times 2] =
+\begin{bmatrix}
+72 & 0.42\\
+55 & 0.92\\
+\vdots & \vdots \\
+53 & 0.95\\
+71 & 0.43\\
+\end{bmatrix}
+$$
+
+$$
+y=[365 \times 1] =
+\begin{bmatrix}
+0\\
+1\\
+\vdots \\
+1\\
+0\\
+\end{bmatrix}
+$$
 
 ## Forward Propagation
 
-The forward propagation step is where we take an example and pass it through our model to yield a prediction. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with a function ($\sigma$) called the sigmoid function, $(1+\exp(-x))^{-1}$, we get the following:
+The forward propagation step is where we take an example $X_i$ and pass it through our model to yield a prediction $\hat{y_i}$. To do so, we have a vector $W$ that stores what we call the weights. We also have a bias term that we denote as $b$. Together with the sigmoid function ($\sigma$) we get the following:
 
 $$
 \hat{y_i} = \sigma (W^T X_i + b)
 $$
 
-Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. The sigmoid function is well catered to this as it induces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
+![Plot of the sigmoid function](images/sigmoid.jpg)
 
-_*Personally, I prefer to move the bias into the matrix multiplication. This is done by adding a column of 1's to the end of X, adding a feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. This helps to simplify the training procedure as you only need to train for $W'$! Moving forward, I will refer to $W'$ as just $W$.*_
+Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. For the rain example, this is the logistic regressions estimated probability that it will rain that day. The sigmoid function is well catered to this as it introduces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
+
+### Example Forward Propagation
+
+Let's consider our example $X$ in the prior data organization section. I understand that at this point I have not discussed how to determine $W$ and $b$ but for now follow that we know it, we will discuss how to find the correct values in the next section. Let's use the following:
+
+$$
+W^T = [1 \times 2] =
+\begin{bmatrix}
+0.1 & 10
+\end{bmatrix}
+$$
+
+$$
+b = -13
+$$
+
+We can actually go ahead and bulk propagate all examples using matrix multiplication! Let's use $X$ and $y$ as the define days from before which is:
+
+$$
+X = [4 \times 2] =
+\begin{bmatrix}
+72 & 0.42\\
+55 & 0.92\\
+53 & 0.95\\
+71 & 0.43\\
+\end{bmatrix}
+$$
+
+$$
+y=[4 \times 1] =
+\begin{bmatrix}
+0\\
+1\\
+1\\
+0\\
+\end{bmatrix}
+$$
+
+Following the equation for $\hat{y_i}$ we get the following:
+
+$$
+\hat{y_i} = [4 \times 1] = \sigma (W^T X^T + b)
+$$
+
+$$
+\hat{y_i} = \sigma (
+\begin{bmatrix}
+0.1 & 10
+\end{bmatrix}
+
+\begin{bmatrix}
+72 & 55 & 53 & 71\\
+0.42 & 0.92 & 0.95 & 0.43\\
+\end{bmatrix}
+-13
+)
+$$
+
+$$
+\hat{y_i} =
+\sigma(
+    \begin{bmatrix}
+    -1.6 & 1.7 & 1.8 &-1.6 \\
+    \end{bmatrix}
+)
+$$
+
+$$
+=
+\begin{bmatrix}
+0.17 & 0.85 & 0.86 & 0.17 \\
+\end{bmatrix}
+$$
+
+When we compare those probabilities to the known results we can see they match! Days that had rain (days 2 and 3) show high probabilities that it rained and the non rain days respectively show low probabilities. In practice you can get a prediction as a 1 or 0 by rounding the probability, the idea is you round towards the prediction that is more likely in the probability. In the case of logistic regression where there are only two possibilities (rain or didn't) you can estimate one from the other very easily.
+
+$$
+\text{P}_{\text{Clear}} = 1 - \text{P}_{\text{Rain}}
+$$
+
+Essentially, if the probability is greater or less than $0.5$ we round as the alternate probability becomes lower.
+
+### Bias Simplification
+
+_*Personally, I prefer to move the bias term ($b$) into the matrix multiplication ($W^T X_i$). This is done by adding a column of 1's to the end of $X$, adding a feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. This helps to simplify the training procedure as you only need to train for $W'$! Moving forward, I will refer to $W'$ as just $W$.*_
 
 > $$
 > W^T X + b  = w_1 x_1 + ... + w_n x_n + b
@@ -55,9 +164,11 @@ _*Personally, I prefer to move the bias into the matrix multiplication. This is 
 > = W'X'
 > $$
 
-![Plot of the sigmoid function](images/sigmoid.jpg)
+### Finding the Correct $W$ and $b$
 
-> How do we determine $W$? Training!
+As mentioned prior I just gave you suitable values for $W$ and $b$ to go through the example by tweaking with the results in a python session. In practice, it can be difficult/impossible to self determine the correct values. To most correctly determine the values we use a process called training!
+
+> Values of the weights are determined through training!
 
 # Training
 
@@ -89,7 +200,7 @@ $$
 \theta_{i+1} = \theta_i - \alpha \nabla f(\theta)
 $$
 
-Where $\alpha$ is a tuneable parameter called the learning rate, it dictates what fraction of the gradient we should step by. I will not go through the derivation, but for our problem we would like to use gradient descent where $f$ is the cost function and we take the gradient in terms of $W$. For our use case this is:
+Where $\alpha$ is a tuneable parameter called the learning rate, it dictates what fraction of the gradient we should step by. I will not go through the derivation ([great resource](https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/pdfs/40%20LogisticRegression.pdf)), but for our problem we would like to use gradient descent where $f$ is the cost function and we take the gradient in terms of $W$. For our use case this is:
 
 $$
 W_{i+1} = W_i - \alpha \frac{1}{N} X^T(\sigma(W^T X^T)-y)^T
