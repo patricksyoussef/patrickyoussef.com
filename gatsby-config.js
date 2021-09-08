@@ -115,7 +115,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    `gatsby-plugin-favicon`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Patrick Youssef`,
+        short_name: `Patrick Y.`,
+        start_url: `/`,
+        background_color: `#F7F7F7`,
+        theme_color: `#185fb8`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`
+      },
+    },
   ],
 }
