@@ -115,7 +115,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    `gatsby-plugin-favicon`,
     `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-favicons',
+      options: {
+        logo: './src/images/favicon.png',
+        appName: 'Patrick Youssef',
+        background: '#F7F7F7',
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+        }
+      }
+    }
   ],
 }
