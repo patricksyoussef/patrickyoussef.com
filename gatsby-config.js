@@ -117,16 +117,17 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-favicons',
       options: {
-        name: `Patrick Youssef`,
-        short_name: `Patrick Y.`,
-        start_url: `/`,
-        background_color: `#F7F7F7`,
-        theme_color: `#185fb8`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`
-      },
-    },
+        logo: './src/images/favicon.png',
+        appName: 'Patrick Youssef',
+        background: '#F7F7F7',
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+        }
+      }
+    }
   ],
 }
