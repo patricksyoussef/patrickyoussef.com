@@ -140,8 +140,6 @@ export default ({ children, className }) => {
   const high = className.match(/high={([0-9-,]*)}/)
   const out = className.match(/out=([0-9]*)/)
 
-  console.log(language)
-
   let result = []
   try {
     result = high[1].split(",")

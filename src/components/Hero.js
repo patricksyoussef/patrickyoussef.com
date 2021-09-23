@@ -52,7 +52,9 @@ const Buttons = styled.div`
 export const Hero = () => (
   <Container>
     <Content>
-      <Header>Hello,</Header>
+      <Header>Hello!
+        <span role="img" aria-label="Wave"> 👋</span>
+      </Header>
       <Sub>
         I'm Patrick Youssef, an avid roboticist and a master's candidate at the
         University of California, San Diego.
