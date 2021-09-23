@@ -2,11 +2,11 @@
 
 <p align="center">
   <a href="https://patrickyoussef.com" alt="Link to my website!" target="_blank">
-    <img src="src/favicon.png" width="12%"/>
+    <img src="src/images/favicon.png" width="12%"/>
   </a>
 </p>
 
-![Site Image](./images/WebsiteSnip.jpg)
+![Site Image](./git_images/WebsiteSnip.jpg)
 
 ## Build Status
 
