@@ -6,7 +6,7 @@ require(`katex/dist/katex.min.css`)
 
 const GlobalStyles = createGlobalStyle`
   html {
-      font-size: 14.5px;
+      font-size: 15px;
     }
 
   // Media Queries
@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const onInitialClientRender = () => {
 
-  const loadTimer = 500
+  const loadTimer = 750
   const animTimer = loadTimer + 150
   setTimeout(function() {
       document.getElementById("___loader").style.opacity = "0"

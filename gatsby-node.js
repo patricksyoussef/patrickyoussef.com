@@ -82,16 +82,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const tmp = _.toPairs(result.data) // [['blogs', arr], ['project', arr]]
 
   // Resolve templates
-  blog_post = path.resolve("./src/templates/blogpost_template.js")
+  blog_post = path.resolve("./src/templates/blog_post.js")
   // blog_list = path.resolve("./src/templates/bloglist_template.js")
-  // Currently blog pages and project pages are identical
-  // project_list = path.resolve("./src/templates/project-list.js")
 
   // Pages for Tags
   tag_list = tags.data.tags.group
   tag_list.sort((a, b) => (b.totalCount - a.totalCount))
   
-  tagTemplate = path.resolve("./src/templates/taglist_template.js")
+  tagTemplate = path.resolve("./src/templates/tags.js")
   // Make tag pages
   tag_list.forEach(tag => {
     createPage({
