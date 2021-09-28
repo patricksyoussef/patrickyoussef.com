@@ -3,34 +3,22 @@
 
 import React from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Layout } from "../components/Layout"
-import VaderImage from "../images/vader.png"
 
 const Container = styled.div`
-  margin-top: 5vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  margin: 4rem 0;
 
   div {
     grid-row-start: 1;
     grid-column-start: 1;
   }
 `
-const Vader = styled.div`
-  height: 40vh;
-  background-image: url(${VaderImage});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  filter: blur(2px);
-  opacity: 0.3;
-  z-index: 1;
-  transition: ${props => props.theme.anims.link};
-`
+
 const Text = styled.div`
   z-index: 2;
   text-align: center;
@@ -40,28 +28,52 @@ const Text = styled.div`
 `
 const Title = styled.div`
   font-family: ${props => props.theme.fonts.code};
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 700;
 `
 const SubTitle = styled.div`
-  font-size: 3rem;
+  font-family: ${props => props.theme.fonts.code};
+  font-size: 2rem;
   font-weight: 500;
-  font-style: italic;
+`
+const Button = styled.div`
+  display: inline-block;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 0.6rem 0.7rem;
+  margin-top: 2rem;
+  box-shadow: ${props => props.theme.shadows.s1};
+
+  transition: ${props => props.theme.anims.button};
+
+  div {
+    transition: ${props => props.theme.anims.button};
+  }
+
+  &:hover {
+    background-color: ${props => props.theme.colors.blue_button};
+  }
+  &:hover div {
+    color: white;
+  }
 `
 
 export default function Home({ data }) {
   return (
     <Layout>
+      <Helmet>
+        <title>404 | {data.site.siteMetadata.title}</title>
+      </Helmet>
       <Container>
-        <Helmet>
-          <title>404 | {data.site.siteMetadata.title}</title>
-        </Helmet>
-        <Vader></Vader>
         <Text>
-          <Link to={"/"}>
-            <Title>404 | Page not found</Title>
-            <SubTitle>I find your lack of navigation disturbing.</SubTitle>
-          </Link>
+          <Title>404!</Title>
+          <SubTitle>Sorry, looks like you're a bit lost.</SubTitle>
+          <SubTitle>
+            <Link to="/">
+              <Button>Back to Home</Button>
+            </Link>
+          </SubTitle>
         </Text>
       </Container>
     </Layout>

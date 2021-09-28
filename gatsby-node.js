@@ -85,22 +85,6 @@ exports.createPages = async ({ graphql, actions }) => {
   blog_post = path.resolve("./src/templates/blog_post.js")
   // blog_list = path.resolve("./src/templates/bloglist_template.js")
 
-  // Pages for Tags
-  tag_list = tags.data.tags.group
-  tag_list.sort((a, b) => (b.totalCount - a.totalCount))
-  
-  tagTemplate = path.resolve("./src/templates/tags.js")
-  // Make tag pages
-  tag_list.forEach(tag => {
-    createPage({
-      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
-      component: tagTemplate,
-      context: {
-        tag: tag.fieldValue,
-      },
-    })
-  })
-
   // For each MDX apply the template and the context for the template
   // to know how to retrieve data out of graphql
   tmp.forEach(([key, arr]) => {
