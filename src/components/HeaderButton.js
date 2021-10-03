@@ -11,6 +11,7 @@ const Button = styled.div`
   border-color: ${props => props.theme.colors.blue};
   padding: 0.25rem 0.5rem;
   margin-left: 0.75rem;
+  text-decoration: none;
 
   transition: ${props => props.theme.anims.button};
 

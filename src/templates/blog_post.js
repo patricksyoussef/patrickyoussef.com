@@ -115,21 +115,8 @@ const Content = styled.div`
     font-weight: 500;
     position: relative;
 
-    &:before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: ${props => props.theme.colors.text_link};
-      visibility: hidden;
-      transition: ${props => props.theme.anims.link};
-    }
-
-    &:hover:before {
-      visibility: visible;
-      width: 100%;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
