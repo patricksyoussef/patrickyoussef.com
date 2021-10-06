@@ -15,13 +15,17 @@ const Container = styled.div`
   margin-bottom: 2rem;
   max-width: ${props => props.theme.widths.content};
 
+  video {
+    max-width: 550px !important;
+  }
+
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
     max-width: 550px !important;
   }
 
-  .gatsby-resp-image-wrapper {
+  .gatsby-resp-image-wrapper, video {
       overflow: hidden;
       margin-bottom: 0.75rem;
       box-shadow: ${props => props.theme.shadows.s1};

@@ -7,6 +7,11 @@ import { Footer } from "./Footer"
 import styled from "styled-components"
 import { MDXProvider } from "@mdx-js/react"
 import CodeBlock from "./CodeBlock"
+import PostButton from "./PostButton"
+import PostVideo from "./PostVideo"
+
+const shortcodes = { PostButton, PostVideo}
+
 
 const components = {
   pre: props => <div {...props} />,
@@ -59,14 +64,16 @@ const ColorStrip = styled.div`
 export const Layout = ({ children }) => {
   return (
     <MDXProvider components={components}>
-      <FullView>
-        <ColorStrip />
-        <Container>
-          <Header />
-          {children}
-          <Footer />
-        </Container>
-      </FullView>
+      <MDXProvider components={shortcodes}>
+        <FullView>
+          <ColorStrip />
+          <Container>
+            <Header />
+            {children}
+            <Footer />
+          </Container>
+        </FullView>
+      </MDXProvider>
     </MDXProvider>
   )
 }
