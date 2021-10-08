@@ -1,11 +1,11 @@
 ---
 templateKey: project
-published: false
-title: Probalistic Bin Segmentation
+published: true
+title: Recycle Bin Segmentation
 slug: prob-segmentation
-date: 2021-03-26
+date: 2021-01-31
 featureImage: images/Prob_img.jpg
-pinned: false
+pinned: true
 ---
 
 ## Table of Contents
@@ -14,10 +14,34 @@ pinned: false
 
 ```
 
-# Introduction
-
 # Project Report
 
-As this was part of my graduate studies I cannot publish the code but the below button will take you to the formal writeup associated with the project.
+As this was part of my graduate studies I cannot publish the code but the below button will take you to the formal writeup associated with the project. Also the report has _much_ more detail than this post will so I highly advice you look through it for more information, here I will be focusing on high level principles and results.
 
 <PostButton text={"Report Link"} target={"/reports/logit_segmentation.pdf"} />
+
+# Introduction
+
+In this post we will discuss an approach to detecting US household recycling bins and attempt to understand the shortcomings of the given implementation.
+
+# Problem Statement
+
+# Approach
+
+# Dataset
+
+![Recycle Bin Pixels](./images/Collage_Bins.png)
+
+![Non Bin Pixels](./images/Collage_Others.png)
+
+# Model Construction
+
+# Training
+
+![Training Curve](./images/Bin_Training.png)
+
+# Evaluation
+
+![Input Image](./images/Bin_0067.png)
+![Probability Image](./images/Prob_img.jpg)
+![Segmented Image](./images/Thresh_0067_D4.png)

@@ -35,6 +35,10 @@ const Container = styled.div`
       border-color: ${props => props.theme.colors.text_gray};
   }
 
+  .gatsby-resp-image-image {
+    background: white;
+  }
+
   img {
     margin: 0 auto;
   }
