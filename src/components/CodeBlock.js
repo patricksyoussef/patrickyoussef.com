@@ -119,7 +119,7 @@ const arrayToString = (arr) => {
 
   for (let i=0; i < arr.length; i++) {
 
-    var num_tokens = arr[i].length;
+    let num_tokens = arr[i].length;
     for (let j=0; j < num_tokens; j++) {
       str += arr[i][j]['content']
     }
@@ -146,7 +146,7 @@ export default ({ children, className }) => {
   } catch (err) {}
 
 
-  var output
+  let output
   try {
     output = out[1]
   } catch (err) {
@@ -184,7 +184,7 @@ export default ({ children, className }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           
           tokens.pop()
-          var highlighted_lines, output_lines, output_class, copyText
+          let highlighted_lines, output_lines, output_class, copyText
           if (output !== 0) {
             highlighted_lines = tokens.slice(0,-output)
             output_lines = tokens.slice(-output)
