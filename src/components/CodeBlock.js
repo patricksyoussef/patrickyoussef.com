@@ -152,6 +152,7 @@ export default ({ children, className }) => {
   } catch (err) {
     output = 0
   }
+  console.log(output)
 
   let highlights = []
   result.forEach((item, i) => {
