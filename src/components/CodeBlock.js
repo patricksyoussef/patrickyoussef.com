@@ -225,7 +225,7 @@ export default ({ children, className }) => {
                         : "line-highlight"
                     }
                     return (
-                      <div className={highlighted}>
+                      <div className={highlighted} key={index}>
                         <div key={index} {...lineProps}>
                           {line.map((token, key) => (
                             <span key={key} {...getTokenProps({ token, key })} />
@@ -240,7 +240,7 @@ export default ({ children, className }) => {
                   <OutputBlock className={output_class}>
                     {output_lines.map((line, index) => {
                       return (
-                          <Output className="output">
+                          <Output className="output" key={index}>
                             <div key={index}>
                               {line.map((token, key) => (
                                 <span key={key} {...getTokenProps({ token, key })} />
