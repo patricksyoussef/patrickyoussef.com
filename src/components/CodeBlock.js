@@ -200,7 +200,7 @@ export default ({ children, className }) => {
           return (
             <Block>
               <Toolbar>
-                <CodeBlockFlag lang={language.toLowerCase()}></CodeBlockFlag>
+                <CodeBlockFlag lang={language.toLowerCase()}/>
                 <CopyButton
                   onClick={() => {
                     copyToClipboard(copyText)
@@ -216,18 +216,18 @@ export default ({ children, className }) => {
               <Code>
                 <pre className={className} style={{ ...style }}>
                   {highlighted_lines.map((line, index) => {
-                    const lineProps = getLineProps({ line, key: index })
                     let highlighted = ""
                     if (highlights.length !== 0) {
                       highlighted = !highlights.includes(index + 1)
                         ? "line-darken"
                         : "line-highlight"
                     }
+                    const lineProps = getLineProps({ line, key: index })
                     return (
                       <div className={highlighted} key={index}>
                         <div key={index} {...lineProps}>
                           {line.map((token, key) => (
-                            <span key={key} {...getTokenProps({ token, key })} />
+                            <span key={key}{...getTokenProps({ token, key })} />
                           ))}
                         </div>
                       </div>
@@ -236,11 +236,12 @@ export default ({ children, className }) => {
                 </pre>
 
                 <pre className={className} style={{ ...style }}>
-                  <OutputBlock className={output_class}>
+                  <OutputBlock>
                     {output_lines.map((line, index) => {
+                      const lineProps = getLineProps({ line, key: index })
                       return (
-                          <Output className="output" key={index}>
-                            <div key={index}>
+                          <Output className={"output" + " " + output_class} key={index}>
+                            <div key={index} {...lineProps}>
                               {line.map((token, key) => (
                                 <span key={key} {...getTokenProps({ token, key })} />
                               ))}
