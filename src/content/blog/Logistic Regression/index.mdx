@@ -333,7 +333,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30,
 
 We've made it! It's time to train our model and see how it does on the testing set! The following code will help you out:
 
-```python{out=7}
+```python{out={7}}
 # Create an instance of our logistic regression class
 MyModel = LogisticRegression()
 
@@ -356,7 +356,7 @@ Training Accuracy on Iteration 300: 0.9271
 
 Now all we have to is compute the accuracy and see how we did.
 
-```python{out=2}
+```python{out={2}}
 # (Count of correct predictions) / (Total number of test samples)
 test_accuracy = np.sum(y_test == y_test_est) / y_test.size
 print("Test Accuracy: {:0.3f}".format(test_accuracy))

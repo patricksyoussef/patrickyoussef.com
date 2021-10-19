@@ -135,10 +135,10 @@ const arrayToString = (arr) => {
 // Ex: language-python{2,5-8} => {Language: Python Lines-To-Focus: [2,5,6,7,8]}
 export default ({ children, className }) => {
   // Pull the className
-  const reg = className.match(/language-([a-z]*)(.*)/)
-  const language = reg[1]
-  const high = className.match(/high={([0-9-,]*)}/)
-  const out = className.match(/out=([0-9]*)/)
+  let reg = className.match(/language-([a-z]*)(.*)/)
+  let language = reg[1]
+  let high = className.match(/high={([0-9-,]*)}/)
+  let out = className.match(/out={([0-9]*)}/)
 
   let result = []
   try {
@@ -146,7 +146,7 @@ export default ({ children, className }) => {
   } catch (err) {}
 
 
-  let output
+  let output = 0
   try {
     output = out[1]
   } catch (err) {
@@ -184,18 +184,17 @@ export default ({ children, className }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           
           tokens.pop()
-          let highlighted_lines, output_lines, output_class, copyText
-          if (output !== 0) {
+          let highlighted_lines = tokens
+          let output_lines = []
+          let output_class = "no-separate"
+          let copyText = children
+
+          if (output > 0) {
             highlighted_lines = tokens.slice(0,-output)
             output_lines = tokens.slice(-output)
             output_lines.shift()
             output_class = "bar-separate"
             copyText = arrayToString(highlighted_lines)
-          } else{
-            highlighted_lines = tokens
-            output_lines = []
-            output_class = "no-separate"
-            copyText = children
           }
 
           return (

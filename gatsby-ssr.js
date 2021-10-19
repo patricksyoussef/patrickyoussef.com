@@ -18,6 +18,19 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
+export const onInitialClientRender = () => {
+
+  const loadTimer = 750
+  const animTimer = loadTimer + 150
+  setTimeout(function() {
+      document.getElementById("___loader").style.opacity = "0"
+  }, loadTimer)
+
+  setTimeout(function() {
+      document.getElementById("___loader").style.display = "none"
+  }, animTimer)
+}
+
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
