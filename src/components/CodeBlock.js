@@ -236,11 +236,11 @@ export default ({ children, className }) => {
                 </pre>
 
                 <pre className={className} style={{ ...style }}>
-                  <OutputBlock>
+                  <OutputBlock className={output_class}>
                     {output_lines.map((line, index) => {
                       const lineProps = getLineProps({ line, key: index })
                       return (
-                          <Output className={"output" + " " + output_class} key={index}>
+                          <Output className={"output"} key={index}>
                             <div key={index} {...lineProps}>
                               {line.map((token, key) => (
                                 <span key={key} {...getTokenProps({ token, key })} />
