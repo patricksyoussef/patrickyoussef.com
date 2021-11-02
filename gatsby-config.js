@@ -1,6 +1,3 @@
-// Just a bunch of imports
-const _ = require("lodash")
-
 module.exports = {
   siteMetadata: {
     title: `Patrick Youssef`,
@@ -10,10 +7,16 @@ module.exports = {
     image: "./src/favicon.png",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout.js`),
+      }
+    },
     `gatsby-plugin-styled-components`,
-    `gatsby-remark-reading-time`,
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,16 +25,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-robots-txt`,
-      options: {
-          policy: [{ userAgent: `*`, allow: `/` }],
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/content`,
+        path: `${__dirname}/content/`,
       },
     },
     {
@@ -41,92 +38,56 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Patrick Youssef`,
+        short_name: `PY`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [".md", ".mdx"],
+        extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
+          `gatsby-remark-copy-linked-files`,
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-autolink-headers`,
             options: {
-              maxWidth: 1000,
-              linkImagesToOriginal: false,
-              showCaptions: true,
+              isIconAfterHeader: false,
+              icon: false,
             },
           },
           {
-            resolve: `gatsby-remark-relative-links`,
+            resolve: `gatsby-remark-images`,
             options: {
-              domainRegex: /http[s]*:\/\/[www.]*patrickyoussef\.com[/]?/,
-            },
+              maxWidth: 800,
+              showCaptions: true,
+            }
           },
           {
             resolve: `gatsby-remark-external-links`,
             options: {
-              target: "_blank",
-              rel: "nofollow",
-            },
-          },
-          {
-            resolve: `gatsby-remark-table-of-contents`,
-            options: {
-              exclude: "Table of Contents",
-              tight: true,
-              ordered: false,
-              fromHeading: 1,
-              toHeading: 2,
-              className: "table-of-contents"
-            },
-          },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              isIconAfterHeader: true,
-              icon: false,
-            },
+              target: "_self",
+              rel: "nofollow"
+            }
           },
         ],
-        remarkPlugins: [
-          require('remark-math'),
-          require('remark-html-katex'),
-        ],
+        remarkPlugins: [require("remark-math")],
       },
     },
     {
-      resolve: `gatsby-plugin-webfonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: {
-          google: [
-            {
-              family: "IBM Plex Sans"
-            },
-            {
-              family: "Open Sans"
-            },
-            {
-              family: "Inconsolata"
-            }
-          ]
+        google: {
+          families: ['IBM Plex Sans', 'Open Sans', 'Inconsolata']
         }
       }
     },
-    {
-      resolve: `gatsby-plugin-lodash`,
-    },
-    `gatsby-plugin-catch-links`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        icon: `src/images/favicon.png`,
-        name: `Patrick Youssef`,
-        short_name: `PY`,
-        start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`,
-      },
-    },
+    `gatsby-plugin-react-helmet`,
   ],
 }

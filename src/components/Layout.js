@@ -2,20 +2,34 @@
 // content box.
 
 import React from "react"
-import { Header } from "./Header"
-import { Footer } from "./Footer"
+import Header from "./Header/Header"
 import styled from "styled-components"
-import { MDXProvider } from "@mdx-js/react"
-import CodeBlock from "./CodeBlock"
-import PostButton from "./PostButton"
-import PostVideo from "./PostVideo"
+import {MDXProvider} from '@mdx-js/react'
+import CodeBlock from './Code/CodeBlock'
+import TeX from "@matejmazur/react-katex";
+import PostButton from "./Post/PostButton"
+import PostVideo from "./Post/PostVideo"
+import Footer from "../components/Footer"
 
-const shortcodes = { PostButton, PostVideo}
-
+let shortcodes = {PostButton, PostVideo}
 
 const components = {
   pre: props => <div {...props} />,
   code: CodeBlock,
+  div: (props) => {
+    if (props.className.includes("math-display")) {
+      import("katex/dist/katex.min.css");
+      return <TeX block math={props.children} />;
+    }
+    return <div {...props} />;
+  },
+  span: (props) => {
+    if (props.className.includes("math-inline")) {
+      import("katex/dist/katex.min.css");
+      return <TeX math={props.children} />;
+    }
+    return <span {...props} />;
+  },
 }
 
 const FullView = styled.div`
@@ -61,19 +75,20 @@ const ColorStrip = styled.div`
   background-color: ${props => props.theme.colors.blue};
 `
 
-export const Layout = ({ children }) => {
+function Layout({ children }) {
   return (
-    <MDXProvider components={components}>
-      <MDXProvider components={shortcodes}>
-        <FullView>
-          <ColorStrip />
+    <FullView>
+      <ColorStrip />
+      <MDXProvider components={components}>
+        <MDXProvider components={shortcodes}>
           <Container>
             <Header />
             {children}
-            <Footer />
+            <Footer/>
           </Container>
-        </FullView>
+        </MDXProvider>
       </MDXProvider>
-    </MDXProvider>
+    </FullView>
   )
 }
+export default Layout;

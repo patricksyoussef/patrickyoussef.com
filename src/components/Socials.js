@@ -4,9 +4,10 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import { far } from "@fortawesome/free-regular-svg-icons"
 import { faEnvelope, faCoffee } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
-library.add(fab, faEnvelope, faCoffee)
+library.add(fab, far, faEnvelope, faCoffee)
 
 const Container = styled.div`
   margin-bottom: 0rem;
@@ -23,13 +24,13 @@ const SocialItem = styled.div`
     top: 0;
 
     &:hover {
-      color: ${props => props.theme.colors.text_dark};
+      color: ${props => props.theme.colors.blue};
       top: -0.2rem;
     }
   }
 `
 
-export const Socials = () => (
+const Socials = () => (
   <Container>
     <SocialItem>
       <a href="mailto:patricksyoussef@gmail.com?subject=Website Reach Out:">
@@ -54,3 +55,4 @@ export const Socials = () => (
     </SocialItem>
   </Container>
 )
+export default Socials;

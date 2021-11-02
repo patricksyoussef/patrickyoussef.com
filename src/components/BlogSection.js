@@ -1,19 +1,14 @@
+// Imports ListCard.js and iterated through the nodes that are passed into
+// here. This creates the list of blog posts on the home page and on the 
+// "All Posts" page.
+
 import { Link } from "gatsby"
 import React from "react"
 import Underline from "./Underline"
 import styled from "styled-components"
-import ProjectCard from "./ProjectCard"
+import ListCard from "./ListCard"
 
 const Container = styled.div`
-  margin-bottom: 0.5rem;
-`
-
-const Grid = styled.div`
-    padding: 1rem 0;
-    margin: 0rem ${props => props.theme.spacings.wall};
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    grid-gap: 1.25rem;
 `
 
 const TopContent = styled.span`
@@ -27,6 +22,13 @@ const TopContent = styled.span`
   justify-content: space-between;
   align-items: center;
 `
+const Content = styled.div`
+margin: 0rem ${props => props.theme.spacings.wall};
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0rem;
+  margin: 0rem ${props => props.theme.spacings.wall};
+`
 
 const LinkText = styled.h3`
   color: ${props => props.theme.colors.text_gray};
@@ -38,23 +40,25 @@ const LinkText = styled.h3`
   }
 `
 
-const ProjectSection = ( { data, title, path, linktext } ) => (
+const BlogSection = ({ data, title, path, linktext }) => (
   <Container>
-    <Underline>
+    <div>
+      <Underline>
         <TopContent>
-        <h1>{title}</h1>
-        <Link to={path}>
+          <h1>{title}</h1>
+          <Link to={path}>
             <LinkText>{linktext}</LinkText>
-        </Link>
+          </Link>
         </TopContent>
-    </Underline>
-    <Grid>
+      </Underline>
+    </div>
+    <Content>
       {data.nodes.map(({ frontmatter, fields }) => (
-        <ProjectCard
+        <ListCard
           frontmatter={frontmatter}
           fields={fields} />
       ))}
-    </Grid>
+    </Content>
   </Container>
 )
-export default ProjectSection;
+export default BlogSection;

@@ -1,31 +1,31 @@
 import { graphql } from "gatsby"
 import React from "react"
-import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
-import {IndexSection} from "../components/IndexSection"
+import BlogSection from "../components/BlogSection"
 import styled from "styled-components"
 
 const Container = styled.div`
   margin: 0 auto;
 `
 
-export default ({ data }) => {
+const blog = ({ data }) => {
 
   return (
-    <Layout>
+    <div>
       <Helmet>
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
       <Container>
-        <IndexSection
+        <BlogSection
           data={data.blog}
           title={"All Posts"}
           linktext={""}
           path={"/blog/"}/>
       </Container>
-    </Layout>
+    </div>
   )
 }
+export default blog;
 
 export const query = graphql`
   query AllBlogPosts {
