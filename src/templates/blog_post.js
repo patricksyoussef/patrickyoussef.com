@@ -4,10 +4,11 @@
 import { graphql } from "gatsby"
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout } from "../components/Layout"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
-import { Feature } from "../components/Feature"
+import TableOfContents from "../components/TableOfContents"
+import Feature from "../components/Post/Feature"
+import "katex/dist/katex.min.css"
 
 const Container = styled.div`
   margin: 0 auto;
@@ -22,7 +23,7 @@ const Container = styled.div`
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
-    max-width: 550px !important;
+    max-width: 600px !important;
   }
 
   .gatsby-resp-image-wrapper, video {
@@ -97,23 +98,11 @@ const Content = styled.div`
     margin: 0;
   }
 
-  .prism-code {
-    span {
-      font-size: 1rem;
-      font-family: ${props => props.theme.fonts.code};
-    }
-
-    .token-line {
-      min-height: 1rem;
-    }
-  }
-
   // Inline Code Style
   code {
     border-radius: 2px;
     background-color: #e0e0e0;
     padding: 0.15rem;
-
     color: ${props => props.theme.colors.text_dark};
   }
 
@@ -135,7 +124,6 @@ const Content = styled.div`
     border-left-style: solid;
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};
-    font-style: italic;
     margin: 0rem;
   }
 
@@ -189,25 +177,27 @@ const Content = styled.div`
   }
 `
 
-export default ({ data }) => {
-  const { frontmatter, fields, body } = data.mdx
+const BlogPost = ({ data }) => {
+  const { frontmatter, fields, body, tableOfContents } = data.mdx
 
   return (
-    <Layout>
+    <div>
       <Helmet>
         <title>
           {frontmatter.title} | {data.site.siteMetadata.title}
         </title>
       </Helmet>
       <Container>
-        <Feature frontmatter={frontmatter} fields={fields}></Feature>
         <Content>
+          <Feature frontmatter={frontmatter} fields={fields}/>
+          <TableOfContents toc={tableOfContents}/>
           <MDXRenderer>{body}</MDXRenderer>
         </Content>
       </Container>
-    </Layout>
+    </div>
   )
 }
+export default BlogPost
 
 export const query = graphql`
   query BlogByPath($post_id: String!) {
@@ -218,18 +208,17 @@ export const query = graphql`
         date(formatString: "MMMM Do, YYYY")
         featureImage {
           childImageSharp {
-            fluid(fit: COVER, cropFocus: CENTER) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width:800, formats: JPG, placeholder: BLURRED)
           }
         }
       }
       fields {
-        readingTime {
-          text
-        }
         path
+        readingTime{
+          text 
+        }
       }
+      tableOfContents(maxDepth: 2)
     }
     site {
       siteMetadata {

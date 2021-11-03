@@ -1,16 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Layout } from "../components/Layout"
 import { Helmet } from "react-helmet"
-import { ProjectSection } from "../components/ProjectSection"
+import ProjectSection from "../components/ProjectSection"
 
 const Container = styled.div`
 `
-export default ({ data }) => {
-
+const projects = ({ data }) => {
   return (
-    <Layout>
+    <div>
       <Helmet>
         <title>Projects | {data.site.siteMetadata.title}</title>
       </Helmet>
@@ -21,9 +19,10 @@ export default ({ data }) => {
             linktext={""}
             path={"/projects/"}/>
       </Container>
-    </Layout>
+    </div>
   )
 }
+export default projects;
 
 export const query = graphql`
   query AllProjects {
@@ -45,9 +44,7 @@ export const query = graphql`
           tags
           featureImage {
             childImageSharp {
-              fluid(fit: COVER, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width:400, formats: JPG, placeholder: BLURRED)
             }
           }
         }

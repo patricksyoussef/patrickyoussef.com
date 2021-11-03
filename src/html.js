@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import LoaderSVG from './images/pageload.svg'
 
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>

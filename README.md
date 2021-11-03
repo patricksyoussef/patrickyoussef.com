@@ -6,8 +6,6 @@
   </a>
 </p>
 
-![Site Image](./git_images/WebsiteSnip.jpg)
-
 ## Build Status
 
 <p align="center">

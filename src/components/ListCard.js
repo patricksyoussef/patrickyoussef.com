@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
 `
 
 
-export const ListCard = ({ frontmatter, fields }) => {
+const ListCard = ({ frontmatter, fields }) => {
   return (
     <Container>
       <StyledLink to={fields.path}>
@@ -56,3 +56,4 @@ export const ListCard = ({ frontmatter, fields }) => {
     </Container>
   )
 }
+export default ListCard;

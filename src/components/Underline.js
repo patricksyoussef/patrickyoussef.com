@@ -10,6 +10,7 @@ const Container = styled.div`
   margin-bottom: 0.75rem;
 `
 
-export const Underline = ({ children }) => {
+const Underline = ({ children }) => {
   return <Container>{children}</Container>
 }
+export default Underline;

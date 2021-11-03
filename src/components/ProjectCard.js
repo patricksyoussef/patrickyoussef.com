@@ -4,7 +4,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import {GatsbyImage, getImage} from "gatsby-plugin-image"
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -25,7 +25,6 @@ const Card = styled.div`
   overflow: hidden;
 
   &:hover .bg_img:after {
-    transition: ${props => props.theme.anims.project};
     background: transparent;
   }
 
@@ -61,7 +60,7 @@ const GridImage = styled.div`
     left: 0;
     overflow: hidden;
     transition: ${props => props.theme.anims.project};
-    background: rgba(24, 95, 184, 0.15);
+    background: rgba(24, 95, 184, 0.2);
   }
 `
 
@@ -89,14 +88,14 @@ const Text = styled.div`
 `
 
 
-export const ProjectCard = ({ frontmatter, fields }) => {
-  let featureImg = frontmatter.featureImage.childImageSharp.fluid
+const ProjectCard = ({ frontmatter, fields }) => {
+  let featureImg = getImage(frontmatter.featureImage.childImageSharp.gatsbyImageData)
   return (
     <Card>
       <StyledLink to={fields.path}>
         <Grid>
           <GridImage className={'grid_img'}>
-            <Img className={"bg_img"} fluid={featureImg} />
+            <GatsbyImage className={"bg_img"} image={featureImg}/>
           </GridImage>
           <Text>
             <h3>{frontmatter.title}</h3>
@@ -107,3 +106,4 @@ export const ProjectCard = ({ frontmatter, fields }) => {
     </Card>   
   )
 }
+export default ProjectCard;

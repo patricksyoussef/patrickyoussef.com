@@ -2,7 +2,7 @@
 
 import React from "react"
 import styled from "styled-components"
-import { Socials } from "./Socials"
+import Socials from "./Socials"
 
 const Container = styled.div`
   display: flex;
@@ -18,10 +18,11 @@ const Content = styled.div`
   margin: 0.5rem;
 `
 
-export const Footer = () => (
+const Footer = () => (
   <Container>
     <Content>
       <Socials/>
     </Content>
   </Container>
 )
+export default Footer;
