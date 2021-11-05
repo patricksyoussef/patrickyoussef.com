@@ -7,12 +7,6 @@ module.exports = {
     image: "./src/favicon.png",
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/Layout.js`),
-      }
-    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,

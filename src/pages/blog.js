@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 import BlogSection from "../components/BlogSection"
 import styled from "styled-components"
 
@@ -11,7 +12,7 @@ const Container = styled.div`
 const blog = ({ data }) => {
 
   return (
-    <div>
+    <Layout>
       <Helmet>
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
@@ -22,7 +23,7 @@ const blog = ({ data }) => {
           linktext={""}
           path={"/blog/"}/>
       </Container>
-    </div>
+    </Layout>
   )
 }
 export default blog;

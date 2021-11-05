@@ -6,6 +6,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const Container = styled.div`
@@ -39,18 +40,20 @@ export default function Home({ data }) {
   const { site, about } = data
   const { frontmatter, body } = about.nodes[0]
   return (
-    <Container>
-      <Helmet>
-        <title>
-          {frontmatter.title} | {site.siteMetadata.title}
-        </title>
-      </Helmet>
-      <ContentBox>
-        <Content>
-          <MDXRenderer>{body}</MDXRenderer>
-        </Content>
-      </ContentBox>
-    </Container>
+    <Layout>
+      <Container>
+        <Helmet>
+          <title>
+            {frontmatter.title} | {site.siteMetadata.title}
+          </title>
+        </Helmet>
+        <ContentBox>
+          <Content>
+            <MDXRenderer>{body}</MDXRenderer>
+          </Content>
+        </ContentBox>
+      </Container>
+    </Layout>
   )
 }
 
