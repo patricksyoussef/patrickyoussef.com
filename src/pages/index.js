@@ -1,13 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ProjectSection from "../components/ProjectSection"
 import BlogSection from "../components/BlogSection"
 
 const index = ({ data }) => {
   return (
-    <div>
+    <Layout>
       <Helmet>
         <html lang="en" />
         <title>{data.site.siteMetadata.title}</title>
@@ -26,7 +27,7 @@ const index = ({ data }) => {
         title={"Recent Posts"}
         linktext={"All posts"}
         path={"/blog/"} />
-    </div>
+    </Layout>
   )
 }
 export default index;

@@ -6,6 +6,7 @@ import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
 import "katex/dist/katex.min.css"
@@ -181,7 +182,7 @@ const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
   return (
-    <div>
+    <Layout>
       <Helmet>
         <title>
           {frontmatter.title} | {data.site.siteMetadata.title}
@@ -194,7 +195,7 @@ const BlogPost = ({ data }) => {
           <MDXRenderer>{body}</MDXRenderer>
         </Content>
       </Container>
-    </div>
+    </Layout>
   )
 }
 export default BlogPost

@@ -2,13 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 import ProjectSection from "../components/ProjectSection"
 
 const Container = styled.div`
 `
 const projects = ({ data }) => {
   return (
-    <div>
+    <Layout>
       <Helmet>
         <title>Projects | {data.site.siteMetadata.title}</title>
       </Helmet>
@@ -19,7 +20,7 @@ const projects = ({ data }) => {
             linktext={""}
             path={"/projects/"}/>
       </Container>
-    </div>
+    </Layout>
   )
 }
 export default projects;

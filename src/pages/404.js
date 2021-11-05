@@ -5,6 +5,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
+import Layout from "../components/Layout"
 
 const Container = styled.div`
   display: grid;
@@ -60,7 +61,7 @@ const Button = styled.div`
 
 export default function Home({ data }) {
   return (
-    <div>
+    <Layout>
       <Helmet>
         <title>404 | {data.site.siteMetadata.title}</title>
       </Helmet>
@@ -75,7 +76,7 @@ export default function Home({ data }) {
           </SubTitle>
         </Text>
       </Container>
-    </div>
+    </Layout>
   )
 }
 
