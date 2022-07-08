@@ -41,7 +41,7 @@ const FullView = styled.div`
 const Container = styled.div`
   max-width: ${props => props.theme.widths.max};
   margin: 0 auto;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
 
   a {
     text-decoration: none;
@@ -71,7 +71,7 @@ const Container = styled.div`
 `
 
 const ColorStrip = styled.div`
-  height: 0.5rem;
+  height: 0.25rem;
   background-color: ${props => props.theme.colors.blue};
 `
 

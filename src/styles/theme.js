@@ -15,10 +15,11 @@ const theme =  {
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",
     text_light: "hsl(0,0%,90%)",
-    text_link: "#185fb8",
+    text_link: "#0053b8",
     und: "hsl(4, 0%, 50%)",
     bqbg: "rgba(220, 221, 230, 0.4)",
     output_line: "hsl(4, 0%, 50%)",
+    toc: "hsl(0,0%,95%)",
   },
   breakpoints: {
     mobile: "only screen and (max-width: 50rem)",
@@ -35,9 +36,9 @@ const theme =  {
     xxl: "6rem",
   },
   anims: {
-    button: "0.3s ease-in-out",
-    link: "0.2s ease-in-out",
-    project: "0.2s ease-in-out",
+    button: "0.1s ease-in-out",
+    link: "0.1s ease-in-out",
+    project: "0.1s ease-in-out",
   },
   shadows: {
     s1: "5px 5px 5px 0px rgba(0, 0, 0, 0.2)",

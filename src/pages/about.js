@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -18,6 +19,7 @@ const ContentBox = styled.div`
   border-style: solid;
   border-width: 1px;
   border-radius:15px;
+  border-color: ${props => props.theme.colors.text_gray};
   box-shadow: ${props => props.theme.shadows.s1};
   overflow: hidden;
   display: flex;

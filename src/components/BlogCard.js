@@ -34,7 +34,7 @@ const Post = styled.div`
     font-family: ${props => props.theme.fonts.sub};
   }
 
-  h2 {
+  h2,h3,h4 {
     margin-bottom: 0rem;
     font-family: ${props => props.theme.fonts.main};
   }
@@ -44,16 +44,16 @@ const StyledLink = styled(Link)`
 `
 
 
-const ListCard = ({ frontmatter, fields }) => {
+const BlogCard = ({ frontmatter, fields }) => {
   return (
     <Container>
       <StyledLink to={fields.path}>
         <Post>
-          <h2>{frontmatter.title}</h2>
+          <h3>{frontmatter.title}</h3>
           <p>{frontmatter.date} · {fields.readingTime.text}</p>
         </Post>
       </StyledLink>
     </Container>
   )
 }
-export default ListCard;
+export default BlogCard;

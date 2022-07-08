@@ -7,7 +7,7 @@ import React from "react"
 import styled from "styled-components"
 import HeaderButton from "./HeaderButton"
 import ResumeButton from "./ResumeButton"
-import Underline from "../Underline"
+import Underline from "../Utils/Underline"
 
 const Container = styled.div`
   margin-bottom: 0rem;

@@ -7,7 +7,7 @@ import styled from "styled-components"
 const Button = styled.div`
   display: inline-block;
   border-style: solid;
-  border-width: 1.5px;
+  border-width: 1px;
   border-radius: 5px;
   border-color: ${props => props.theme.colors.blue};
   padding: 0.25rem 0.5rem;
@@ -32,7 +32,7 @@ const Text = styled.div`
   }
 
   font-family: ${props => props.theme.fonts.code};
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
 `
 

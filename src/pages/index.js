@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ProjectSection from "../components/ProjectSection"
 import BlogSection from "../components/BlogSection"
+import Divider from "../components/Divider"
 
 const index = ({ data }) => {
   return (
@@ -17,11 +18,21 @@ const index = ({ data }) => {
         <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
       <Hero/>
+      <Divider
+        data={data.project}
+        title={"Projects"}
+        linktext={"All Projects"}
+        path={"/projects/"} />
       <ProjectSection
         data={data.project}
         title={"Projects"}
         linktext={"All Projects"}
         path={"/projects/"} />
+      <Divider 
+        data={data.blog}
+        title={"Recent Posts"}
+        linktext={"All posts"}
+        path={"/blog/"}/>
       <BlogSection
         data={data.blog}
         title={"Recent Posts"}

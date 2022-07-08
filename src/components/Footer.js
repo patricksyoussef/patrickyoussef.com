@@ -2,7 +2,6 @@
 
 import React from "react"
 import styled from "styled-components"
-import Socials from "./Socials"
 
 const Container = styled.div`
   display: flex;
@@ -16,12 +15,13 @@ const Container = styled.div`
 const Content = styled.div`
   display: flex;
   margin: 0.5rem;
+  font-family: ${props => props.theme.fonts.code};
 `
 
 const Footer = () => (
   <Container>
     <Content>
-      <Socials/>
+      <p>Designed and Built by Patrick Youssef</p>
     </Content>
   </Container>
 )

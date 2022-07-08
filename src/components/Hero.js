@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import Socials from "./Socials"
 
 const Container = styled.div`
   display: flex;
-  margin: 3rem ${props => props.theme.spacings.wall};
+  margin: 2rem ${props => props.theme.spacings.wall};
 `
 const Header = styled.div`
   font-family: ${props => props.theme.fonts.code};
@@ -26,6 +27,7 @@ const Hero = () => (
         I'm Patrick Youssef, an avid roboticist and a master's candidate at the
         University of California, San Diego.
       </Sub>
+      <Socials/>
     </div>
   </Container>
 )
