@@ -3,15 +3,16 @@
 
 import React from "react"
 import Header from "./Header/Header"
+import Footer from "../components/Footer"
 import styled from "styled-components"
 import {MDXProvider} from '@mdx-js/react'
 import CodeBlock from './Code/CodeBlock'
 import TeX from "@matejmazur/react-katex";
 import PostButton from "./Post/PostButton"
 import PostVideo from "./Post/PostVideo"
-import Footer from "../components/Footer"
+import Collapse from "../components/Utils/Collapse"
 
-let shortcodes = {PostButton, PostVideo}
+let shortcodes = {PostButton, PostVideo, Collapse}
 
 const components = {
   pre: props => <div {...props} />,

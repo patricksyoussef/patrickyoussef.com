@@ -11,12 +11,23 @@ const Container = styled.div`
     margin: 0.2rem 0;
     font-family: ${props => props.theme.fonts.main};
   }
+
+  border-radius: 15px;
+  border-width: 1px;
+  border-color: ${props => props.theme.colors.text_gray};
+  border-style: solid;
+  padding: 0.25rem 0.75rem;
+  background-color: ${props => props.theme.colors.toc};
 `
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+`
+
+const Children = styled.div`
+  margin: -0.5rem 0rem;
 `
 
 const Collapse = ({ title, children }) => {
@@ -27,7 +38,7 @@ const Collapse = ({ title, children }) => {
             <h3>{title}</h3>
             <div>{isActive ? <ChevronUp size={24}/> : <ChevronDown size={24}/>}</div>
         </Content>
-        {isActive && <div>{children}</div>}
+        {isActive && <Children>{children}</Children>}
     </Container>
     )
   }
