@@ -25,7 +25,7 @@ const Card = styled.div`
   overflow: hidden;
 
   &:hover .bg_img:after {
-    background: transparent;
+    background: rgba(24, 95, 184, 0.25);
   }
 
   &:hover p {
@@ -60,7 +60,7 @@ const GridImage = styled.div`
     left: 0;
     overflow: hidden;
     transition: ${props => props.theme.anims.project};
-    background: rgba(24, 95, 184, 0.2);
+    background: transparent;
   }
 `
 
@@ -69,6 +69,7 @@ const Text = styled.div`
   border-width: 1px;
   border-color: ${props => props.theme.colors.text_gray};
   padding: 0.5rem 0.75rem;
+  background-color: ${props => props.theme.colors.light1};
 
   h1,h2,h3,h4 {
     font-family: ${props => props.theme.fonts.main};

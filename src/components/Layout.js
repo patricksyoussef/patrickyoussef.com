@@ -53,6 +53,9 @@ const Container = styled.div`
   text-decoration: none;
 
   // Font overrides to rem, for simpler content scaling
+  p {
+    font-size: 1.1rem;
+  }
   h1 {
     font-size: 1.75rem;
   }
@@ -66,13 +69,13 @@ const Container = styled.div`
     font-size: 1rem;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 0.3em;
   }
 `
 
 const ColorStrip = styled.div`
-  height: 0.25rem;
+  height: 0.375rem;
   background-color: ${props => props.theme.colors.blue};
 `
 

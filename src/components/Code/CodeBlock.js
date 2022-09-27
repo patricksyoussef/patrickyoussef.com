@@ -7,7 +7,7 @@ import { CodeBlockFlag } from "./CodeBlockFlag"
 import styled from "styled-components"
 import ClientOnly from "./ClientOnly"
 const _ = require("lodash")
-require("./themes/mine.css")
+require("./themes/a11y.css")
 
 const MainBlock = styled.div`
   border-style: solid;

@@ -11,17 +11,25 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 
 const Container = styled.div`
+  margin: 1.5rem 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
 `
+
+const StyleBox = styled.div`
+border-style: solid;
+border-width: 1px;
+border-radius:15px;
+border-color: ${props => props.theme.colors.text_gray};
+box-shadow: ${props => props.theme.shadows.s1};
+overflow: hidden;
+div[class^="gbi"] {
+  height: 100%
+}
+`
+
 const ContentBox = styled.div`
-  border-style: solid;
-  border-width: 1px;
-  border-radius:15px;
-  border-color: ${props => props.theme.colors.text_gray};
-  box-shadow: ${props => props.theme.shadows.s1};
-  overflow: hidden;
   display: flex;
   max-width: ${props => props.theme.widths.content};
   margin: 1rem auto;
@@ -50,9 +58,11 @@ export default function Home({ data }) {
           </title>
         </Helmet>
         <ContentBox>
-          <Content>
-            <MDXRenderer>{body}</MDXRenderer>
-          </Content>
+          <StyleBox>
+              <Content>
+              <MDXRenderer>{body}</MDXRenderer>
+            </Content>
+          </StyleBox>
         </ContentBox>
       </Container>
     </Layout>
@@ -67,6 +77,11 @@ export const query = graphql`
       nodes {
         frontmatter {
           title
+          featureImage {
+            childImageSharp {
+              gatsbyImageData(width:1200, height:1400, transformOptions:{cropFocus:ENTROPY}, formats: JPG, placeholder: BLURRED)
+            }
+          }
         }
         body
       }

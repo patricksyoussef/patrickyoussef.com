@@ -17,7 +17,7 @@ const index = ({ data }) => {
         <link rel="canonical" href={data.site.siteMetadata.siteUrl}/>
         <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
-      <Hero/>
+      <Hero data={data.hero}/>
       <Divider
         data={data.project}
         title={"Projects"}
@@ -45,6 +45,17 @@ export default index;
 
 export const query = graphql`
   query {
+    hero: allMdx(
+      filter: {
+        frontmatter: {
+          templateKey: { eq: "hero-text" }
+        }
+      }
+    ) {
+      nodes {
+        body
+      }
+    }
     site {
       siteMetadata {
         title

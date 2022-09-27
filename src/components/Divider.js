@@ -18,25 +18,11 @@ const TopContent = styled.span`
   align-items: center;
 `
 
-const LinkText = styled.h3`
-  color: ${props => props.theme.colors.text_gray};
-  transition: ${props => props.theme.anims.link};
-  font-family: ${props => props.theme.fonts.sub};
-
-  &:hover {
-    color: ${props => props.theme.colors.text_dark};
-  }
-`
-
-
 const Divider = ({ data, title, path, linktext }) => (
   <Container>
     <Underline>
       <TopContent>
         <h1>{title}</h1>
-        <Link to={path}>
-          <LinkText>{linktext}</LinkText>
-        </Link>
       </TopContent>
     </Underline>
   </Container>
