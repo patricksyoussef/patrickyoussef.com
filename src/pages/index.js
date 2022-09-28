@@ -23,21 +23,11 @@ const index = ({ data }) => {
         title={"Projects"}
         linktext={"All Projects"}
         path={"/projects/"} />
-      <ProjectSection
-        data={data.project}
-        title={"Projects"}
-        linktext={"All Projects"}
-        path={"/projects/"} />
       <Divider 
         data={data.blog}
         title={"Recent Posts"}
         linktext={"All posts"}
         path={"/blog/"}/>
-      <BlogSection
-        data={data.blog}
-        title={"Recent Posts"}
-        linktext={"All posts"}
-        path={"/blog/"} />
     </Layout>
   )
 }
@@ -53,6 +43,14 @@ export const query = graphql`
       }
     ) {
       nodes {
+        frontmatter {
+          title
+          featureImage {
+            childImageSharp {
+              gatsbyImageData(width:400, formats: PNG, layout:FULL_WIDTH, placeholder: BLURRED)
+            }
+          }
+        }
         body
       }
     }

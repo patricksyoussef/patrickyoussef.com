@@ -23,7 +23,7 @@ const SocialItem = styled.div`
   svg {
     font-size: 1.75rem;
     color: ${props => props.theme.colors.black};
-    transition: ${props => props.theme.anims.link};
+    transition: ${props => props.theme.anims.main};
     position: relative;
     top: 0;
 

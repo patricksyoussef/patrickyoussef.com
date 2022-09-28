@@ -7,13 +7,13 @@ import styled from "styled-components"
 const Button = styled.div`
   display: inline-block;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 5px;
-  border-color: ${props => props.theme.colors.blue};
+  border-color: transparent;
   padding: 0.25rem 0.5rem;
-  margin-left: 0.75rem;
   text-decoration: none;
-  transition: ${props => props.theme.anims.button};
+  transition: ${props => props.theme.anims.main};
+  background-color: transparent;
 
   div {
     color: ${props => props.theme.colors.text_dark};
@@ -21,9 +21,7 @@ const Button = styled.div`
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.res_button};
-  }
-  &:hover div {
+    background-color: ${props => props.theme.colors.toc};
   }
 `
 const Text = styled.div`
@@ -31,16 +29,16 @@ const Text = styled.div`
     margin: 0;
   }
 
-  font-family: ${props => props.theme.fonts.code};
-  font-size: 1rem;
+  font-family: ${props => props.theme.fonts.main};
+  font-size: 1.1rem;
   font-weight: 700;
 `
 
-const HeaderButton = ({ to, text }) => (
+const NavButton = ({ to, text }) => (
   <Link to={to}>
     <Button>
       <Text>{text}</Text>
     </Button>
   </Link>
 )
-export default HeaderButton;
+export default NavButton;
