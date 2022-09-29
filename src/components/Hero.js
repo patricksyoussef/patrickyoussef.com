@@ -30,6 +30,7 @@ const Container = styled.div`
     p {
       color: ${props => props.theme.colors.text_gray};
       strong {
+        font-weight: 900;
         color: ${props => props.theme.colors.text_dark};
       }
     }
@@ -53,6 +54,7 @@ const ImageGrid = styled.div`
 display: grid;
 grid-template-rows: 0fr 1fr 0fr;
 .gatsby-image-wrapper {
+  box-shadow: ${props => props.theme.shadows.s1};
   border-color: ${props => props.theme.colors.text_gray};
   border-width: 1px;
   border-style: solid;
@@ -75,7 +77,7 @@ export default function Hero({ data }) {
       </div>
       <ImageGrid className="Image">
         <div></div>
-        <GatsbyImage image={image} alt="Patrick"/>
+        <GatsbyImage image={image} alt="Hi it's me!"/>
         <div></div>
       </ImageGrid>
     </Container>

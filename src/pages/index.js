@@ -18,16 +18,10 @@ const index = ({ data }) => {
         <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
       <Hero data={data.hero}/>
-      <Divider
-        data={data.project}
-        title={"Projects"}
-        linktext={"All Projects"}
-        path={"/projects/"} />
-      <Divider 
-        data={data.blog}
-        title={"Recent Posts"}
-        linktext={"All posts"}
-        path={"/blog/"}/>
+      <Divider title={"Some Of My Favorite Work"} link="/projects/"/>
+      <ProjectSection data={data.project}/>
+      <Divider title={"Learn Something New Today"} link="/blog/"/>
+      <BlogSection data={data.blog}/>
     </Layout>
   )
 }
@@ -61,6 +55,7 @@ export const query = graphql`
         siteUrl
       }
     }
+    
     project: allMdx(
       limit: 3
       sort: { fields: frontmatter___date, order: DESC }
@@ -77,6 +72,7 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          tags
           featureImage {
             childImageSharp {
               gatsbyImageData(width:400, formats: JPG, placeholder: BLURRED)
@@ -88,13 +84,15 @@ export const query = graphql`
         }
       }
     }
+    
     blog: allMdx(
-      limit: 4
+      limit: 3
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {
           published: { eq: true }
-          templateKey: { eq: "blog-post" }
+          templateKey: { eq: "blog-post"}
+          pinned: {eq: true}
         }
       }
     ) {

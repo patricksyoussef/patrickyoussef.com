@@ -1,7 +1,6 @@
 // Not the best but it'll work for now
 
 import React from "react"
-import styled from "styled-components"
 import Collapse from "./Utils/Collapse"
 
 const getLinkedText = (title, url) => {

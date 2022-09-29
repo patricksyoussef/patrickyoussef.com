@@ -10,22 +10,21 @@ const Container = styled.div`
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: ${props => props.theme.colors.und};
-  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 `
 const Content = styled.div`
   display: flex;
-  margin: 0.5rem;
-  font-family: ${props => props.theme.fonts.main};
+  font-family: ${props => props.theme.fonts.sub};
 `
 
 const Footer = () => {
-  const today = new Date();
-  const year = today.getFullYear();
+  // const today = new Date();
+  // const year = today.getFullYear();
   return(
     <Container>
-    <Content>
-      <p>Designed and Built by Patrick Youssef</p>
-    </Content>
+      <Content>
+        <p>Designed and Built by Patrick Youssef</p>
+      </Content>
   </Container>
   )
 }

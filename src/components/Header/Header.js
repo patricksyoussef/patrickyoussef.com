@@ -20,6 +20,9 @@ const Container = styled.div`
 `
 
 const HomeButton = styled.div`
+  h1 {
+    margin-bottom: 0.2rem;
+  }
 `
 
 
@@ -27,7 +30,6 @@ const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.1rem;
 `
 const NavItems = styled.span`
   display: flex;
@@ -55,7 +57,6 @@ const Header = () => (
           </HomeButton>
         </Link>
         <NavItems>
-          <NavButton to={'/'} text="Home"/>
           <NavButton to={'/projects/'} text="Projects"/>
           <NavButton to={'/blog/'} text="Blog"/>
           <ResumeButton href={"/resume.pdf"} target={"_blank"} text="Resume"/>

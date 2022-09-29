@@ -24,6 +24,9 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  h3 {
+    margin-bottom: 0.2rem;
+  }
 `
 
 const Children = styled.div`

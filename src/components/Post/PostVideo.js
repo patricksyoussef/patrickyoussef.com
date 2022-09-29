@@ -15,11 +15,9 @@ const Container = styled.div`
 
 const PostVideo = ({ video }) => (
   <Container className={'post-video'}>
-    <video
-    controls
-    onContextMenu={e => e.preventDefault()}
-    >
+    <video controls onContextMenu={e => e.preventDefault()}>
       <source src={video} type="video/mp4" />
+      <track kind="captions" srcLang="en" src="No Sound"/>
     </video>
   </Container>
 )

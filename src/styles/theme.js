@@ -2,7 +2,7 @@ const theme =  {
   fonts: {
     main: "Source Sans Pro",
     sub: "Ubuntu",
-    code: "IBM Plex Mono",
+    code: "Inconsolata",
   },
   colors: {
     light1: "hsl(40, 10%, 98%)",
@@ -18,9 +18,8 @@ const theme =  {
     text_link: "#0053b8",
     
     und: "hsl(4, 0%, 50%)",
-    blockquote: "rgba(220, 221, 230, 0.4",
     output_line: "hsl(4, 0%, 50%)",
-    toc: "hsl(0,0%,90%)",
+    toc: "hsl(0,0%,93%)",
   },
   spacings: {
     wall: "2rem",
@@ -36,7 +35,7 @@ const theme =  {
     main: "0.2s ease-in-out",
   },
   shadows: {
-    s1: "5px 5px 5px 0px rgba(0, 0, 0, 0.2)",
+    s1: "0px 3px 8px rgba(0, 0, 0, 0.24)",
   },
   widths: {
     max: "900px",

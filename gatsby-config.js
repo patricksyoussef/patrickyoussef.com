@@ -78,7 +78,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['IBM Plex Sans', 'IBM Plex Mono', 'Open Sans', 'Inconsolata', 'Source Sans Pro', 'Ubuntu']
+          families: ['Source Sans Pro', 'Ubuntu', 'Source Code Pro']
         }
       }
     },

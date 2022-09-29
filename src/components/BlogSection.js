@@ -7,23 +7,21 @@ import styled from "styled-components"
 import BlogCard from "./BlogCard"
 
 const Container = styled.div`
+  margin-bottom: 1rem;
 `
 
 const Content = styled.div`
-margin: 0rem ${props => props.theme.spacings.wall};
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0.5rem 0rem;
-  margin: 0rem ${props => props.theme.spacings.wall};
+  margin: 0rem 0rem;
 `
 
 const BlogSection = ({ data }) => (
   <Container>
     <Content>
       {data.nodes.map(({ frontmatter, fields }) => (
-        <BlogCard
-          frontmatter={frontmatter}
-          fields={fields} />
+        <BlogCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} />
       ))}
     </Content>
   </Container>
