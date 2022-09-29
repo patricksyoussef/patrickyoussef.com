@@ -9,7 +9,6 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
-import "katex/dist/katex.min.css"
 
 const Container = styled.div`
   margin: 0 auto;

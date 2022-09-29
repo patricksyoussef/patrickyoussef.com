@@ -11,6 +11,7 @@ import TeX from "@matejmazur/react-katex";
 import PostButton from "./Post/PostButton"
 import PostVideo from "./Post/PostVideo"
 import Collapse from "../components/Utils/Collapse"
+import("katex/dist/katex.min.css");
 
 let shortcodes = {PostButton, PostVideo, Collapse}
 
@@ -19,14 +20,12 @@ const components = {
   code: CodeBlock,
   div: (props) => {
     if (props.className.includes("math-display")) {
-      import("katex/dist/katex.min.css");
       return <TeX block math={props.children} />;
     }
     return <div {...props} />;
   },
   span: (props) => {
     if (props.className.includes("math-inline")) {
-      import("katex/dist/katex.min.css");
       return <TeX math={props.children} />;
     }
     return <span {...props} />;
