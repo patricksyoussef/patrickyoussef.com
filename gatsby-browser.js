@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
     html { font-size: 14px; }
   }
   @media (max-width: 350) {
-    html { font-size: 13px; }
+    html { font-size: 12px; }
   }
   @media (max-width: 330px) {
     html { font-size: 11px; }

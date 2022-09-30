@@ -3,7 +3,7 @@ module.exports = {
     title: `Patrick Youssef`,
     description: `I'm Patrick Youssef and this is my coding blog and home on the web.`,
     siteUrl: `https://www.patrickyoussef.com`,
-    keywords: ["gatsby", "blog", "robotics", "python"],
+    keywords: ["gatsby", "blog", "robotics", "python", "deep learning", "machine learning"],
     image: "./src/favicon.png",
   },
   plugins: [
@@ -78,7 +78,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Source Sans Pro', 'Ubuntu', 'Source Code Pro']
+          families: ['Source Sans Pro', 'Ubuntu', 'Inconsolata']
         }
       }
     },
