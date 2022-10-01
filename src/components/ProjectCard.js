@@ -10,12 +10,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 const Card = styled.div`
-  * {
-    transition: ${props => props.theme.anims.project};
-  }
 
   width: 100%;
-  height: 220px;
+  height: 180px;
 
   border-style: solid;
   border-width: 1px;
@@ -25,7 +22,7 @@ const Card = styled.div`
   overflow: hidden;
 
   &:hover .bg_img:after {
-    background: transparent;
+    background: rgba(24, 95, 184, 0.25);
   }
 
   &:hover p {
@@ -59,8 +56,8 @@ const GridImage = styled.div`
     top: 0;
     left: 0;
     overflow: hidden;
-    transition: ${props => props.theme.anims.project};
-    background: rgba(24, 95, 184, 0.2);
+    transition: ${props => props.theme.anims.main};
+    background: transparent;
   }
 `
 
@@ -68,14 +65,16 @@ const Text = styled.div`
   border-top-style: solid;
   border-width: 1px;
   border-color: ${props => props.theme.colors.text_gray};
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.5rem;
+  background-color: ${props => props.theme.colors.light1};
+  p {
+    transition: ${props => props.theme.anims.main};
+    font-family: ${props => props.theme.fonts.sub};
+    font-size: 0.9rem;
+  }
 
   h1,h2,h3,h4 {
     font-family: ${props => props.theme.fonts.main};
-  }
-
-  p {
-    font-family: ${props => props.theme.fonts.sub};
   }
 
   h2,h3,h4,p {
@@ -95,11 +94,11 @@ const ProjectCard = ({ frontmatter, fields }) => {
       <StyledLink to={fields.path}>
         <Grid>
           <GridImage className={'grid_img'}>
-            <GatsbyImage className={"bg_img"} image={featureImg}/>
+            <GatsbyImage className={"bg_img"} image={featureImg} alt={frontmatter.title}/>
           </GridImage>
           <Text>
             <h3>{frontmatter.title}</h3>
-            <p>{frontmatter.date}</p>
+            <p>{frontmatter.tags.join(" · ")}</p>
           </Text>
         </Grid>
       </StyledLink>

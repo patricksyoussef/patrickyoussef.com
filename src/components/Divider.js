@@ -1,41 +1,28 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import Underline from "./Utils/Underline"
+import {Link} from "gatsby"
 
 const Container = styled.div`
 `
 
 const TopContent = styled.span`
-  * {
+  h1 {
     margin: 0.2rem 0;
   }
 
   font-family: ${props => props.theme.fonts.main};
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-const LinkText = styled.h3`
-  color: ${props => props.theme.colors.text_gray};
-  transition: ${props => props.theme.anims.link};
-  font-family: ${props => props.theme.fonts.sub};
-
-  &:hover {
-    color: ${props => props.theme.colors.text_dark};
-  }
-`
-
-
-const Divider = ({ data, title, path, linktext }) => (
+const Divider = ({ title, link}) => (
   <Container>
     <Underline>
       <TopContent>
-        <h1>{title}</h1>
-        <Link to={path}>
-          <LinkText>{linktext}</LinkText>
+        <Link to={link}>
+          <h1>{title}</h1>
         </Link>
       </TopContent>
     </Underline>

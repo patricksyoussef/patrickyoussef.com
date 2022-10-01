@@ -12,7 +12,7 @@ const Container = styled.div`
   margin-bottom: 0.5rem;
 `
 const Post = styled.div`
-  transition: ${props => props.theme.anims.link};
+  transition: ${props => props.theme.anims.main};
   padding: 0.6rem;
   border-style: solid;
   border-width: 1px;
@@ -29,9 +29,10 @@ const Post = styled.div`
   }
 
   p {
-    transition: ${props => props.theme.anims.link};
+    transition: ${props => props.theme.anims.main};
     color: ${props => props.theme.colors.text_gray};
     font-family: ${props => props.theme.fonts.sub};
+    margin-bottom: 0;
   }
 
   h2,h3,h4 {

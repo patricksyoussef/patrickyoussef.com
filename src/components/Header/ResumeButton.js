@@ -10,13 +10,12 @@ const Button = styled.div`
   border-radius: 5px;
   border-color: ${props => props.theme.colors.blue};
   padding: 0.25rem 0.5rem;
-  margin-left: 0.75rem;
   text-decoration: none;
-  transition: ${props => props.theme.anims.button};
+  margin-left: 0.25rem;
+  transition: ${props => props.theme.anims.main};
 
   div {
     color: ${props => props.theme.colors.text_dark};
-    transition: ${props => props.theme.anims.button};
   }
 
   &:hover {
@@ -30,8 +29,8 @@ const Text = styled.div`
     margin: 0;
   }
 
-  font-family: ${props => props.theme.fonts.code};
-  font-size: 1rem;
+  font-family: ${props => props.theme.fonts.main};
+  font-size: 1.1rem;
   font-weight: 700;
 `
 

@@ -17,27 +17,11 @@ const index = ({ data }) => {
         <link rel="canonical" href={data.site.siteMetadata.siteUrl}/>
         <meta name="description" content={data.site.siteMetadata.description}/>
       </Helmet>
-      <Hero/>
-      <Divider
-        data={data.project}
-        title={"Projects"}
-        linktext={"All Projects"}
-        path={"/projects/"} />
-      <ProjectSection
-        data={data.project}
-        title={"Projects"}
-        linktext={"All Projects"}
-        path={"/projects/"} />
-      <Divider 
-        data={data.blog}
-        title={"Recent Posts"}
-        linktext={"All posts"}
-        path={"/blog/"}/>
-      <BlogSection
-        data={data.blog}
-        title={"Recent Posts"}
-        linktext={"All posts"}
-        path={"/blog/"} />
+      <Hero data={data.hero}/>
+      <Divider title={"Some Of My Favorite Work"} link="/projects/"/>
+      <ProjectSection data={data.project}/>
+      <Divider title={"Learn Something New Today"} link="/blog/"/>
+      <BlogSection data={data.blog}/>
     </Layout>
   )
 }
@@ -45,6 +29,25 @@ export default index;
 
 export const query = graphql`
   query {
+    hero: allMdx(
+      filter: {
+        frontmatter: {
+          templateKey: { eq: "hero-text" }
+        }
+      }
+    ) {
+      nodes {
+        frontmatter {
+          title
+          featureImage {
+            childImageSharp {
+              gatsbyImageData(width:400, formats: PNG, layout:FULL_WIDTH, placeholder: BLURRED)
+            }
+          }
+        }
+        body
+      }
+    }
     site {
       siteMetadata {
         title
@@ -52,6 +55,7 @@ export const query = graphql`
         siteUrl
       }
     }
+    
     project: allMdx(
       limit: 3
       sort: { fields: frontmatter___date, order: DESC }
@@ -68,6 +72,7 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          tags
           featureImage {
             childImageSharp {
               gatsbyImageData(width:400, formats: JPG, placeholder: BLURRED)
@@ -79,13 +84,15 @@ export const query = graphql`
         }
       }
     }
+    
     blog: allMdx(
-      limit: 4
+      limit: 3
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {
           published: { eq: true }
-          templateKey: { eq: "blog-post" }
+          templateKey: { eq: "blog-post"}
+          pinned: {eq: true}
         }
       }
     ) {

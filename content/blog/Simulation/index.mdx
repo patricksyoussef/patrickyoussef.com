@@ -1,12 +1,13 @@
 ---
 templateKey: blog-post
 published: true
-title: Introduction To Numerical Integration
+title: Numerical Integration for ODE Estimation
 slug: integrator-intro
 date: 2021-02-03
 featureImage: images/euler_dts.jpg
 tags: ["Simulation", "Python"]
 excerpt: "The basics of numerical integration in the context solving ordinary differential equations in Python."
+pinned: true
 ---
 
 # What is a Numerical Integration?
@@ -504,7 +505,7 @@ RK4 does wonderful here, we can not appreciate much error when looking at the po
 
 ## Error Advice
 
-It's easy to try to chase down the values for both percent and absolute error but I want to offer some advise on how to perceive errors and determine what is "real". Let's imagine we were tracking the position of a car in a grid using an integrator. Far from the origin (0,0) a small tracking error of 1 meter for example could be a very small error whereas the same tracking error near the origin could be huge!
+It's easy to try to chase down the values for both percent and absolute error but I want to offer some advice on how to perceive errors and determine what is "real". Let's imagine we were tracking the position of a car in a grid using an integrator. Far from the origin (0,0) a small tracking error of 1 meter for example could be a very small error whereas the same tracking error near the origin could be huge!
 
 ### Far Case
 

@@ -9,13 +9,11 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
-import "katex/dist/katex.min.css"
 
 const Container = styled.div`
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  max-width: ${props => props.theme.widths.content};
 
   video {
     max-width: 550px !important;
@@ -120,7 +118,7 @@ const Content = styled.div`
 
   // Blockquote Style
   blockquote {
-    background-color: ${props => props.theme.colors.bqbg};
+    background-color: ${props => props.theme.colors.toc};
     padding: 0.5rem 1.6rem;
     border-left-style: solid;
     border-left-width: 0.3rem;

@@ -3,29 +3,29 @@
 
 import React from "react"
 import Header from "./Header/Header"
+import Footer from "../components/Footer"
 import styled from "styled-components"
 import {MDXProvider} from '@mdx-js/react'
 import CodeBlock from './Code/CodeBlock'
 import TeX from "@matejmazur/react-katex";
 import PostButton from "./Post/PostButton"
 import PostVideo from "./Post/PostVideo"
-import Footer from "../components/Footer"
+import Collapse from "../components/Utils/Collapse"
+import("katex/dist/katex.min.css");
 
-let shortcodes = {PostButton, PostVideo}
+let shortcodes = {PostButton, PostVideo, Collapse}
 
 const components = {
   pre: props => <div {...props} />,
   code: CodeBlock,
   div: (props) => {
     if (props.className.includes("math-display")) {
-      import("katex/dist/katex.min.css");
       return <TeX block math={props.children} />;
     }
     return <div {...props} />;
   },
   span: (props) => {
     if (props.className.includes("math-inline")) {
-      import("katex/dist/katex.min.css");
       return <TeX math={props.children} />;
     }
     return <span {...props} />;
@@ -41,7 +41,7 @@ const FullView = styled.div`
 const Container = styled.div`
   max-width: ${props => props.theme.widths.max};
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
 
   a {
     text-decoration: none;
@@ -52,6 +52,9 @@ const Container = styled.div`
   text-decoration: none;
 
   // Font overrides to rem, for simpler content scaling
+  p {
+    font-size: 1.1rem;
+  }
   h1 {
     font-size: 1.75rem;
   }
@@ -65,13 +68,13 @@ const Container = styled.div`
     font-size: 1rem;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 0.3em;
   }
 `
 
 const ColorStrip = styled.div`
-  height: 0.25rem;
+  height: 0.375rem;
   background-color: ${props => props.theme.colors.blue};
 `
 

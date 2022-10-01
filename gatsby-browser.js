@@ -4,7 +4,7 @@ import theme from "./src/styles/theme"
 import "./src/styles/sanitize.css"
 
 export const onInitialClientRender = () => {
-  const loadTimer = 750
+  const loadTimer = 500
   const animTimer = loadTimer + 150
   setTimeout(function() {
       document.getElementById("___loader").style.opacity = "0"
@@ -22,8 +22,11 @@ const GlobalStyles = createGlobalStyle`
   @media (max-width: 800px) {
     html { font-size: 14px; }
   }
-  @media (max-width: 400px) {
-    html { font-size: 13px; }
+  @media (max-width: 350) {
+    html { font-size: 12px; }
+  }
+  @media (max-width: 330px) {
+    html { font-size: 11px; }
   }
 `
 

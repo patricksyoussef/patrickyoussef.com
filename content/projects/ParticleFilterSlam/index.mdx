@@ -6,17 +6,22 @@ slug: pf-slam
 date: 2021-03-02
 featureImage: images/filter_close.png
 pinned: true
+tags: [State Estimation, Lidar]
 ---
 
 # Report
 
 As this was part of my graduate studies I cannot publish the code but the below button will take you to the formal writeup associated with the project. Also the report has _much_ more detail than this post will so I highly advice you look through it for more information, here I will be focusing on high level principles and results.
 
-<PostButton text={"Report Link"} target={"/reports/pf_slam.pdf"} />
+<PostButton text={"Report"} target={"/reports/pf_slam.pdf"} />
 
 # Introduction
 
 In this paper we will discuss an approach to solving the simultaneous localization and mapping (SLAM) problem for a mobile vehicle and attempt to understand the shortcomings of the given implementation. Possible improvements will be suggested along the way alongside the state of the current results.
+
+import Video from "./images/MappingVideo.mp4"
+
+<PostVideo video={Video} />
 
 # Importance of SLAM
 
@@ -286,14 +291,6 @@ The changes aren't very apparent which means that the dead reckon was already qu
 ![Particle Filter Map](./images/filter_close.png)
 
 We can see that the particle filter has done a much better job of rectifying that the vehicle merged back into the same lane that was traveled prior whereas the deadreckon map implies otherwise.
-
-## Mapping Video
-
-As a fun addition, I created a short video of the map being created as the car progresses through its path!
-
-import Video from "./images/MappingVideo.mp4"
-
-<PostVideo video={Video} />
 
 # Questions
 
