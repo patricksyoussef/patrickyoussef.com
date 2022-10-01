@@ -11,10 +11,10 @@ const GlobalStyles = createGlobalStyle`
   @media (max-width: 800px) {
     html { font-size: 14px; }
   }
-  @media (max-width: 350) {
+  @media (max-width: 450) {
     html { font-size: 12px; }
   }
-  @media (max-width: 330px) {
+  @media (max-width: 350px) {
     html { font-size: 11px; }
   }
 `
