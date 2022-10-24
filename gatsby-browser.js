@@ -15,14 +15,17 @@ export const onInitialClientRender = () => {
 }
 
 const GlobalStyles = createGlobalStyle`
-  html {
-      font-size: 15px;
-    }
   // Media Queries
+  html {
+    font-size: 15px;
+  }
   @media (max-width: 800px) {
     html { font-size: 14px; }
   }
-  @media (max-width: 350) {
+  @media (max-width: 600px) {
+    html { font-size: 13px; }
+  }
+  @media (max-width: 430px) {
     html { font-size: 12px; }
   }
   @media (max-width: 330px) {

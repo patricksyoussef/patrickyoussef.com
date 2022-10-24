@@ -59,7 +59,7 @@ const Header = () => (
         <NavItems>
           <NavButton to={'/projects/'} text="Projects"/>
           <NavButton to={'/blog/'} text="Blog"/>
-          <ResumeButton href={"/resume.pdf"} target={"_blank"} text="Resume"/>
+          <ResumeButton href={"/PatrickYoussef_Resume.pdf"} target={"_blank"} text="Resume"/>
       </NavItems>
       </NavBar>
     </Underline>
