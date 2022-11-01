@@ -266,12 +266,12 @@ def eval_derivs(X):
 Next we can implement the function that applies an Euler integration step to solve for the velocity and position of the mass. As a reminder this is the first of the integrators mentioned prior and only relies on the rate at that instant.
 
 ```python
-def euler(dt, X, evaluate):
+def euler(X, dt, evaluate):
     """
     Euler Integration Step
     Inputs:
-        dt: Integration step (often called h)
         X: State vector at the current point
+        dt: Integration step (often called h)
         evaluate: Function to evaluate for derivative terms
     Returns:
         X_new: Updated state vector
@@ -303,7 +303,7 @@ T = np.linspace(0,t, iters+1)
 # Iterate over number of steps
 for i in range(iters):
     # Compute an integration step and save
-    D[i+1] = euler(dt, D[i], eval_derivs)
+    D[i+1] = euler(D[i], dt, eval_derivs)
 ```
 
 This chunk of code sets up our initial conditions for our system ($x=1$ and $\dot{x}=0$), the step to advance over, the total time, and a matrix of size $[(\text{\# Steps}+1) \times 2]$ to store $x$ and $\dot{x}$ over time. Although I mentioned that numerical integrators can be used to integrate functions with unknown explicit solutions this is not one of them so we can use the true solution to see how well our integrator works!
@@ -331,12 +331,12 @@ So no matter what h is the very first step of this integration will never change
 We can follow the same steps we took for Euler and all we need to do now is implement `heun` in the code and pass that in as the integrator in our iterator, that looks like this:
 
 ```python
-def heun(dt, X, evaluate):
+def heun(X, dt, evaluate):
     """
     Heun's Method Integration Step
     Inputs:
-        dt: Integration step (often called h)
         X: State vector at the current point
+        dt: Integration step (often called h)
         evaluate: Function to evaluate for derivative terms
     Returns:
         X_new: Updated state vector
@@ -356,7 +356,7 @@ And for the integrator all we need to change is what integrator function call is
 # Iterate over number of steps
 for i in range(iters):
     # Compute an integration step and save
-    D[i+1] = heun(dt, D[i], eval_derivs)
+    D[i+1] = heun(D[i], dt, eval_derivs)
 ```
 
 The first term k1 is identical to Euler but we introduce k2 to get an estimate of the rates from `evaluate` at the result of the Euler step. We then take an average to estimate what the average rate from the start to end should be. This yields the following results:
@@ -371,19 +371,19 @@ While the results are appreciably better than Euler we still see that we need to
 
 ![Heun integration step close up](./images/heun_vector.jpg)
 
-The first step is nearly perfect but we can see that the second step overestimates the rates and so we overcorrect, let's see what the additional two terms of RK4 can do.
+The first step is nearly perfect but we can see that the second step overestimates the rates and so we over correct, let's see what the additional two terms of RK4 can do.
 
 ## RK4
 
 Similarly to Heun, all we need to do is implement `rk4` and change the integrator in the iterator.
 
 ```python
-def rk4(dt, X, evaluate):
+def rk4(X, dt, evaluate):
     """
     Runge-Kutta 4th Order Integration Step
     Inputs:
-        dt: Integration step (often called h)
         X: State vector at the current point
+        dt: Integration step (often called h)
         evaluate: Function to evaluate for derivative terms
     Returns:
         X_new: Updated state vector
@@ -412,7 +412,7 @@ The rates are combined using a weighted average based on the [butcher tableau](h
 # Iterate over number of steps
 for i in range(iters):
     # Compute an integration step and save
-    D[i+1] = rk4(dt, D[i], eval_derivs)
+    D[i+1] = rk4(D[i], dt, eval_derivs)
 ```
 
 Let's see how well this performs!
@@ -471,7 +471,7 @@ T = np.linspace(0,t, iters+1)
 # Iterate over number of steps
 for i in range(iters):
     # Compute an integration step and save
-    D[i+1] = euler(dt, D[i], eval_derivs)
+    D[i+1] = euler(D[i], dt, eval_derivs)
 ```
 
 No changes need to be made to our integrators as they will operate the same as before.

@@ -1,3 +1,34 @@
 {
-    "python.pythonPath": "/Users/patrick/miniconda3/envs/Sims/bin/python"
+    "python.pythonPath": "/Users/patrick/miniconda3/envs/Sims/bin/python",
+    "cSpell.enabled": true,
+    "cSpell.words": [
+        "arange",
+        "bmatrix",
+        "choreographies",
+        "deepcopy",
+        "dists",
+        "figsize",
+        "Heun",
+        "itertools",
+        "Kutta",
+        "linalg",
+        "linestyle",
+        "linewidth",
+        "linspace",
+        "matplotlib",
+        "nbody",
+        "numpy",
+        "pyplot",
+        "Runge",
+        "Starlink",
+        "Submatrix",
+        "substack",
+        "timestep",
+        "TLDR",
+        "twobody",
+        "vlines",
+        "Xdot",
+        "xlabel",
+        "ylabel"
+    ]
 }

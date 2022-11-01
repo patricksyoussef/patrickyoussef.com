@@ -19,7 +19,7 @@ const TableOfContents = ({toc}) => {
               return(<li key={index.toString()}>{getLinkedText(item.title, item.url)}</li>)
             } else {
               return(
-              <li>
+              <li key={index.toString()}>
                 {getLinkedText(item.title, item.url)}
                 <ul key={index}>
                   {item.items.map((item, index) => {

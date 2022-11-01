@@ -7,11 +7,12 @@ import { CodeBlockFlag } from "./CodeBlockFlag"
 import styled from "styled-components"
 import ClientOnly from "./ClientOnly"
 const _ = require("lodash")
-require("./themes/a11y.css")
+require("./themes/mine.css")
+
 
 const MainBlock = styled.div`
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 5px;
   border-width: 1px;
   margin-bottom: 1rem;
   background: ${props => props.theme.colors.code_background};
@@ -80,7 +81,7 @@ const Toolbar = styled.div`
   div,
   button {
     color: ${props => props.theme.colors.text_light};
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 `
 

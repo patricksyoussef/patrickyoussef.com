@@ -38,6 +38,7 @@ const Post = styled.div`
   h2,h3,h4 {
     margin-bottom: 0rem;
     font-family: ${props => props.theme.fonts.main};
+    font-weight: 400;
   }
 `
 const StyledLink = styled(Link)`

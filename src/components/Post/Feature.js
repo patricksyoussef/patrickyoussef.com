@@ -49,7 +49,7 @@ const Header = styled.div`
 `
 const Title = styled.span`
   font-size: 1.9rem;
-  font-weight: 700;
+  font-weight: 500;
   font-family: ${props => props.theme.fonts.main};
 `
 const SubTitle = styled.span`

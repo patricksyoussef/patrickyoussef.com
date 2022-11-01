@@ -16,7 +16,7 @@ const Container = styled.div`
   margin-bottom: 2rem;
 
   video {
-    max-width: 550px !important;
+    max-width: 600px !important;
   }
 
   .gatsby-resp-image-figure {
@@ -31,7 +31,7 @@ const Container = styled.div`
       box-shadow: ${props => props.theme.shadows.s1};
 
       border: solid 1px;
-      border-radius: 0.3rem;
+      border-radius: 5px;
       border-color: ${props => props.theme.colors.text_gray};
   }
 
@@ -47,7 +47,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
 
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
     color: ${props => props.theme.colors.text_gray};
     font-family: ${props => props.theme.fonts.code};
@@ -63,32 +63,38 @@ const Container = styled.div`
     border-bottom-width: 1px;
     border-bottom-color: ${props => props.theme.colors.text_gray};
   }
-
-  h2 {
-    font-weight: 800;
-  }
 `
 
 const Content = styled.div`
   padding: 0 0rem;
 
   h1,h2,h3,h4,h5,h6 {
-    font-weight: 600;
+    font-weight: 500;
     font-family: ${props => props.theme.fonts.main};
     color: ${props => props.theme.colors.text_dark};
+    margin-bottom: 0rem;
   }
 
-
-  p,
-  li {
-    font-size: 1.1rem;
+  p, li{
+    font-size: 1.2rem;
     font-family: ${props => props.theme.fonts.sub};
     color: ${props => props.theme.colors.text_dark};
   }
 
   p,
   ol {
-    margin-bottom: 1rem;
+    margin: 0.75rem 0rem;
+  }
+
+  // Math Styles
+  .mspace {
+    padding: 0rem 0;
+  }
+
+  p {
+    .katex {
+      font-size: 1.2rem;
+    }
   }
 
   // Blockquote style
@@ -135,6 +141,7 @@ const Content = styled.div`
       border-bottom-style: solid;
       border-bottom-width: 0.15rem;
       border-bottom-color: ${props => props.theme.colors.blue};
+      * {font-weight: 500;}
 
       th {
         padding: 0.2rem 0.3rem;
@@ -146,11 +153,11 @@ const Content = styled.div`
     }
 
     tbody {
-      font-family: ${props => props.theme.fonts.code};
+      font-family: ${props => props.theme.fonts.main};
 
       td {
         text-align: center;
-        padding: 0.2rem 0.5rem;
+        padding: 0.5rem 0.5rem;
         border-style: solid;
         border-width: 1px;
         border-radius: 5px;
@@ -163,10 +170,6 @@ const Content = styled.div`
     }
   }
 
-  // Math Styles
-  .mspace {
-    padding: 0rem 0;
-  }
 
   // Table of Contents Style
   .table-of-contents {

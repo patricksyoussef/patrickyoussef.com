@@ -86,7 +86,7 @@ export const query = graphql`
     }
     
     blog: allMdx(
-      limit: 3
+      limit: 4
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {

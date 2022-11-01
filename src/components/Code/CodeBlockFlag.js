@@ -31,7 +31,7 @@ const TextBox = styled.div`
   padding: 0.15rem 0.25rem;
   border-radius: 0.25rem;
   .lang-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 `
 

@@ -10,6 +10,10 @@ const Container = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(100px, auto));
   grid-gap: 50px;
   margin: 2rem 0;
+
+  h1 {
+    font-weight: 500;
+  }
   
   .TextContent {
     grid-column: span 3;
@@ -28,9 +32,10 @@ const Container = styled.div`
     }
 
     p {
+      font-size: 1rem;
       color: ${props => props.theme.colors.text_gray};
       strong {
-        font-weight: 900;
+        font-weight: 500;
         color: ${props => props.theme.colors.text_dark};
       }
     }
@@ -61,9 +66,6 @@ grid-template-rows: 0fr 1fr 0fr;
   border-radius: 50%;
 }
 `
-
-// <MDXRenderer>{body}</MDXRenderer>
-// <Socials/>
 
 export default function Hero({ data }) {
   const { frontmatter, body } = data.nodes[0]
