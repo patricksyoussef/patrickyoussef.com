@@ -14,17 +14,15 @@ const MainBlock = styled.div`
   border-style: solid;
   border-radius: 5px;
   border-width: 1px;
-  margin-bottom: 1rem;
   background: ${props => props.theme.colors.code_background};
   overflow: hidden;
-  padding-bottom: 0rem;
+  
   .bar-separate {
     border-top: solid ${props => props.theme.colors.output_line} 0.15rem;
-    padding-top: 0.3rem;
-    margin-top: 0.6rem; 
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
   }
-  .no-separate {
-  }
+  
   .prism-code {
     span {
       font-size: 1rem;
@@ -37,11 +35,11 @@ const MainBlock = styled.div`
 `
 
 const OutputBlock = styled.div`
-padding-bottom: 0.2rem;
 `
 
 const Code = styled.div`
-overflow-x: auto;
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
 `
 
 const Output = styled.div`
@@ -51,15 +49,11 @@ const Output = styled.div`
 `
 
 const Block = styled.div`
-  padding: 0rem;
   pre {
     overflow: visible;
-    padding-bottom: 0rem;
   }
   .prism-code {
     margin: 0;
-    padding: 0.3rem 0.8rem;
-    padding-top: 0rem;
   }
   .line-darken {
     opacity: 0.5;
@@ -69,14 +63,16 @@ const Block = styled.div`
   .token-line {
     min-height: 1.65rem;
   }
+  padding: 0.75rem;
+  padding-bottom: 0rem;
 `
 
 const Toolbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 0.7rem;
-  padding-bottom: 0.4rem;
+  padding: 0rem;
+  padding-bottom: 0.5rem;
   font-family: ${props => props.theme.fonts.sub};
   div,
   button {
@@ -87,7 +83,7 @@ const Toolbar = styled.div`
 
 const CopyButton = styled.button`
   background: transparent;
-  padding: 0.2rem;
+  padding: 0.25rem;
   border-style: solid;
   border-width: 0px;
   border-radius: 8px;
