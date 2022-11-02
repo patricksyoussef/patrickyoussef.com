@@ -182,12 +182,13 @@ const Content = styled.div`
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
+  // <meta property='og:image' content={ frontmatter. } />
+  let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
   return (
     <Layout>
       <Helmet>
-        <title>
-          {frontmatter.title} | {data.site.siteMetadata.title}
-        </title>
+        <title>{frontmatter.title} | {data.site.siteMetadata.title}</title>
+        <meta property='og:image' content={ image } />
       </Helmet>
       <Container>
         <Content>
