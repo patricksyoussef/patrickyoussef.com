@@ -11,10 +11,10 @@ const Container = styled.div`
   }
 `
 
-const PostVideo = ({ video, _autoplay=false, _muted = true }) => {
+const PostVideo = ({ video, _autoplay=false }) => {
   return (
   <Container className={'post-video'}>
-    <video controls autoPlay={_autoplay} muted={_muted} playsInline onContextMenu={e => e.preventDefault()}>
+    <video controls playsInline muted autoPlay={_autoplay} onContextMenu={e => e.preventDefault()}>
       <source src={video} type="video/mp4" />
       <track kind="captions" srcLang="en" src="No Sound"/>
     </video>

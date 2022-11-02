@@ -14,7 +14,8 @@ pinned: true
 
 This post will introduce you to the principles behind predicting the motion of gravitationally interacting objects. Using Python with some popular modules, we'll implement the principles from scratch and look at some fun examples such as the one one below. Overall expect this to be more practical coding and testing and less theory as much of the core numerical theory has been covered in a [prior post](/blog/integrator-intro).
 
-<PostVideo video={"/videos/NBody/SolarAnim.mp4"} _autoplay={true} _muted={true}/>
+<PostVideo video={"/videos/nbody/solar_anim.mp4"} _autoplay={true}/>
+
 
 # Assumptions of Prior Knowledge
 
@@ -878,9 +879,9 @@ Great! Seems like everything is working as expected so we can move on to some mo
 
 # Special Three Body
 
-In this section, we'll have fun with an N-body choreography with three bodies. The history of choreographies is [quite short](https://www.math.uni-bielefeld.de/~rehmann/ECM/cdrom/3ecm/pdfs/pant3/simo.pdf) and many fun choreographies hav already been found. We're focusing on one that should produce a stable figure 8!
+In this section, we'll have fun with an N-body choreography with three bodies. The history of them is [quite short](https://www.math.uni-bielefeld.de/~rehmann/ECM/cdrom/3ecm/pdfs/pant3/simo.pdf) and many fun initial conditions have already been found. We're focusing on one that should produce a stable figure 8!
 
-> *It's pretty typical for these choreographies to use $G=1$*
+> *It's pretty typical for these to use $G=1$*
 
 ## Initial Conditions
 
@@ -924,7 +925,7 @@ plt.show()
 
 That looks great! I took the liberty of producing an animation of their motion and the associated energy as I think it's a great way to appreciate this case.
 
-<PostVideo video={"/videos/NBody/3BodyAnim.mp4"}/>
+<PostVideo video={"/videos/nbody/three_body_anim.mp4"} />
 
 # Partial Solar System
 
