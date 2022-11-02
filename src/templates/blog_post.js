@@ -182,12 +182,15 @@ const Content = styled.div`
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
+  console.log(frontmatter)
+  let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
+  let description = frontmatter.excerpt
   return (
     <Layout>
       <Helmet>
-        <title>
-          {frontmatter.title} | {data.site.siteMetadata.title}
-        </title>
+        <title>{frontmatter.title} | {data.site.siteMetadata.title}</title>
+        <meta property='og:image' content={ image } />
+        <meta property='og:description' content={ description } />
       </Helmet>
       <Container>
         <Content>
@@ -208,6 +211,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM Do, YYYY")
+        excerpt
         featureImage {
           childImageSharp {
             gatsbyImageData(width:800, formats: JPG, placeholder: BLURRED)
