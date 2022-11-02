@@ -1,8 +1,8 @@
 const theme =  {
   fonts: {
-    main: "Source Sans Pro",
-    sub: "Ubuntu",
-    code: "Inconsolata",
+    main: "IBM Plex Sans",
+    sub: "IBM Plex Sans",
+    code: "Fira Code",
   },
   colors: {
     light1: "hsl(40, 10%, 98%)",
@@ -10,6 +10,7 @@ const theme =  {
     
     code_background: "#1d1f21",
     code_highlight: "rgba(24, 95, 184, 0.25)",
+    code_inline: "#1553a1",
     
     res_button: "rgba(24, 95, 184, 0.2)",
     text_dark: "hsl(0, 0%, 12%)",
@@ -40,7 +41,8 @@ const theme =  {
   widths: {
     max: "900px",
     content: "800px",
-    about_img: "300px"
+    about_img: "300px",
+    media: "600px",
   },
 }
 export default theme;

@@ -9,6 +9,7 @@ const Container = styled.div`
 const TopContent = styled.span`
   h1 {
     margin: 0.2rem 0;
+    font-weight: 400;
   }
 
   font-family: ${props => props.theme.fonts.main};

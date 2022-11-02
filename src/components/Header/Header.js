@@ -22,6 +22,7 @@ const Container = styled.div`
 const HomeButton = styled.div`
   h1 {
     margin-bottom: 0.2rem;
+    font-weight: 500;
   }
 `
 
@@ -35,6 +36,9 @@ const NavItems = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  * {
+    font-weight: 500;
+  }
 `
 const ColorText = styled.span`
   color: ${props => props.theme.colors.blue};

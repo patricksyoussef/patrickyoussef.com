@@ -58,7 +58,7 @@ $$
 \hat{y_i} = \sigma (W^T X_i + b)
 $$
 
-![Plot of the sigmoid function](images/sigmoid.jpg)
+![Sigmoid Function](images/sigmoid.jpg)
 
 Where $\hat{y_i}$ is the probability that the example is in the class we are trying to predict. For the rain example, this is the logistic regressions estimated probability that it will rain that day. The sigmoid function is well catered to this as it introduces a non-linearity that bounds the output between 0 and 1, perfect for a probability!
 
@@ -145,7 +145,7 @@ Essentially, if the probability is greater or less than $0.5$ we round as the al
 
 ### Bias Simplification
 
-_*Personally, I prefer to move the bias term ($b$) into the matrix multiplication ($W^T X_i$). This is done by adding a column of 1's to the end of $X$, adding a feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. This helps to simplify the training procedure as you only need to train for $W'$! Moving forward, I will refer to $W'$ as just $W$.*_
+Personally, I prefer to move the bias term ($b$) into the matrix multiplication ($W^T X_i$). This is done by adding a column of 1's to the end of $X$, adding a feature that is consistent across all examples. Then we increase the size of the weights by 1 (now $W',X'$ etc.) such that the last weight acts as the bias. Check the math below if you are still curious. This helps to simplify the training procedure as you only need to train for $W'$! Moving forward, I will refer to $W'$ as just $W$.
 
 > $$
 > W^T X + b  = w_1 x_1 + ... + w_n x_n + b
@@ -242,65 +242,65 @@ class LogisticRegression():
 Let's start with the `sigmoid` function, as mentioned before the function is $(1+\exp(-x))^{-1}$, using NumPy this is:
 
 ```python
-    def sigmoid(self, z):
-        return 1 / (1 + np.exp(-z))
+def sigmoid(self, z):
+    return 1 / (1 + np.exp(-z))
 ```
 
 Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the result of $W^T X_i$. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
 
 ```python
-    def prep_data(self, X):
-        temp = X - np.min(X, axis=0)
-        X = temp / np.max(temp, axis=0)
+def prep_data(self, X):
+    temp = X - np.min(X, axis=0)
+    X = temp / np.max(temp, axis=0)
 
-        return X
+    return X
 
-    def add_dimension(self, X):
-        # Stacks a vector of ones with the same number of rows as X
-        # horizontally on then end of X
-        X_new = np.hstack((X, np.ones((X.shape[0], 1))))
+def add_dimension(self, X):
+    # Stacks a vector of ones with the same number of rows as X
+    # horizontally on then end of X
+    X_new = np.hstack((X, np.ones((X.shape[0], 1))))
 
-        return X_new
+    return X_new
 ```
 
 The training process is going to be more involved, the comments explain what is going on but feel free to reach out if you would like more explanation.
 
 ```python
-    def train(self, X_train, y_train, learning_rate, iterations):
-        self.learning_rate = learning_rate
-        self.iterations = iterations
+def train(self, X_train, y_train, learning_rate, iterations):
+    self.learning_rate = learning_rate
+    self.iterations = iterations
 
-        X_train = self.prep_data(X_train)
-        X_train = self.add_dimension(X_train)
+    X_train = self.prep_data(X_train)
+    X_train = self.add_dimension(X_train)
 
-        N,D = X_train.shape
-        self.weights = np.random.random((D,1)) * 0.001
+    N,D = X_train.shape
+    self.weights = np.random.random((D,1)) * 0.001
 
-        # Iterate to train
-        for i in range(self.iterations):
+    # Iterate to train
+    for i in range(self.iterations):
 
-            # Compute the gradient
-            A = self.sigmoid(np.dot(self.weights.T, X_train.T))
-            grad = (1/N) * np.dot(X_train.T, (A - y_train).T)
+        # Compute the gradient
+        A = self.sigmoid(np.dot(self.weights.T, X_train.T))
+        grad = (1/N) * np.dot(X_train.T, (A - y_train).T)
 
-            # Update Weights
-            self.weights = self.weights - self.learning_rate * grad
+        # Update Weights
+        self.weights = self.weights - self.learning_rate * grad
 
-            # Get Training Accuracy Every 100 Iterations
-            if i % 100 == 0:
-                y_est = self.predict(X_train)
-                acc = np.sum(y_train == y_est) / y_train.size
-                print("Training Accuracy on Iteration {}: {:0.4f}".format(i, acc))
+        # Get Training Accuracy Every 100 Iterations
+        if i % 100 == 0:
+            y_est = self.predict(X_train)
+            acc = np.sum(y_train == y_est) / y_train.size
+            print("Training Accuracy on Iteration {}: {:0.4f}".format(i, acc))
 ```
 
 To close out the model class, let's implement `predict` that computes the forward propagation of our test data.
 
 ```python
-    def predict(self, X_test):
-        A = self.sigmoid(np.dot(self.weights.T, X_test.T))
-        y_est = np.round(A)
+def predict(self, X_test):
+    A = self.sigmoid(np.dot(self.weights.T, X_test.T))
+    y_est = np.round(A)
 
-        return y_est
+    return y_est
 ```
 
 ## Data Import and Function Calls

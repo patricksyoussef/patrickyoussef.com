@@ -13,8 +13,6 @@ import PostVideo from "./Post/PostVideo"
 import Collapse from "../components/Utils/Collapse"
 import("katex/dist/katex.min.css");
 
-let shortcodes = {PostButton, PostVideo, Collapse}
-
 const components = {
   pre: props => <div {...props} />,
   code: CodeBlock,
@@ -30,6 +28,7 @@ const components = {
     }
     return <span {...props} />;
   },
+  ...{PostButton, PostVideo, Collapse},
 }
 
 const FullView = styled.div`
@@ -83,13 +82,11 @@ function Layout({ children }) {
     <FullView>
       <ColorStrip />
       <MDXProvider components={components}>
-        <MDXProvider components={shortcodes}>
-          <Container>
-            <Header />
-            {children}
-            <Footer/>
-          </Container>
-        </MDXProvider>
+        <Container>
+          <Header />
+          {children}
+          <Footer/>
+        </Container>
       </MDXProvider>
     </FullView>
   )

@@ -75,6 +75,7 @@ const Text = styled.div`
 
   h1,h2,h3,h4 {
     font-family: ${props => props.theme.fonts.main};
+    font-weight: 400;
   }
 
   h2,h3,h4,p {

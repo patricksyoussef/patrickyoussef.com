@@ -1,5 +1,3 @@
-// Fancy little button that links to my resume, hosted in Hero.js
-
 import React from "react"
 import styled from "styled-components"
 
@@ -9,16 +7,18 @@ const Container = styled.div`
   justify-content: center;
 
   video {
-    width: -webkit-fill-available;
+    width: 100%;
   }
 `
 
-const PostVideo = ({ video }) => (
+const PostVideo = ({ video, _autoplay=false }) => {
+  return (
   <Container className={'post-video'}>
-    <video controls onContextMenu={e => e.preventDefault()}>
+    <video controls playsInline muted autoPlay={_autoplay} onContextMenu={e => e.preventDefault()}>
       <source src={video} type="video/mp4" />
       <track kind="captions" srcLang="en" src="No Sound"/>
     </video>
   </Container>
 )
+}
 export default PostVideo;

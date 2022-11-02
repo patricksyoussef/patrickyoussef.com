@@ -8,6 +8,9 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
   justify-content: center;
+  * {
+    font-weight: 500;
+  }
 `
 
 const PostButton = ({ text, target }) => (
