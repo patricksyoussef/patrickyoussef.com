@@ -184,13 +184,14 @@ const BlogPost = ({ data }) => {
 
   console.log(frontmatter)
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
-  let description = frontmatter.excerpt
   return (
     <Layout>
       <Helmet>
         <title>{frontmatter.title} | {data.site.siteMetadata.title}</title>
+        <meta property='og:title' content={ frontmatter.title } />
         <meta property='og:image' content={ image } />
-        <meta property='og:description' content={ description } />
+        <meta property='og:description' content={ frontmatter.excerpt } />
+        <meta property='og:url' content={ ['https://patrickyoussef.com', fields.path].join('') }/>
       </Helmet>
       <Container>
         <Content>
