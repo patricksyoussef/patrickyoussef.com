@@ -182,16 +182,28 @@ const Content = styled.div`
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
-  console.log(frontmatter)
+  // This is obnoxiously long to put below
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
+  
+  console.log(fields)
   return (
     <Layout>
       <Helmet>
         <title>{frontmatter.title} | {data.site.siteMetadata.title}</title>
-        <meta property='og:title' content={ frontmatter.title } />
-        <meta property='og:image' content={ image } />
-        <meta property='og:description' content={ frontmatter.excerpt } />
+
         <meta property='og:url' content={ ['https://patrickyoussef.com', fields.path].join('') }/>
+        <meta property="og:type" content="website"/>
+        <meta property='og:title' content={ frontmatter.title } />
+        <meta property='og:description' content={ frontmatter.excerpt } />
+        <meta property='og:image' content={ image } />
+
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:domain" content="patrickyoussef.com"/>
+        <meta property="twitter:url" content={ ['https://patrickyoussef.com', fields.path].join('') }/>
+        <meta name="twitter:title" content={ frontmatter.title }/>
+        <meta name="twitter:description" content={ frontmatter.excerpt }/>
+        <meta name="twitter:image" content={ image }/>
+      
       </Helmet>
       <Container>
         <Content>
