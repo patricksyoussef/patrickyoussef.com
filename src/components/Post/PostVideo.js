@@ -1,10 +1,16 @@
 import React from "react"
 import styled from "styled-components"
+import { Player } from 'video-react';
 
 const Container = styled.div`
   display: flex;
   margin: 1rem auto;
   justify-content: center;
+  max-width: 600px !important;
+
+  * {
+  font-family: ${props => props.theme.fonts.main};
+  }
 
   video {
     width: 100%;
@@ -13,12 +19,13 @@ const Container = styled.div`
 
 const PostVideo = ({ video, _autoplay=false }) => {
   return (
-  <Container className={'post-video'}>
-    <video controls playsInline muted autoPlay={_autoplay} onContextMenu={e => e.preventDefault()}>
-      <source src={video} type="video/mp4" />
-      <track kind="captions" srcLang="en" src="No Sound"/>
-    </video>
-  </Container>
+    
+    <Container>
+        <link rel="stylesheet" href="https://video-react.github.io/assets/video-react.css"/>
+        <Player controls playsInline muted autoPlay={_autoplay}>
+            <source src={video} type="video/mp4" />
+        </Player>
+    </Container>
 )
 }
 export default PostVideo;
