@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Player } from 'video-react';
+// Way messing around with using this player but opted not to
+// import { Player } from 'video-react';
 
 const Container = styled.div`
   display: flex;
