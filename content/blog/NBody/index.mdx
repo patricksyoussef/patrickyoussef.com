@@ -16,7 +16,6 @@ This post will introduce you to the principles behind predicting the motion of g
 
 <PostVideo video={"/videos/nbody/solar_anim.mp4"} _autoplay={true}/>
 
-
 # Assumptions of Prior Knowledge
 
 There are a few concepts that you should know before coming into this post, in general I try to explain everything clearly but it helps if you have prior exposure to these concepts.
@@ -141,7 +140,7 @@ for i in range(N): # N being number of bodies
 
 ### Combination Method
 
-In this method, we will try to leverage the property that each force we compute can be negated to provide a second force that we can use. In that case, we can resolve two force in our sets of forces that we need to calculate and reduce our force calculations by half.
+In this method, we will try to leverage the property that each force we compute can be negated to provide a second force that we can use. In that case, we can resolve two forces in our sets of forces that we need to calculate and reduce our force calculations by half.
 
 $$
 K = \frac{n(n-1)}{2}
@@ -925,7 +924,7 @@ plt.show()
 
 That looks great! I took the liberty of producing an animation of their motion and the associated energy as I think it's a great way to appreciate this case.
 
-<PostVideo video={"/videos/nbody/three_body_anim.mp4"} />
+<PostVideo video={"/videos/nbody/figure8_anim.mp4"} />
 
 # Partial Solar System
 

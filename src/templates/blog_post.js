@@ -15,17 +15,13 @@ const Container = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
 
-  video {
-    max-width: 600px !important;
-  }
-
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
     max-width: 600px !important;
   }
 
-  .gatsby-resp-image-wrapper, video {
+  .gatsby-resp-image-wrapper,  div[class^="PostVideo"]{
       overflow: hidden;
       margin-bottom: 0.75rem;
       box-shadow: ${props => props.theme.shadows.s1};
@@ -185,7 +181,6 @@ const BlogPost = ({ data }) => {
   // This is obnoxiously long to put below
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
   
-  console.log(fields)
   return (
     <Layout>
       <Helmet>
