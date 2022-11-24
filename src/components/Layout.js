@@ -35,7 +35,7 @@ const components = {
 const FullView = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: ${props => props.theme.colors.light1};
+  background-color: ${props => props.theme.colors.light1} !important;
 `
 
 const Container = styled.div`

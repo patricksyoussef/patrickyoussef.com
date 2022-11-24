@@ -18,7 +18,7 @@ const Container = styled.div`
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
-    max-width: 600px !important;
+    max-width: 700px !important;
   }
 
   .gatsby-resp-image-wrapper,  div[class^="PostVideo"]{
@@ -93,12 +93,6 @@ const Content = styled.div`
     }
   }
 
-  // Blockquote style
-  blockquote p {
-    font-size: 1.25rem;
-    margin: 0;
-  }
-
   // Inline Code Style
   code {
     border-radius: 2px;
@@ -126,6 +120,12 @@ const Content = styled.div`
     border-left-width: 0.3rem;
     border-left-color: ${props => props.theme.colors.blue};
     margin: 0rem;
+    margin-top: 0.5rem;
+
+    p {
+      font-size: 1.25rem;
+      margin: 0;
+    }
   }
 
   // Table Style
