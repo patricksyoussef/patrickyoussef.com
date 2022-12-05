@@ -10,11 +10,14 @@ excerpt: "An introduction to the principles and methods required to implement an
 pinned: true
 ---
 
+import solar_anim from "./videos/solar_anim.mp4";
+import figure8 from "./videos/figure8_anim.mp4";
+
 # Introduction
 
 This post will introduce you to the principles behind predicting the motion of gravitationally interacting objects. Using Python with some popular modules, we'll implement the principles from scratch and look at some fun examples such as the one one below. Overall expect this to be more practical coding and testing and less theory as much of the core numerical theory has been covered in a [prior post](/blog/integrator-intro).
 
-<PostVideo video={"/videos/nbody/solar_anim.mp4"} _autoplay={true}/>
+<PostVideo video={solar_anim} _autoplay={true}/>
 
 # Assumptions of Prior Knowledge
 
@@ -924,7 +927,7 @@ plt.show()
 
 That looks great! I took the liberty of producing an animation of their motion and the associated energy as I think it's a great way to appreciate this case.
 
-<PostVideo video={"/videos/nbody/figure8_anim.mp4"} />
+<PostVideo video={figure8}/>
 
 # Partial Solar System
 

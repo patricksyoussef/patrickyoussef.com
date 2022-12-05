@@ -10,7 +10,7 @@ const Container = styled.div`
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: ${props => props.theme.colors.und};
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
 `
 const Content = styled.div`
   display: flex;

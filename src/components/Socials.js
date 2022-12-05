@@ -4,7 +4,7 @@
 import React from "react"
 import styled from "styled-components"
 import { GitHub, Send, Linkedin} from 'react-feather';
-// No long using FontAwesome
+// No longer using FontAwesome
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 //import { library } from "@fortawesome/fontawesome-svg-core"
 //import { fab } from "@fortawesome/free-brands-svg-icons"

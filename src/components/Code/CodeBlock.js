@@ -6,6 +6,7 @@ import Highlight, { defaultProps } from "prism-react-renderer"
 import { CodeBlockFlag } from "./CodeBlockFlag"
 import styled from "styled-components"
 import ClientOnly from "./ClientOnly"
+import { Copy, Check } from 'react-feather';
 const _ = require("lodash")
 require("./themes/mine.css")
 
@@ -93,8 +94,8 @@ const CopyButton = styled.button`
   .copy-text {
     font-size: 0.9rem;
   }
-  .confirm {
-    color: #abe338;
+  .check {
+    color: #00ff00;
   }
 `
 
@@ -123,10 +124,13 @@ const ammendChildren = (arr) => {
 }
 
 const copyIcon = (isCopied) => {
+  let size = 20 
   if (isCopied) {
-    return(<div>Copied</div>)
+    // return(<div>Copied</div>)
+    return(<Check className="check" size={size}/>)
   } else {
-    return(<div>Copy</div>)
+    // return(<div>Copy</div>)
+    return(<Copy size={size}/>)
   }
 }
 
@@ -198,7 +202,7 @@ const CodeBlock = ({ children, className }) => {
                   onClick={() => {
                     copyToClipboard(children)
                     setIsCopied(true)
-                    setTimeout(() => setIsCopied(false), 2000)
+                    setTimeout(() => setIsCopied(false), 1500)
                   }}>
                     <div className="copy-text">
                       {copyIcon(isCopied)}
