@@ -91,11 +91,14 @@ const CopyButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  .copy-text {
-    font-size: 0.9rem;
-  }
+
   .check {
     color: #00ff00;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 `
 
@@ -124,13 +127,12 @@ const ammendChildren = (arr) => {
 }
 
 const copyIcon = (isCopied) => {
-  let size = 20 
   if (isCopied) {
     // return(<div>Copied</div>)
-    return(<Check className="check" size={size}/>)
+    return(<Check className="check"/>)
   } else {
     // return(<div>Copy</div>)
-    return(<Copy size={size}/>)
+    return(<Copy/>)
   }
 }
 
