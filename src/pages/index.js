@@ -6,6 +6,16 @@ import Hero from "../components/Hero"
 import ProjectSection from "../components/ProjectSection"
 import BlogSection from "../components/BlogSection"
 import Divider from "../components/Divider"
+import styled from "styled-components"
+
+// Mostly used for hiding the header links when rendering hero mdx
+const Container = styled.div`
+h1, h2, h3 {
+  svg {
+    display: none;
+  }
+}
+`
 
 const index = ({ data }) => {
   return (
@@ -30,11 +40,13 @@ const index = ({ data }) => {
         <meta name="twitter:description" content={ data.site.siteMetadata.description }/>
         <meta name="twitter:image" content={ '/images/memoji_laptop_crop.png' }/>
       </Helmet>
-      <Hero data={data.hero}/>
-      <Divider title={"Some Of My Favorite Work"} link="/projects/"/>
-      <ProjectSection data={data.project}/>
-      <Divider title={"Learn Something New Today"} link="/blog/"/>
-      <BlogSection data={data.blog}/>
+      <Container>
+        <Hero data={data.hero}/>
+        <Divider title={"Some Of My Favorite Work"} link="/projects/"/>
+        <ProjectSection data={data.project}/>
+        <Divider title={"Learn Something New Today"} link="/blog/"/>
+        <BlogSection data={data.blog}/>
+      </Container>
     </Layout>
   )
 }

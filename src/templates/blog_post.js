@@ -69,6 +69,11 @@ const Content = styled.div`
     font-family: ${props => props.theme.fonts.main};
     color: ${props => props.theme.colors.text_dark};
     margin-bottom: 0rem;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
   }
 
   p, li{
