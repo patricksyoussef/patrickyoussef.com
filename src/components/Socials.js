@@ -3,7 +3,7 @@
 
 import React from "react"
 import styled from "styled-components"
-import { GitHub, Send, Linkedin} from 'react-feather';
+import { GitHub, Send, Linkedin, Coffee} from 'react-feather';
 // No longer using FontAwesome
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 //import { library } from "@fortawesome/fontawesome-svg-core"
@@ -60,6 +60,12 @@ const Socials = () => (
     <SocialItem>
       <a href="mailto:patricksyoussef@gmail.com">
         <Send size={24}/>
+      </a>
+    </SocialItem>
+    <Padding/>
+    <SocialItem>
+      <a href="https://www.buymeacoffee.com/patrickyoussef">
+        <Coffee size={24}/>
       </a>
     </SocialItem>
   </Container>
