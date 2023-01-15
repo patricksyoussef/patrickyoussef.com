@@ -5,7 +5,7 @@ const theme =  {
     code: "Fira Code",
   },
   colors: {
-    light1: "hsl(40, 10%, 98%)",
+    light1: "hsl(20, 10%, 95%)",
     blue: "hsl(213, 77%, 41%)",
     
     code_background: "#1d1f21",
@@ -21,16 +21,6 @@ const theme =  {
     und: "hsl(4, 0%, 50%)",
     output_line: "hsl(4, 0%, 50%)",
     toc: "hsl(0,0%,93%)",
-  },
-  spacings: {
-    wall: "2rem",
-    xxs: "0.25rem",
-    xs: "0.5rem",
-    s: "1rem",
-    m: "2rem",
-    l: "3rem",
-    xl: "4rem",
-    xxl: "6rem",
   },
   anims: {
     main: "0.2s ease-in-out",
