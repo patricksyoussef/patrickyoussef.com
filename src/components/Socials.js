@@ -64,7 +64,10 @@ const Socials = () => (
     </SocialItem>
     <Padding/>
     <SocialItem>
-      <a href="https://www.buymeacoffee.com/patrickyoussef">
+      <a
+        href="https://www.buymeacoffee.com/patrickyoussef"
+        target="_blank"
+        rel="noreferrer">
         <Coffee size={24}/>
       </a>
     </SocialItem>
