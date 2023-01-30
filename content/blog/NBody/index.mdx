@@ -178,7 +178,25 @@ When comparing the different operation counts as the number of bodies $n$ increa
 
 ![Operation Count Comparison](./images/force_pair_comp.jpg)
 
-Those are familiar with $O(n)$ notation may have noticed the both the implementations are still quadratic in nature and are therefore the same time complexity. However, if you were to measure the actual runtime we would see a gain. This is an example where trying to compare time complexity to runtime can get messy.
+Those are familiar with big-$O$ notation may have noticed the both the implementations are still quadratic $O(n^2)$ in nature and are therefore the same time complexity. However, if you were to measure the actual runtime we would see a gain. This is an example where trying to compare time complexity to runtime can get messy.
+
+### Runtime Comparison
+
+Like I mentioned before, the time complexity can be a good indicator of how we would expect the runtime to scale but there are some factors in play that can make them different. 
+
+- In big-$O$ we drop constants and lower order terms
+    - Ex: $O(4n^2 + n - 2)$ = $O(n^2)$
+    - Constants can be play a large role in runtime (consider $n$ vs $1000n$)
+- We may adjust an algorithm where each "iteration" takes longer to run
+    - We reduced iteration count in our case by 50% but each iteration has more work
+
+Running the two different variants of our algorithm and plotting the runtime we get the following graph.
+
+![Comparison of Runtimes](./images/time_all.jpg)
+
+We can see that when we normalize the time and theoretical iteration count on the brute force method the times line up for the brute force (blue) meaning that the trend $O(n^2)$ is correct. When we look at the combination method what we see is that the runtimes do not follow the expected trend, why is this? In our case, our algo has more work to do per iteration than the brute force method so even though we expect the runtime to be 50% of the brute force we see that it's actually around ~63%.
+
+All of our analysis is still correct but it's important to understand the limitations of big-$O$ in terms of comparing such similar algorithms. If we managed to develop an algorithm that ran in $O(n)$ time complexity we would not be nearly as concerned about what the true value of the constants are.
 
 # Determining System Energies
 
@@ -257,7 +275,7 @@ $$
 
 ## Why Is It Useful?
 
-For simple systems, it might be easier to just build out a numerical integrator for each of the variables of interest, but for large n-body systems this would get messy quickly. Consider an example in 3D with 50 bodies, this would mean that we have 300 variables of interest and therefore 300 integrators! When we represent this system in the state matrix form, there are still the 300 values being updated but it's reduced to a series of sums between the entire matrices which is much cleaner.
+For simple systems, it might be easier to just build out a numerical integrator for each of the variables of interest, but for large n-body systems this would get messy quickly. Consider an example in 3D with 50 bodies, this would mean that we have 300 variables of interest and therefore 300 integrators! When we represent this system in the state matrix form, there are still the 300 values being updated but it's reduced to a series of sums between the entire matrices which is much cleaner (and can be [vectorized](https://www.pythonlikeyoumeanit.com/Module3_IntroducingNumpy/VectorizedOperations.html)).
 
 ## Simple Example
 

@@ -92,10 +92,8 @@ const Content = styled.div`
     padding: 0rem 0;
   }
 
-  p {
-    .katex {
-      font-size: 1.2rem;
-    }
+  .katex {
+    font-size: 1.2rem;
   }
 
   // Inline Code Style
@@ -111,10 +109,7 @@ const Content = styled.div`
     color: ${props => props.theme.colors.text_link};
     font-weight: 500;
     position: relative;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   }
 
   // Blockquote Style
