@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
+import {ChevronUp} from 'react-feather';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -27,7 +28,7 @@ const Container = styled.div`
       box-shadow: ${props => props.theme.shadows.s1};
 
       border: solid 1px;
-      border-radius: 5px;
+      border-radius: ${props => props.theme.radii.content};
       border-color: ${props => props.theme.colors.text_gray};
   }
 
@@ -64,6 +65,7 @@ const Container = styled.div`
 const Content = styled.div`
   padding: 0 0rem;
 
+  // Header Link Style
   h1,h2,h3,h4,h5,h6 {
     font-weight: 500;
     font-family: ${props => props.theme.fonts.main};
@@ -71,6 +73,7 @@ const Content = styled.div`
     margin-bottom: 0rem;
 
     svg {
+      margin-left: 0.1em;
       width: 1em;
       height: 1em;
     }
@@ -98,10 +101,14 @@ const Content = styled.div`
 
   // Inline Code Style
   code {
-    border-radius: 2px;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #bababa;
     background-color: #e0e0e0;
-    padding: 0.15rem;
-    color: ${props => props.theme.colors.text_dark};
+    padding: 0.15rem 0.25rem;
+    color: black;
   }
 
   // Link Style
@@ -109,7 +116,14 @@ const Content = styled.div`
     color: ${props => props.theme.colors.text_link};
     font-weight: 500;
     position: relative;
-    text-decoration: underline;
+
+    &:visited {
+      color: ${props => props.theme.colors.text_link_visited};
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   // Blockquote Style
@@ -143,7 +157,6 @@ const Content = styled.div`
         padding: 0.2rem 0.3rem;
         border-style: solid;
         border-width: 1px;
-        border-radius: 5px;
         border-color: ${props => props.theme.colors.text_gray};
       }
     }
@@ -156,7 +169,6 @@ const Content = styled.div`
         padding: 0.5rem 0.5rem;
         border-style: solid;
         border-width: 1px;
-        border-radius: 5px;
         border-color: ${props => props.theme.colors.text_gray};
       }
 
@@ -168,19 +180,36 @@ const Content = styled.div`
 
 
   // Table of Contents Style
-  .table-of-contents {
-    * {
-      font-family: ${props => props.theme.fonts.sub};
-    }
+  .collapse {
   }
 `
+
+const TopButton = styled.button`
+  position: fixed;
+  z-index: 1000;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-family: ${props => props.theme.fonts.main};
+  padding: 0.5rem;
+  border-radius: 10%;
+  border-color: black;
+  svg {
+    color: white;
+  }
+`
+
+const topFunction = () => {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
   // This is obnoxiously long to put below
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
-  
+
   return (
     <Layout>
       <Helmet>

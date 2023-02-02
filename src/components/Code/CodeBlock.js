@@ -13,7 +13,7 @@ require("./themes/mine.css")
 
 const MainBlock = styled.div`
   border-style: solid;
-  border-radius: 5px;
+  border-radius: ${props => props.theme.radii.content};
   border-width: 1px;
   background: ${props => props.theme.colors.code_background};
   overflow: hidden;

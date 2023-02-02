@@ -16,7 +16,9 @@ const theme =  {
     text_dark: "hsl(0, 0%, 12%)",
     text_gray: "hsl(4, 0%, 40%)",
     text_light: "hsl(0,0%,90%)",
-    text_link: "#0053b8",
+    // text_link: "#0053b8",
+    text_link: "#006aeb",
+    text_link_visited: "#003c85",
     
     und: "hsl(4, 0%, 50%)",
     output_line: "hsl(4, 0%, 50%)",
@@ -34,5 +36,9 @@ const theme =  {
     about_img: "300px",
     media: "600px",
   },
+  radii: {
+    heading: "0.75rem",
+    content: "0.5rem",
+  }
 }
 export default theme;

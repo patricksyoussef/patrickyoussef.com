@@ -12,7 +12,7 @@ const Container = styled.div`
     font-family: ${props => props.theme.fonts.main};
   }
 
-  border-radius: 15px;
+  border-radius: ${props => props.theme.radii.heading};
   border-width: 1px;
   border-color: ${props => props.theme.colors.text_gray};
   border-style: solid;
@@ -25,7 +25,7 @@ const Content = styled.div`
   align-items: center;
   cursor: pointer;
   h3 {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.0rem;
   }
 `
 
@@ -36,7 +36,7 @@ const Children = styled.div`
 const Collapse = ({ title, children }) => {
     const [isActive, setIsActive] = useState(false);
     return (
-    <Container>
+    <Container className='collapse'>
         <Content onClick={() => setIsActive(!isActive)}>
             <h3>{title}</h3>
             <div>{isActive ? <ChevronUp size={24}/> : <ChevronDown size={24}/>}</div>
