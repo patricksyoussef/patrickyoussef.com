@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
   // Media Queries
   html {
     font-size: 15px;
+    scroll-behavior: smooth;
   }
   @media (max-width: 800px) {
     html { font-size: 14px; }

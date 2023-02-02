@@ -8,7 +8,7 @@ import FeatureImage from "./FeatureImage"
 const Container = styled.div`
   height: min-content;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: ${props => props.theme.radii.heading};
   border-width: 1px;
   border-color: ${props => props.theme.colors.text_gray};
   border-style: solid;
