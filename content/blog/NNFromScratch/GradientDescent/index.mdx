@@ -1,0 +1,37 @@
+---
+templateKey: blog-post
+published: true
+title: "Neural Nets Intro: Gradient Descent"
+slug: neural-net-gradient-descent
+date: 2023-02-05 
+featureImage: images/feature.jpg
+tags: ["Python", "Machine Learning", "Gradient Descent"]
+excerpt: "A brief introduction to the general concept behind Python comprehensions and how to use the different variants."
+pinned: true
+---
+
+
+import loss_travel from "./videos/loss_travel.mp4";
+import simple_grad from "./videos/simple_grad.mp4";
+import simple_grad_problem from "./videos/simple_grad_problem.mp4";
+
+
+# Introduction/Motivation
+
+Posts currently planned/completed in this series:
+- [Gradient Descent](/blog/neural-net-gradient-descent/)
+- Logistic Regression
+- Gradients Over Multiple Layers
+- TBD...
+
+# Assumption of Prior Knowledge
+
+There are a few concepts that you should know before coming into this post, in general I try to explain everything clearly but it helps if you have prior exposure to these concepts.
+
+- **NumPy Matrices:** We'll be using NumPy as the primary data storage and computation backbone. If you're not familiar with NumPy matrices and how to manipulate them take a look at [this resource](https://numpy.org/doc/stable/user/absolute_beginners.html).
+- **Numerical Integration for ODEs:** We will use numerical integrators to help us solve this problem but we're building off prior knowledge of simpler cases from [my blog post from before](/blog/integrator-intro/).
+- **Gravitational Laws:** To be precise, we will be using Newton's law of universal gravitation that you may have seen in a physics course or you can [review it here](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation).
+
+# Visualizing Training
+
+<PostVideo video={loss_travel} />
