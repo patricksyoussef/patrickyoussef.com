@@ -42,9 +42,9 @@ const index = ({ data }) => {
       </Helmet>
       <Container>
         <Hero data={data.hero}/>
-        <Divider title={"Some Of My Favorite Work"} link="/projects/"/>
+        <Divider title={"Projects"} link="/projects/" subtext="All Projects"/>
         <ProjectSection data={data.project}/>
-        <Divider title={"Learn Something New Today"} link="/blog/"/>
+        <Divider title={"Blog"} link="/blog/" subtext="All Posts"/>
         <BlogSection data={data.blog}/>
       </Container>
     </Layout>

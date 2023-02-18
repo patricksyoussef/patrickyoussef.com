@@ -17,11 +17,7 @@ const blog = ({ data }) => {
         <title>Blog | {data.site.siteMetadata.title}</title>
       </Helmet>
       <Container>
-        <BlogSection
-          data={data.blog}
-          title={"All Posts"}
-          linktext={""}
-          path={"/blog/"}/>
+        <BlogSection data={data.blog} _years={true}/>
       </Container>
     </Layout>
   )
@@ -43,7 +39,7 @@ export const query = graphql`
         frontmatter {
           slug
           title
-          date(formatString: "YYYY MMMM Do")
+          date(formatString: "MMMM Do, YYYY")
           excerpt
           tags
         }

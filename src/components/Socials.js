@@ -65,7 +65,8 @@ const Socials = () => (
     <Padding/>
     <SocialItem>
       <a
-        href="https://www.buymeacoffee.com/patrickyoussef"
+        // href="https://www.buymeacoffee.com/patrickyoussef"
+        href="https://account.venmo.com/u/PatrickYoussef"
         target="_blank"
         rel="noreferrer">
         <Coffee size={24}/>

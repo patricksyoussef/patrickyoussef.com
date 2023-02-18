@@ -4,26 +4,37 @@ import Underline from "./Utils/Underline"
 import {Link} from "gatsby"
 
 const Container = styled.div`
+  font-family: ${props => props.theme.fonts.main};
 `
 
 const TopContent = styled.span`
-  h1 {
+  h1,h2,h3 {
     margin: 0.2rem 0;
     font-weight: 400;
   }
 
-  font-family: ${props => props.theme.fonts.main};
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-const Divider = ({ title, link}) => (
+const SubText = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const Divider = ({ title, link, subtext}) => (
   <Container>
     <Underline>
       <TopContent>
         <Link to={link}>
           <h1>{title}</h1>
+        </Link>
+        <Link to={link}>
+          <SubText>
+            <h3>{subtext}</h3>
+          </SubText>
         </Link>
       </TopContent>
     </Underline>

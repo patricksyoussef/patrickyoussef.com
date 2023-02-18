@@ -5,7 +5,7 @@ const theme =  {
     code: "Fira Code",
   },
   colors: {
-    light1: "hsl(20, 10%, 95%)",
+    light1: "hsl(20, 10%, 97%)",
     blue: "hsl(213, 77%, 41%)",
     
     code_background: "#1d1f21",

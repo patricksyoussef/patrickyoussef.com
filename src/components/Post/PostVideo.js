@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-// Way messing around with using this player but opted not to
-// import { Player } from 'video-react';
 
 const Container = styled.div`
   display: flex;
@@ -17,13 +15,6 @@ const Container = styled.div`
     width: 100%;
   }
 `
-
-// <Container>
-// <link rel="stylesheet" href="https://video-react.github.io/assets/video-react.css"/>
-// <Player controls playsInline muted autoPlay={_autoplay}>
-//     <source src={video} type="video/mp4" />
-// </Player>
-// </Container>
 
 const PostVideo = ({ video, _autoplay=false }) => {
   return (

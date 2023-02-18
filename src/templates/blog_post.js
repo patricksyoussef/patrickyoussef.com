@@ -9,7 +9,6 @@ import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
-import {ChevronUp} from 'react-feather';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -19,10 +18,10 @@ const Container = styled.div`
   .gatsby-resp-image-figure {
     margin: 1rem auto;
     margin-bottom: 1.5rem;
-    max-width: 700px !important;
   }
 
   .gatsby-resp-image-wrapper,  div[class^="PostVideo"]{
+      max-width: 700px !important;
       overflow: hidden;
       margin-bottom: 0.75rem;
       box-shadow: ${props => props.theme.shadows.s1};
@@ -69,7 +68,7 @@ const Content = styled.div`
   h1,h2,h3,h4,h5,h6 {
     font-weight: 500;
     font-family: ${props => props.theme.fonts.main};
-    color: ${props => props.theme.colors.text_dark};
+    color: ${props => props.theme.colors.text_dark} !important;
     margin-bottom: 0rem;
 
     svg {
@@ -118,7 +117,7 @@ const Content = styled.div`
     position: relative;
 
     &:visited {
-      color: ${props => props.theme.colors.text_link_visited};
+      color: ${props => props.theme.colors.text_link_visited} !important;
     }
 
     &:hover {
@@ -184,32 +183,11 @@ const Content = styled.div`
   }
 `
 
-const TopButton = styled.button`
-  position: fixed;
-  z-index: 1000;
-  bottom: 2rem;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  font-family: ${props => props.theme.fonts.main};
-  padding: 0.5rem;
-  border-radius: 10%;
-  border-color: black;
-  svg {
-    color: white;
-  }
-`
-
-const topFunction = () => {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body, tableOfContents } = data.mdx
 
   // This is obnoxiously long to put below
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
-
   return (
     <Layout>
       <Helmet>

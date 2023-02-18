@@ -8,7 +8,7 @@ let wordsPerMinute = 150
 // and creates a gatsby link using the slug denoted in each MDX's frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === `Mdx` && node.frontmatter.title.length > 0) {
     
     // Path
     const value = createFilePath({ node, getNode })
