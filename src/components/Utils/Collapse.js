@@ -30,7 +30,8 @@ const Content = styled.div`
 `
 
 const Children = styled.div`
-  margin: -0.5rem 0rem;
+  margin: 0rem 0rem;
+  padding: 0.5rem 0em;
 `
 
 const Collapse = ({ title, children }) => {

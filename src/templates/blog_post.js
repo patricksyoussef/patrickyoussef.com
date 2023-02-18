@@ -15,8 +15,13 @@ const Container = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
 
+  .gatsby-resp-image-figure {
+    margin: 1rem auto;
+    margin-bottom: 1.5rem;
+  }
+
   .gatsby-resp-image-wrapper,  div[class^="PostVideo"]{
-      max-width: 750px !important;
+      max-width: 700px !important;
       overflow: hidden;
       margin-bottom: 0.75rem;
       box-shadow: ${props => props.theme.shadows.s1};
@@ -63,7 +68,7 @@ const Content = styled.div`
   h1,h2,h3,h4,h5,h6 {
     font-weight: 500;
     font-family: ${props => props.theme.fonts.main};
-    color: ${props => props.theme.colors.text_dark};
+    color: ${props => props.theme.colors.text_dark} !important;
     margin-bottom: 0rem;
 
     svg {
@@ -100,7 +105,7 @@ const Content = styled.div`
     border-width: 1px;
     border-style: solid;
     border-color: #bababa;
-    background-color: #d3d3d3;
+    background-color: #e0e0e0;
     padding: 0.15rem 0.25rem;
     color: black;
   }
@@ -112,7 +117,7 @@ const Content = styled.div`
     position: relative;
 
     &:visited {
-      color: ${props => props.theme.colors.text_link_visited};
+      color: ${props => props.theme.colors.text_link_visited} !important;
     }
 
     &:hover {
@@ -183,7 +188,6 @@ const BlogPost = ({ data }) => {
 
   // This is obnoxiously long to put below
   let image = frontmatter.featureImage.childImageSharp.gatsbyImageData.images.fallback.src
-
   return (
     <Layout>
       <Helmet>
