@@ -22,7 +22,7 @@ This is the first of a series I have planned where I hope to build intuition and
 
 Gradient descent is a simple and intuitive optimization method that is common across a large space of problems ranging from simple linear regression to neural networks. With this, we can optimize against a given function and determine parameters that give us the best performance. By the end of this post, you should have a good idea on how this optimizer works and how to apply it to new problems.
 
-# Assumption of Prior Knowledge
+# Prior Knowledge
 
 There are a few concepts that you should know before coming into this post, in general I try to explain everything clearly but it helps if you have prior exposure to these concepts.
 
@@ -49,27 +49,25 @@ It's a vector in the sense that it has the direction where max increase happens 
 
 ## Gradient Definition
 
-To be more formal, we can define the gradient in terms of partial derivatives such that we could actually compute a gradient. Consider a function $f(x, y, z, ...)$ that depends on multiple input variables. The gradient $\nabla f$ is a vector of partial derivatives.
+To be more formal, we can define the gradient in terms of partial derivatives such that we could actually compute a gradient. Consider a function $f(x, y, z)$ that depends on multiple input variables. The gradient $\nabla f$ is a vector of partial derivatives.
 
 $$
 \nabla f = 
 \begin{bmatrix}
-\partial f / \partial x \\
-\partial f / \partial y \\
-\partial f / \partial z \\
-\vdots
+\frac{\partial f}{\partial x} \\[5pt]
+\frac{\partial f}{\partial y} \\[5pt]
+\frac{\partial f}{\partial z} \\
 \end{bmatrix}
 $$
 
-So if you're standing at a point $(x_0, y_0, z_0, ...)$ and compute the associated gradient at that point, you'd be getting the vector pointing in the direction from where you are such that you would climb $f$ the fastest. A clearer way to show this is that we evaluate each partial derivative at our point.
+So if you're standing at a point $(x_0, y_0, z_0)$ and compute the associated gradient at that point, you'd be getting the vector pointing in the direction from where you are such that you would climb $f$ the fastest. A clearer way to show this is that we evaluate each partial derivative at our point.
 
 $$
-\nabla f(x_0, y_0, z_0, ...) = 
+\nabla f(x_0, y_0, z_0) = 
 \begin{bmatrix}
-\partial f / \partial x (x_0, y_0, z_0, ...) \\
-\partial f / \partial y (x_0, y_0, z_0, ...) \\
-\partial f / \partial z (x_0, y_0, z_0, ...) \\
-\vdots
+\frac{\partial f}{\partial x}(x_0, y_0, z_0) \\[5pt]
+\frac{\partial f}{\partial y}(x_0, y_0, z_0) \\[5pt]
+\frac{\partial f}{\partial z}(x_0, y_0, z_0) \\
 \end{bmatrix}
 $$
 
@@ -156,8 +154,8 @@ $$
 $$
 \nabla f(x, y) = 
 \begin{bmatrix}
-\partial f / \partial x \\\
-\partial f / \partial y
+\frac{\partial f}{\partial x} \\[5pt]
+\frac{\partial f}{\partial y}
 \end{bmatrix} = 
 \begin{bmatrix}
 \cos(x) \sin(y) \\

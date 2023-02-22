@@ -16,11 +16,11 @@ const Container = styled.div`
 `
 
 const PostVideo = ({ video, _autoplay=false }) => {
+  // + "#t=0.001"
   return (
-    
   <Container className={'post-video'}>
     <video controls playsInline muted preload="metadata" autoPlay={_autoplay}>
-      <source src={video + "#t=0.001"} type="video/mp4" />
+      <source src={video + "#t=0.0001"} type="video/mp4" />
       <track kind="captions" srcLang="en" src="No Sound"/>
     </video>
   </Container>
