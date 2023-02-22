@@ -15,34 +15,34 @@ import figure8 from "./videos/figure8_anim.mp4";
 
 # Introduction
 
-This post will introduce you to the principles behind predicting the motion of gravitationally interacting objects. Using Python with some popular modules, we'll implement the principles from scratch and look at some fun examples such as the one one below. Overall expect this to be more practical coding and testing and less theory as much of the core numerical theory has been covered in a [prior post](/blog/integrator-intro).
+This post will introduce the principles behind predicting the motion of gravitationally interacting objects. Using Python with some popular modules, we'll implement the principles from scratch.
 
 <PostVideo video={solar_anim} _autoplay={true}/>
 
-# Assumptions of Prior Knowledge
+# Prior Knowledge
 
 There are a few concepts that you should know before coming into this post, in general I try to explain everything clearly but it helps if you have prior exposure to these concepts.
 
-- **NumPy Matrices:** We'll be using NumPy as the primary data storage and computation backbone. If you're not familiar with NumPy matrices and how to manipulate them take a look at [this resource](https://numpy.org/doc/stable/user/absolute_beginners.html).
-- **Numerical Integration for ODEs:** We will use numerical integrators to help us solve this problem but we're building off prior knowledge of simpler cases from [my blog post from before](/blog/integrator-intro/).
+- **NumPy Matrices:** We will use NumPy as the primary data storage and computation backbone. If you're not familiar with NumPy matrices take a look at [this resource](https://numpy.org/doc/stable/user/absolute_beginners.html).
+- **Numerical Integration for ODEs:** We use numerical integrators to solve this problem but we're building off prior knowledge of simpler cases from [my blog post from before](/blog/integrator-intro/).
 - **Gravitational Laws:** To be precise, we will be using Newton's law of universal gravitation that you may have seen in a physics course or you can [review it here](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation).
 
-# What Is the N-Body Problem?
+# N-Body Problem
 
 The n-body problem is to predict the individual motions of a group of objects interacting gravitationally. More precisely, given the initial conditions of a set of objects the goal is to predict the state of these objects over time when influenced by the gravity of all neighboring objects. Fields such as astronomy, space flight, and others that rely on the understanding of the positions and trajectories of celestial bodies utilize solutions to this problem. What makes this difficult is that for systems of more than two bodies, the math cannot be solved explicitly and therefore must be simulated.
 
 The next few sections will focus on concretely defining the core operations, principles, and theories that we will use moving into the implementation.
 
-# General Philosophy
+# General Goals
 
-Like with many problems, there are varieties of methodologies behind how someone may solve it. When developing this solution I focused on a few principles that are good to keep in mind when following along.
+As with many problems, there are different methodologies behind how you may solve it. When developing this solution I focused on a few core principles.
 
 - **Readable**: Many operations can be written to run marginally faster at the expense of readability. As this post is meant to educate I focus on making code that is as self-explanatory as possible.
 - **Adaptive**: Depending on what you are simulating it may not make sense to generalize the integrator to only work in 3D. I wanted to produce a solution that adapts depending on the inputs and only computes the number of dimensions given.
 
-# Notation Summary
+# Notation
 
-I'll summarize some of the notation and shorthands I use. This includes my vector notation, variable assignments, and some others that might seem foreign but should be explained through reading the post.
+I'll summarize the notation used for vectors, variable assignments, and some other structures that might seem foreign but will be explained through reading the post.
 
 | Notation              | Description         | Definition                                            |
 |-----------------------|---------------------|-------------------------------------------------------|
@@ -59,7 +59,7 @@ I'll summarize some of the notation and shorthands I use. This includes my vecto
 | $\dot{X}$             | State Derivative    | $\begin{bmatrix}\dot{X_1} \\ \dot{X_2}\end{bmatrix} = \begin{bmatrix}\vec{v_1} & \vec{a_1} \\ \vec{v_2} & \vec{a_2}\end{bmatrix}$  |
 
 
-# Review of Gravity Laws and Associated Equations
+# Gravity Laws
 
 In this section, I will give a brief overview of Newton's law of universal gravitation and extend the concept of gravitation between two bodies to all of our $n$ bodies.
 
@@ -74,8 +74,10 @@ $$
 This equation only gives us the magnitude of the force, but it would be helpful to have the force as vector. If we multiply the prior with the unit vector pointing from body 1 to body 2 we can get the force acting on body 1 due to object 2 as a vector.
 
 $$
-\vec{F_{12}} = F_{12} \hat{r_{12}} =
-\frac{G m_1 m_2}{\lVert \vec{r_2} - \vec{r_1} \rVert^2} \frac{\vec{r_2} - \vec{r_1}}{\lVert \vec{r_2} - \vec{r_1} \rVert}
+\vec{F_{12}} = F_{12} \hat{r_{12}}
+$$
+$$
+=\frac{G m_1 m_2}{\lVert \vec{r_2} - \vec{r_1} \rVert^2} \frac{\vec{r_2} - \vec{r_1}}{\lVert \vec{r_2} - \vec{r_1} \rVert}
 =\frac{G m_1 m_2 (\vec{r_2} - \vec{r_1})}{\lVert \vec{r_2} - \vec{r_1} \rVert^3}
 $$
 
@@ -85,7 +87,7 @@ $$
 \vec{F_{12}} = -\vec{F_{21}}
 $$
 
-## Net Force Due on One Body
+## Force on One Body
 
 Now that we know how to determine the gravitational force on a body due to a particular neighboring body, we can extend this to more than 2 bodies. Consider a set of $n$ objects with masses $m_i$ where $i$ ranges from 1 to n. The total gravitational force on a body $i$ is the sum of the gravitational forces due to all other bodies.
 
@@ -96,7 +98,7 @@ $$
 
 In plain english, the net force on a particular body is the sum of the force equation evaluated between the body of interest and all *other* bodies. In the equation, the $j \neq i$ is what maintains that we do not calculate the attraction of a body onto itself as a body cannot attract itself and we would be dividing by 0 when calculating the force.
 
-## Net Acceleration on One Body
+## Acceleration on One Body
 
 From the net force it's pretty simple to determine the net acceleration. Using Newton's second law we can add an additional equality to our prior expression. With this we can move around some terms and determine the net acceleration.
 
@@ -119,7 +121,7 @@ $$
 
 Recall from the prior numerical integrator post that we integrated a similar differential equation for a mass-spring system but only in 1 dimension! Something that I find beautiful is that our code extends super well into the higher dimensionality cases. 
 
-## Net Acceleration for All Bodies
+## Acceleration for All Bodies
 
 Clearly, we need to evaluate the net acceleration for all the bodies in our system to know how each of them are going to move. The simple way to do this would be evaluate the prior expression for each of the bodies but in practice this is quite inefficient as there's repeated work being done. Let's see why this is the case and how we can improve it.
 
@@ -190,7 +192,7 @@ Like I mentioned before, the time complexity can be a good indicator of how we w
 - We may adjust an algorithm where each "iteration" takes longer to run
     - We reduced iteration count in our case by 50% but each iteration has more work
 
-Running the two different variants of our algorithm and plotting the runtime we get the following graph.
+Plotting the runtimes of our two different variants we get the following graph.
 
 ![Comparison of Runtimes](./images/time_all.jpg)
 
@@ -198,11 +200,11 @@ We can see that when we normalize the time and theoretical iteration count on th
 
 All of our analysis is still correct but it's important to understand the limitations of big-$O$ in terms of comparing such similar algorithms. If we managed to develop an algorithm that ran in $O(n)$ time complexity we would not be nearly as concerned about what the true value of the constants are.
 
-# Determining System Energies
+# System Energies
 
 Clearly the system starts with a set amount of energy based on the positions, masses, and velocities that manifest as kinetic energy and potential energy. We don't need to compute these to execute a simulation but as we expect the system to maintain energy this can be a good check to see how we're doing.
 
-### Kinetic Energy
+## Kinetic Energy
 
 Kinetic is really easy! We just need to sum up the result of a classic physics equation.
 
@@ -210,7 +212,7 @@ $$
 \text{KE} = \sum_{i=1}^n\frac{1}{2}m_i v_i^2 = \sum_{i=1}^n\frac{1}{2}m_i \lVert \vec{v_i} \rVert^2
 $$
 
-### Potential Energy
+## Potential Energy
 
 The [gravitational potential energy](http://hyperphysics.phy-astr.gsu.edu/hbase/gpot.html) $U$ between two objects is something that is really familiar! Just as we're only looking at the combinations of bodies to determine our forces we will do the same here where $i$ and $j$ will be the indices for our bodies out of our set of combinations ($P$).
 
@@ -224,13 +226,13 @@ $$
 \sum_{i,j \in P} \frac{-Gm_im_j}{\lVert \vec{r_j} - \vec{r_i} \rVert}
 $$
 
-# What is a State?
+# System State
 
 I have been throwing around the word state a bit loosely, let's try to refine our understanding of what this means and why it's useful for us. The 30 second answer is that a state is a matrix that maintains all of the important values that describe the aspects of our system such as the positions and velocities of all of our objects.
 
-> TLDR: States are a joint representation of everything going on in our system. They help us simplify our integration operations and keep track of our variables.
+> States are a joint representation of everything going on in our system. They help us simplify our integration operations and keep track of our variables.
 
-## State Structure
+## Structure
 
 As I mentioned, a state is merely a matrix but the structure of how its constructed and what it contains is the important part. For our physical modeling cases, the state will contain the position and velocities of all the objects where each row is the state of one object and each column is a variable of importance (think a certain position/velocity).
 
@@ -253,7 +255,7 @@ $$
 
 The prior would be the state for a 2D case with two objects. Don't confuse $X$ with $x$, the capital $X$ is the state and has nothing to do with the position variable $x$.
 
-## State Derivative Structure
+## State Derivative
 
 Along with the state, there is a accompanying state derivative $\dot{X}$, it might sound scary but it isn't. Throughout the integration process we make incremental changes to the state, but doing so for each value independently would be annoying and inefficient. The state derivative is a way to encode the corresponding derivative for each of the values in the state so that when we need to do update steps we can proceed with them as matrix sums. For our purposes, the structure would look like the below for the same case as before.
 
@@ -273,7 +275,7 @@ $$
 \end{bmatrix}
 $$
 
-## Why Is It Useful?
+## Advantages
 
 For simple systems, it might be easier to just build out a numerical integrator for each of the variables of interest, but for large n-body systems this would get messy quickly. Consider an example in 3D with 50 bodies, this would mean that we have 300 variables of interest and therefore 300 integrators! When we represent this system in the state matrix form, there are still the 300 values being updated but it's reduced to a series of sums between the entire matrices which is much cleaner (and can be [vectorized](https://www.pythonlikeyoumeanit.com/Module3_IntroducingNumpy/VectorizedOperations.html)).
 
@@ -336,8 +338,10 @@ $$
 \begin{bmatrix}
 \dot{\vec{r_1}} & \dot{\vec{v_1}} \\
 \dot{\vec{r_2}} & \dot{\vec{v_2}}
-\end{bmatrix} = 
-\begin{bmatrix}
+\end{bmatrix}
+$$
+$$
+=\begin{bmatrix}
 \vec{v_1} & \vec{a_1} \\
 \vec{v_2} & \vec{a_2}
 \end{bmatrix} = 
@@ -378,7 +382,7 @@ $$
 
 In this post, we will be using a better integrator then Euler, but this simple example presents the core workflow of how we will represent our system and the role that the state derivative plays in propagating the state forward.
 
-# Refresher on Integrators
+# Integrator Refresher
 
 Although it helps to have read my [post](/blog/integrator-intro/) on integrators already, I'll do a short summary of the usage of the RK4 integrator that we are using in this post. If you are already comfortable doing the example cases from that post you can skip ahead, but I would recommend you read regardless as I also wrote this example as a precursor to the later structure.
 
@@ -429,7 +433,7 @@ def rk4(X, dt, evaluate):
     return X + X_prime * dt
 ```
 
-## Spring-Mass System Example
+## Mass-Spring System
 
 Let's go ahead and consider a simple differential equation for a mass and spring system with no damping. Note that the smaller $x$ in this equation is not a state but just a single variable. 
 
@@ -603,7 +607,7 @@ def __init__(self, Xi=None, masses=None, G=6.67408e-11):
     self.energies = None
 ```
 
-## Determining System Energy
+## System Energy
 
 The prior formulations maps really well into the code! While there are faster ways to compute these by using vectorization and maintaining matrices as opposed to iterating but this is way easier to understand which is why I opted to present it this way.
 
@@ -642,7 +646,7 @@ def get_energy(self, X):
     return KE, PE
 ```
 
-## Determining State Derivative
+## State Derivative
 
 Take some time to really understand this section as it's the meat of the conversation today. I personally think it's much easier to understand what is happening when looking at the code.
 
