@@ -11,7 +11,6 @@ const Button = styled.div`
   border-color: ${props => props.theme.colors.blue};
   padding: 0.25rem 0.5rem;
   text-decoration: none;
-  margin-left: 0.25rem;
   transition: ${props => props.theme.anims.main};
 
   div {
@@ -19,19 +18,12 @@ const Button = styled.div`
   }
 
   &:hover {
-    background-color: rgba(24, 95, 184, 0.2);
-  }
-  &:hover div {
+    background-color: rgba(24, 95, 184, 0.25);
   }
 `
 const Text = styled.div`
-  h3 {
-    margin: 0;
-  }
-
-  font-family: ${props => props.theme.fonts.main};
-  font-size: 1.1rem;
-  font-weight: 700;
+  margin: 0;
+  font-size: 1.2rem;
 `
 
 const ResumeButton = ({ href, target, text }) => (

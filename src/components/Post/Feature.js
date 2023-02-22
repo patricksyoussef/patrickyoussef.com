@@ -15,7 +15,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   box-shadow: ${props => props.theme.shadows.s1};
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
 
   > div {
     grid-row-start: 1;
@@ -28,8 +28,8 @@ const FeatureImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  opacity: 0.15;
-  filter: blur(2px);
+  opacity: 0.2;
+  filter: blur(3px);
 
   FeatureImage {
     background-color: black;
@@ -48,22 +48,19 @@ const Header = styled.div`
   z-index: 1;
 `
 const Title = styled.span`
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: 500;
-  font-family: ${props => props.theme.fonts.main};
 `
 const SubTitle = styled.span`
   display: flex;
   font-size: 1rem;
-  font-family: ${props => props.theme.fonts.sub};
   width: fit-content;
 
   * {
     margin: 0 !important;
   }
 
-  p,
-  div {
+  p, div {
     width: fit-content;
   }
 `

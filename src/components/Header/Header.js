@@ -10,22 +10,15 @@ import ResumeButton from "./ResumeButton"
 import Underline from "../Utils/Underline"
 
 const Container = styled.div`
-  margin-top: 0.5rem;
-  margin-bottom: 0rem;
   max-width: ${props => props.theme.widths.max};
-  h1,h2 {
-    margin: 0.2rem 0;
-    font-family: ${props => props.theme.fonts.main};
+  h1, h2 {
+    margin: 0rem;
   }
 `
 
 const HomeButton = styled.div`
-  h1 {
-    margin-bottom: 0.2rem;
-    font-weight: 500;
-  }
+  margin: 0.75rem 0rem;
 `
-
 
 const NavBar = styled.div`
   display: flex;
@@ -36,18 +29,17 @@ const NavItems = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  * {
+  div {
     font-weight: 500;
+  }
+
+  a:not(:last-child) {
+    margin-right: 0.25rem;
   }
 `
 const ColorText = styled.span`
   color: ${props => props.theme.colors.blue};
 `
-
-// This is a pretty cool selector
-// div > *:not(:last-child) {
-//   margin-right: 30px; 
-// } 
 
 const Header = () => (
   <Container>

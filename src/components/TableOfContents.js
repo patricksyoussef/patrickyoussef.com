@@ -9,7 +9,10 @@ const getLinkedText = (title, url) => {
 }
 
 const Container = styled.div`
-  margin: -1rem 0rem;
+  margin: -0.5rem 0rem;
+  ul {
+    padding-left: 1.75rem;
+  }
 `
 
 const TableOfContents = ({toc}) => {

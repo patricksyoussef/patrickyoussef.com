@@ -7,7 +7,7 @@ import styled from "styled-components"
 const Button = styled.div`
   display: inline-block;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 5px;
   border-color: transparent;
   padding: 0.25rem 0.5rem;
@@ -22,16 +22,12 @@ const Button = styled.div`
 
   &:hover {
     background-color: ${props => props.theme.colors.toc};
+    border: 1px solid hsl(0, 0%, 70%);
   }
 `
 const Text = styled.div`
-  h3 {
-    margin: 0;
-  }
-
-  font-family: ${props => props.theme.fonts.main};
-  font-size: 1.1rem;
-  font-weight: 700;
+  margin: 0;
+  font-size: 1.2rem;
 `
 
 const NavButton = ({ to, text }) => (

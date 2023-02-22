@@ -10,16 +10,15 @@ const Container = styled.div`
   border-top-style: solid;
   border-top-width: 1px;
   border-top-color: ${props => props.theme.colors.und};
-  padding-bottom: 0.75rem;
 `
 const Content = styled.div`
   display: flex;
-  font-family: ${props => props.theme.fonts.sub};
+  p {
+    font-size: 1.1rem !important;
+  }
 `
 
 const Footer = () => {
-  // const today = new Date();
-  // const year = today.getFullYear();
   return(
     <Container>
       <Content>

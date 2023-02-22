@@ -69,12 +69,10 @@ const Text = styled.div`
   background-color: ${props => props.theme.colors.light1};
   p {
     transition: ${props => props.theme.anims.main};
-    font-family: ${props => props.theme.fonts.sub};
     font-size: 0.9rem;
   }
 
   h1,h2,h3,h4 {
-    font-family: ${props => props.theme.fonts.main};
     font-weight: 400;
   }
 

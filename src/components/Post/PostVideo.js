@@ -5,14 +5,13 @@ const Container = styled.div`
   display: flex;
   margin: 1rem auto;
   justify-content: center;
-  max-width: 600px !important;
 
   * {
     font-family: ${props => props.theme.fonts.code};
   }
 
   video {
-    width: 100%;
+    width: fit-content%;
   }
 `
 
