@@ -11,7 +11,7 @@ const Container = styled.div`
   }
 
   video {
-    width: fit-content%;
+    width: fit-content;
   }
 `
 
@@ -19,8 +19,8 @@ const PostVideo = ({ video, _autoplay=false }) => {
   return (
     
   <Container className={'post-video'}>
-    <video controls playsInline muted preload autoPlay={_autoplay}>
-      <source src={video} type="video/mp4" />
+    <video controls playsInline muted preload="metadata" autoPlay={_autoplay}>
+      <source src={video + "#t=0.001"} type="video/mp4" />
       <track kind="captions" srcLang="en" src="No Sound"/>
     </video>
   </Container>
