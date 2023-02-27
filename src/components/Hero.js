@@ -9,30 +9,25 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, auto));
   grid-gap: 50px;
-  margin: 2rem 0;
+  margin: 1.75rem 0rem;
 
-  h1 {
-    font-weight: 500;
-  }
-  
   .TextContent {
     grid-column: span 3;
-    font-family: ${props => props.theme.fonts.main};
-    color: ${props => props.theme.colors.text_dark};
     span {
       margin-left: 0.75rem;
     }
 
     .intro {
-      font-weight: normal;
+      font-weight: 400;
     }
 
-    h1,h2 {
+    h1, h2 {
       margin-top: 0rem;
+      margin-bottom: 0.5rem;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: ${props => props.theme.colors.text_gray};
       strong {
         font-weight: 500;

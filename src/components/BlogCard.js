@@ -9,11 +9,11 @@ const Container = styled.div`
   * {
     margin: 0;
   }
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0rem;
 `
 const Post = styled.div`
   transition: ${props => props.theme.anims.main};
-  padding: 0.6rem;
+  padding: 0.5rem;
   border-style: solid;
   border-width: 1px;
   border-color: transparent;
@@ -31,7 +31,7 @@ const Post = styled.div`
   p {
     transition: ${props => props.theme.anims.main};
     color: ${props => props.theme.colors.text_gray};
-    font-family: ${props => props.theme.fonts.sub};
+    font-size: 1.1rem;
     margin-bottom: 0;
   }
 

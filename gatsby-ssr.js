@@ -4,21 +4,24 @@ import theme from "./src/styles/theme"
 import "./src/styles/sanitize.css"
 
 const GlobalStyles = createGlobalStyle`
-  // Media Queries
+  // Global Style
   html {
     font-size: 15px;
     scroll-behavior: smooth;
+    font-family: ${props => props.theme.fonts.main};  
   }
+
+  // Media Queries
   @media (max-width: 800px) {
     html { font-size: 14px; }
   }
   @media (max-width: 600px) {
-    html { font-size: 13px; }
+    html { font-size: 14px; }
   }
-  @media (max-width: 430px) {
-    html { font-size: 12px; }
+  @media (max-width: 450px) {
+    html { font-size: 13.5px; }
   }
-  @media (max-width: 330px) {
+  @media (max-width: 370px) {
     html { font-size: 11px; }
   }
 `

@@ -49,11 +49,10 @@ const Container = styled.div`
   }
 
   height: 100%;
-  text-decoration: none;
 
   // Font overrides to rem, for simpler content scaling
-  p {
-    font-size: 1.1rem;
+  h1, h2, h3, h4 {
+    font-weight: 500;
   }
   h1 {
     font-size: 1.75rem;
@@ -67,14 +66,14 @@ const Container = styled.div`
   h4 {
     font-size: 1rem;
   }
-
-  h1, h2, h3, h4, h5, h6, p {
-    margin-bottom: 0.3em;
+  p, li {
+    font-size: 1.25rem;
   }
+
 `
 
 const ColorStrip = styled.div`
-  height: 0.375rem;
+  height: 0.5rem;
   background-color: ${props => props.theme.colors.blue};
 `
 

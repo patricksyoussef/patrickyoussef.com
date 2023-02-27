@@ -11,47 +11,34 @@ import TableOfContents from "../components/TableOfContents"
 import Feature from "../components/Post/Feature"
 
 const Container = styled.div`
-  margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+`
 
-  .gatsby-resp-image-figure {
-    margin: 1rem auto;
-    margin-bottom: 1.5rem;
-  }
-
-  .gatsby-resp-image-wrapper,  div[class^="PostVideo"]{
-      max-width: 700px !important;
-      overflow: hidden;
-      margin-bottom: 0.75rem;
-      box-shadow: ${props => props.theme.shadows.s1};
-
-      border: solid 1px;
-      border-radius: ${props => props.theme.radii.content};
-      border-color: ${props => props.theme.colors.text_gray};
-  }
-
-  .gatsby-resp-image-image {
-    background: white;
-  }
-
-  img {
-    margin: 0 auto;
-  }
-
-  figcaption {
-    display: flex;
-    justify-content: center;
-
+const Content = styled.div`
+// Link Style
+  a {
+    color: ${props => props.theme.colors.text_link};
     font-weight: 500;
-    font-size: 1rem;
-    color: ${props => props.theme.colors.text_gray};
-    font-family: ${props => props.theme.fonts.code};
-  }
+    text-decoration: none;
 
-  ol,
-  ul {
-    padding-left: 1.8rem;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: ${props => props.theme.colors.text_link_visited} !important;
+    }
+  }
+`
+
+const Mdx = styled.div`
+  // Header Styles
+  h1, h2, h3 {
+    svg {
+      width: 0.7em;
+      height: 0.7em;
+      margin: 0.3em 0.1em;
+    }
   }
 
   h1 {
@@ -59,127 +46,85 @@ const Container = styled.div`
     border-bottom-width: 1px;
     border-bottom-color: ${props => props.theme.colors.text_gray};
   }
-`
 
-const Content = styled.div`
-  padding: 0 0rem;
+  // Image/Video
+  .gatsby-resp-image-figure {
+    margin: 1rem auto;
+    margin-bottom: 1.5rem;
+  }
 
-  // Header Link Style
-  h1,h2,h3,h4,h5,h6 {
+  figcaption {
+    display: flex;
+    justify-content: center;
     font-weight: 500;
-    font-family: ${props => props.theme.fonts.main};
-    color: ${props => props.theme.colors.text_dark} !important;
-    margin-bottom: 0rem;
-
-    svg {
-      margin-left: 0.1em;
-      width: 1em;
-      height: 1em;
-    }
+    font-size: 1rem;
+    color: ${props => props.theme.colors.text_gray};
+    font-family: ${props => props.theme.fonts.code};
   }
 
-  p, li{
-    font-size: 1.2rem;
-    font-family: ${props => props.theme.fonts.sub};
-    color: ${props => props.theme.colors.text_dark};
+  .gatsby-resp-image-wrapper, video {
+    max-width: 700px !important;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: ${props => props.theme.shadows.s1};
+    border: solid 1px ${props => props.theme.colors.text_gray};
+    border-radius: ${props => props.theme.radii.content};
   }
 
-  p,
-  ol {
-    margin: 0.75rem 0rem;
+  // List Styles
+  ol, ul {
+    padding-left: 1.75rem;
   }
 
   // Math Styles
-  .mspace {
-    padding: 0rem 0;
-  }
-
   .katex {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
-  // Inline Code Style
-  code {
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #bababa;
-    background-color: #e0e0e0;
-    padding: 0.15rem 0.25rem;
-    color: black;
-  }
-
-  // Link Style
-  a {
-    color: ${props => props.theme.colors.text_link};
-    font-weight: 500;
-    position: relative;
-
-    &:visited {
-      color: ${props => props.theme.colors.text_link_visited} !important;
+  // Table Style
+  table {
+    td, tr {
+      font-size: 1.25rem;
     }
-
-    &:hover {
-      text-decoration: underline;
+    margin: 0 auto;
+    thead {
+      border-bottom: 0.15rem solid  ${props => props.theme.colors.blue};
+      th {
+        padding: 0.5rem;
+        border: 1px solid ${props => props.theme.colors.text_gray};
+        font-weight: 500;
+      }
+    }
+    
+    tbody {
+      td {
+        text-align: center;
+        padding: 0.5rem 0.5rem;
+        border: 1px solid ${props => props.theme.colors.text_gray};
+      }
     }
   }
 
   // Blockquote Style
   blockquote {
     background-color: ${props => props.theme.colors.toc};
-    padding: 0.5rem 1.6rem;
-    border-left-style: solid;
-    border-left-width: 0.3rem;
-    border-left-color: ${props => props.theme.colors.blue};
+    padding: 0.75rem 1.25rem;
+    border-left: 0.3rem solid  ${props => props.theme.colors.blue};
     margin: 0rem;
     margin-top: 0.5rem;
-
     p {
-      font-size: 1.25rem;
       margin: 0;
     }
   }
 
-  // Table Style
-  table {
-    margin: auto;
-
-    thead{
-      font-family: ${props => props.theme.fonts.sub};
-      border-bottom-style: solid;
-      border-bottom-width: 0.15rem;
-      border-bottom-color: ${props => props.theme.colors.blue};
-      * {font-weight: 500;}
-
-      th {
-        padding: 0.2rem 0.3rem;
-        border-style: solid;
-        border-width: 1px;
-        border-color: ${props => props.theme.colors.text_gray};
-      }
-    }
-
-    tbody {
-      font-family: ${props => props.theme.fonts.main};
-
-      td {
-        text-align: center;
-        padding: 0.5rem 0.5rem;
-        border-style: solid;
-        border-width: 1px;
-        border-color: ${props => props.theme.colors.text_gray};
-      }
-
-      tr {
-        margin: 1rem 0 !important;
-      }
-    }
-  }
-
-
-  // Table of Contents Style
-  .collapse {
+  // Inline Code Style
+  code {
+    font-size: 1rem;
+    border: 1px solid #bababa;
+    border-radius: 0.25rem;
+    background-color: #e0e0e0;
+    padding: 0.25rem;
+    color: black;
   }
 `
 
@@ -211,7 +156,9 @@ const BlogPost = ({ data }) => {
         <Content>
           <Feature frontmatter={frontmatter} fields={fields}/>
           <TableOfContents toc={tableOfContents}/>
-          <MDXRenderer>{body}</MDXRenderer>
+          <Mdx>
+            <MDXRenderer>{body}</MDXRenderer>
+          </Mdx>
         </Content>
       </Container>
     </Layout>

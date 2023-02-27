@@ -1,0 +1,33 @@
+---
+templateKey: blog-post
+published: false
+title: "Neural Networks: Gradient Descent"
+slug: neural-net-gradient-descent
+date: 2023-02-05 
+featureImage: images/feature.jpg
+tags: ["Python", "Machine Learning", "Gradient Descent"]
+excerpt: ""
+pinned: true
+---
+
+# Neural Net Series
+
+This is the first of a series planned where I hope to build intuition and understanding of machine learning topics leading up to modern neural networks. Below is the current plan for the series. 
+
+- [Gradient Descent](/blog/neural-net-gradient-descent/)
+- Logistic Regression for Classification
+- Two Layer Neural Network
+- Gradients Over Many Layers
+- Modern Deep Learning Frameworks
+
+# Introduction
+
+Gradient descent is a simple and intuitive optimization method that is common across a large space of problems ranging from simple linear regression to neural networks. With this, we can optimize against a given function and determine parameters that give us the best performance. By the end of this post, you should have a good idea on how this optimizer works and how to apply it to new problems.
+
+# Prior Knowledge
+
+There are a few concepts that you should know before coming into this post, in general I try to explain everything clearly but it helps if you have prior exposure to these concepts.
+
+- **NumPy:** We'll be using NumPy as the data storage and computation backbone. If you're not familiar with NumPy matrices and how to manipulate them take a look at [this resource](https://numpy.org/doc/stable/user/absolute_beginners.html).
+- **Calculus:** We rely heavily on derivatives, in particular, [partial derivatives](https://www.mathsisfun.com/calculus/derivatives-partial.html) are important!
+

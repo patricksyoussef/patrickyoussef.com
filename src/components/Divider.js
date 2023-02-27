@@ -4,7 +4,6 @@ import Underline from "./Utils/Underline"
 import {Link} from "gatsby"
 
 const Container = styled.div`
-  font-family: ${props => props.theme.fonts.main};
 `
 
 const TopContent = styled.span`

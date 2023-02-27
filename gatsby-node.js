@@ -1,5 +1,4 @@
 const path = require(`path`)
-const _ = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const readingTime = require('reading-time');
 let wordsPerMinute = 150
@@ -78,19 +77,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  
-
-  // Split result to use in for loop
-  const tmp = _.toPairs(result.data) // [['blogs', arr], ['project', arr]]
-
   // Resolve templates
   blog_post = path.resolve("./src/templates/blog_post.js")
 
-  // For each MDX apply the template and the context for the template
-  // to know how to retrieve data out of graphql
-  tmp.forEach(([key, arr]) => {
-    // Creates Single pages
-    arr.nodes.forEach(post => {
+  // Create blog posts
+  for (const [key, arr] of Object.entries(result.data)) {
+    arr['nodes'].forEach(post => {
       createPage({
         path: post.fields.path,
         component: blog_post,
@@ -99,5 +91,5 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     })
-  })
+  }
 }

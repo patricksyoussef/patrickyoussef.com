@@ -3,7 +3,6 @@ import styled from "styled-components"
 import ProjectCard from "./ProjectCard"
 
 const Container = styled.div`
-  margin-bottom: 1rem;
 `
 
 const Grid = styled.div`
