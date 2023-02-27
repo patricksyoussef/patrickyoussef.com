@@ -27,7 +27,7 @@ const Container = styled.div`
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: ${props => props.theme.colors.text_gray};
       strong {
         font-weight: 500;

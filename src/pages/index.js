@@ -22,7 +22,7 @@ const index = ({ data }) => {
     <Layout>
       <Helmet>
         <html lang="en" />
-        <title>{data.site.siteMetadata.title}</title>
+        <title>Home | {data.site.siteMetadata.title}</title>
         <description>{data.site.siteMetadata.description}</description>
         <link rel="canonical" href={data.site.siteMetadata.siteUrl}/>
         <meta name="description" content={data.site.siteMetadata.description}/>

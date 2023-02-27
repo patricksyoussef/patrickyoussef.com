@@ -30,7 +30,6 @@ There are a few concepts that you should know before coming into this post, in g
 - **Calculus:** We rely heavily on derivatives, in particular, [partial derivatives](https://www.mathsisfun.com/calculus/derivatives-partial.html) are important!
 
 
-
 # Gradients
 
 Before we step into how we use the gradient to help in our optimization problem, let's first build some understanding around the gradient. For those who are unfamiliar with partial derivatives or want a refresher you can take a look at the aside below.
