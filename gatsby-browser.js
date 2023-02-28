@@ -4,7 +4,7 @@ import theme from "./src/styles/theme"
 import "./src/styles/sanitize.css"
 
 export const onInitialClientRender = () => {
-  const loadTimer = 500
+  const loadTimer = 100
   const animTimer = loadTimer + 150
   setTimeout(function() {
       document.getElementById("___loader").style.opacity = "0"
