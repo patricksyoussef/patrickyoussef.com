@@ -188,65 +188,6 @@ Plotting the paths from before over the vector field we can see that the path th
 
 ![Gradient Field with Paths](./images/grad_path.jpg)
 
-
-# Learning Rate Tuning
-
-The learning rate $\alpha$ is generally regarded as how big of a step to take in the direction of the gradient during descent. Changing the value of the learning rate has massive implications on the descent time and results. Let's consider some example and try to understand how to pick an adequate value for the learning rate.
-
-## General Behaviors
-
-## Comparing Learning Rates
-
-Let's consider the convex function below where we know the optimal value lies at $(0,0)$. With different learning rates we will see how the behavior and results change!
-
-$$
-f(x,y) = \frac{5 x ^ 2 + y ^ 2}{2}
-$$
-
-$$
-\nabla f = 
-\begin{bmatrix}
-\frac{\partial f}{\partial x} \\[5pt]
-\frac{\partial f}{\partial y} \\
-\end{bmatrix} =
-\begin{bmatrix}
-5x \\[5pt]
-y \\
-\end{bmatrix}
-$$
-
-Across the following examples, the number of iterations is kept the same as to easily compare their behaviors but you could always adjust this when solving a problem.
-
-### Small Learning Rate
-
-When the learning rate $\alpha$ is too small there isn't a concern of instability but getting to a minima takes forever! This is not a big deal for small problems but on large problems where the computation is not trivial wasting time taking micro steps is not recommended. 
-
-![Slow and Steady](./images/learningrate_0.01.jpg)
-
-### Good Learning Rate
-
-When the learning rate $\alpha$ is well chosen we swiftly converge to the minima without any oscillations or sporadic behavior. We reach the optimal point on our loss surface within ~25 iterations and hold there.
-
-![Adequately Fast](./images/learningrate_0.1.jpg)
-
-### Large Learning Rate
-
-When the learning rate $\alpha$ is a bit large we have some oscillations as the descent settles into the final path. Looking just at the loss curve everything seems perfectly fine and in practice this is fine! One issue is sometimes you'll see a rapid decay of loss at first and then unstable behavior as you settle in closer.
-
-![A Bit Unstable](./images/learningrate_0.25.jpg)
-
-### Unstable Learning Rate
-
-When the learning rate $\alpha$ is way too large we have unmanageable oscillations and in fact instead of converging on the optimal it diverges out to a massive loss (loss scale is 10^18)!
-
-![Unusable](./images/learningrate_0.5.jpg)
-
-## Where to Start
-
-So how do you pick the right learning rate? In practice this is harder said then done and is a bit of an art. I would advise looking at similar models trained and what people used as a baseline but have fun experimenting with it too. Keep the behaviors in mind and change as you see necessary. 
-
-With better optimizers like aforementioned [Adam optimizer](https://optimization.cbe.cornell.edu/index.php?title=Adam) much of these issues are handled automatically but it still helps to know general behaviors in plain gradient descent.
-
 # Linear Regression
 
 Now that we have the foundation to apply this method, let's implement gradient descent for linear regression and analyze some of the behavior. In this section I focus more on the conceptual side of this problem and not the code but you can see how I implemented it in the [next section](/blog/neural-net-gradient-descent/#implementation).
@@ -365,6 +306,64 @@ Somewhere in the middle there is a goldilocks region where the model is flexible
 So when we compare slices along the minimums of the loss landscapes we see that sure we may have reached the minimum but that minimum is very high for the parabolic case! 
 
 ![Comparison of Losses](./images/loss_compare.jpg)
+
+# Learning Rate Tuning
+
+The learning rate $\alpha$ is generally regarded as how big of a step to take in the direction of the gradient during descent. Changing the value of the learning rate has massive implications on the descent time and results. Let's consider some example and try to understand how to pick an adequate value for the learning rate.
+
+## General Behaviors
+
+## Comparing Learning Rates
+
+Let's consider the convex function below where we know the optimal value lies at $(0,0)$. With different learning rates we will see how the behavior and results change!
+
+$$
+f(x,y) = \frac{5 x ^ 2 + y ^ 2}{2}
+$$
+
+$$
+\nabla f = 
+\begin{bmatrix}
+\frac{\partial f}{\partial x} \\[5pt]
+\frac{\partial f}{\partial y} \\
+\end{bmatrix} =
+\begin{bmatrix}
+5x \\[5pt]
+y \\
+\end{bmatrix}
+$$
+
+Across the following examples, the number of iterations is kept the same as to easily compare their behaviors but you could always adjust this when solving a problem.
+
+### Small Learning Rate
+
+When the learning rate $\alpha$ is too small there isn't a concern of instability but getting to a minima takes forever! This is not a big deal for small problems but on large problems where the computation is not trivial wasting time taking micro steps is not recommended. 
+
+![Slow and Steady](./images/learningrate_0.01.jpg)
+
+### Good Learning Rate
+
+When the learning rate $\alpha$ is well chosen we swiftly converge to the minima without any oscillations or sporadic behavior. We reach the optimal point on our loss surface within ~25 iterations and hold there.
+
+![Adequately Fast](./images/learningrate_0.1.jpg)
+
+### Large Learning Rate
+
+When the learning rate $\alpha$ is a bit large we have some oscillations as the descent settles into the final path. Looking just at the loss curve everything seems perfectly fine and in practice this is fine! One issue is sometimes you'll see a rapid decay of loss at first and then unstable behavior as you settle in closer.
+
+![A Bit Unstable](./images/learningrate_0.25.jpg)
+
+### Unstable Learning Rate
+
+When the learning rate $\alpha$ is way too large we have unmanageable oscillations and in fact instead of converging on the optimal it diverges out to a massive loss (loss scale is 10^18)!
+
+![Unusable](./images/learningrate_0.5.jpg)
+
+## Where to Start
+
+So how do you pick the right learning rate? In practice this is harder said then done and is a bit of an art. I would advise looking at similar models trained and what people used as a baseline but have fun experimenting with it too. Keep the behaviors in mind and change as you see necessary. 
+
+With better optimizers like aforementioned [Adam optimizer](https://optimization.cbe.cornell.edu/index.php?title=Adam) much of these issues are handled automatically but it still helps to know general behaviors in plain gradient descent.
 
 # Extending to More Variables
 
