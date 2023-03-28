@@ -14,9 +14,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@matejmazur/react-katex": "^3.1.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
@@ -47,10 +44,8 @@
     "react-feather": "^2.0.10",
     "react-helmet": "^6.1.0",
     "reading-time": "^1.5.0",
-    "rehype-katex": "^6.0.1",
     "remark-math": "3.0.1",
-    "styled-components": "^5.3.3",
-    "video-react": "^0.15.0"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "babel-preset-gatsby": "^2.0.0",
