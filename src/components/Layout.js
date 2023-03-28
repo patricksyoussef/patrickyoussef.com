@@ -11,7 +11,6 @@ import TeX from "@matejmazur/react-katex";
 import PostButton from "./Post/PostButton"
 import PostVideo from "./Post/PostVideo"
 import Collapse from "../components/Utils/Collapse"
-import 'video-react/dist/video-react.css'; // import css
 import("katex/dist/katex.min.css");
 
 const components = {
