@@ -97,7 +97,7 @@ const ProjectCard = ({ frontmatter, fields }) => {
           </GridImage>
           <Text>
             <h3>{frontmatter.title}</h3>
-            <p>{frontmatter.tags.join(" · ")}</p>
+            <p>{frontmatter.tags.sort().join(" · ")}</p>
           </Text>
         </Grid>
       </StyledLink>

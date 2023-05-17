@@ -1,6 +1,5 @@
 // Handles if an image is passed or not and hands back a div with a
-// background-image applied. If no image is passed, a default blue
-// is applied.
+// background-image applied.
 
 import React from "react"
 import { getImage } from "gatsby-plugin-image"
