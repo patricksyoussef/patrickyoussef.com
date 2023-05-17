@@ -47,6 +47,8 @@ const StyledLink = styled(Link)`
 
 
 const BlogCard = ({ frontmatter, fields }) => {
+  // console.log(frontmatter.tags)
+  // <p>{frontmatter.tags.sort().join(" · ")}</p>
   return (
     <Container>
       <StyledLink to={fields.path}>

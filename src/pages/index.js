@@ -111,7 +111,7 @@ export const query = graphql`
     }
     
     blog: allMdx(
-      limit: 4
+      limit: 3
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         frontmatter: {
@@ -126,6 +126,7 @@ export const query = graphql`
           slug
           date(formatString: "MMMM Do, YYYY")
           title
+          tags
         }
         fields {
           path
