@@ -1,17 +1,51 @@
+import { graphql } from 'gatsby'
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/Layout"
+import ContentGrid from "../components/ContentGrid"
+import Hero from "../components/Hero"
 
-const Container = styled.div`
-`
-
-const index = ({ data }) => {
+// Head Export
+export const Head = ({ data: { site } }) => {
   return (
-    <Layout>
-      <Container>
-        <h1>We made it!</h1>
-      </Container>
-    </Layout>
+    <title>Home | {site.siteMetadata.author}</title>
   )
 }
-export default index;
+
+const Container = styled.div(({ theme }) => `
+  .griditems {
+    min-height: 300px;
+    border: black solid 1px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`)
+
+
+const Index = ({ data }) => {
+  return (
+    <Container>
+      <ContentGrid>
+        <Hero />
+        <div className="griditems" style={{ gridColumn: "span 2", gridRow: "span 1" }}>Not Hero</div>
+        <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
+        <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
+        <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
+        <div className="griditems" style={{ gridColumn: "span 2", gridRow: "span 1" }}>Not Hero</div>
+        <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
+      </ContentGrid>
+    </Container>
+  )
+}
+export default Index
+
+export const query = graphql`
+query IndexQuery {
+  site {
+    siteMetadata {
+      author
+    }
+  }
+}`

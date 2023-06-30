@@ -1,17 +1,30 @@
 module.exports = {
   siteMetadata: {
-    title: `Patrick Youssef`,
+    title: `PatrickYoussef.com`,
     description: `I'm Patrick Youssef and this is my coding blog and home on the web.`,
     siteUrl: `https://www.patrickyoussef.com`,
     keywords: ["gatsby", "blog", "robotics", "python", "deep learning", "machine learning"],
     image: "./src/favicon.png",
+    author: `Patrick Youssef`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              showCaptions: true,
+              quality: 80,
+            }
+          }
+        ],
       },
     },
     {

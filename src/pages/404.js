@@ -1,7 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/Layout"
 
 const Container = styled.div`
   display: grid;
@@ -17,11 +16,9 @@ const Container = styled.div`
 
 export default function Home({ data }) {
   return (
-    <Layout>
-      <Container>
-        <h1>404</h1>
-      </Container>
-    </Layout>
+    <Container>
+      <h1>404</h1>
+    </Container>
   )
 }
 

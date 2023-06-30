@@ -11,16 +11,23 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^4.11.0",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "gatsby": "^4.1.0",
+    "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-manifest": "^4.0.0",
+    "gatsby-plugin-mdx": "^3.0.0",
+    "gatsby-plugin-sharp": "^4.0.0",
+    "gatsby-remark-images": "^6.0.0",
     "gatsby-source-filesystem": "^4.0.0",
-    "prism-react-renderer": "1.2.1",
+    "gatsby-transformer-sharp": "^4.0.0",
+    "prism-react-renderer": "1.2.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-feather": "^2.0.10",
     "reading-time": "^1.5.0",
     "sanitize.css": "^13.0.0",
-    "styled-components": "^6.0.1"
+    "styled-components": "^6.0.0"
   },
   "repository": {
     "type": "git",
