@@ -1,7 +1,6 @@
+import { graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 import Layout from "../components/Layout"
 
 const Container = styled.div`
@@ -16,35 +15,11 @@ const Container = styled.div`
   }
 `
 
-const Text = styled.div`
-  z-index: 2;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
-const Title = styled.div`
-  font-family: ${props => props.theme.fonts.code};
-  font-size: 6rem;
-  font-weight: 700;
-`
-const SubTitle = styled.div`
-  font-family: ${props => props.theme.fonts.code};
-  font-size: 2rem;
-  font-weight: 500;
-`
-
 export default function Home({ data }) {
   return (
     <Layout>
-      <Helmet>
-        <title>404 | {data.site.siteMetadata.title}</title>
-      </Helmet>
       <Container>
-        <Text>
-          <Title>404</Title>
-          <SubTitle>Looks like you're a bit lost.</SubTitle>
-        </Text>
+        <h1>404</h1>
       </Container>
     </Layout>
   )
