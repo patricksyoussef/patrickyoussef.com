@@ -28,7 +28,7 @@ const Index = ({ data }) => {
   return (
     <Container>
       <ContentGrid>
-        <Hero />
+        <Hero data={data.hero} />
         <div className="griditems" style={{ gridColumn: "span 2", gridRow: "span 1" }}>Not Hero</div>
         <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
         <div className="griditems" style={{ gridColumn: "span 1", gridRow: "span 1" }}>Not Hero</div>
@@ -46,6 +46,12 @@ query IndexQuery {
   site {
     siteMetadata {
       author
+    }
+  }
+
+  hero: allMdx(filter: {frontmatter: {templateKey: {eq: "hero"}}}) {
+    nodes {
+      body
     }
   }
 }`

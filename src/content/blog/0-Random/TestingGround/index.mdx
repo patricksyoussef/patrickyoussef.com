@@ -12,14 +12,33 @@ excerpt: "A brief introduction to the general concept behind Python comprehensio
 
 # Introduction
 
+A note[^1]
+
+Another note[^2]
+
 ### Code
 
-Just to play around with proposed changes!
+Just to play around with proposed changes! Wow the metastring usage is so much nicer! 
 
-Wow the metastring usage is so much nicer!
+```python output=6 highlight=1,4-6 file=test.py
+# Create an instance of our logistic regression class
+MyModel = LogisticRegression()
 
-```python highlight={1,2-4} output=3
-print("This should render as a python code block!")
+# Train the model on the training set using a learning rate of 0.1
+# and 300 iterations
+MyModel.train(X_train, y_train, 0.1, 300)
+
+# Prep test data and get predictions for y_test
+X_test = MyModel.prep_data(X_test)
+X_test = MyModel.add_dimension(X_test)
+y_test_est = MyModel.predict(X_test)
+
+Training Accuracy on Iteration 50: 0.8894
+Training Accuracy on Iteration 100: 0.9196
+Training Accuracy on Iteration 150: 0.9221
+Training Accuracy on Iteration 200: 0.9271
+Training Accuracy on Iteration 250: 0.9271
+Training Accuracy on Iteration 300: 0.9271
 ```
 
 `and this is inline`
@@ -36,8 +55,15 @@ print("This should render as a python code block!")
 * [ ] to do
 * [x] done
 
+# Making Space!!!
+# Making Space!!!
+# Making Space!!!
+# Making Space!!!
+# Making Space!!!
+# Making Space!!!
+
+
 ### Footnotes!
 
-A note[^1]
-
 [^1]: Big note.
+[^2]: Another Note

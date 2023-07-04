@@ -1,6 +1,15 @@
+import { MDXProvider } from "@mdx-js/react";
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import CodeBlock from "../components/codeblock/CodeBlock.js";
 import { base, light_theme } from "../styles/theme.js";
+
+// MDX Provider Setup
+// Setting up components for MDXProvider
+let components = {
+  pre: CodeBlock,
+  wrapper: ({ children }) => <>{children}</>,
+}
 
 // Define Theme
 // Eventually there will be some color switcher here
@@ -19,9 +28,11 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    {element}
-  </ThemeProvider>
+  <MDXProvider components={components}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {element}
+    </ThemeProvider>
+  </MDXProvider>
 )
 export default wrapRootElement

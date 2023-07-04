@@ -61,7 +61,7 @@ It's pretty simple to also extend this condition format into our comprehensions.
 One trend you may have noticed about comprehensions is that the part of the statement after the expression is just reading down each line of our iterative variant. Let's look closer at the case with a condition to see what I mean.
 
 
-```python shouldbehere
+```python
 # Iterative Variant
 my_list = []
 for item in iterable:
@@ -83,7 +83,7 @@ Let's look at some basic examples to see how we can write the tasks both as loop
 
 Let's assume we're given some iterable full of numbers (likely a set or list) and we want to produce a list of the squares of these numbers.
 
-```python{out={3}}
+```python output=2
 # List of Numbers
 numbers = [0, 1, 2, 3, 4, 5]
 
@@ -95,7 +95,7 @@ print(my_list)
 
 # Comprehension Variant
 my_list = [num ** 2 for num in numbers]
-print(my_list) 
+print(my_list)
 
 [0, 1, 4, 9, 16, 25]
 [0, 1, 4, 9, 16, 25]
@@ -111,7 +111,7 @@ As you can see we get the exact same result! Let's go ahead and break down each 
 
 Let's assume we're given a different iterable full of floating point numbers and we wish to use the function `floor` which rounds down to the nearest integer, but only if the numbers are positive.
 
-```python{out={3}}
+```python output=2
 # Importing the floor function
 from math import floor
 
@@ -140,7 +140,7 @@ As you can see, we can call functions or really execute any bit of code as the e
 Given a list of names, create a new list where every name is capitalized.
 
 
-```python{out={3}}
+```python output=2
 # List of Names
 names = ["james", "stephanie", "Patrick", "elaine"]
 
@@ -203,7 +203,7 @@ Let's go through the same examples as before in the list comprehension section. 
 
 Let's assume we're given some iterable full of numbers (likely a set or list) and we want to produce a list of the squares of these numbers.
 
-```python{out={3}}
+```python output=2
 # List of Numbers
 numbers = [0, 1, 2, 3, 4, 5]
 
@@ -230,7 +230,7 @@ As expected we get the same result as the list comprehension but in practice if 
 Let's assume we're given a different iterable full of floating point numbers and we wish to use the function `floor` which rounds down to the nearest integer, but only if the numbers are positive.
 
 
-```python{out={3}}
+```python output=2
 # Importing the floor function
 from math import floor
 
@@ -258,7 +258,7 @@ print(list(my_generator))
 
 Given a list of names, create a new list where every name is capitalized.
 
-```python{out={3}}
+```python output=2
 # List of Names
 names = ["james", "stephanie", "Patrick", "elaine"]
 
@@ -313,7 +313,7 @@ Let's go through the prior examples again but with sets!
 
 Let's assume we're given some iterable full of numbers (likely a set or list) and we want to produce a set of the squares of these numbers.
 
-```python{out={3}}
+```python output=2
 # List of Numbers
 numbers = [0, 1, 2, 3, 4, 5]
 
@@ -341,7 +341,7 @@ As you can see we get the exact same result! Let's go ahead and break down each 
 
 Let's assume we're given a different iterable full of floating point numbers and we wish to use the function `floor` which rounds down to the nearest integer, but only if the numbers are positive.
 
-```python{out={3}}
+```python output=2
 # Importing the floor function
 from math import floor
 
@@ -370,7 +370,7 @@ As you can see, we can call functions or really execute any bit of code as the e
 Given a list of names, create a new list where every name is capitalized.
 
 
-```python{out={3}}
+```python output=2
 # List of Names
 names = ["james", "stephanie", "Patrick", "elaine"]
 
@@ -414,7 +414,7 @@ I will not be exactly repeating the prior examples as it's not really possible t
 
 We will proceed with squaring numbers as before but now we'll store the square as the value paired with the original number.
 
-```python{out={3}}
+```python output=2
 # List of Numbers
 numbers = [0, 1, 2, 3, 4, 5]
 
@@ -436,7 +436,7 @@ print(my_dict)
 
 We will do a similar case as before where the key is the input number and the value is the floored value while keeping the positive value only condition.
 
-```python{out={3}}
+```python output=2
 # Importing the floor function
 from math import floor
 
@@ -462,7 +462,7 @@ print(my_dict)
 
 Lastly, let's capitalize the names for the keys and the value will be `True` if the name needed to be capitalized or false if it was capitalized already.
 
-```python{out={3}}
+```python output=2
 # List of Names
 names = ["james", "stephanie", "Patrick", "elaine"]
 

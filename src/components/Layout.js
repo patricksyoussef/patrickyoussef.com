@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Header from "./Header"
 
 const FullView = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ const ColorStrip = styled.div(({ theme }) => `
 const LimitedWidth = styled.div(({ theme }) => `
   max-width: ${theme.widths.max};
   margin: 0 auto;
-  padding: 0rem 1rem;
+  padding: 0rem 2rem;
 `)
 
 
@@ -22,7 +23,10 @@ function Layout({ children }) {
   return (
     <FullView>
       <ColorStrip />
-      <LimitedWidth>{children}</LimitedWidth>
+      <LimitedWidth>
+        <Header />
+        {children}
+      </LimitedWidth>
     </FullView>
   )
 }

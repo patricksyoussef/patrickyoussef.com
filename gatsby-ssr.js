@@ -1,3 +1,4 @@
+import '@fontsource-variable/fira-code';
 import 'sanitize.css';
 import 'sanitize.css/forms.css';
 
