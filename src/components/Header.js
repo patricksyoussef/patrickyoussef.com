@@ -1,12 +1,14 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+import PillButton from "./common/PillButton"
 
 const Container = styled.div(({ theme }) => `
   h1, h2, h3 {
     margin: 0rem;
   }
   width: 100%;
+  margin: 0.75rem 0rem;
 `)
 
 const NavBar = styled.div(({ theme }) => `
@@ -69,7 +71,7 @@ const Header = () => {
           <NavLink path="/projects/" text="Projects" />
           <NavLink path="/blog/" text="Blog" />
         </NavItems>
-        <div>rEsUmE</div>
+        <PillButton href={"/PatrickYoussefResume.pdf"} target={"_blank"} text="Resume" />
       </NavBar>
     </Container>
   )

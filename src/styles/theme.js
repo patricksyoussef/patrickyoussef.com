@@ -1,9 +1,9 @@
 import colors from "./base_colors";
 
 export const base = {
-  shadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+  shadow: "rgba(0, 0, 0, 0.3) 0px 3px 8px",
   fonts: {
-    main: "DM Sans",
+    main: "IBM Plex Sans Roman",
     code: "Fira Code Variable",
   },
   grid: {
@@ -15,7 +15,7 @@ export const base = {
   widths: {
     max: "1400px",
     feature: "1100px",
-    content: "900px",
+    content: "1000px",
   }
 }
 
@@ -31,5 +31,9 @@ export const light_theme = {
     dark: colors.slate[900],
     normal: colors.slate[800],
     light: colors.slate[700],
+  },
+  links: {
+    normal: "#006aeb",
+    visited: "#003c85",
   }
 }

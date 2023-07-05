@@ -37,6 +37,7 @@ const Container = styled.div(({ theme }) => `
 
   // Spacing
   padding: 0.75rem;
+  margin: 1em 0em;
 
   // Child Styles
   .prism-code {

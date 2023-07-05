@@ -14,7 +14,7 @@ excerpt: "A short tutorial on how to enable the usage of Latex syntax in matplot
 
 I've been getting some questions on how I created the sigmoid figure from my [logistic regression post](/blog/logistic-regression-intro/), in particular how I integrated LaTeX into matplotlib. It's quite easy so I thought I'd share some tips and break down how I made that plot.
 
-![Aforementioned figure *special* **bold**](./images/sigmoid.jpg)
+![Aforementioned figure](./images/sigmoid.jpg)
 
 # Prerequisites
 
@@ -26,7 +26,7 @@ You'll first need to make sure that you have an installation of LaTeX on your co
 
 Outside of your typical matplotlib imports you'll need to enable an `rcParam` to enable LaTeX, this is highlighted in the below code block.
 
-```python
+```python highlight=3
 import numpy as np
 import matplotlib
 matplotlib.rcParams['text.usetex'] = True

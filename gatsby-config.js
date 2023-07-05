@@ -23,7 +23,26 @@ module.exports = {
               showCaptions: true,
               quality: 80,
             }
-          }
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: f => `files/${f.name}`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              isIconAfterHeader: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: "_blank",
+              rel: "nofollow",
+            }
+          },
         ],
       },
     },

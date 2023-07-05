@@ -22,8 +22,35 @@ const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+  // Setting Background
   body {
     background-color: ${theme.colors.background};
+  }
+
+  // Importing/Setting Font
+  @font-face {
+    font-family: "IBM Plex Sans Roman";
+    src: url(/fonts/IBMPlexSansVar-Roman.ttf);
+  }
+
+  // Font Styles
+  h1, h2, h3, h4 {
+    font-weight: 500;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  p, li, td, tr {
+    font-size: 1.25rem;
   }
 `
 
