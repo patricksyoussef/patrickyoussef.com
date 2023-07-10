@@ -44,6 +44,7 @@ module.exports = {
             }
           },
         ],
+        remarkPlugins: [require("remark-math")],
       },
     },
     {

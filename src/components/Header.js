@@ -1,33 +1,26 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+import AccentText from "./common/AccentText"
 import PillButton from "./common/PillButton"
+import Underline from "./common/Underline"
 
 const Container = styled.div(({ theme }) => `
   h1, h2, h3 {
     margin: 0rem;
   }
   width: 100%;
-  margin: 0.75rem 0rem;
 `)
 
 const NavBar = styled.div(({ theme }) => `
   display: flex;
   justify-content: space-between;
+  padding: 0.5rem 0rem;
   align-items: center;
   * {
     font-weight: 500;
     text-decoration: None
   }
-`)
-
-const HomeButton = styled.div(({ theme }) => `
-  margin: 0rem 0rem;
-  color: ${theme.colors.text.dark};
-`)
-
-const ColorText = styled.span(({ theme }) => `
-  color: ${theme.colors.primary};
 `)
 
 const NavItems = styled.div(({ theme }) => `
@@ -40,7 +33,8 @@ const NavItems = styled.div(({ theme }) => `
 `)
 
 const NavItem = styled.div(({ theme }) => `
-  color: ${theme.colors.text.normal};
+  transition: ${theme.transitions.main};
+  color: ${theme.colors.text.light};
   &:hover {
     color: ${theme.colors.text.dark};
   }
@@ -59,20 +53,20 @@ const NavLink = ({ path, text }) => {
 const Header = () => {
   return (
     <Container>
-      <NavBar>
-        <Link to="/">
-          <HomeButton>
-            <h2>
-              Patrick<ColorText>.</ColorText>
-            </h2>
-          </HomeButton>
-        </Link>
-        <NavItems>
-          <NavLink path="/projects/" text="Projects" />
-          <NavLink path="/blog/" text="Blog" />
-        </NavItems>
-        <PillButton href={"/PatrickYoussefResume.pdf"} target={"_blank"} text="Resume" />
-      </NavBar>
+      <Underline>
+        <NavBar>
+          <Link to="/">
+            <AccentText>
+              <h2>Patrick<span>.</span></h2>
+            </AccentText>
+          </Link>
+          <NavItems>
+            <NavLink path="/projects/" text="Projects" />
+            <NavLink path="/blog/" text="Blog" />
+          </NavItems>
+          <PillButton href={"/PatrickYoussefResume.pdf"} target={"_blank"} text="Resume" />
+        </NavBar>
+      </Underline>
     </Container>
   )
 }

@@ -2,32 +2,35 @@ import { graphql } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  margin: 4rem 0;
+// Head Export
+export const Head = ({ data: { site } }) => {
+  return (
+    <title>404 | {site.siteMetadata.author}</title>
+  )
+}
 
-  div {
-    grid-row-start: 1;
-    grid-column-start: 1;
-  }
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height:40vh;
+`
+
+const Text = styled.div`
 `
 
 export default function Home({ data }) {
   return (
     <Container>
-      <h1>404</h1>
+      <Text>
+        <h1>404 | Page Not Found</h1>
+      </Text>
     </Container>
   )
 }
 
 export const query = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+    ...SiteMetadata
   }
 `

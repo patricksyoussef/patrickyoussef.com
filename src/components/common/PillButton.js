@@ -10,9 +10,11 @@ const Button = styled.div(({ theme }) => `
   padding: 0.75rem;
   text-decoration: none;
   color: ${theme.colors.text.dark};
+  transition: ${theme.transitions.main};
 
   &:hover {
     border-color: ${theme.colors.buttons.border_hover};
+    background-color: ${theme.background_darken};
   }
 `)
 

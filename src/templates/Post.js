@@ -1,15 +1,15 @@
 // Template for a blog post, mostly just styling and pulling graphql data
 // for a particular blog given the "context" info given in gatsby-node.js
 
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import React from "react"
-import styled from "styled-components"
-
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import React from "react";
+import styled from "styled-components";
+import Feature from "../components/post/Feature";
 
 export const Head = ({ data: { mdx: { frontmatter, fields }, site } }) => {
   // This is obnoxiously long to put below
-  let image = frontmatter.featureImage.childImageSharp.fixed.src
+  let image = frontmatter.featureImage.childImageSharp.original.src
   return (
     <>
       <title>{frontmatter.title} | {site.siteMetadata.author}</title>
@@ -35,6 +35,7 @@ const Container = styled.div`
 `
 
 const MDXContent = styled.div(({ theme }) => `
+  
   // Sizing
   max-width: ${theme.widths.content};
   margin: 0 auto;
@@ -48,19 +49,25 @@ const MDXContent = styled.div(({ theme }) => `
     }
   }
 
-  // Link Style
+  // Link
   a {
     font-weight: 500;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+
     &:visited {
       color: ${theme.colors.links.visited} !important;
     }
   }
 
-
   // Image and Video
   .gatsby-resp-image-wrapper, video {
+    max-width: 700px !important;
     overflow: hidden;
-    border: 0px solid;
+    border: 1px solid ${theme.colors.borders};
     border-radius: 10px;
     box-shadow: ${theme.shadow};
     margin: 1em 0em;
@@ -81,16 +88,16 @@ const MDXContent = styled.div(({ theme }) => `
   // Inline Code
   code {
     font-size: 0.8em;
-    border: 1px solid #999999;
+    border: 1px solid ${theme.colors.borders};
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${theme.background_darken};
     padding: 2px;
     color: black;
   }
 
   // Blockquote
   blockquote {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${theme.background_darken};
     padding: 0.75rem 1.25rem;
     border-left: 0.3rem solid  ${theme.colors.primary};
     margin: 0rem;
@@ -120,17 +127,15 @@ const MDXContent = styled.div(({ theme }) => `
       }
     }
   }
-
-  
   
 `)
 
 const BlogPost = ({ data }) => {
-  const { frontmatter, fields, body, tableOfContents } = data.mdx
-
+  const { frontmatter, fields, body } = data.mdx
   return (
     <Container>
       <MDXContent>
+        <Feature frontmatter={frontmatter} fields={fields} />
         <MDXRenderer>{body}</MDXRenderer>
       </MDXContent>
     </Container>
@@ -140,31 +145,10 @@ export default BlogPost
 
 export const query = graphql`
   query BlogByPath($post_id: String!) {
+    ...SiteMetadata
     mdx(fields: { path: { eq: $post_id } }) {
       body
-      frontmatter {
-        title
-        date(formatString: "MMMM Do, YYYY")
-        featureImage {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
-            fixed(height: 500) {
-              src
-            }
-          }
-        }
-      }
-      fields {
-        path
-        readingTime{
-          text 
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
+      ...PostElements
     }
   }
 `

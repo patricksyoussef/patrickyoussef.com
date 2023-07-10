@@ -114,7 +114,7 @@ const CodeBlock = ({ children: { props } }) => {
   // Process Code
   // i.e. remove lines of code and trim
   const codeLines = rawCode.split("\n")
-  var { code, output } = { undefined, undefined }
+  var code, output;
   if (outputCount > 0) {
     code = codeLines.slice(0, -outputCount).join("\n").trim()
     output = codeLines.slice(-outputCount)

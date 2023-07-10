@@ -1,14 +1,38 @@
+import TeX from "@matejmazur/react-katex";
 import { MDXProvider } from "@mdx-js/react";
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import CodeBlock from "../components/codeblock/CodeBlock.js";
+import Collapse from "../components/post/Collapse.js";
+import PostVideo from "../components/post/PostVideo.js";
 import { base, light_theme } from "../styles/theme.js";
 
 // MDX Provider Setup
 // Setting up components for MDXProvider
 let components = {
+  // Code Block
   pre: CodeBlock,
   wrapper: ({ children }) => <>{children}</>,
+
+  // Math Rendering
+  div: (props) => {
+    console.log(props)
+    if (props.className.includes("math-display")) {
+      import("katex/dist/katex.min.css");
+      return <TeX block math={props.children} />
+    }
+    return <div {...props} />;
+  },
+  span: (props) => {
+    if (props.className.includes("math-inline")) {
+      import("katex/dist/katex.min.css");
+      return <TeX math={props.children} />
+    }
+    return <span {...props} />;
+  },
+
+  // MDX Components
+  ...{ PostVideo, Collapse },
 }
 
 // Define Theme
@@ -20,6 +44,21 @@ const GlobalStyles = createGlobalStyle`
   // Global Style
   html {
     scroll-behavior: smooth;
+    font-size: 15px;
+  }
+  
+  // Media Queries
+  @media (max-width: 800px) {
+    html { font-size: 14px; }
+  }
+  @media (max-width: 600px) {
+    html { font-size: 14px; }
+  }
+  @media (max-width: 450px) {
+    html { font-size: 13px; }
+  }
+  @media (max-width: 370px) {
+    html { font-size: 11px; }
   }
 
   // Setting Background
@@ -29,11 +68,14 @@ const GlobalStyles = createGlobalStyle`
 
   // Importing/Setting Font
   @font-face {
-    font-family: "IBM Plex Sans Roman";
-    src: url(/fonts/IBMPlexSansVar-Roman.ttf);
+    font-family: "DM Sans Variable";
+    src: url(/fonts/DMSansVar.ttf);
   }
 
   // Font Styles
+  a {
+    text-decoration: none;
+  }
   h1, h2, h3, h4 {
     font-weight: 500;
   }
@@ -49,8 +91,8 @@ const GlobalStyles = createGlobalStyle`
   h4 {
     font-size: 1rem;
   }
-  p, li, td, tr {
-    font-size: 1.25rem;
+  p, li, td, tr, .katex {
+    font-size: 1.2rem;
   }
 `
 

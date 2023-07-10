@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Footer from "./Footer"
 import Header from "./Header"
 
 const FullView = styled.div`
@@ -21,14 +22,22 @@ const LimitedWidth = styled.div(({ theme }) => `
   font-family: ${theme.fonts.main};
 `)
 
+const ContentWidth = styled.div(({ theme }) => `
+  max-width: ${theme.widths.content};
+  margin: 0 auto;
+`)
+
 
 function Layout({ children }) {
   return (
     <FullView>
       <ColorStrip />
       <LimitedWidth>
-        <Header />
-        {children}
+        <ContentWidth>
+          <Header />
+          {children}
+          <Footer />
+        </ContentWidth>
       </LimitedWidth>
     </FullView>
   )

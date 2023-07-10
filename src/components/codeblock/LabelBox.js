@@ -7,8 +7,7 @@ const Container = styled.div(({ theme }) => `
 `)
 
 const Text = styled.div(({ theme }) => `
-  font-family: ${theme.fonts.sub}
-  border-radius: 0.25rem;
+  font-family: ${theme.fonts.main};
 `)
 
 const LabelBox = ({ backString, text }) => {
