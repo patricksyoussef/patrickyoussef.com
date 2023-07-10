@@ -17,9 +17,6 @@ const LimitedWidth = styled.div(({ theme }) => `
   max-width: ${theme.widths.max};
   margin: 0 auto;
   padding: 0rem 1rem;
-
-  // General Font Override
-  font-family: ${theme.fonts.main};
 `)
 
 const ContentWidth = styled.div(({ theme }) => `

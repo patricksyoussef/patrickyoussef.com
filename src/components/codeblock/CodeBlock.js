@@ -53,6 +53,7 @@ const Toolbar = styled.div(({ theme }) => `
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.25rem;
+  font-family: ${theme.fonts.main};
 `)
 
 const CopyButton = styled.div(({ theme }) => `
@@ -75,7 +76,9 @@ const CopyButton = styled.div(({ theme }) => `
 const Code = styled.div(({ theme }) => `
 
   // Font Styling
-  font-family: ${theme.fonts.code} !important;
+  .token {
+    font-family: ${theme.fonts.code};
+  }
 
   // Line Focus Style
   .highlight {

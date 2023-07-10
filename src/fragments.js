@@ -3,8 +3,10 @@ import { graphql } from "gatsby";
 export const postElements = graphql`
   fragment PostElements on Mdx {
     frontmatter {
+      category
+      excerpt
       slug
-      date(formatString: "MMMM Do, YYYY")
+      date(formatString: "MMM. Do, YYYY")
       title
       tags
       featureImage {
@@ -69,7 +71,7 @@ export const indexProjectFragment = graphql`
 
 export const projectFragment = graphql`
   fragment ProjectQuery on Query {
-    project: allMdx(
+    projects: allMdx(
       sort: {fields: frontmatter___date, order: DESC}
       filter: {frontmatter: {published: {eq: true}, templateKey: {eq: "project"}}}
     ) {

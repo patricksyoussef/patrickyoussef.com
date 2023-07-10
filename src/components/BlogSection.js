@@ -4,7 +4,13 @@ import BlogCard from "./BlogCard";
 
 const Container = styled.div(({ theme }) => `
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
   grid-gap: ${theme.grid.gap};
 `)
 

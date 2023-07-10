@@ -6,6 +6,7 @@ slug: nbody
 date: 2022-10-02
 featureImage: images/solar_system_large.jpg
 tags: ["Simulation", "Orbital Mechanics"]
+category: "Simulation"
 excerpt: "An introduction to the principles and methods required to implement an n-body simulator in Python."
 pinned: true
 ---
@@ -854,7 +855,7 @@ Looks great! Let's dive a bit deeper and verify the orbital period and system en
 
 For the period evaluation we can make a pretty simple plot to give us confidence that this works. First, let's determine what the period is supposed to be by computing how long it would take to traverse a circle with a radius of our orbit when traveling at our initial velocity. Then we can plot how far the satellite is from the initial position, this way when we return back to where we started we'll see a minimum in our graph that should reflect a period.
 
-```python output=1
+```python output=2
 # Compute Expected Period
 # (2 * pi * r) / v
 P = 2 * np.pi * TwoBody.Xi[1,0] / TwoBody.Xi[1,3] / 60
@@ -871,6 +872,7 @@ plt.plot(times, dists)
 plt.xlabel("Time (Mins)")
 plt.ylabel("Distance from Init")
 plt.show()
+
 Expected Orbital Period: 100.017 mins
 ```
 

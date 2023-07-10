@@ -7,25 +7,29 @@ import Socials from "../Socials"
 
 const Container = styled.div(({ theme }) => `
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+  grid-template-columns: 2fr 1fr;
   grid-gap: 50px;
   margin: 1.5rem 0rem;
 
   // Text
-  h2 {
-    font-weight: 400;
+  h1, h2 {
+    font-weight: 300;
+    color: ${theme.colors.text.light};
   }
 
-  p {
-    font-size: 1.1rem;
-    strong {
-      
+  a {
+    font-weight: 500;
+    text-decoration: underline ${theme.colors.background};
+    transition: text-decoration-color ${theme.transitions.main};
+    color: ${theme.colors.text.dark};
+
+    &:hover {
+      text-decoration-color: ${theme.colors.primary};
     }
   }
-
+  
   // Image
   .image {
-    grid-column: span 2;
     display: flex:
     justify-content: center;
     align-items: center;
@@ -60,12 +64,12 @@ const ImageGrid = styled.div(({ theme }) => `
 `)
 
 const Hero = ({ data }) => {
+  // <h2 className="intro">{"Hi, I'm Patrick Youssef "}<span role="img" aria-label="Wave">👋</span></h2>
   const { body, frontmatter } = data.nodes[0]
   let image = getImage(frontmatter.featureImage)
   return (
     <Container>
       <HeroText>
-        <h2 className="intro">{"Hi, I'm Patrick Youssef "}<span role="img" aria-label="Wave">👋</span></h2>
         <MDXRenderer>{body}</MDXRenderer>
         <Socials />
       </HeroText>

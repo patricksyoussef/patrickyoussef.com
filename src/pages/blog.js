@@ -18,8 +18,8 @@ const Container = styled.div(({ theme }) => `
 export default function Blog({ data }) {
   return (
     <Container>
-      <PageHead title="Blog" description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras."} />
-      <BlogSection data={data.blog} />
+      <PageHead title="Blog" description={"In my free time..."} />
+      <BlogSection data={data.blog} _years={false} />
     </Container>
   )
 }

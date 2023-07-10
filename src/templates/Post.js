@@ -52,14 +52,16 @@ const MDXContent = styled.div(({ theme }) => `
   // Link
   a {
     font-weight: 500;
-    text-decoration: none;
+    text-decoration: underline ${theme.colors.background};
+    transition: text-decoration-color ${theme.transitions.main};
+    color: ${theme.colors.links.normal};
+    &:visited {
+      color: ${theme.colors.links.visited};
+    }
 
     &:hover, &:focus {
       text-decoration: underline;
-    }
-
-    &:visited {
-      color: ${theme.colors.links.visited} !important;
+      text-decoration-color: inherit;
     }
   }
 
@@ -128,6 +130,12 @@ const MDXContent = styled.div(({ theme }) => `
     }
   }
   
+  // Footnotes
+  .footnotes {
+    hr {
+      color: ${theme.colors.borders};
+    }
+  }
 `)
 
 const BlogPost = ({ data }) => {

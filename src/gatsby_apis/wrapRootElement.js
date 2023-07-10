@@ -16,7 +16,6 @@ let components = {
 
   // Math Rendering
   div: (props) => {
-    console.log(props)
     if (props.className.includes("math-display")) {
       import("katex/dist/katex.min.css");
       return <TeX block math={props.children} />
@@ -32,7 +31,7 @@ let components = {
   },
 
   // MDX Components
-  ...{ PostVideo, Collapse },
+  ...{ Collapse, PostVideo },
 }
 
 // Define Theme
@@ -41,6 +40,12 @@ let color_theme = light_theme
 const theme = { ...base, colors: color_theme }
 
 const GlobalStyles = createGlobalStyle`
+  // Importing/Setting Font
+  @font-face {
+    font-family: "DM Sans Variable";
+    src: url(/fonts/DMSansVar.ttf);
+  }
+  
   // Global Style
   html {
     scroll-behavior: smooth;
@@ -64,12 +69,7 @@ const GlobalStyles = createGlobalStyle`
   // Setting Background
   body {
     background-color: ${theme.colors.background};
-  }
-
-  // Importing/Setting Font
-  @font-face {
-    font-family: "DM Sans Variable";
-    src: url(/fonts/DMSansVar.ttf);
+    font-family: ${theme.fonts.main};
   }
 
   // Font Styles
