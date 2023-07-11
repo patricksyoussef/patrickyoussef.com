@@ -9,9 +9,11 @@ export const postElements = graphql`
       date(formatString: "MMM. Do, YYYY")
       title
       tags
+      pinned
       featureImage {
         childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
+          whole: gatsbyImageData(placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
+          crop: gatsbyImageData(aspectRatio: 4.0 placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
           original {
             src
           }
@@ -57,8 +59,8 @@ export const heroFragment = graphql`
 
 export const indexProjectFragment = graphql`
   fragment IndexProjectQuery on Query {
-    project: allMdx(
-      limit: 3
+    projects: allMdx(
+      limit: 2
       sort: {fields: frontmatter___date, order: DESC}
       filter: {frontmatter: {published: {eq: true}, templateKey: {eq: "project"}, pinned: {eq: true}}}
     ) {
@@ -85,7 +87,7 @@ export const projectFragment = graphql`
 export const indexBlogFragment = graphql`
 fragment IndexBlogQuery on Query {
   blog: allMdx(
-    limit: 3
+    limit: 4
     sort: {fields: frontmatter___date, order: DESC}
     filter: {frontmatter: {published: {eq: true}, templateKey: {eq: "blog"}, pinned: {eq: true}}}
   ) {

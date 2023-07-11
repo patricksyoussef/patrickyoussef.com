@@ -15,9 +15,10 @@ const Container = styled.div`
 `
 
 export default function Projects({ data }) {
+  let description = "In my free time, I like to build things. Not always to solve a big problem, but often just for the sake of spending a weekend learning and enjoying the process of creating something."
   return (
     <Container>
-      <PageHead title={"Projects"} description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras."} />
+      <PageHead title={"Projects"} description={description} />
       <ProjectSection data={data.projects} />
     </Container>
   )

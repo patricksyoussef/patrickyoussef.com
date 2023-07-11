@@ -21,6 +21,10 @@ const NavBar = styled.div(({ theme }) => `
     font-weight: 500;
     text-decoration: None
   }
+  // Matching resume button size
+  .home {
+    font-size: 1.575rem;
+  }
 `)
 
 const NavItems = styled.div(({ theme }) => `
@@ -57,7 +61,7 @@ const Header = () => {
         <NavBar>
           <Link to="/">
             <AccentText>
-              <h2>Patrick<span>.</span></h2>
+              <div className="home">Patrick<span>.</span></div>
             </AccentText>
           </Link>
           <NavItems>

@@ -69,7 +69,6 @@ const MDXContent = styled.div(({ theme }) => `
   .gatsby-resp-image-wrapper, video {
     max-width: 700px !important;
     overflow: hidden;
-    border: 1px solid ${theme.colors.borders};
     border-radius: 10px;
     box-shadow: ${theme.shadow};
     margin: 1em 0em;

@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import BlogCard from "./BlogCard";
+import ContentCard from "./ContentCard";
 
 const Container = styled.div(({ theme }) => `
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (max-width: 600px) {
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: 700px) {
     grid-template-columns: 1fr;
   }
   grid-gap: ${theme.grid.gap};
@@ -17,7 +15,7 @@ const Container = styled.div(({ theme }) => `
 const BlogSection = ({ data }) => (
   <Container>
     {data.nodes.map(({ frontmatter, fields }) => (
-      <BlogCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} />
+      <ContentCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} />
     ))}
   </Container>
 )

@@ -97,11 +97,11 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const wrapRootElement = ({ element }) => (
-  <MDXProvider components={components}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <MDXProvider components={components}>
       {element}
-    </ThemeProvider>
-  </MDXProvider>
+    </MDXProvider>
+  </ThemeProvider>
 )
 export default wrapRootElement

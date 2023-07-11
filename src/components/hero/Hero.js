@@ -17,12 +17,14 @@ const Container = styled.div(({ theme }) => `
     color: ${theme.colors.text.light};
   }
 
-  a {
+  a, strong {
     font-weight: 500;
+    color: ${theme.colors.text.dark};
+  }
+
+  a {
     text-decoration: underline ${theme.colors.background};
     transition: text-decoration-color ${theme.transitions.main};
-    color: ${theme.colors.text.dark};
-
     &:hover {
       text-decoration-color: ${theme.colors.primary};
     }
@@ -35,7 +37,7 @@ const Container = styled.div(({ theme }) => `
     align-items: center;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     grid-template-columns: 1fr;
     .image {
       display: none

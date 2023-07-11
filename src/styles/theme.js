@@ -1,14 +1,14 @@
 import colors from "./base_colors";
 
 export const base = {
-  shadow: "rgba(0, 0, 0, 0.2) 0px 2px 8px 0px",
+  shadow: "rgba(0, 0, 0, 0.2) 0px 3px 8px 3px",
   background_darken: "rgba(0, 0, 0, 0.05)",
   fonts: {
     main: "DM Sans Variable",
     code: "Fira Code Variable",
   },
   grid: {
-    gap: "1rem",
+    gap: "1em",
   },
   radii: {
     content: "0.5rem",

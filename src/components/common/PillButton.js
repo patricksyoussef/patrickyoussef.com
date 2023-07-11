@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Button = styled.div(({ theme }) => `
   display: inline-block;
   border-style: solid;
-  border-width: 1.5px;
+  border-width: 0.1rem;
   border-radius: 10rem;
   border-color: ${theme.colors.buttons.border};
   padding: 0.75rem;
