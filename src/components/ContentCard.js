@@ -66,7 +66,7 @@ const ImageContainer = styled.div(({ theme }) => `
 `)
 
 const FeatureImage = styled.div(({ theme }) => `
-  width: calc(100% - 1.5rem);
+  width: calc(100%);
   border-top-left-radius: ${theme.radii.content};
   border-top-right-radius: ${theme.radii.content};
   box-shadow: ${theme.shadow};
