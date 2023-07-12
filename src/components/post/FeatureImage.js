@@ -20,7 +20,7 @@ const Container = styled.div(({ theme }) => `
 `)
 
 const FeatureImage = ({ frontmatter }) => {
-  let image = getImage(frontmatter.featureImage.childImageSharp.whole)
+  let image = getImage(frontmatter.featureImage.childImageSharp.card)
   return (
     <Container>
       <BgImage image={image} alt={"Post Feature Image"}></BgImage>

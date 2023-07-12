@@ -108,7 +108,7 @@ const ImageWrapper = ({ image, featureImg, frontmatter }) => {
 
 
 const ContentCard = ({ frontmatter, fields, _image = false }) => {
-  let featureImg = getImage(frontmatter.featureImage.childImageSharp.crop)
+  let featureImg = getImage(frontmatter.featureImage.childImageSharp.card)
   return (
     <Link to={fields.path}>
       <Container style={{ paddingBottom: _image ? "0rem" : "0.75rem" }}>
