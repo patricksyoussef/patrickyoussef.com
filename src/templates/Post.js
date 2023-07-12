@@ -6,10 +6,11 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import React from "react";
 import styled from "styled-components";
 import Feature from "../components/post/Feature";
+import("katex/dist/katex.min.css");
 
 export const Head = ({ data: { mdx: { frontmatter, fields }, site } }) => {
   // This is obnoxiously long to put below
-  let image = frontmatter.featureImage.childImageSharp.original.src
+  let image = frontmatter.featureImage.childImageSharp.whole.images.fallback.src
   return (
     <>
       <title>{frontmatter.title} | {site.siteMetadata.author}</title>

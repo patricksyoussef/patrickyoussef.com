@@ -4,8 +4,8 @@ export const base = {
   shadow: "rgba(0, 0, 0, 0.2) 0px 3px 8px 3px",
   background_darken: "rgba(0, 0, 0, 0.05)",
   fonts: {
-    main: "DM Sans Variable",
-    code: "Fira Code Variable",
+    main: "DM Sans",
+    code: "Fira Code",
   },
   grid: {
     gap: "1em",

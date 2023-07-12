@@ -12,11 +12,8 @@ export const postElements = graphql`
       pinned
       featureImage {
         childImageSharp {
-          whole: gatsbyImageData(placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
-          crop: gatsbyImageData(aspectRatio: 4.0 placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
-          original {
-            src
-          }
+          whole: gatsbyImageData(width: 1000, placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
+          crop: gatsbyImageData(width: 1000, aspectRatio: 4.0 placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
         }
       }
     }

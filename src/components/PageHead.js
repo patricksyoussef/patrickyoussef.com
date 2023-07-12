@@ -12,8 +12,6 @@ const Container = styled.div(({ theme }) => `
   margin: 1em 0em;
 `)
 
-
-
 const PageHead = ({ title, description }) => {
   return (
     <Container>

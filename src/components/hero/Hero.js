@@ -47,7 +47,7 @@ const Container = styled.div(({ theme }) => `
 
 const HeroText = styled.div(({ theme }) => `
   h1,h2,h3 {
-    svg {
+    .anchor {
       display: none;
     }
   }

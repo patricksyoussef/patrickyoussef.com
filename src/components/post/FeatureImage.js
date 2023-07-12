@@ -1,5 +1,5 @@
 import { getImage } from "gatsby-plugin-image";
-import { BgImage } from 'gbimage-bridge';
+import { BgImage } from "gbimage-bridge";
 import React from "react";
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ const Container = styled.div(({ theme }) => `
   display: flex;
   justify-content: center;
   align-items: center;
-  .gatsby-background-image-wrapper {
+  div[class^='gbi'] {
     width: 120%;
     height: 120%;
   }

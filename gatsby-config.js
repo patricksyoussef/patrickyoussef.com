@@ -4,10 +4,11 @@ module.exports = {
     description: `I'm Patrick Youssef and this is my coding blog and home on the web.`,
     siteUrl: `https://www.patrickyoussef.com`,
     keywords: ["gatsby", "blog", "robotics", "python", "deep learning", "machine learning"],
-    image: "./src/favicon.png",
+    image: "./src/images/RocketIcon.png",
     author: `Patrick Youssef`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
