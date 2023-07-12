@@ -31,6 +31,8 @@ export const siteMetadata = graphql`
     site {
       siteMetadata {
         author
+        description
+        siteUrl
       }
     }
   }

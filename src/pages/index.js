@@ -11,19 +11,18 @@ export const Head = ({ data: { site } }) => {
   return (
     <>
       <title>Home | {site.siteMetadata.author}</title>
-      <description>{site.siteMetadata.description}</description>
       <link rel="canonical" href={site.siteMetadata.siteUrl} />
       <meta name="description" content={site.siteMetadata.description} />
 
-      <meta property='og:url' content={'https://patrickyoussef.com'} />
+      <meta property='og:url' content={site.siteMetadata.siteUrl} />
       <meta property="og:type" content="website" />
       <meta property='og:title' content={site.siteMetadata.title} />
       <meta property='og:description' content={site.siteMetadata.description} />
       <meta property='og:image' content={'/images/memoji_laptop_crop.png'} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:domain" content="patrickyoussef.com" />
-      <meta property="twitter:url" content={'patrickyoussef.com'} />
+      <meta property="twitter:domain" content={site.siteMetadata.siteUrl} />
+      <meta property="twitter:url" content={site.siteMetadata.siteUrl} />
       <meta name="twitter:title" content={site.siteMetadata.title} />
       <meta name="twitter:description" content={site.siteMetadata.description} />
       <meta name="twitter:image" content={'/images/memoji_laptop_crop.png'} />
