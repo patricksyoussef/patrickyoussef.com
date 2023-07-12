@@ -31,7 +31,7 @@ export default function HTML(props) {
             bottom: 0,
             zIndex: 10,
             opacity: 1,
-            transition: "0.1s ease-in-out",
+            transition: "0.2s ease-in-out",
           }}
         >
           <img

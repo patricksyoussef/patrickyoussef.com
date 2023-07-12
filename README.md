@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://patrickyoussef.com" alt="Link to my website!" target="_blank">
-    <img src="./WebsiteSnip.png)" width="12%"/>
+    <img src="./CurrentSite.png" width="50%%"/>
   </a>
 </p>
 

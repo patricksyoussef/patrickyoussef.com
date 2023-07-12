@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
-import { ArrowUpRight, Star } from "react-feather";
+import { ArrowUpRight } from "react-feather";
 import styled from "styled-components";
 
 const Container = styled.div(({ theme }) => `
@@ -13,7 +13,13 @@ const Container = styled.div(({ theme }) => `
   overflow: hidden;
 
   &:hover {
-    background-color: ${theme.colors.cards.background_hover};
+    box-shadow: ${theme.shadow};
+    .subtext, .tags {
+      color: ${theme.colors.text.dark};
+    } 
+    .feature:after {
+      opacity: 0.0;
+    }
   }
 
   color: ${theme.colors.text.dark};
@@ -90,7 +96,8 @@ const FeatureImage = styled.div(({ theme }) => `
 `)
 
 const FeatureIcon = ({ pinned }) => {
-  return (pinned ? <Star size={20} strokeWidth={1.5} /> : <ArrowUpRight size={20} strokeWidth={1.5} />)
+  // return (pinned ? <Star size={20} strokeWidth={1.5} /> : <ArrowUpRight size={20} strokeWidth={1.5} />)
+  return (<ArrowUpRight size={20} strokeWidth={1.5} />)
 }
 
 const ImageWrapper = ({ image, featureImg, frontmatter }) => {
@@ -113,7 +120,7 @@ const ContentCard = ({ frontmatter, fields, _image = false }) => {
     <Link to={fields.path}>
       <Container style={{ paddingBottom: _image ? "0rem" : "0.75rem" }}>
         <Toolbar>
-          <p>{frontmatter.tags.sort().join(" · ")}</p>
+          <p className="tags">{frontmatter.tags.sort().join(" · ")}</p>
           <FeatureIcon pinned={frontmatter.pinned} />
         </Toolbar>
         <Content>

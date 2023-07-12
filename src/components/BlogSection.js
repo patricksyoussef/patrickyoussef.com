@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ContentCard from "./ContentCard";
 
 const Container = styled.div(({ theme }) => `
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media (max-width: 700px) {

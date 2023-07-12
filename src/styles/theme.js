@@ -1,7 +1,7 @@
 import colors from "./base_colors";
 
 export const base = {
-  shadow: "rgba(0, 0, 0, 0.2) 0px 3px 8px 3px",
+  shadow: "rgba(0, 0, 0, 0.2) 0px 2px 8px 2px",
   background_darken: "rgba(0, 0, 0, 0.05)",
   fonts: {
     main: "DM Sans",
@@ -37,12 +37,11 @@ export const light_theme = {
   },
   cards: {
     background: colors[family][100],
-    background_hover: colors[family][200],
   },
   text: {
     dark: colors[family][900],
     normal: colors[family][800],
-    light: colors[family][700],
+    light: colors[family][600],
   },
   links: {
     normal: colors[accent][700],
