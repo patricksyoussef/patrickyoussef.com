@@ -1,66 +1,33 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 import React from "react"
-import { Helmet } from "react-helmet"
-import Layout from "../components/Layout"
-import BlogSection from "../components/BlogSection"
 import styled from "styled-components"
+import BlogSection from '../components/BlogSection'
+import PageHead from '../components/PageHead'
 
-const Container = styled.div`
-  margin: 0 auto;
-`
-
-const blog = ({ data }) => {
-
+// Head Export
+export const Head = ({ data: { site } }) => {
   return (
-    <Layout>
-      <Helmet>
-        <title>Blog | {data.site.siteMetadata.title}</title>
-      </Helmet>
-      <Container>
-        <BlogSection data={data.blog} _years={true}/>
-      </Container>
-    </Layout>
+    <title>My Blog | {site.siteMetadata.author}</title>
   )
 }
-export default blog;
+
+
+const Container = styled.div(({ theme }) => `
+`)
+
+export default function Blog({ data }) {
+  let description = "From time to time, I share insights, experiences, and exposure to topics that others may find interesting. You'll find posts ranging from long-form tutorials on modern topics to short musings from my life."
+  return (
+    <Container>
+      <PageHead title="Blog" description={description} />
+      <BlogSection data={data.blog} _years={false} />
+    </Container>
+  )
+}
 
 export const query = graphql`
-  query AllBlogPosts {
-    blog: allMdx(
-      sort: { fields: frontmatter___date, order: DESC }
-      filter: {
-        frontmatter: {
-          templateKey: { eq: "blog-post" }
-          published: { eq: true }
-        }
-      }
-    ) {
-      nodes {
-        frontmatter {
-          slug
-          title
-          date(formatString: "MMMM Do, YYYY")
-          excerpt
-          tags
-        }
-        fields {
-          readingTime {
-            text
-          }
-          path
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    tags: allMdx(filter: {frontmatter: {published: {eq: true}, templateKey: {eq: "blog-post"}}}) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-    }
+  query BlogPageQuery {
+    ...SiteMetadata
+    ...BlogQuery
   }
 `

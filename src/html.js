@@ -1,6 +1,6 @@
-import React from "react"
 import PropTypes from "prop-types"
-import LoaderSVG from './images/pageload.svg'
+import React from "react"
+import LoaderSVG from './images/LoadingSpinner.svg'
 
 export default function HTML(props) {
   return (
@@ -21,7 +21,7 @@ export default function HTML(props) {
           id="___loader"
           style={{
             alignItems: "center",
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#fafafa",
             display: "flex",
             justifyContent: "center",
             position: "absolute",
@@ -31,7 +31,7 @@ export default function HTML(props) {
             bottom: 0,
             zIndex: 10,
             opacity: 1,
-            transition: "0.1s ease-in-out",
+            transition: "0.2s ease-in-out",
           }}
         >
           <img

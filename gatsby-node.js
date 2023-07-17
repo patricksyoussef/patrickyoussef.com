@@ -3,12 +3,15 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const readingTime = require('reading-time');
 let wordsPerMinute = 150
 
-// The following goes through all MDX files found (blog posts, about page, etc.)
+// The following goes through all MDX files found (blog posts, projects, etc.)
 // and creates a gatsby link using the slug denoted in each MDX's frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `Mdx` && node.frontmatter.title.length > 0) {
-    
+
+  // Determine if node is valid for page
+  const validKeys = new Set(["blog", "project"])
+  if (node.internal.type === `Mdx` && validKeys.has(node.frontmatter.templateKey)) {
+
     // Path
     const value = createFilePath({ node, getNode })
     const abs_path = `/${value.split("/", 2)[1]}/${node.frontmatter.slug}/`
@@ -22,12 +25,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: `readingTime`,
-      value: readingTime(node.rawBody, {wordsPerMinute})
+      value: readingTime(node.rawBody, { wordsPerMinute })
     })
   }
 }
 
-  // Populates graphql with the result of my requests that are used later to
+// Populates graphql with the result of my requests that are used later to
 // populate content on the blog posts
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -39,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
         filter: {
           frontmatter: {
             published: { eq: true }
-            templateKey: { eq: "blog-post" }
+            templateKey: { eq: "blog" }
           }
         }
       ) {
@@ -77,15 +80,15 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  // Resolve templates
-  blog_post = path.resolve("./src/templates/blog_post.js")
+  // Resolve template
+  post_template = path.resolve("./src/templates/Post.js")
 
   // Create blog posts
   for (const [key, arr] of Object.entries(result.data)) {
     arr['nodes'].forEach(post => {
       createPage({
         path: post.fields.path,
-        component: blog_post,
+        component: post_template,
         context: {
           post_id: post.fields.path,
         },

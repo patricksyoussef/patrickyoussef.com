@@ -1,41 +1,35 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import Underline from "./Utils/Underline"
-import {Link} from "gatsby"
+import Underline from "./common/Underline"
 
-const Container = styled.div`
-`
-
-const TopContent = styled.span`
+const Container = styled.div(({ theme }) => `
   h1,h2,h3 {
-    margin: 0.2rem 0;
+    margin: 0rem;
     font-weight: 400;
+    color: ${theme.colors.text.dark};
   }
+  margin: 1em 0em;
+`)
 
+const NavItems = styled.div(({ theme }) => `
   display: flex;
   justify-content: space-between;
-  align-items: center;
-`
+  align-items: end;
+  margin-bottom: 0.25rem;
+`)
 
-const SubText = styled.span`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const Divider = ({ title, link, subtext}) => (
+const Divider = ({ title, link, subtext }) => (
   <Container>
     <Underline>
-      <TopContent>
+      <NavItems>
         <Link to={link}>
           <h1>{title}</h1>
         </Link>
         <Link to={link}>
-          <SubText>
-            <h3>{subtext}</h3>
-          </SubText>
+          <h3>{subtext}</h3>
         </Link>
-      </TopContent>
+      </NavItems>
     </Underline>
   </Container>
 )

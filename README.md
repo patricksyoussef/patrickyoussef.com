@@ -2,26 +2,26 @@
 
 <p align="center">
   <a href="https://patrickyoussef.com" alt="Link to my website!" target="_blank">
-    <img src="src/images/favicon.png" width="12%"/>
+    <img src="./CurrentSite.png" width="50%%"/>
   </a>
 </p>
 
-![Current Snip of Site](./WebsiteSnip.png)
+## Purpose for the Site
 
-## Motivation For Site
-
-My motivations for the site are as follows:
-
-- I enjoy teaching and sharing information so I recently decided I wanted to increase the audience I could reach.
-- As I progress through my career I find that I am building a mix of materials that represent me, a website serves to host all of these materials in a cohesive nature.
+I had a few goals/purposes when creating this site:
+- Portfolio
+  - Curate my projects, resume, and general message in one place
+  - Share these materials in an easily accessible way
+- Teaching:
+  - I've always enjoyed teaching and mentoring and my blog posts are an extension of that
+- Web Development:
+  - This website served as exposore and practice for many modern web dev tools
 
 ## Questions
 
 Feel free to reach out if you have any questions, always looking to improve aspects or the site or get inspiration for future posts.
 
 ## Build Status
-
-Current status of the site can be found below.
 
 <p align="center">
   <a href="https://app.netlify.com/sites/friendly-sammet-e1f609/deploys" target="_blank">

@@ -1,55 +1,55 @@
-// Static elements of the site, holds the header and footer and a limited width
-// content box.
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import Footer from "./Footer";
+import Header from "./Header";
 
-import React from "react"
-import Header from "./Header/Header"
-import Footer from "../components/Footer"
-import styled from "styled-components"
-import {MDXProvider} from '@mdx-js/react'
-import CodeBlock from './Code/CodeBlock'
-import TeX from "@matejmazur/react-katex";
-import PostButton from "./Post/PostButton"
-import PostVideo from "./Post/PostVideo"
-import Collapse from "../components/Utils/Collapse"
-import("katex/dist/katex.min.css");
-
-const components = {
-  pre: props => <div {...props} />,
-  code: CodeBlock,
-  div: (props) => {
-    if (props.className.includes("math-display")) {
-      return <TeX block math={props.children} />;
-    }
-    return <div {...props} />;
-  },
-  span: (props) => {
-    if (props.className.includes("math-inline")) {
-      return <TeX math={props.children} />;
-    }
-    return <span {...props} />;
-  },
-  ...{PostButton, PostVideo, Collapse},
-}
-
-const FullView = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background-color: ${props => props.theme.colors.light1} !important;
-`
-
-const Container = styled.div`
-  max-width: ${props => props.theme.widths.max};
-  margin: 0 auto;
-  padding: 0rem 1rem;
-
-  a {
-    text-decoration: none;
-    color: inherit;
+const GlobalStyles = createGlobalStyle(({ theme }) => `
+  // Importing/Setting Font
+  @font-face {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 200 300 400 500 700;
+    src: url("/fonts/DMSansVar.ttf");
+  }
+  @font-face {
+    font-family: "Fira Code";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url("/fonts/FiraCode-Regular.ttf");
   }
 
-  height: 100%;
+  // Global Style
+  html {
+    scroll-behavior: smooth;
+    font-size: 15px;
+  }
 
-  // Font overrides to rem, for simpler content scaling
+  // Media Queries
+  @media (max-width: 800px) {
+    html { font-size: 14px; }
+  }
+  @media (max-width: 600px) {
+    html { font-size: 14px; }
+  }
+  @media (max-width: 450px) {
+    html { font-size: 13px; }
+  }
+  @media (max-width: 370px) {
+    html { font-size: 11px; }
+  }
+
+  // Setting Background
+  body {
+    background-color: ${theme.colors.background};
+    font-family: ${theme.fonts.main};
+  }
+
+  // Font Styles
+  a {
+    text-decoration: none;
+  }
   h1, h2, h3, h4 {
     font-weight: 500;
   }
@@ -65,28 +65,45 @@ const Container = styled.div`
   h4 {
     font-size: 1rem;
   }
-  p, li {
-    font-size: 1.25rem;
+  p, li, td, tr, .katex {
+    font-size: 1.2rem;
   }
+`)
 
+const FullView = styled.div`
+  width: 100%;
+  min-height 100vh;
 `
 
-const ColorStrip = styled.div`
+const ColorStrip = styled.div(({ theme }) => `
   height: 0.5rem;
-  background-color: ${props => props.theme.colors.blue};
-`
+  background-color: ${theme.colors.primary};
+`)
+
+const LimitedWidth = styled.div(({ theme }) => `
+  max-width: ${theme.widths.max};
+  margin: 0 auto;
+  padding: 0rem 1rem;
+`)
+
+const ContentWidth = styled.div(({ theme }) => `
+  max-width: ${theme.widths.content};
+  margin: 0 auto;
+`)
+
 
 function Layout({ children }) {
   return (
     <FullView>
       <ColorStrip />
-      <MDXProvider components={components}>
-        <Container>
+      <LimitedWidth>
+        <ContentWidth>
+          <GlobalStyles />
           <Header />
           {children}
-          <Footer/>
-        </Container>
-      </MDXProvider>
+          <Footer />
+        </ContentWidth>
+      </LimitedWidth>
     </FullView>
   )
 }

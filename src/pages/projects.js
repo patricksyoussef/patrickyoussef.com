@@ -1,66 +1,32 @@
-import React from "react"
 import { graphql } from "gatsby"
+import React from "react"
 import styled from "styled-components"
-import { Helmet } from "react-helmet"
-import Layout from "../components/Layout"
+import PageHead from "../components/PageHead"
 import ProjectSection from "../components/ProjectSection"
+
+// Head Export
+export const Head = ({ data: { site } }) => {
+  return (
+    <title>Projects | {site.siteMetadata.author}</title>
+  )
+}
 
 const Container = styled.div`
 `
-const projects = ({ data }) => {
+
+export default function Projects({ data }) {
+  let description = "In my free time, I like to build things that I find interesting or cool. It's not always to solve a big problem, but often for the sake of spending a weekend learning and enjoying the process of creating something."
   return (
-    <Layout>
-      <Helmet>
-        <title>Projects | {data.site.siteMetadata.title}</title>
-      </Helmet>
-      <Container>
-        <ProjectSection 
-            data={data.project}
-            title={"All Projects"}
-            linktext={""}
-            path={"/projects/"}/>
-      </Container>
-    </Layout>
+    <Container>
+      <PageHead title={"Projects"} description={description} />
+      <ProjectSection data={data.projects} />
+    </Container>
   )
 }
-export default projects;
 
 export const query = graphql`
-  query AllProjects {
-    project: allMdx(
-      sort: { fields: frontmatter___date, order: DESC }
-      filter: {
-        frontmatter: {
-          templateKey: { eq: "project" }
-          published: { eq: true }
-        }
-      }
-    ) {
-      nodes {
-        frontmatter {
-          slug
-          title
-          date(formatString: "YYYY MMMM Do")
-          excerpt
-          tags
-          featureImage {
-            childImageSharp {
-              gatsbyImageData(width:400, formats: JPG, placeholder: BLURRED)
-            }
-          }
-        }
-        fields {
-          readingTime {
-            text
-          }
-          path
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query {
+    ...SiteMetadata
+    ...ProjectQuery
   }
 `

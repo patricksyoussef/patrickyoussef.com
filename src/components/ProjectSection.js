@@ -1,25 +1,21 @@
-import React from "react"
-import styled from "styled-components"
-import ProjectCard from "./ProjectCard"
+import React from "react";
+import styled from "styled-components";
+import ContentCard from "./ContentCard";
 
-const Container = styled.div`
-`
+const Container = styled.div(({ theme }) => `
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+  grid-gap: ${theme.grid.gap};
+`)
 
-const Grid = styled.div`
-    padding: 1rem 0;
-    margin: 0rem 0rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 1rem;
-`
-
-const ProjectSection = ( { data } ) => (
+const ProjectSection = ({ data }) => (
   <Container>
-    <Grid>
-      {data.nodes.map(({ frontmatter, fields }) => (
-        <ProjectCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} />
-      ))}
-    </Grid>
+    {data.nodes.map(({ frontmatter, fields }) => (
+      <ContentCard key={frontmatter.title} _image={true} frontmatter={frontmatter} fields={fields} />
+    ))}
   </Container>
 )
 export default ProjectSection;
