@@ -53,7 +53,7 @@ const MDXContent = styled.div(({ theme }) => `
   // Link
   a {
     font-weight: 500;
-    text-decoration: underline ${theme.colors.background};
+    text-decoration: underline rgba(0,0,0,0.0);
     transition: text-decoration-color ${theme.transitions.main};
     color: ${theme.colors.links.normal};
     &:visited {

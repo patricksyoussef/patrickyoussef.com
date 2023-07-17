@@ -3,6 +3,8 @@ import { BgImage } from "gbimage-bridge";
 import React from "react";
 import styled from "styled-components";
 
+let blur = 3;
+
 const Container = styled.div(({ theme }) => `
   display: flex;
   justify-content: center;
@@ -14,9 +16,9 @@ const Container = styled.div(({ theme }) => `
   
   // Blur Style
   // Margin needed to fix rolloff
-  margin: -5px;
-  filter: blur(3px);
-  opacity: 0.25;
+  margin: ${`-${blur}px`};
+  filter: blur(${`${blur}px`});
+  opacity: 0.2;
 `)
 
 const FeatureImage = ({ frontmatter }) => {

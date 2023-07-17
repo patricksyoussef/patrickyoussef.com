@@ -7,6 +7,7 @@ export const postElements = graphql`
       excerpt
       slug
       date(formatString: "MMM. Do, YYYY")
+      templateKey
       title
       tags
       pinned

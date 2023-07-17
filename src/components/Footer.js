@@ -18,7 +18,7 @@ const Content = styled.p(({ theme }) => `
 const Footer = () => {
   return (
     <Container>
-      <Content>Designed and Built with ❤️ by Patrick Youssef</Content>
+      <Content>Designed and Built by Patrick Youssef</Content>
     </Container>
   )
 }

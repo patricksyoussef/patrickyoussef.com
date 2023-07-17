@@ -5,12 +5,14 @@ import { ArrowUpRight } from "react-feather";
 import styled from "styled-components";
 
 const Container = styled.div(({ theme }) => `
-  padding: 0.75rem;
   background-color: ${theme.colors.cards.background};
   border: 1px solid ${theme.colors.borders};
-  border-radius: ${theme.radii.content};
+  border-radius: 0.75rem;
   transition: ${theme.transitions.main};
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     box-shadow: ${theme.shadow};
@@ -57,13 +59,13 @@ const Toolbar = styled.div(({ theme }) => `
 `)
 
 const Content = styled.div(({ theme }) => `
+  padding: 0.75rem;
   display: grid;
   grid-template-rows: 1fr auto;
   grid-gap: 0.25rem;
 `)
 
 const ImageContainer = styled.div(({ theme }) => `
-  margin-top: 0.75rem;
   width: 100%;
   left: 0px;
   bottom: 0px;
@@ -72,11 +74,9 @@ const ImageContainer = styled.div(({ theme }) => `
 `)
 
 const FeatureImage = styled.div(({ theme }) => `
-  width: calc(100%);
-  border-top-left-radius: ${theme.radii.content};
-  border-top-right-radius: ${theme.radii.content};
-  box-shadow: ${theme.shadow};
   overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: ${theme.shadow};
 
   .feature:after {
     content: '';
@@ -115,15 +115,17 @@ const ImageWrapper = ({ image, featureImg, frontmatter }) => {
 
 
 const ContentCard = ({ frontmatter, fields, _image = false }) => {
+  // Determine whether to list the category of the tags for the card
+  let cardTags = frontmatter.templateKey === "project" ? frontmatter.tags.sort().join(" · ") : frontmatter.category
   let featureImg = getImage(frontmatter.featureImage.childImageSharp.card)
   return (
     <Link to={fields.path}>
-      <Container style={{ paddingBottom: _image ? "0rem" : "0.75rem" }}>
-        <Toolbar>
-          <p className="tags">{frontmatter.tags.sort().join(" · ")}</p>
-          <FeatureIcon pinned={frontmatter.pinned} />
-        </Toolbar>
+      <Container>
         <Content>
+          <Toolbar>
+            <p className="tags">{cardTags}</p>
+            <FeatureIcon pinned={frontmatter.pinned} />
+          </Toolbar>
           <p className="title">{frontmatter.title}</p>
           <p className="subtext">{frontmatter.date} · {fields.readingTime.text}</p>
         </Content>

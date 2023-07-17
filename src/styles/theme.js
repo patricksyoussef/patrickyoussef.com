@@ -19,7 +19,6 @@ export const base = {
   },
   widths: {
     max: "1400px",
-    feature: "1000px",
     content: "900px",
   }
 }
