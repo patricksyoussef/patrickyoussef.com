@@ -10,6 +10,13 @@ const Container = styled.div(({ theme }) => `
   grid-template-columns: 2.5fr 1fr;
   grid-gap: 2rem;
   margin: 2em 0rem;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    .image {
+      display: none
+    }
+  }
 `)
 
 const Content = styled.div(({ theme }) => `  
@@ -55,13 +62,6 @@ const ImageGrid = styled.div(({ theme }) => `
   display: flex:
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-    .image {
-      display: none
-    }
-  }
 `)
 
 const Hero = ({ data }) => {
@@ -76,7 +76,7 @@ const Hero = ({ data }) => {
         </HeroText>
         <Socials />
       </Content>
-      <ImageGrid>
+      <ImageGrid className="image">
         <GatsbyImage image={image} alt="Hi it's me!" />
       </ImageGrid>
     </Container>
