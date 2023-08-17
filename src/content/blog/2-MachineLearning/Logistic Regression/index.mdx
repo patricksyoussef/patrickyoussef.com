@@ -247,7 +247,7 @@ def sigmoid(self, z):
     return 1 / (1 + np.exp(-z))
 ```
 
-Let's go ahead to `prep_data` and `add_dimension` as they work together. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the result of $W^T X_i$. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
+Let's continue with `prep_data` and `add_dimension`. `prep_data` takes the range of each column and brings them down to $[0,1]$, that way no particular feature dominates the result of $W^T X_i$. `add_dimension` creates a vector of ones the size of the number of samples and tacks it as the last column of $X$.
 
 ```python
 def prep_data(self, X):

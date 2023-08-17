@@ -18,24 +18,18 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              showCaptions: true,
-              quality: 80,
-            }
-          },
-          {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
               destinationDir: f => `files/${f.name}`,
             },
           },
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: `gatsby-remark-images`,
             options: {
-              isIconAfterHeader: true,
-            },
+              maxWidth: 1000,
+              showCaptions: true,
+              quality: 75,
+            }
           },
           {
             resolve: `gatsby-remark-external-links`,

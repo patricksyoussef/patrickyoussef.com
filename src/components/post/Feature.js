@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import FeatureImage from "./FeatureImage"
+import React from "react";
+import styled from "styled-components";
+import FeatureImage from "./FeatureImage";
 
 const Container = styled.div(({ theme }) => `
   // Outer Style
@@ -8,6 +8,7 @@ const Container = styled.div(({ theme }) => `
   border: 1px solid ${theme.colors.borders};
   overflow: hidden;
   margin: 1em auto;
+  background: transparent;
 
   // Grid Layout for Stack
   display: grid;
@@ -20,10 +21,11 @@ const Container = styled.div(({ theme }) => `
 `)
 
 const Header = styled.div(({ theme }) => `
-  padding: 1.5rem;
+  padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 0;
 `)
 
 const Title = styled.span(({ theme }) => `

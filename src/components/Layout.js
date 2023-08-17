@@ -9,15 +9,13 @@ const GlobalStyles = createGlobalStyle(({ theme }) => `
     font-family: "DM Sans";
     font-style: normal;
     font-display: swap;
-    font-weight: 200 300 400 500 700;
     src: url("/fonts/DMSansVar.ttf");
   }
   @font-face {
     font-family: "Fira Code";
     font-style: normal;
     font-display: swap;
-    font-weight: 400;
-    src: url("/fonts/FiraCode-Regular.ttf");
+    src: url("/fonts/FiraCode-VF.ttf");
   }
 
   // Global Style

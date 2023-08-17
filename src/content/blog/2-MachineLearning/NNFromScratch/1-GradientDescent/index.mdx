@@ -171,7 +171,7 @@ Let's go ahead and take a look at the hills example realized! What you can see i
 
 import hill_descent from "./videos/hill_descent.mp4";
 
-<PostVideo video={hill_descent}/>
+<PostVideo video={hill_descent} aspectRatio={2000 / 1100}/>
 
  As we can see they all reach minimums which is what we expect! Something to note is that you can see that depending on where the points start they have a destined minimum they'll end up in, in other landscapes this may mean that a point will terminate at a local not a global minima!
 
@@ -263,7 +263,7 @@ What you can see in the video below is the loss landscape on the left and the hi
 
 import loss_travel from "./videos/loss_travel.mp4";
 
-<PostVideo video={loss_travel}/>
+<PostVideo video={loss_travel} aspectRatio={2000 / 1200}/>
 
 One way to think about this is that the position of the point $(w,b)$ defines a line that will have a corresponding height that is the current loss. By traversing down the loss landscape we find the $(w,b)$ such that the corresponding loss in minimal. 
 
@@ -281,7 +281,7 @@ The visualization here is similar to the prior but just with the parabolic data.
 
 import loss_travel_parabola from "./videos/loss_travel_parabola.mp4"; 
 
-<PostVideo video={loss_travel_parabola}/>
+<PostVideo video={loss_travel_parabola} aspectRatio={2000 / 1200}/>
 
 ## Comparing Losses
 

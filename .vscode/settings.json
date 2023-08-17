@@ -1,4 +1,7 @@
 {
     "cSpell.enabled": true,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "[mdx]": {
+        "editor.tabSize": 4,
+    }
 }

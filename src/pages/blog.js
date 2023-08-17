@@ -16,7 +16,7 @@ const Container = styled.div(({ theme }) => `
 `)
 
 export default function Blog({ data }) {
-  let description = "From time to time, I share insights, experiences, and exposure to topics that others may find interesting. You'll find posts ranging from long-form tutorials on modern topics to short musings from my life."
+  let description = "From time to time, I share insights, experiences, and exposure to interesting topics. Topics range from long-form tutorials on modern topics to short musings from my life."
   return (
     <Container>
       <PageHead title="Blog" description={description} />

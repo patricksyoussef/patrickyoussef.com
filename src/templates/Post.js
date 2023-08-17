@@ -32,22 +32,19 @@ export const Head = ({ data: { mdx: { frontmatter, fields }, site } }) => {
 }
 
 
-const Container = styled.div`
-`
+const Container = styled.div(({ theme }) => `
+  max-width: 100%;
+  margin: 0 auto;
+`)
 
 const MDXContent = styled.div(({ theme }) => `
-  
-  // Sizing
-  max-width: ${theme.widths.content};
-  margin: 0 auto;
 
   // Headings
-  h1, h2, h3, h4 {
-    svg {
-      height: 0.75em;
-      width: 0.75em;
-      margin: 0.3em 0.1em;
-    }
+  // Only H1s have Underlines for Separation
+  h1 {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: ${theme.colors.borders};
   }
 
   // Link
@@ -68,11 +65,15 @@ const MDXContent = styled.div(({ theme }) => `
 
   // Image and Video
   .gatsby-resp-image-wrapper, video {
-    max-width: 700px !important;
+    max-width: 100%;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: ${theme.radii.content};
     box-shadow: ${theme.shadow};
-    margin: 1em 0em;
+    margin: 1em auto;
+  }
+
+  img {
+    display: block;
   }
 
   figcaption {
@@ -89,19 +90,23 @@ const MDXContent = styled.div(({ theme }) => `
   
   // Inline Code
   code {
+    font-family: ${theme.fonts.code};
     font-size: 0.8em;
+    font-weight: 450;
     border: 1px solid ${theme.colors.borders};
     border-radius: 5px;
     background-color: ${theme.background_darken};
-    padding: 2px;
+    padding: 1px 4px;
+    margin: 0px 1px;
     color: black;
   }
-
+  
   // Blockquote
   blockquote {
     background-color: ${theme.background_darken};
     padding: 0.75rem 1.25rem;
     border-left: 0.3rem solid  ${theme.colors.primary};
+    border-radius: 0.3rem;
     margin: 0rem;
     margin-top: 0.5rem;
     p {
@@ -140,10 +145,11 @@ const MDXContent = styled.div(({ theme }) => `
 
 const BlogPost = ({ data }) => {
   const { frontmatter, fields, body } = data.mdx
+  // <Feature frontmatter={frontmatter} fields={fields} />
   return (
     <Container>
+      <Feature frontmatter={frontmatter} fields={fields} />
       <MDXContent>
-        <Feature frontmatter={frontmatter} fields={fields} />
         <MDXRenderer>{body}</MDXRenderer>
       </MDXContent>
     </Container>

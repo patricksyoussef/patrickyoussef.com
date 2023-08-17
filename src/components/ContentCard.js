@@ -86,9 +86,6 @@ const FeatureImage = styled.div(({ theme }) => `
     top: 0;
     left: 0;
     background: transparent;
-  }
-  
-  .feature:after {
     transition: ${theme.transitions.main};
     background: ${theme.colors.primary};
     opacity: 0.2;

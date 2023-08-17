@@ -4,6 +4,8 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import CodeBlock from "../components/codeblock/CodeBlock.js";
 import Collapse from "../components/post/Collapse.js";
+import GIFWrapper from "../components/post/GIFWrapper.js";
+import HeaderLink from "../components/post/HeaderLink.js";
 import PostVideo from "../components/post/PostVideo.js";
 import { base, light_theme } from "../styles/theme.js";
 
@@ -27,6 +29,17 @@ let components = {
     }
     return <span {...props} />;
   },
+
+  // Images
+  img: (props) => {
+    if (props.src.includes("gif")) {
+      return (<GIFWrapper {...props} />)
+    }
+    return (<img alt={""} {...props} />)
+  },
+
+  // Header Linking
+  h1: (props) => <HeaderLink props={props} />,
 
   // MDX Components
   ...{ Collapse, PostVideo },

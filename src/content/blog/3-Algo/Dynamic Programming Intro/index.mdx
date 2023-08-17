@@ -2,11 +2,109 @@
 templateKey: blog
 published: false
 title: "Demystifying Dynamic Programming"
-slug: demystifying-dynamic-programming
+slug: demystifying-dp
 date: 2023-07-17
-featureImage: images/feature.jpg
+featureImage: images/fib_5.png
 tags: ["Algorithms", "Gradient Descent"]
 category: "Tutorial"
 excerpt: ""
 pinned: true
 ---
+
+Dynamic programming is one of the most feared and misunderstood algorithmic problem solving strategies. In this post, I hope to offer some perspective on how to approach DP problems and shed light on the beauty of this approach.
+
+# What is Dynamic Programming?
+
+If you ask [Introduction To Algorithms](http://mitpress.mit.edu/9780262046305/introduction-to-algorithms/), _"A dynamic-programming algorithm solves each subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem."_
+
+I'm fond of this description, but at first I was fairly lost. What's a subsubproblem? What does a table that saves answers look like? Like many, I was overwhelmed with how to attach some intuition to descriptions of dynamic programming like this and use them to solve problems.
+
+To me, this all reduces to **don't repeat work that you've already done before**.
+
+> _"Those who cannot remember the past are condemned to repeat it"_
+
+# Steps to Solving
+
+My goal is to show that solving problems with dynamic programming (DP) can actually be a very concrete and procedural process 5-step process, let's begin with a brief overview of them.
+
+## Step 1: Recognizing a DP Problem
+
+## Step 2: Determine Recurrence Relations
+
+## Step 3: Determine Base Cases
+
+## Step 4: Write Recursive Solution
+
+## Step 5: Add Memoization
+
+I think these are best explained through example, let's start with a simple problem.
+
+# Fibonacci Sequence
+
+# Coin Change
+
+# Minimum Path Sum
+
+# Memoization Decorator
+
+I hope it's clear now that memoization is actually a very structured and clear process. After solving many problems this way it'll start to feel repetitive and maybe a bit annoying.
+
+Python has this wonderful tool called [decorators](https://realpython.com/primer-on-python-decorators/). As Real Python says, _"...a decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it."_ We can create a simple decorator to easily memoize a function.
+
+import Decorator from "./asides/Decorator.mdx";
+
+<Collapse title="Decorator Intro/Template">
+  <Decorator />
+</Collapse>
+
+To write one, we create a wrapper that maintains its own memo and wraps the function call with a check to see if we've gotten that result before, essentially an external memo base case.
+
+```python
+def memoize(func):
+    memo = {}
+    def wrapper(*args):
+        if args not in memo:
+            memo[args] = func(*args)
+        return memo[args]
+    return wrapper
+```
+
+To use the decorator we just need to add `@memoize` to the line just before the function that we want to apply memoization to. Trying this on our prior non-memoized Fibonacci code we can _easily_ compute `fib(1000)` where this would be very intractable without it.
+
+```python output=1
+@memoize
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+# Function Runtime
+%timeit -n 10_000 fib(1000)
+
+232 ns ± 55.2 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+```
+
+> `%timeit` is an iPython magic function that it accessible in a Jupyter Notebook, don't be surprised if you can't run that line in your own Python environment.
+
+Turns out we are not the first to come up with this, in the Python standard library module `functools` there is a `cache` decorator that does exactly this.
+
+```python output=1
+from functools import cache
+
+@cache
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+# Function Runtime
+%timeit -n 10_000 fib(1000)
+
+225 ns ± 48.1 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+```
+
+Unsurprisingly we get a nearly identical runtime. My advice is to use `@cache` when you're writing production/project code but reimplement a memo from scratch in an interview!
+
+# Conclusion
+
+![It's just memoization!](./images/DP_meme.png)

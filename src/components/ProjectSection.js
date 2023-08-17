@@ -5,7 +5,7 @@ import ContentCard from "./ContentCard";
 const Container = styled.div(({ theme }) => `
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media (max-width: 700px) {
+  @media (max-width: 500px) {
     grid-template-columns: 1fr;
   }
   grid-gap: ${theme.grid.gap};

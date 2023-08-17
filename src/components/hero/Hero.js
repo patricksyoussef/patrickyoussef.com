@@ -7,14 +7,24 @@ import Socials from "../Socials"
 
 const Container = styled.div(({ theme }) => `
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 50px;
-  margin: 1.5rem 0rem;
+  grid-template-columns: 2.5fr 1fr;
+  grid-gap: 2rem;
+  margin: 2em 0rem;
+`)
 
-  // Text
-  h1, h2 {
+const Content = styled.div(({ theme }) => `  
+`)
+
+const HeroText = styled.div(({ theme }) => `
+  p {
+    margin: 0;
+    font-size: 1.5rem;
     font-weight: 300;
     color: ${theme.colors.text.light};
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 1em;
   }
 
   a, strong {
@@ -29,28 +39,6 @@ const Container = styled.div(({ theme }) => `
       text-decoration-color: ${theme.colors.primary};
     }
   }
-  
-  // Image
-  .image {
-    display: flex:
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-    .image {
-      display: none
-    }
-  }
-`)
-
-const HeroText = styled.div(({ theme }) => `
-  h1,h2,h3 {
-    .anchor {
-      display: none;
-    }
-  }
 `)
 
 const ImageGrid = styled.div(({ theme }) => `
@@ -63,6 +51,17 @@ const ImageGrid = styled.div(({ theme }) => `
     border-style: solid;
     border-radius: 50%;
   }
+
+  display: flex:
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    .image {
+      display: none
+    }
+  }
 `)
 
 const Hero = ({ data }) => {
@@ -71,11 +70,13 @@ const Hero = ({ data }) => {
   let image = getImage(frontmatter.featureImage)
   return (
     <Container>
-      <HeroText>
-        <MDXRenderer>{body}</MDXRenderer>
+      <Content>
+        <HeroText>
+          <MDXRenderer>{body}</MDXRenderer>
+        </HeroText>
         <Socials />
-      </HeroText>
-      <ImageGrid className="image">
+      </Content>
+      <ImageGrid>
         <GatsbyImage image={image} alt="Hi it's me!" />
       </ImageGrid>
     </Container>
