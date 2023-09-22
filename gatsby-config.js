@@ -55,7 +55,7 @@ module.exports = {
         name: `Patrick Youssef`,
         short_name: `PY`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#fafafa`,
         display: `minimal-ui`,
         icon: `src/images/RocketIcon.png`,
       },

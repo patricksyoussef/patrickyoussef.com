@@ -91,24 +91,23 @@ const MDXContent = styled.div(({ theme }) => `
   // Inline Code
   code {
     font-family: ${theme.fonts.code};
-    font-size: 0.8em;
+    font-size: 0.75em;
     font-weight: 450;
     border: 1px solid ${theme.colors.borders};
-    border-radius: 5px;
+    border-radius: 0.5em;
     background-color: ${theme.background_darken};
-    padding: 1px 4px;
-    margin: 0px 1px;
-    color: black;
+    padding: 0.1em;
+    margin: 0em 0.1em;
+    color: ${theme.colors.text.dark};
   }
   
   // Blockquote
   blockquote {
     background-color: ${theme.background_darken};
-    padding: 0.75rem 1.25rem;
-    border-left: 0.3rem solid  ${theme.colors.primary};
-    border-radius: 0.3rem;
-    margin: 0rem;
-    margin-top: 0.5rem;
+    padding: 1rem;
+    border-left: 0.25rem solid  ${theme.colors.primary};
+    border-radius: 0.25rem;
+    margin: 1em 0em;
     p {
       margin: 0;
     }

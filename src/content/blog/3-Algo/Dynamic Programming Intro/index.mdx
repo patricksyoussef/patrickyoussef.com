@@ -25,7 +25,61 @@ To me, this all reduces to **don't repeat work that you've already done before**
 
 # Steps to Solving
 
-My goal is to show that solving problems with dynamic programming (DP) can actually be a very concrete and procedural process 5-step process, let's begin with a brief overview of them.
+My goal is to show that solving dynamic programming (DP) problems can be a concrete and procedural 5-step process, let's begin with a brief overview of them.
+
+## Step 1: Recognizing a DP Problem
+
+TODO: What hints might give you the impression that this problem should be DPed
+
+1. Revisiting problems we've seen before is the core idea
+
+## Step 2: Determine Recurrence Relations
+
+TODO: Explain why top-down recursive formulations make a lot of sense for these problems.
+
+## Step 3: Determine Base Cases
+
+TODO: Second part of the recursive formulation
+
+## Step 4: Write Recursive Solution
+
+TODO: Explain general form of how you can architect these problems
+
+## Step 5: Add Memoization
+
+TODO: Explain that we need to keep track of prior answers and I opt to default to memoization, further explanation in LINKED ASIDE
+
+Dynamic programming is commonly used in LeetCode style interviews, so we'll go through some common interview problems with this approach.
+
+# Fibonacci Sequence
+
+The Fibonacci Sequence is one of the most iconic
+
+## Step 1: Recognizing a DP Problem
+
+## Step 2: Determine Recurrence Relations
+
+## Step 3: Determine Base Cases
+
+## Step 4: Write Recursive Solution
+
+![Fibonacci Call Order](./images/fib_5_anim.gif)
+
+## Step 5: Add Memoization
+
+![Test](./images/fib_5.png)
+
+So how much faster does this make our code? We're concerned with larger problems, let's see how the number of function calls scales for the brute force and memoized solutions.
+
+![Function Call Count](./images/fib_comp.png)
+
+Woah! The brute force solution gets exponentially more demanding as we increase the input number whereas the memoized solution stays much flatter in its scaling. To get a better idea of the scale of the difference, let's plot this on a [log y-scale](https://en.wikipedia.org/wiki/Logarithmic_scale).
+
+![Function Call Count Log Scale](./images/fib_comp_log.png)
+
+For `fib(25)`, memoization makes the code around 5000x faster! The reduction in function calls and therefore runtime will only get better with higher inputs. For my laptop, I find any input greater than around 35 very difficult to compute without memoization.
+
+# Coin Change
 
 ## Step 1: Recognizing a DP Problem
 
@@ -37,13 +91,17 @@ My goal is to show that solving problems with dynamic programming (DP) can actua
 
 ## Step 5: Add Memoization
 
-I think these are best explained through example, let's start with a simple problem.
-
-# Fibonacci Sequence
-
-# Coin Change
-
 # Minimum Path Sum
+
+## Step 1: Recognizing a DP Problem
+
+## Step 2: Determine Recurrence Relations
+
+## Step 3: Determine Base Cases
+
+## Step 4: Write Recursive Solution
+
+## Step 5: Add Memoization
 
 # Memoization Decorator
 
@@ -57,7 +115,7 @@ import Decorator from "./asides/Decorator.mdx";
   <Decorator />
 </Collapse>
 
-To write one, we create a wrapper that maintains its own memo and wraps the function call with a check to see if we've gotten that result before, essentially an external memo base case.
+To write one, we create a wrapper that has its own memo and wraps the function call with a check to see if we've gotten that result before, essentially an external memo base case.
 
 ```python
 def memoize(func):

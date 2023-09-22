@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle(({ theme }) => `
   html {
     scroll-behavior: smooth;
     font-size: 15px;
+    color: ${theme.colors.text.normal};
   }
 
   // Media Queries
@@ -64,7 +65,7 @@ const GlobalStyles = createGlobalStyle(({ theme }) => `
     font-size: 1rem;
   }
   p, li, td, tr, .katex {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 `)
 
