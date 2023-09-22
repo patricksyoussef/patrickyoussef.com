@@ -9,21 +9,20 @@ const GlobalStyles = createGlobalStyle(({ theme }) => `
     font-family: "DM Sans";
     font-style: normal;
     font-display: swap;
-    font-weight: 200 300 400 500 700;
     src: url("/fonts/DMSansVar.ttf");
   }
   @font-face {
     font-family: "Fira Code";
     font-style: normal;
     font-display: swap;
-    font-weight: 400;
-    src: url("/fonts/FiraCode-Regular.ttf");
+    src: url("/fonts/FiraCode-VF.ttf");
   }
 
   // Global Style
   html {
     scroll-behavior: smooth;
     font-size: 15px;
+    color: ${theme.colors.text.normal};
   }
 
   // Media Queries
@@ -66,7 +65,7 @@ const GlobalStyles = createGlobalStyle(({ theme }) => `
     font-size: 1rem;
   }
   p, li, td, tr, .katex {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 `)
 

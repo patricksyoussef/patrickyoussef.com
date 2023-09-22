@@ -3,22 +3,21 @@ import { BgImage } from "gbimage-bridge";
 import React from "react";
 import styled from "styled-components";
 
-let blur = 3;
+let blur = 5;
 
 const Container = styled.div(({ theme }) => `
   display: flex;
   justify-content: center;
   align-items: center;
   div[class^='gbi'] {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
   }
   
   // Blur Style
   // Margin needed to fix rolloff
   margin: ${`-${blur}px`};
-  filter: blur(${`${blur}px`});
-  opacity: 0.2;
+  filter: opacity(30%) blur(${`${blur}px`});;
 `)
 
 const FeatureImage = ({ frontmatter }) => {

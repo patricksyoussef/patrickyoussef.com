@@ -13,8 +13,9 @@ export const postElements = graphql`
       pinned
       featureImage {
         childImageSharp {
-          whole: gatsbyImageData(width: 750, placeholder: BLURRED, transformOptions: {cropFocus: ATTENTION})
-          card: gatsbyImageData(width: 450, aspectRatio: 4.0, placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
+          whole: gatsbyImageData(width: 750, placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
+          feature: gatsbyImageData(placeholder: BLURRED, aspectRatio: 5.0,  transformOptions: {cropFocus: ENTROPY})
+          card: gatsbyImageData(width: 450, aspectRatio: 4.5, placeholder: BLURRED, transformOptions: {cropFocus: ENTROPY})
         }
       }
     }
@@ -48,7 +49,7 @@ export const heroFragment = graphql`
           title
           featureImage {
             childImageSharp {
-              gatsbyImageData(aspectRatio: 1.0, height: 300, placeholder: BLURRED)
+              gatsbyImageData(height: 300, aspectRatio: 1.0, placeholder: BLURRED)
             }
           }
         }

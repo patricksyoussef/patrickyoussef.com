@@ -2,7 +2,7 @@ import colors from "./base_colors";
 
 export const base = {
   shadow: "rgba(0, 0, 0, 0.2) 0px 2px 8px 2px",
-  background_darken: "rgba(0, 0, 0, 0.05)",
+  background_darken: "rgba(0, 0, 0, 0.04)",
   fonts: {
     main: "DM Sans",
     code: "Fira Code",
@@ -12,14 +12,14 @@ export const base = {
   },
   radii: {
     content: "0.5rem",
-    feature: "1rem",
+    feature: "0.75rem",
   },
   transitions: {
     main: "0.2s ease-in-out",
   },
   widths: {
     max: "1400px",
-    content: "900px",
+    content: "800px",
   }
 }
 

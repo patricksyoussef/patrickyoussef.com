@@ -3,25 +3,18 @@ import { ChevronDown, ChevronUp } from 'react-feather';
 import styled from "styled-components";
 
 const Container = styled.div(({ theme }) => `
-  h1,h2,h3 {
-    margin: 0rem;
-    font-weight: 500;
-  }
-
   background-color: ${theme.background_darken};
   border: 1px solid ${theme.colors.borders};;
   border-radius: ${theme.radii.feature};
   padding: 0.5rem 1rem;
-  cursor: pointer;
-
-  h1, h2, h3 {
-    svg {
-      display: none;
-    }
-  }
 `)
 
-const Content = styled.div`
+const Toolbar = styled.div`
+  h1,h2,h3 {
+    margin: 0rem;
+    font-weight: 500;
+  }
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,20 +23,19 @@ const Content = styled.div`
   }
 `
 
-const Children = styled.div`
-  padding: 0.5rem 0rem;
-  margin: 0rem 0rem;
+const Content = styled.div`
+  margin: -0.5em 0em;
 `
 
 const Collapse = ({ title, children }) => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <Container className='collapse' onClick={() => setIsActive(!isActive)}>
-      <Content>
+    <Container className='collapse'>
+      <Toolbar onClick={() => setIsActive(!isActive)}>
         <h3>{title}</h3>
         <div>{isActive ? <ChevronUp size={24} /> : <ChevronDown size={24} />}</div>
-      </Content>
-      {isActive && <Children>{children}</Children>}
+      </Toolbar>
+      {isActive && <Content>{children}</Content>}
     </Container>
   )
 }

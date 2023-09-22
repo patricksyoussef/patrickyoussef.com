@@ -14,7 +14,7 @@ const Container = styled.div(({ theme }) => `
 const BlogSection = ({ data }) => (
   <Container>
     {data.nodes.map(({ frontmatter, fields }) => (
-      <ContentCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} />
+      <ContentCard key={frontmatter.title} frontmatter={frontmatter} fields={fields} _image={false} />
     ))}
   </Container>
 )

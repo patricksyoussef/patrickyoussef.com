@@ -3,26 +3,10 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import React from "react";
 import { Check, Copy } from 'react-feather';
 import styled from "styled-components";
+import { copyToClipboard } from "../common/Utils";
 import ClientOnly from "./ClientOnly";
 import LanguageFlag from "./LanguageFlag";
 import "./theme.css";
-
-
-const copyToClipboard = str => {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(str).then(
-      function () {
-        console.log("Copying to clipboard was successful!");
-      },
-      function (err) {
-        console.error("Could not copy text: ", err);
-      }
-    );
-  } else if (window.clipboardData) {
-    // Internet Explorer
-    window.clipboardData.setData("Text", str);
-  }
-};
 
 const CopyIcon = (isCopied) => {
   return (isCopied ? <Check className="check" /> : <Copy />)
@@ -31,6 +15,9 @@ const CopyIcon = (isCopied) => {
 const Container = styled.div(({ theme }) => `
   // Colors
   background-color: #1d1f21;
+
+  // Shadow
+  box-shadow: ${theme.shadow};
 
   // Border
   border-radius: ${theme.radii.content};
@@ -134,7 +121,7 @@ const CodeBlock = ({ children: { props } }) => {
 
   return (
     <ClientOnly>
-      <Container>
+      <Container className="codeblock">
         <Highlight {...defaultProps} language={language} code={code} theme={undefined}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <ContentBox>
@@ -160,7 +147,7 @@ const CodeBlock = ({ children: { props } }) => {
                       lineProps["className"] = [lineProps["className"], lineClass].join(" ")
                     }
                     return (
-                      <div {...lineProps}>
+                      <div {...lineProps} key={i}>
                         {line.map((token, key) => (<span {...getTokenProps({ token, key })} />))}
                       </div>
                     )
@@ -170,7 +157,7 @@ const CodeBlock = ({ children: { props } }) => {
                 <OutputLines>
                   <pre className={className} style={style}>
                     {output.map((line, i) => (
-                      <div>
+                      <div key={i}>
                         <span style={{ display: "inline-block" }}>{line}</span>
                       </ div>
                     ))}

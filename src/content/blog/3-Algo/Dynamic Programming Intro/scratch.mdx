@@ -1,0 +1,130 @@
+---
+published: false
+---
+
+# Fibonacci Sequence
+
+For those who are unfamiliar, the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) is one of the most iconic where each value is computed as the sum of the prior two numbers in the sequence.
+
+We need some starting point to sum up with, and while there's some debate on what the first two values are I am in the club starting with the 0th and 1st number then moving forward.
+
+$$
+F_0 = 0 \quad F_1 = 1
+$$
+
+From here we can define the rest of the sequence starting with the 2nd, 3rd, 4th, and so on.
+
+$$
+F_2 = F_1 + F_0 = 1 + 0 = 1 \\
+F_3 = F_2 + F_1 = 1 + 1 = 2 \\
+F_4 = F_3 + F_2 = 2 + 1 = 3 \\
+F_5 = F_4 + F_3 = 3 + 2 = 5
+$$
+
+You may notice a pattern here that we can actually define a bit more. For every number in the sequence other than $F_0$ and $F_1$, we compute value as the following [recurrence relation](https://en.wikipedia.org/wiki/Recurrence_relation).
+
+$$
+F_n = F_{n-1} + F_{n-2}
+$$
+
+I find it helps me to write both the recurrence relation and the initial cases as a piecewise function. To me it just groups up all of what I know into one cohesive function.
+
+$$
+\text{fib}(n) =
+\begin{cases}
+    n & n < 2 \\
+    \text{fib}(n-1) + \text{fib}(n-2) & \text{else}
+\end{cases}
+$$
+
+## Simple Recursive Solution
+
+One of the beauties of defining it this way is that it's very easy to convert this form to a [recursive solution](https://realpython.com/python-recursion/), instead of $F$ let's call our function $\text{fib}$. We can use our initial values $F_0$ and $F_1$ as our bases cases and call our function otherwise based on the recurrence relation.
+
+```python output=1
+def fib(n):
+    # Reaching the known numbers
+    if n < 2:
+        return n
+
+    # Recurrence relation for `fib(n)`
+    return fib(n-1) + fib(n-2)
+
+print(f"5th Fibonacci Number is: {fib(5)}")
+
+5th Fibonacci Number is: 5
+```
+
+So we might say we're done here! You plug in some values to compute and they seem fast and correct, but then you try say `fib(35)` and it seems to take a lot longer than expected, why? Let's take a look at how many times we're calling `fib` for a small case of just `fib(5)`.
+
+![Fib 5 Anim](./images/fib_5_anim.gif)
+
+Each square is one function call for a given input value, notice how some of these seem like repeats of past computations? **Don't repeat work that you've already done before**.
+
+Let's go ahead and add a Python dictionary `memo` to store our results, keyed by our input `n` and saving the corresponding Fibonacci number. We'll also need to add a check in our code to see if we have that `n` stored already, this is shown in the code below.
+
+```python output=2
+def fib(n, memo):
+    # If we've seen `n` before, return prior answer
+    if n in memo:
+        return memo[n]
+
+    # Reaching the known numbers
+    if n < 2:
+        return n
+
+    # Recurrence relation for `fib(n)`
+    memo[n] = fib(n-1, memo) + fib(n-2, memo)
+    return memo[n]
+
+memo = {}
+print(f"5th Fibonacci Number is: {fib(5, memo)}")
+print(f"Memo: {memo}")
+
+5th Fibonacci Number is: 5
+Memo: {0: 0, 1: 1, 2: 1, 3: 2, 4: 3, 5: 5}
+```
+
+We see that we get the same result and we've actually stored all the values from `fib(0)` up to `fib(5)` in our `memo`! How does this affect the function call tree that we were looking at before?
+
+![Fib 5 Call Tree With Memo](./images/fib_5.png)
+
+Any blue square is a function call where it's input `n` is already in our `memo` and can therefore early return as opposed to exploring further function calls. With the `memo`, we save having to do all the function calls that lie under these blue nodes.
+
+For the prior example of `fib(5)` the difference isn't massive but as we step up our input `n` the benefits scale tremendously!
+
+![Fib 8 Call Tree](./images/fib_8.png)
+
+For a slightly larger input `fib(8)`, most of the tree is function calls that we get to skip because we are storing prior results, wonderful! What do you think this would look like a much larger n?
+
+This process of storing results like this is called memoization (yes without an r) which is why we called our dictionary `memo`. Some people are fans of tabulation but I won't be discussing that method in this post, more details in the below aside if you're curious.
+
+import Tabulation from "./asides/Tabulation.mdx";
+
+<Collapse title="Tabulation Vs Memoization">
+  <Tabulation />
+</Collapse>
+
+![Function Call Count Comparison](./images/fib_comp.png)
+
+Let's look at a range of inputs and their number of function calls (nodes in the tree). It's really hard to tell what's going on here, it looks like the memoization function count is constant. Obviously, this is not the case but let's look at a [log scale](https://en.wikipedia.org/wiki/Logarithmic_scale) to get a better idea.
+
+![Function Call Count Comparison (log scale)](./images/fib_comp_log.png)
+
+Woah!
+
+## Time Complexity
+
+TODO: Show how the runtime scales for fib
+
+So why does memoization make our code so much faster, especially with larger and larger n?
+
+# Coin Change
+
+![Coin Change](./images/coin_change_small.png)
+
+![Coin Change](./images/coin_change_large.png)
+
+# Minimum Path Sum
+
+![Min Path](./images/min_path_sum.png)
