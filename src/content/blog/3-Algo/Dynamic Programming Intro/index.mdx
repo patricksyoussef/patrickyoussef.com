@@ -3,39 +3,35 @@ templateKey: blog
 published: false
 title: "Demystifying Dynamic Programming"
 slug: demystifying-dp
-date: 2023-07-17
+date: 2023-10-05
 featureImage: images/fib_5.png
-tags: ["Algorithms", "Gradient Descent"]
+tags: ["Algorithms", "Dynamic Programming"]
 category: "Tutorial"
 excerpt: ""
 pinned: true
 ---
 
-Dynamic programming is one of the most feared and misunderstood algorithmic problem solving strategies. In this post, I hope to offer some perspective on how to approach DP problems and shed light on the beauty of this approach.
+Dynamic programming is one of the most feared and misunderstood algorithmic problem solving strategies. In this post, I hope to offer some perspective on how to approach DP problems and shed light on the beauty and efficiency of this approach.
 
 # What is Dynamic Programming?
 
-If you ask [Introduction To Algorithms](http://mitpress.mit.edu/9780262046305/introduction-to-algorithms/), _"A dynamic-programming algorithm solves each subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem."_
+If you ask [Introduction To Algorithms](http://mitpress.mit.edu/9780262046305/introduction-to-algorithms/), "A dynamic-programming algorithm solves each subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem."
 
-I'm fond of this description, but at first I was fairly lost. What's a subsubproblem? What does a table that saves answers look like? Like many, I was overwhelmed with how to attach some intuition to descriptions of dynamic programming like this and use them to solve problems.
+I'm fond of this description now, but at first read I was a bit lost. What's a subsubproblem? What does a table that saves answers look like? Like many, I was confused with how to some intuition to descriptions of dynamic programming like this and use them to solve problems.
 
 To me, this all reduces to **don't repeat work that you've already done before**.
 
-> _"Those who cannot remember the past are condemned to repeat it"_
-
 # Steps to Solving
 
-My goal is to show that solving dynamic programming (DP) problems can be a concrete and procedural 5-step process, let's begin with a brief overview of them.
+Solving dynamic programming (DP) problems can be a concrete and procedural 5-step process. I think these are best understood through example, but we'll begin with a brief overview of them to get a general idea of what we're doing.
 
 ## Step 1: Recognizing a DP Problem
 
-TODO: What hints might give you the impression that this problem should be DPed
-
-1. Revisiting problems we've seen before is the core idea
+First, we need to determine whether or not a problem is well suited to be solved with dynamic programming. Dynamic programming is merely an optimization step that we add to a base solution, and problems where we can break the problem into subproblems are well suited to this optimization. You'll often revisit these subproblems multiple times so saving the results of your prior subproblem solutions can be very beneficial for speed ups.
 
 ## Step 2: Determine Recurrence Relations
 
-TODO: Explain why top-down recursive formulations make a lot of sense for these problems.
+These types of problems are well-suited to recursive solutions, so before we can write that base solution we need to determine what recursive calls we'll have. More formally, the recursive calls in your solution are based on a problem's recurrence relations.
 
 ## Step 3: Determine Base Cases
 
@@ -49,11 +45,9 @@ TODO: Explain general form of how you can architect these problems
 
 TODO: Explain that we need to keep track of prior answers and I opt to default to memoization, further explanation in LINKED ASIDE
 
-Dynamic programming is commonly used in LeetCode style interviews, so we'll go through some common interview problems with this approach.
-
 # Fibonacci Sequence
 
-The Fibonacci Sequence is one of the most iconic
+The Fibonacci Sequence is one of the most iconic sequences in math and lucky for us in dynamic programming. This will serve as a good stepping stop to see how to implement the prior steps and what kind of benefits we can gain from dynamic programming.
 
 ## Step 1: Recognizing a DP Problem
 
@@ -67,7 +61,7 @@ The Fibonacci Sequence is one of the most iconic
 
 ## Step 5: Add Memoization
 
-![Test](./images/fib_5.png)
+![Fibonacci Tree w/ Memoization](./images/fib_5.png)
 
 So how much faster does this make our code? We're concerned with larger problems, let's see how the number of function calls scales for the brute force and memoized solutions.
 

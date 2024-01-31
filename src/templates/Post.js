@@ -96,7 +96,7 @@ const MDXContent = styled.div(({ theme }) => `
     border: 1px solid ${theme.colors.borders};
     border-radius: 0.5em;
     background-color: ${theme.background_darken};
-    padding: 0.1em;
+    padding: 0.15em 0.25em;
     margin: 0em 0.1em;
     color: ${theme.colors.text.dark};
   }
@@ -105,8 +105,8 @@ const MDXContent = styled.div(({ theme }) => `
   blockquote {
     background-color: ${theme.background_darken};
     padding: 1rem;
-    border-left: 0.25rem solid  ${theme.colors.primary};
-    border-radius: 0.25rem;
+    border-left: 0.3rem solid  ${theme.colors.primary};
+    border-radius: 0.3rem;
     margin: 1em 0em;
     p {
       margin: 0;
